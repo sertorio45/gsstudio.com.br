@@ -12,6 +12,8 @@
   "dependencies": {
     "@nuxt/image": "^1.7.0",
     "@popperjs/core": "^2.11.8",
+    "@types/axios": "^0.14.0",
+    "axios": "^1.7.2",
     "bootstrap": "5",
     "nuxt": "^3.12.4",
     "nuxt-easy-lightbox": "^1.0.2",

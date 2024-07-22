@@ -18,7 +18,6 @@
   import { defineComponent, ref, onMounted } from 'vue'
   import axios from 'axios'
   
-  
   export default defineComponent({
     name: 'LatestArticles',
     setup() {
@@ -27,9 +26,9 @@
   
       const getArticleImage = (article: any) => {
         if (article.thumb && article.thumb.url) {
-          return `https://str-gsstudio.gsstudio.com.br${article.thumb.url}`;
+          return `https://str-gsstudio.gsstudio.com.br${article.thumb.url}`
         }
-        return 'default-image-url.jpg'; // Substitua por uma URL de imagem padrão
+        return 'public/thumb_blog_gsstudio.webp' // Substitua por uma URL de imagem padrão
       }
   
       onMounted(async () => {
