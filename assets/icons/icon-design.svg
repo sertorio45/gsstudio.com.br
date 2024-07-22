@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 105.37 107.18">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-8);
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-9);
+      }
+
+      .cls-8 {
+        fill: url(#linear-gradient-7);
+      }
+
+      .cls-9 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-10 {
+        fill: url(#linear-gradient-6);
+      }
+
+      .cls-11 {
+        fill: url(#Gradiente_sem_nome_49);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-423.8" y1="406.3" x2="-444.28" y2="479.52" gradientTransform="translate(215.58 -542.24) rotate(-29.76)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4633fa"/>
+      <stop offset="1" stop-color="#f63c85"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-434.82" y1="448.55" x2="-438.56" y2="461.89" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="-433.79" y1="479.75" x2="-437.73" y2="493.85" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="-493.97" y1="435.63" x2="-479.99" y2="435.63" gradientTransform="translate(215.58 -542.24) rotate(-29.76)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4932fa"/>
+      <stop offset="1" stop-color="#f36"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="-393.38" y1="435.63" x2="-379.41" y2="435.63" xlink:href="#linear-gradient"/>
+    <linearGradient id="Gradiente_sem_nome_49" data-name="Gradiente sem nome 49" x1="-443.67" y1="385.34" x2="-429.7" y2="385.34" gradientTransform="translate(215.58 -542.24) rotate(-29.76)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f63c85"/>
+      <stop offset="1" stop-color="#4633fa"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="-383.73" y1="428.55" x2="-423.88" y2="383.01" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-7" x1="-414.3" y1="482.82" x2="-387.54" y2="449.27" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-8" x1="-487.85" y1="463.21" x2="-453.73" y2="463.21" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-9" x1="-487.86" y1="406.55" x2="-443.67" y2="406.55" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g>
+      <path class="cls-2" d="M37.95,24.1l20.86,36.48c4.44-1.75,9.63-.03,12.07,4.24,2.68,4.68,1.05,10.66-3.64,13.34-4.68,2.68-10.67,1.04-13.34-3.64-2.44-4.27-1.29-9.61,2.48-12.56l-20.86-36.48-2.76,1.58,10.11,50.49,22.43,17.8,17.77-10.16-3.96-28.36L40.71,22.52l-2.76,1.58Z"/>
+      <path class="cls-4" d="M58.92,63.6c3.34-1.91,7.62-.75,9.53,2.6s.74,7.62-2.6,9.53c-3.34,1.91-7.62.75-9.53-2.6-1.91-3.35-.75-7.62,2.59-9.53Z"/>
+      <polygon class="cls-5" points="67.13 107.18 66.61 97.83 84.52 87.59 92.32 92.79 67.13 107.18"/>
+      <path class="cls-3" d="M10.41,68.81l-9.7,5.55c-.67.38-.91,1.24-.52,1.91l5.55,9.7c.38.67,1.24.9,1.91.52l9.7-5.55c.67-.38.9-1.24.52-1.91l-5.55-9.7c-.38-.67-1.24-.9-1.91-.52ZM14.74,79.2l-7.28,4.16-4.16-7.28,7.28-4.16,4.16,7.28Z"/>
+      <path class="cls-9" d="M97.73,18.89l-9.7,5.55c-.67.38-.9,1.24-.52,1.9l5.55,9.7c.38.67,1.24.91,1.91.52l9.7-5.55c.67-.38.9-1.24.52-1.91l-5.55-9.7c-.38-.67-1.24-.9-1.9-.52ZM102.07,29.28l-7.28,4.16-4.16-7.28,7.28-4.16,4.16,7.28Z"/>
+      <path class="cls-11" d="M29.11.18l-9.7,5.55c-.67.38-.9,1.24-.52,1.91l5.55,9.7c.38.67,1.24.9,1.9.52l9.7-5.55c.67-.38.9-1.24.52-1.9L31.02.71c-.38-.67-1.24-.91-1.91-.52ZM33.44,10.58l-7.28,4.16-4.16-7.28,7.28-4.16,4.16,7.28Z"/>
+      <path class="cls-10" d="M93.65,21.22l-2.45,1.4C77.99,5.67,54.73-.67,34.75,7.24l-1.4-2.46c21.34-8.63,46.3-1.83,60.3,16.44Z"/>
+      <path class="cls-8" d="M100.57,33.36c7.05,17.35,4.18,37.05-7.58,51.66-.59.74-1.5.58-1.96.21-.6-.48-.7-1.36-.21-1.96,11.06-13.73,13.78-32.17,7.3-48.5l2.46-1.4Z"/>
+      <path class="cls-6" d="M61.27,102.23c.09.59-.24,1.44-1.18,1.58-18.56,2.72-36.98-4.8-48.36-19.68l2.44-1.4c10.79,13.87,28.06,20.88,45.51,18.31.77-.11,1.48.41,1.59,1.18Z"/>
+      <path class="cls-7" d="M21.22,11.72l1.4,2.45C5.67,27.38-.68,50.64,7.23,70.63l-2.44,1.4C-3.85,50.69,2.95,25.73,21.22,11.72Z"/>
+      <line class="cls-1" x1="4.79" y1="72.02" x2=".71" y2="74.36"/>
+      <line class="cls-1" x1="104.67" y1="31.02" x2="100.57" y2="33.36"/>
+      <polyline class="cls-1" points="34.75 7.24 36.56 10.41 40.33 17"/>
+      <polyline class="cls-1" points="22.62 14.17 24.43 17.34 28.2 23.93"/>
+    </g>
+  </g>
+</svg>

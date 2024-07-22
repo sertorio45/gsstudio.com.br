@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119.44 93.4"><defs><style>.cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-8);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-7);
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-8 {
+        fill: url(#linear-gradient-6);
+      }</style><linearGradient id="linear-gradient" x1="-271.84" y1="222.16" x2="-319.48" y2="248.71" gradientTransform="translate(243.73 -251.86) rotate(-19.97)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4633fa"/><stop offset="1" stop-color="#ff2c5e"/></linearGradient><linearGradient id="linear-gradient-2" x1="-38.7" y1="75.21" x2="234.33" y2="-34.27" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-3" x1="-336.42" y1="154.85" x2="-318.84" y2="227.29" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-4" x1="-258.18" y1="207.58" x2="-271.62" y2="207.58" gradientTransform="translate(330.8 -172.51)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-5" x1="59.77" y1="10.56" x2="88.36" y2="10.56" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-6" x1="74.07" y1="50.51" x2="102.66" y2="50.51" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-7" x1="469.72" y1="-1076.31" x2="525.82" y2="-1077.28" gradientTransform="translate(-1110.2 -72.44) rotate(70.13)" xlink:href="#linear-gradient"/><linearGradient id="linear-gradient-8" x1="77.2" y1="23.3" x2="119.44" y2="23.3" gradientTransform="matrix(1,0,0,1,0,0)" xlink:href="#linear-gradient"/></defs><g id="Camada_1-2" data-name="Camada 1"><g><g><g><path class="cls-1" d="M39.84,91.36c.58,1.61,2.36,2.44,3.97,1.85l3.44-1.25c1.61-.58,2.44-2.36,1.85-3.97l-8.65-23.79c-3.96.3-7.47.8-10.04,1.23l9.42,25.92Z"/><path class="cls-3" d="M59.72,35.75L47.79,2.93c-1.16,18.66-32.35,34.32-32.35,34.32l9.37,25.77s1.67-.39,4.4-.86c2.57-.44,6.08-.94,10.04-1.23,10.85-.81,25.06-.1,32.4,7.63l-11.93-32.82Z"/></g><path class="cls-4" d="M5.76,41.13c-4.54,1.65-6.88,6.67-5.23,11.21l3.32,9.13c1.65,4.54,6.67,6.88,11.21,5.23l6.68-2.43-9.29-25.57-6.68,2.43Z"/><rect class="cls-2" x="58.77" y="-1.96" width="6.28" height="74.12" rx="2.86" ry="2.86" transform="translate(-8.26 23.26) rotate(-19.97)"/></g><g><polygon class="cls-7" points="88.36 5.01 77.64 20.67 75.68 15.52 74.24 16.07 74.18 16.1 69.78 17.79 69.72 17.81 63.68 20.13 59.77 10.24 65.5 8.04 65.57 8.02 70.39 6.17 70.45 6.15 71.9 5.6 69.94 .45 88.36 5.01"/><polygon class="cls-8" points="102.66 44.96 91.94 60.62 89.97 55.47 88.54 56.02 88.48 56.05 84.08 57.74 84.01 57.76 77.97 60.08 74.07 50.19 79.8 48 79.87 47.97 84.69 46.12 84.74 46.1 86.19 45.55 84.23 40.4 102.66 44.96"/></g><path class="cls-6" d="M77.89,31.4c-1.91-5.28-7.73-8.01-13.01-6.1l6.91,19.12c5.28-1.91,8.01-7.73,6.1-13.01Z"/><path class="cls-5" d="M100.55,10.73l2.01,5.28-1.48.57-.06.02-4.94,1.89-.07.03-18.81,7.24c2.04.61,3.79,2.14,4.57,4.3.72,2,.47,4.11-.51,5.81l19.07-7.34.07-.03,4.51-1.73.06-.02,1.47-.57,2.01,5.28,10.99-16.05-18.89-4.67Z"/></g></g></svg>
