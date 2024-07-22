@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ["@nuxt/image", "nuxt-swiper", "nuxt-easy-lightbox", ],
+  modules: ["@nuxt/image", "nuxt-swiper", "nuxt-easy-lightbox",],
   swiper: {
     // Swiper options
     //----------------------
@@ -37,6 +37,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/main.client.ts',
     '~/plugins/bootstrap.client.ts',
-    '~/plugins/vuesax.client.ts'
+    '~/plugins/vuesax.client.ts',
+    '~/plugins/pinia.ts'
   ],
 });

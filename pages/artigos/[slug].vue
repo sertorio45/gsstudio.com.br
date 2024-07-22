@@ -15,8 +15,8 @@
               <h2>{{ article.titulo }}</h2>
               <div class="my-4">
                 <picture v-if="hasThumbnail(article)">
-                  <source :srcset="getArticleImage(article.thumb.url)">
-                  <img :src="getArticleImage(article.thumb.url)" class="img-fluid" :alt="article.titulo" />
+                  <source :srcset="getArticleImage(article)">
+                  <img :src="getArticleImage(article)" class="img-fluid" :alt="article.titulo" />
                 </picture>
                 <img v-else src="/thumb_blog_gsstudio.webp" class="img-fluid" alt="Default Image">
               </div>
@@ -33,58 +33,92 @@
   </main>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
-  async asyncData({ params }) {
-    try {
-      const [articleResponse, categoryResponse] = await Promise.all([
-        axios.get(`https://str-gsstudio.gsstudio.com.br/articles?slug=${params.slug}`),
-        axios.get(`https://str-gsstudio.gsstudio.com.br/categories`)
-      ]);
-      
-      const article = articleResponse.data.length ? articleResponse.data[0] : null;
-      const categories = categoryResponse.data;
-      
-      return { article, categories };
-    } catch (error) {
-      console.error('Error fetching article or categories:', error);
-      return { article: null, categories: [] };
+  name: 'ArticleDetail',
+  setup() {
+    const article = ref(null)
+    const categories = ref([])
+    const route = useRoute()
+    const baseURL = process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
+
+    const fetchArticleBySlug = async (slug) => {
+      try {
+        console.log(`Fetching article from ${baseURL}/articles?slug=${slug}`)
+        const response = await axios.get(`${baseURL}/articles?slug=${slug}`)
+        console.log('Response:', response)
+        if (response.data.length) {
+          article.value = response.data[0]
+        } else {
+          console.error('Article not found')
+        }
+      } catch (error) {
+        console.error('Error fetching article:', error.response ? error.response.data : error.message)
+      }
     }
-  },
-  data() {
+
+    const fetchCategories = async () => {
+      try {
+        console.log(`Fetching categories from ${baseURL}/categories`)
+        const response = await axios.get(`${baseURL}/categories`)
+        console.log('Response:', response)
+        categories.value = response.data
+      } catch (error) {
+        console.error('Error fetching categories:', error.response ? error.response.data : error.message)
+      }
+    }
+
+    const getArticleImage = (article) => {
+      if (article.thumb && article.thumb.url) {
+        const url = new URL(article.thumb.url, baseURL).href
+        console.log('Generated image URL:', url)
+        return url
+      }
+      return '/thumb_blog_gsstudio.webp' // Substitua por uma URL de imagem padrão
+    }
+
+    const formatDate = (date) => {
+      if (!date) return ''
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('pt-BR', options)
+    }
+
+    const getCategoryTitle = (categoryId) => {
+      const category = categories.value.find(cat => cat.id === categoryId)
+      return category ? category.title : 'Categoria desconhecida'
+    }
+
+    const hasThumbnail = (article) => {
+      return article && article.thumb && article.thumb.url
+    }
+
+    onMounted(async () => {
+      const slug = route.params.slug
+      console.log('Fetching article with slug:', slug)
+      await fetchArticleBySlug(slug)
+      await fetchCategories()
+      console.log('Article:', article.value)
+      console.log('Categories:', categories.value)
+    })
+
     return {
-      baseURL: process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br',
-      article: null,
-      categories: []
+      article,
+      categories,
+      getArticleImage,
+      getCategoryTitle,
+      formatDate,
+      hasThumbnail
     }
-  },
-  methods: {
-    hasThumbnail(article) {
-      return article && article.thumb && article.thumb.url;
-    },
-    getArticleImage(path) {
-      const url = new URL(path, this.baseURL).href;
-      console.log('Generated image URL:', url);
-      return url;
-    },
-    formatDate(date) {
-      if (!date) return '';
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(date).toLocaleDateString('pt-BR', options);
-    },
-    getCategoryTitle(categoryId) {
-      const category = this.categories.find(cat => cat.id === categoryId);
-      return category ? category.title : 'Categoria desconhecida';
-    }
-  },
-  mounted() {
-    window.scrollTo(0, 0);
   }
 })
 </script>
+
+
 
 <style scoped>
 #article-detail {

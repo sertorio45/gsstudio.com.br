@@ -24,6 +24,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../plugins/main.client").default> &
   InjectionType<typeof import("../../plugins/bootstrap.client").default> &
   InjectionType<typeof import("../../plugins/vuesax.client").default> &
+  InjectionType<typeof import("../../plugins/pinia").default> &
   InjectionType<typeof import("../../plugins/vuesax").default>
 
 declare module '#app' {
