@@ -3,6 +3,7 @@ import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
       'App': typeof import("../components/App.vue")['default']
+    'Blog': typeof import("../components/Blog.vue")['default']
     'CarouselParceiros': typeof import("../components/CarouselParceiros.vue")['default']
     'Footer': typeof import("../components/Footer.vue")['default']
     'Header': typeof import("../components/Header.vue")['default']
@@ -33,6 +34,7 @@ interface _GlobalComponents {
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyApp': typeof import("../components/App.vue")['default']
+    'LazyBlog': typeof import("../components/Blog.vue")['default']
     'LazyCarouselParceiros': typeof import("../components/CarouselParceiros.vue")['default']
     'LazyFooter': typeof import("../components/Footer.vue")['default']
     'LazyHeader': typeof import("../components/Header.vue")['default']
@@ -77,6 +79,7 @@ declare module 'vue' {
 }
 
 export const App: typeof import("../components/App.vue")['default']
+export const Blog: typeof import("../components/Blog.vue")['default']
 export const CarouselParceiros: typeof import("../components/CarouselParceiros.vue")['default']
 export const Footer: typeof import("../components/Footer.vue")['default']
 export const Header: typeof import("../components/Header.vue")['default']
@@ -107,6 +110,7 @@ export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyApp: typeof import("../components/App.vue")['default']
+export const LazyBlog: typeof import("../components/Blog.vue")['default']
 export const LazyCarouselParceiros: typeof import("../components/CarouselParceiros.vue")['default']
 export const LazyFooter: typeof import("../components/Footer.vue")['default']
 export const LazyHeader: typeof import("../components/Header.vue")['default']

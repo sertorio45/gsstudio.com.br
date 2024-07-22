@@ -5,7 +5,7 @@
       :slides-per-view="7"
       :space-between="10"
       :loop="true"
-      :autoplay="{ delay: 1000, disableOnInteraction: false }"
+      :autoplay="{ delay: 500, disableOnInteraction: false }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros" :key="index">
         <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiros' + (index + 1)">

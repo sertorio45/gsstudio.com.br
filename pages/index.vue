@@ -170,18 +170,23 @@
       </div>
     </section>
     <!-- CTA -->
+
+    <Blog />
   </main>
 </template>
 
 <script>
 import CarouselParceiros from '~/components/CarouselParceiros.vue';
 import Portifolio from '~/components/Portifolio.vue';
+import Blog from '~/components/Blog.vue';
+
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
     CarouselParceiros,
-    Portifolio
+    Portifolio,
+    Blog
   },
   methods: {
     importAll(r) {

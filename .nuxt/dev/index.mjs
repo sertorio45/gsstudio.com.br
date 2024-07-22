@@ -1172,7 +1172,7 @@ const unheadPlugins = true ? [CapoPlugin({ track: true })] : [];
 
 const renderSSRHeadOptions = {"omitLineBreaks":false};
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Descrição da GS Studio"},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia","htmlAttrs":{"lang":"pt-br"}};
 
 const appRootTag = "div";
 

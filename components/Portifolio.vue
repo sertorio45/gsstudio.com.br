@@ -1,6 +1,6 @@
 <template>
   <section class="portfolio-section my-5 min-vh-100">
-    <div class="container-flex my-5">
+    <div class="container-fluid my-5">
       <div class="row justify-content-center">
         <div class="col-12 text-center">
           <h2>Portifolio</h2>
