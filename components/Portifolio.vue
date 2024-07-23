@@ -1,43 +1,10 @@
-<template>
-  <section class="portfolio-section my-5 min-vh-100">
-    <div class="container-fluid my-5">
-      <div class="row justify-content-center">
-        <div class="col-12 text-center">
-          <h2>Portifolio</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center mt-5">
-        <div v-for="(row, rowIndex) in imageRows" :key="rowIndex" class="col-12 image-row">
-          <div class="row">
-            <div v-for="(image, index) in row" :key="index" class="col-4 col-md-2 mb-4">
-              <img
-                :src="image.src"
-                @click="showImg(rowIndex * perRow + index)"
-                class="image-thumbnail"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-auto">
-          <button @click="loadMore" :disabled="loading" class="btn btn-primary">
-            <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            <span v-else>Ver mais</span>
-          </button>
-        </div>
-      </div>
-      <vue-easy-lightbox :visible="visibleRef" :imgs="images" :index="indexRef" @hide="onHide" />
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
+
 import { ref, computed, onMounted } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
 const images = ref<Array<{ src: string }>>([])
-const perRow = 6
+const perRow = 4 
 const rows = ref(2)
 const loading = ref(false)
 const visibleRef = ref(false)
@@ -82,24 +49,48 @@ const onHide = () => {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Portfolio',
-  components: {
-    VueEasyLightbox
-  }
-}
-</script>
+
+<template>
+  <section class="portfolio-section my-5 min-vh-100 text-center">
+    <div class="container-fluid my-5">
+      <div class="row ">
+        <div class="col-12 text-center">
+          <h2>Portifolio</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center m-5">
+        <div v-for="(row, rowIndex) in imageRows" :key="rowIndex" class="col-12 image-row">
+          <div class="row justify-content-center">
+            <div v-for="(image, index) in row" :key="index" class="col-4 col-md-2 mb-4">
+              <img
+                :src="image.src"
+                @click="showImg(rowIndex * perRow + index)"
+                class="image-thumbnail img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <button @click="loadMore" :disabled="loading" class="btn btn-primary">
+            <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span v-else>Ver mais</span>
+          </button>
+        </div>
+      </div>
+      <vue-easy-lightbox :visible="visibleRef" :imgs="images" :index="indexRef" @hide="onHide" />
+    </div>
+  </section>
+</template>
+
 
 <style scoped>
 
-.image-row {
-  margin-bottom: 20px;
-}
+
 .image-thumbnail {
   width: 100%;
-  height: 100px;
-  object-fit: cover;
+  object-fit: contain;
   cursor: pointer;
 }
 </style>
