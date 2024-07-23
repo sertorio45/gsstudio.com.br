@@ -28,7 +28,7 @@
                   :class="{ 'blurred': !article.imageLoaded }" 
                   :alt="article.titulo" 
                   @load="article.imageLoaded = true" 
-                  lazy="loading" 
+                  loading="lazy" 
                 />
               </nuxt-link>
             </div>
@@ -55,23 +55,24 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
+import type { Article, Category } from '~/types'
 
 export default defineComponent({
   name: 'Blog',
   setup() {
-    const articles = ref([])
-    const categories = ref([])
+    const articles = ref<Article[]>([])
+    const categories = ref<Category[]>([])
     const loading = ref(true)
-    const baseURL = process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
+    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
     const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID
 
-    const fetchArticles = async (tenantId) => {
+    const fetchArticles = async (tenantId: string) => {
       try {
         const response = await axios.get(`${baseURL}/tenants/${tenantId}`)
         articles.value = response.data.articles
-          .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
+          .sort((a: Article, b: Article) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
           .slice(0, 4)
-          .map(article => ({ ...article, imageLoaded: false })) // Adiciona a propriedade imageLoaded
+          .map((article: Article) => ({ ...article, imageLoaded: false })) // Adiciona a propriedade imageLoaded
       } catch (error) {
         console.error('Error fetching articles:', error)
       } finally {
@@ -88,7 +89,7 @@ export default defineComponent({
       }
     }
 
-    const getArticleImage = (article) => {
+    const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
         const url = new URL(article.thumb.url, baseURL).href
         console.log('Generated image URL:', url)
@@ -97,19 +98,19 @@ export default defineComponent({
       return 'thumb_blog_gsstudio.webp'
     }
 
-    const formatDate = (date) => {
+    const formatDate = (date: string) => {
       if (!date) return ''
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('pt-BR', options)
     }
 
-    const getCategoryTitle = (categoryId) => {
+    const getCategoryTitle = (categoryId: number) => {
       if (!categoryId) return ''
       const category = categories.value.find(cat => cat.id === categoryId)
       return category ? category.title : ''
     }
 
-    const onIntersect = (entries) => {
+    const onIntersect = (entries: IntersectionObserverEntry[]) => {
       if (entries[0].isIntersecting) {
         fetchArticles(VITE_STRAPI_TENANT_ID)
         fetchCategories()
@@ -117,7 +118,7 @@ export default defineComponent({
       }
     }
 
-    let observer
+    let observer: IntersectionObserver
 
     onMounted(() => {
       observer = new IntersectionObserver(onIntersect)

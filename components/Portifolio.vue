@@ -1,59 +1,7 @@
-<script setup lang="ts">
-
-import { ref, computed, onMounted } from 'vue'
-import VueEasyLightbox from 'vue-easy-lightbox'
-
-const images = ref<Array<{ src: string }>>([])
-const perRow = 4 
-const rows = ref(2)
-const loading = ref(false)
-const visibleRef = ref(false)
-const indexRef = ref(0)
-
-const fetchImages = async () => {
-  try {
-    const response = await fetch('api/portifolio')
-    const data = await response.json() as string[]
-    images.value = data.map((file: string) => ({ src: `img/portifolio/${file}` }))
-  } catch (error) {
-    console.error('Error fetching images:', error)
-  }
-}
-
-onMounted(() => {
-  fetchImages()
-})
-
-const imageRows = computed(() => {
-  const rowsArr = []
-  for (let i = 0; i < rows.value; i++) {
-    rowsArr.push(images.value.slice(i * perRow, (i + 1) * perRow))
-  }
-  return rowsArr
-})
-
-const loadMore = async () => {
-  loading.value = true
-  await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate loading delay
-  rows.value += 1
-  loading.value = false
-}
-
-const showImg = (index: number) => {
-  indexRef.value = index
-  visibleRef.value = true
-}
-
-const onHide = () => {
-  visibleRef.value = false
-}
-</script>
-
-
 <template>
   <section class="portfolio-section my-5 min-vh-100 text-center">
     <div class="container-fluid my-5">
-      <div class="row ">
+      <div class="row">
         <div class="col-12 text-center">
           <h2>Portifolio</h2>
         </div>
@@ -84,10 +32,57 @@ const onHide = () => {
   </section>
 </template>
 
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
+import VueEasyLightbox from 'vue-easy-lightbox';
+
+// Import images dynamically using import.meta.glob
+const imageModules = import.meta.glob('public/img/portifolio/*.{png,jpg,jpeg,webp,gif}', { eager: true });
+
+const images = ref<Array<{ src: string }>>([]);
+const perRow = 4;
+const rows = ref(2);
+const loading = ref(false);
+const visibleRef = ref(false);
+const indexRef = ref(0);
+
+// Load images from imported modules
+const fetchImages = () => {
+  for (const path in imageModules) {
+    images.value.push({ src: imageModules[path].default });
+  }
+};
+
+onMounted(() => {
+  fetchImages();
+});
+
+const imageRows = computed(() => {
+  const rowsArr = [];
+  for (let i = 0; i < rows.value; i++) {
+    rowsArr.push(images.value.slice(i * perRow, (i + 1) * perRow));
+  }
+  return rowsArr;
+});
+
+const loadMore = async () => {
+  loading.value = true;
+  await new Promise(resolve => setTimeout(resolve, 1000)); // Simula atraso de carregamento
+  rows.value += 1;
+  loading.value = false;
+};
+
+const showImg = (index: number) => {
+  indexRef.value = index;
+  visibleRef.value = true;
+};
+
+const onHide = () => {
+  visibleRef.value = false;
+};
+</script>
 
 <style scoped>
-
-
 .image-thumbnail {
   width: 100%;
   object-fit: contain;

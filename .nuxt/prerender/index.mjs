@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { c as closePrerenderer, l as localFetch } from './chunks/runtime.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { c as closePrerenderer, l as localFetch } from './chunks/routes/api/portifolio.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';

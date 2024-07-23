@@ -4,7 +4,9 @@
       <div class="container my-5">
         <div class="row">
           <div class="col-2">
-            <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+            <div class="sticky-top">
+              <button @click="goBack" class="btn btn-primary-border ">< Voltar</button>
+            </div>
           </div>
           <div class="col-7">
             <div v-if="loading">
@@ -17,10 +19,10 @@
             </div>
             <div v-else-if="article">
               <div class="mb-3">
-                <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
+                <span class="article-category">{{ article.category.title }}</span>
                 <span v-html="formatDate(article.published_at)" class="mx-5"></span>
               </div>
-              <h2>{{ article.titulo }}</h2>
+              <h1>{{ article.titulo }}</h1>
               <div class="my-4">
                 <picture v-if="hasThumbnail(article)">
                   <source :srcset="getArticleImage(article)" @load="onImageLoad">
@@ -34,7 +36,29 @@
               <p>Artigo não encontrado.</p>
             </div>
           </div>
-          <div class="col-3"></div>
+          <div class="col-3 p-5">
+            <div class="sticky-top">
+                 <!-- Social Links -->
+            <div class="social-links mb-4">
+              <a href="https://www.facebook.com" class="d-block mb-2" target="_blank">Facebook</a>
+              <a href="https://www.twitter.com" class="d-block mb-2" target="_blank">Twitter</a>
+              <a href="https://www.linkedin.com" class="d-block mb-2" target="_blank">LinkedIn</a>
+            </div>
+
+            <!-- Newsletter Form -->
+            <div class="newsletter-cta p-4 sticky-top bg-light rounded">
+              <h3>Assine para novas atualizações.</h3>
+              <form method="POST" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/20534155/d57a69e4-6f43-4768-a600-5f7d30306260" class="form">
+                <div class="mb-3">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Inscrever-se</button>
+              </form>
+            </div>
+            </div>
+           
+          </div>
+
         </div>
       </div>
     </section>
@@ -46,18 +70,35 @@ import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
 
+interface Article {
+  id: number;
+  slug: string;
+  titulo: string;
+  thumb?: {
+    url?: string;
+  };
+  published_at: string;
+  category: number;
+  content: string;
+}
+
+interface Category {
+  id: number;
+  title: string;
+}
+
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
-    const article = ref(null)
-    const categories = ref([])
+    const article = ref<Article | null>(null)
+    const categories = ref<Category[]>([])
     const loading = ref(true)
     const imageLoaded = ref(false)
     const route = useRoute()
     const router = useRouter()
-    const baseURL = process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
+    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
 
-    const fetchArticleBySlug = async (slug) => {
+    const fetchArticleBySlug = async (slug: string) => {
       try {
         console.log(`Fetching article from ${baseURL}/articles?slug=${slug}`)
         const response = await axios.get(`${baseURL}/articles?slug=${slug}`)
@@ -85,7 +126,7 @@ export default defineComponent({
       }
     }
 
-    const getArticleImage = (article) => {
+    const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
         const url = new URL(article.thumb.url, baseURL).href
         console.log('Generated image URL:', url)
@@ -94,18 +135,19 @@ export default defineComponent({
       return '/thumb_blog_gsstudio.webp' // Substitua por uma URL de imagem padrão
     }
 
-    const formatDate = (date) => {
+    const formatDate = (date: string) => {
       if (!date) return ''
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('pt-BR', options)
     }
 
-    const getCategoryTitle = (categoryId) => {
+    const getCategoryTitle = (categoryId: number) => {
+      if (!categoryId) return ''
       const category = categories.value.find(cat => cat.id === categoryId)
-      return category ? category.title : 'Categoria desconhecida'
+      return category ? category.title : ''
     }
 
-    const hasThumbnail = (article) => {
+    const hasThumbnail = (article: Article) => {
       return article && article.thumb && article.thumb.url
     }
 
@@ -118,7 +160,7 @@ export default defineComponent({
     }
 
     onMounted(async () => {
-      const slug = route.params.slug
+      const slug = route.params.slug as string
       console.log('Fetching article with slug:', slug)
       await fetchArticleBySlug(slug)
       await fetchCategories()

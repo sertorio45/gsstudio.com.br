@@ -15,7 +15,7 @@ import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs }
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/ssr/dist/index.mjs';
-import '../runtime.mjs';
+import '../routes/api/portifolio.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/klona/dist/index.mjs';
@@ -593,7 +593,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-4ys7GnQ2.mjs').then((m2) => m2.default || m2)
+    component: () => import('./index-CwOI19rz.mjs').then((m2) => m2.default || m2)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1176,8 +1176,6 @@ const pinia_48xmdi2HHl = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
   const pinia = createPinia();
   nuxtApp.vueApp.use(pinia);
 });
-const vuesax_IhK6CckThS = () => {
-};
 let routes;
 const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
   let __temp, __restore;
@@ -1219,7 +1217,6 @@ const plugins = [
   components_plugin_KR1HBZs4kY,
   plugin_ucMK8VhJjR,
   pinia_48xmdi2HHl,
-  vuesax_IhK6CckThS,
   prerender_server_LXx1wM9sKF
 ];
 const layouts = {

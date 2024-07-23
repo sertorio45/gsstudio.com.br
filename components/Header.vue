@@ -1,6 +1,6 @@
 <!-- components/Header.vue -->
 <template>
-  <header class="w-100 shadow custom-header bg-light">
+  <header class="w-100 shadow custom-header bg-light z">
     <div class="container">
       <div class="row d-flex justify-content-center align-items-center">
         <!-- Coluna da Logo -->
@@ -69,9 +69,10 @@ export default {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: #fff !important;
 }
 
 .nav-link {

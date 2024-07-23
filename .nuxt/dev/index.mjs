@@ -875,7 +875,7 @@ const _rf0h91 = lazyEventHandler(() => {
 });
 
 const _lazy_jqIX24 = () => Promise.resolve().then(function () { return parceiros$1; });
-const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio$1; });
+const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_9YkBiL = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
@@ -1096,22 +1096,8 @@ const parceiros$1 = /*#__PURE__*/Object.freeze({
   default: parceiros
 });
 
-const portifolio = defineEventHandler(async (event) => {
-  const directoryPath = path.join(process.cwd(), "public/img/portifolio");
-  try {
-    const files = await promises.readdir(directoryPath);
-    return files.filter((file) => /\.(png|jpe?g|webp|gif)$/i.test(file));
-  } catch (err) {
-    return {
-      status: "error",
-      message: err.message
-    };
-  }
-});
-
-const portifolio$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: portifolio
+const portifolio = /*#__PURE__*/Object.freeze({
+  __proto__: null
 });
 
 const Vue3 = version.startsWith("3");

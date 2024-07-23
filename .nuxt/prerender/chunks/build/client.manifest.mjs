@@ -6,24 +6,24 @@ const client_manifest = {
     "file": "swiper-vue.CjPnLvTv.css",
     "src": "_!~{002}~.js"
   },
-  "_Bx5Wh2hq.js": {
+  "_BS6bRRjH.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Bx5Wh2hq.js",
+    "file": "BS6bRRjH.js",
     "name": "vue.f36acd1f",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js"
     ]
   },
-  "_CMq9qNA5.js": {
+  "_Cj6a1VV-.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CMq9qNA5.js",
+    "file": "Cj6a1VV-.js",
     "name": "nuxt-link",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
@@ -47,15 +47,15 @@ const client_manifest = {
     "prefetch": true,
     "preload": true
   },
-  "_ukfn_9CB.js": {
+  "_mex7rR4C.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "ukfn_9CB.js",
+    "file": "mex7rR4C.js",
     "name": "axios",
     "imports": [
-      "_Bx5Wh2hq.js",
+      "_BS6bRRjH.js",
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js"
     ]
@@ -65,12 +65,12 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "B8FJ-awx.js",
+    "file": "excmmwfo.js",
     "name": "default",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CMq9qNA5.js",
+      "_Cj6a1VV-.js",
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js"
     ],
@@ -87,13 +87,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CISPeN18.js",
+    "file": "BE7wMc9S.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CMq9qNA5.js",
-      "_Bx5Wh2hq.js",
+      "_Cj6a1VV-.js",
+      "_BS6bRRjH.js",
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js"
     ],
@@ -110,12 +110,12 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Dgk-kQUd.js",
+    "file": "yX1OTr2q.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Bx5Wh2hq.js",
+      "_BS6bRRjH.js",
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js"
     ],
@@ -132,7 +132,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DrgGkaeD.js",
+    "file": "DjdvayvA.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -160,15 +160,15 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CUBEbpi5.js",
+    "file": "BagmIqaC.js",
     "name": "_slug_",
     "src": "pages/artigos/[slug].vue",
     "isDynamicEntry": true,
     "imports": [
-      "_ukfn_9CB.js",
+      "_mex7rR4C.js",
       "node_modules/nuxt/dist/app/entry.js",
       "_I6lEao-9.js",
-      "_Bx5Wh2hq.js"
+      "_BS6bRRjH.js"
     ],
     "css": []
   },
@@ -183,24 +183,89 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "RJF5BX4C.js",
+    "file": "c-_gG-_L.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_ukfn_9CB.js",
+      "_mex7rR4C.js",
       "_I6lEao-9.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_CMq9qNA5.js",
-      "_Bx5Wh2hq.js"
+      "_Cj6a1VV-.js",
+      "_BS6bRRjH.js"
     ],
-    "css": []
+    "css": [],
+    "assets": [
+      "Cachaçaria.omJErNMI.jpg",
+      "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp"
+    ]
   },
-  "index.BjQUxOQm.css": {
-    "file": "index.BjQUxOQm.css",
+  "index.DV6mz4BP.css": {
+    "file": "index.DV6mz4BP.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
+  },
+  "Cachaçaria.omJErNMI.jpg": {
+    "file": "Cachaçaria.omJErNMI.jpg",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg"
+  },
+  "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp": {
+    "file": "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/webp"
+  },
+  "public/img/portifolio/Cachaçaria - cópia 2.jpg": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg",
+    "file": "Cachaçaria.omJErNMI.jpg",
+    "src": "public/img/portifolio/Cachaçaria - cópia 3.jpg"
+  },
+  "public/img/portifolio/Cachaçaria - cópia 3.jpg": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg",
+    "file": "Cachaçaria.omJErNMI.jpg",
+    "src": "public/img/portifolio/Cachaçaria - cópia 3.jpg"
+  },
+  "public/img/portifolio/Cachaçaria - cópia.jpg": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg",
+    "file": "Cachaçaria.omJErNMI.jpg",
+    "src": "public/img/portifolio/Cachaçaria - cópia 3.jpg"
+  },
+  "public/img/portifolio/Cachaçaria.jpg": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg",
+    "file": "Cachaçaria.omJErNMI.jpg",
+    "src": "public/img/portifolio/Cachaçaria - cópia 3.jpg"
+  },
+  "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS - cópia 3.webp": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/webp",
+    "file": "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp",
+    "src": "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS.webp"
+  },
+  "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS - cópia.webp": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/webp",
+    "file": "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp",
+    "src": "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS.webp"
+  },
+  "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS.webp": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/webp",
+    "file": "HAPPY_CERVEJAS TRADICIONAIS.CFuwCvvN.webp",
+    "src": "public/img/portifolio/HAPPY_CERVEJAS TRADICIONAIS.webp"
   }
 };
 
