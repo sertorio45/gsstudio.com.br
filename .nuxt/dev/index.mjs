@@ -83,7 +83,7 @@ const appConfig = defuFn(inlineAppConfig);
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/",
+    "baseURL": "/gsstudio/",
     "buildId": "dev",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
@@ -1079,7 +1079,7 @@ const errorDev = /*#__PURE__*/Object.freeze({
 });
 
 const parceiros = defineEventHandler(async (event) => {
-  const directoryPath = path.join(process.cwd(), "public/img/parceiros");
+  const directoryPath = path.join(process.cwd(), "public/parceiros");
   try {
     const files = await promises.readdir(directoryPath);
     return files.filter((file) => /\.(png|jpe?g|webp|gif)$/i.test(file));

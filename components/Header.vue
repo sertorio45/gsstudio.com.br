@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#">Blog</a>
               </li>
               <li class="nav-item">
-                <NuxtLink to="/contato" class="nav-link">Contato</NuxtLink>
+                <NuxtLink to="/" class="nav-link">Contato</NuxtLink>
               </li>
             </ul>
           </nav>

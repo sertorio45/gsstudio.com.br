@@ -26,7 +26,7 @@ const parceiros = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await fetch('/api/parceiros');
+    const response = await fetch('api/parceiros');
     const data = await response.json();
     parceiros.value = data.map(file => `img/parceiros/${file}`);
   } catch (error) {

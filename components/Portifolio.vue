@@ -45,9 +45,9 @@ const indexRef = ref(0)
 
 const fetchImages = async () => {
   try {
-    const response = await fetch('/api/portifolio')
+    const response = await fetch('api/portifolio')
     const data = await response.json() as string[]
-    images.value = data.map((file: string) => ({ src: `/img/portifolio/${file}` }))
+    images.value = data.map((file: string) => ({ src: `img/portifolio/${file}` }))
   } catch (error) {
     console.error('Error fetching images:', error)
   }
