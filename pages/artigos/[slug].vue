@@ -4,10 +4,18 @@
       <div class="container my-5">
         <div class="row">
           <div class="col-2">
-            <NuxtLink to="/blog" class="btn btn-primary-border">< Voltar</NuxtLink>
+            <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
           </div>
           <div class="col-7">
-            <div v-if="article">
+            <div v-if="loading">
+              <div class="d-flex mb-3">
+                <div class="skeleton skeleton-category me-2"></div> <div class="skeleton skeleton-date"></div>
+              </div>
+              <div class="skeleton skeleton-title mb-3"></div>
+              <div class="skeleton skeleton-img mb-3"></div>
+              <div class="skeleton skeleton-content mb-3"></div>
+            </div>
+            <div v-else-if="article">
               <div class="mb-3">
                 <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
                 <span v-html="formatDate(article.published_at)" class="mx-5"></span>
@@ -15,15 +23,15 @@
               <h2>{{ article.titulo }}</h2>
               <div class="my-4">
                 <picture v-if="hasThumbnail(article)">
-                  <source :srcset="getArticleImage(article)">
-                  <img :src="getArticleImage(article)" class="img-fluid" :alt="article.titulo" />
+                  <source :srcset="getArticleImage(article)" @load="onImageLoad">
+                  <NuxtImg :src="getArticleImage(article)" class="img-fluid blur-effect" :class="{ 'blurred': !imageLoaded }" :alt="article.titulo" @load="onImageLoad" lazy="loading" />
                 </picture>
-                <img v-else src="/thumb_blog_gsstudio.webp" class="img-fluid" alt="Default Image">
+                <nuxt-img v-else src="/thumb_blog_gsstudio.webp" class="img-fluid blur-effect" :class="{ 'blurred': !imageLoaded }" alt="Default Image" lazy="loading" @load="onImageLoad" />
               </div>
               <div v-html="article.content"></div>
             </div>
             <div v-else>
-              <p>Carregando artigo...</p>
+              <p>Artigo não encontrado.</p>
             </div>
           </div>
           <div class="col-3"></div>
@@ -33,18 +41,20 @@
   </main>
 </template>
 
-
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
     const article = ref(null)
     const categories = ref([])
+    const loading = ref(true)
+    const imageLoaded = ref(false)
     const route = useRoute()
+    const router = useRouter()
     const baseURL = process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
 
     const fetchArticleBySlug = async (slug) => {
@@ -59,6 +69,8 @@ export default defineComponent({
         }
       } catch (error) {
         console.error('Error fetching article:', error.response ? error.response.data : error.message)
+      } finally {
+        loading.value = false
       }
     }
 
@@ -97,6 +109,14 @@ export default defineComponent({
       return article && article.thumb && article.thumb.url
     }
 
+    const onImageLoad = () => {
+      imageLoaded.value = true
+    }
+
+    const goBack = () => {
+      router.go(-1)
+    }
+
     onMounted(async () => {
       const slug = route.params.slug
       console.log('Fetching article with slug:', slug)
@@ -109,16 +129,18 @@ export default defineComponent({
     return {
       article,
       categories,
+      loading,
+      imageLoaded,
       getArticleImage,
       getCategoryTitle,
       formatDate,
-      hasThumbnail
+      hasThumbnail,
+      onImageLoad,
+      goBack
     }
   }
 })
 </script>
-
-
 
 <style scoped>
 #article-detail {
@@ -128,5 +150,36 @@ export default defineComponent({
   border: 1px solid var(--bs-primary);
   background: transparent;
   color: var(--bs-primary);
+}
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+.skeleton-img {
+  width: 100%;
+  height: 400px;
+}
+.skeleton-title {
+  height: 30px;
+  width: 100%;
+}
+.skeleton-category {
+  height: 20px;
+  width: 30%;
+}
+.skeleton-date {
+  height: 20px;
+  width: 20%;
+}
+.skeleton-content {
+  height: 100px;
+  width: 100%;
+}
+.blur-effect {
+  transition: filter 0.2s ease;
+}
+.blurred {
+  filter: blur(20px);
 }
 </style>

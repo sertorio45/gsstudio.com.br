@@ -1,30 +1,58 @@
 <template>
-    <section class="my-5 min-vh-100 justify-content-center align-content-center bg-light">
-      <div class="container my-5">
-        <div class="row">
-          <h2 class="text-center">Blog</h2>
-          <div class="col-md-3 my-5" v-for="article in articles" :key="article.id">
-            <div class="card">
-              <div class="image-container">
-                <img :src="getArticleImage(article)" class="card-img-top" :alt="article.titulo" />
+  <section class="my-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
+    <div class="container my-5">
+      <div class="row">
+        <h2 class="text-center">Blog</h2>
+        <!-- Skeleton Cards -->
+        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+          <div class="card">
+            <div class="image-container">
+              <div class="skeleton skeleton-img"></div>
+            </div>
+            <div class="card-body">
+              <div class="mb-2">
+                <div class="skeleton skeleton-category"></div>
               </div>
-              <div class="card-body">
-                <div class="mb-2"><span class="article-category">{{ getCategoryTitle(article.category) }}</span></div>
-                <nuxt-link :to="`/artigos/${article.slug}`">{{ article.titulo }}</nuxt-link>
-              </div>
+              <div class="skeleton skeleton-title"></div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col d-flex align-content-center justify-content-center">
-            <button class="btn btn-primary">Ver mais artigos</button>
+        <!-- Actual Cards -->
+        <div v-else class="col-md-3 my-5" v-for="article in articles" :key="article.id">
+          <div class="card">
+            <div class="image-container">
+              <nuxt-link :to="`/artigos/${article.slug}`">
+                <NuxtImg 
+                  :src="getArticleImage(article)" 
+                  class="img-fluid blur-effect" 
+                  :class="{ 'blurred': !article.imageLoaded }" 
+                  :alt="article.titulo" 
+                  @load="article.imageLoaded = true" 
+                  lazy="loading" 
+                />
+              </nuxt-link>
+            </div>
+            <div class="card-body">
+              <div class="mb-2">
+                <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
+              </div>
+              <nuxt-link :to="`/artigos/${article.slug}`">
+                {{ article.titulo }}
+              </nuxt-link>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  </template>
-  
-  <script lang="ts">
+      <div class="row">
+        <div class="col d-flex align-content-center justify-content-center">
+          <button class="btn btn-primary">Ver mais artigos</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import axios from 'axios'
 
@@ -33,18 +61,21 @@ export default defineComponent({
   setup() {
     const articles = ref([])
     const categories = ref([])
+    const loading = ref(true)
     const baseURL = process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
     const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID
 
     const fetchArticles = async (tenantId) => {
       try {
         const response = await axios.get(`${baseURL}/tenants/${tenantId}`)
-        // Ordenar os artigos pela data de publicação (assumindo que existe um campo `published_at`) e limitar a 4 artigos
         articles.value = response.data.articles
           .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
           .slice(0, 4)
+          .map(article => ({ ...article, imageLoaded: false })) // Adiciona a propriedade imageLoaded
       } catch (error) {
         console.error('Error fetching articles:', error)
+      } finally {
+        loading.value = false
       }
     }
 
@@ -63,7 +94,7 @@ export default defineComponent({
         console.log('Generated image URL:', url)
         return url
       }
-      return 'thumb_blog_gsstudio.webp' // Substitua por uma URL de imagem padrão
+      return 'thumb_blog_gsstudio.webp'
     }
 
     const formatDate = (date) => {
@@ -73,36 +104,45 @@ export default defineComponent({
     }
 
     const getCategoryTitle = (categoryId) => {
+      if (!categoryId) return ''
       const category = categories.value.find(cat => cat.id === categoryId)
-      return category ? category.title : 'Categoria desconhecida'
+      return category ? category.title : ''
     }
 
-    onMounted(async () => {
-      await fetchArticles(VITE_STRAPI_TENANT_ID)
-      await fetchCategories()
-      console.log('Articles:', articles.value)
-      console.log('Categories:', categories.value)
+    const onIntersect = (entries) => {
+      if (entries[0].isIntersecting) {
+        fetchArticles(VITE_STRAPI_TENANT_ID)
+        fetchCategories()
+        observer.unobserve(document.querySelector('#blog'))
+      }
+    }
+
+    let observer
+
+    onMounted(() => {
+      observer = new IntersectionObserver(onIntersect)
+      observer.observe(document.querySelector('#blog'))
     })
 
     return {
       articles,
       categories,
+      loading,
       getArticleImage,
       getCategoryTitle,
       formatDate
     }
   }
 })
+</script>
 
-  </script>
-  
-  <style scoped>
+<style scoped>
 .card {
   margin-bottom: 20px;
   border: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  transition: box-shadow 0.3s, margin-bottom 0.3s;
+  transition: box-shadow 0.3s, margin-bottom 0.3s, transform 0.3s;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -114,7 +154,6 @@ export default defineComponent({
   border-radius: 10px;
   width: 100%;
   height: 200px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -131,25 +170,57 @@ export default defineComponent({
   flex-direction: column;
   flex-grow: 1;
 }
+
+.card:hover {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
 .card-body a {
   text-decoration: none;
   color: var(--color-text) !important;
+  transition: color 0.3s, text-decoration 0.3s;
 }
+
 .card-body a:hover {
   text-decoration: underline;
   color: var(--color-text) !important;
-}
-
-.card:hover {
-  margin-bottom: 1rem;
-  box-shadow: none;
 }
 
 .card h5 {
   font-size: 16px !important;
 }
 
-.card:hover img {
-  transform: scale(1.1);
+.card img:hover {
+  transform: scale(1.5);
+}
+
+.card img {
+  transition: transform 0.3s ease;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+.skeleton-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+}
+.skeleton-title {
+  height: 20px;
+  width: 100%;
+}
+.skeleton-category {
+  height: 15px;
+  width: 60%;
+}
+.blur-effect {
+  transition: filter 0.2s ease;
+}
+.blurred {
+  filter: blur(20px);
 }
 </style>
