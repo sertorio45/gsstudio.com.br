@@ -16,6 +16,7 @@
     "aws-sdk": "^2.1661.0",
     "axios": "^1.7.2",
     "bootstrap": "5",
+    "boxicons": "^2.1.4",
     "nuxt": "^3.12.4",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-svgo": "^4.0.2",

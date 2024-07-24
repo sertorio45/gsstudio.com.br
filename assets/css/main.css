@@ -12,7 +12,11 @@
   --color-light: #f8f9fa;
   --color-dark: #343a40;
   --color-bg-cta: #3424ad;
+  --color-tags: #eedeff;
   --branco: #fff;
+  --custom-primary: #FF3366 !important; /* Sua cor primária personalizada */
+  --custom-primary-rgb: 100, 51, 102 !important; /* Valores RGB da cor primária personalizada */
+
 
   --color-bg: #ffffff;
   --color-text: #212529;
@@ -330,7 +334,7 @@ em + em {
   border: 10px #000;
   font-size: 13px;
   padding: 3px 10px;
-  background-color: #f4eaff;
+  background-color: var(--color-tags);
   color: var(--color-secondary);
 }
 .vs-card {
@@ -380,3 +384,8 @@ em + em {
   top: 80px !important;
   transition: top 1s ease-in-out !important;
 }
+
+
+::selection {
+  background-color: var(--color-tags);
+} 

@@ -15,20 +15,3 @@ function initCardAnimation() {
   });
 
 }
-
-
-document.addEventListener('scroll', function() {
-  const fixedBtn = document.getElementById('fixedBtn');
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  const start = 100; // Ponto em que a div começa a rolar
-  const stop = 500; // Ponto em que a div para de rolar
-
-  if (scrollTop > start && scrollTop < stop) {
-    fixedBtn.style.top = `${scrollTop - start + 20}px`;
-  } else if (scrollTop >= stop) {
-    fixedBtn.style.top = `${stop - start + 20}px`;
-  } else {
-    fixedBtn.style.top = '20px';
-  }
-});

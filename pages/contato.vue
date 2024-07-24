@@ -10,34 +10,34 @@
       </div>
     </section>
     <section id="contato">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-4">
-            <h2>Fale conosco</h2>
-            <p>
-              Preencha o formulário ou entre em contato em algum dos nossos canais e em breve vamos entrar em contato.
-            </p>
-            <div class="mt-4">
-              <div class="contact-item">
-                <div class="icon-circle">
-                  <span class="material-icons">phone</span>
-                </div>
-                <span>Telefone: (xx) xxxx-xxxx</span>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <h2>Fale conosco</h2>
+          <p>
+            Preencha o formulário ou entre em contato em algum dos nossos canais e em breve vamos entrar em contato.
+          </p>
+          <div class="mt-4">
+            <div class="contact-item">
+              <div class="icon-circle">
+                <i class="bx bxs-phone"></i>
               </div>
-              <div class="contact-item">
-                <div class="icon-circle">
-                  <span class="material-icons">location_on</span>
-                </div>
-                <span>Avenida Maria de Jesus Condeixa, 600, Sala 424, Ribeirão Preto, São Paulo</span>
+              <span>Telefone: (xx) xxxx-xxxx</span>
+            </div>
+            <div class="contact-item">
+              <div class="icon-circle">
+                <i class="bx bxs-map"></i>
               </div>
+              <span>Avenida Maria de Jesus Condeixa, 600, Sala 424, Ribeirão Preto, São Paulo</span>
             </div>
           </div>
-          <div class="col-8">
-            <Form />
-          </div>
+        </div>
+        <div class="col-8">
+          <Form />
         </div>
       </div>
-    </section>
+    </div>
+  </section>
     <!-- Fale conosco -->
 </template>
 
@@ -89,6 +89,10 @@ export default {
   background-color: #f1f1f1;
   margin-right: 15px;
   flex-shrink: 0; /* Impede que o tamanho diminua */
+}
+
+.icon-circle i {
+  font-size: 1.5rem;
 }
 
 .contact-item {

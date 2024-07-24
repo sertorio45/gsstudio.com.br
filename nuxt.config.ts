@@ -31,7 +31,8 @@ export default defineNuxtConfig({
     'swiper/swiper-bundle.css',
     'swiper/css/effect-creative',
     'swiper/css/zoom',
-    '@/assets/css/main.css'
+    '@/assets/css/main.css',
+    'boxicons/css/boxicons.min.css',
   ],
 
   plugins: [
