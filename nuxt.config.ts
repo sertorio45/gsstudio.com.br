@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  
   app: {
     head: {
       title: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia',
@@ -44,3 +45,4 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-22'
 });
+

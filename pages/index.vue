@@ -9,7 +9,7 @@
             <p class="my-4">Destaque sua empresa à frente de seus concorrentes com estratégias de branding, marketing e tecnologia.</p>
             <div class="d-flex justify-content-center">
               <button @click="scrollToElement('#sobre')" class="btn btn-primary">Nos conheça um pouco</button>
-              <button @click="scrollToElement('#contato')" class="btn btn-primary-border">Entre em contato rapidamente</button>
+              <NuxtLink to="/contato" class="btn btn-primary-border">Faça agora seu orçamento</NuxtLink>
             </div>
           </div>
         </div>
@@ -18,42 +18,44 @@
     <!-- Topo -->
 
     <!-- Quem somos -->
-    <section class="d-flex align-items-center bg-light py-5" id="sobre">
-      <div class="container">
-        <div class="row">
-          <div class="col-5">
-            <h2>Somos especialistas</h2>
-            <p class="my-3 d-block">
-              Design publicitário, marketing online/offline e websites.
-              Na GS STUDIO, combinamos criatividade e estratégias comprovadas para desenvolver campanhas de marketing eficazes e impactantes.
-              Nossos especialistas em tecnologia oferecem soluções personalizadas para maximizar a eficiência do seu negócio.
-            </p>
+<section class="d-flex align-items-center bg-light py-5" id="sobre">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5">
+        <h2>Somos especialistas</h2>
+        <p class="my-3">
+          Design publicitário, marketing online/offline e websites. Na GS STUDIO, combinamos criatividade e estratégias comprovadas para desenvolver campanhas de marketing eficazes e impactantes. Nossos especialistas em tecnologia oferecem soluções personalizadas para maximizar a eficiência do seu negócio.
+        </p>
+      </div>
+      <div class="col-12 col-md-7 text-center d-flex align-items-center justify-content-center px-5">
+        <div class="row w-100">
+          <div class="col-12 col-sm-6 col-md-4 d-flex">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="icons/icon-design.svg" class="p-2 my-1"/>
+              <h3>Design</h3>
+              <!-- <a href="#none">Saiba mais</a> -->
+            </div>
           </div>
-          <div class="col-7 text-center align-content-center content-justify-center px-5">
-            <div>
-              <div class="d-flex">
-                <div class="col-4 gscard gscard-border">
-                  <NuxtImg src="icons/icon-design.svg" class="p-2 m-2"/>
-                  <h3>Design</h3>
-                  <a href="#none">Saiba mais</a>
-                </div>
-                <div class="col-4 gscard gscard-border">
-                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 m-2"/>
-                  <h3>Marketing</h3>
-                  <a href="#none">Saiba mais</a>
-                </div>
-                <div class="col-4 gscard gscard-border">
-                  <NuxtImg src="icons/icon-tecnologia.svg" class="p-2 m-2"/>
-                  <h3>Tecnologia</h3>
-                  <a href="#none">Saiba mais</a>
-                </div>
-              </div>
+          <div class="col-12 col-sm-6 col-md-4 d-flex">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1"/>
+              <h3>Marketing</h3>
+              <!-- <a href="#none">Saiba mais</a> -->
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 d-flex">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="icons/icon-tecnologia.svg" class="p-2 my-1"/>
+              <h3>Tecnologia</h3>
+              <!-- <a href="#none">Saiba mais</a> -->
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Quem somos -->
+    </div>
+  </div>
+</section>
+<!-- Quem somos -->
 
     <!-- Conquistas -->
     <section class="py-5 text-center" id="conquistas">
@@ -110,45 +112,44 @@
     <!-- Solucoes e servicos -->
     <section class="min-vh-100 align-content-center justify-content-center bg-light" id="servicos">
       <div class="container text-center">
-        <div class="row justify-content-center align-content-center">
+        <div class="row">
           <h2>Soluções e serviços</h2>
           <p class="my-3">
             A GS STUDIO está comprometida com resultados. Acreditamos que a criatividade e o design, 
             alinhados com uma estratégia eficaz, geram resultados melhores e duradouros. 
           </p>
-          <div class="row mt-3">
+          <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/sites.svg" class="p-2 m-2"/>
+                <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1"/>
                 <h3>Sites</h3>
-                <span><a href="#none">Saiba mais</a></span>
+                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 m-2"/>
+                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1"/>
                 <h3>Redes sociais</h3>
-                <span><a href="#none">Saiba mais</a></span>
+                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 m-2"/>
+                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1"/>
                 <h3>Lojas virtuais</h3>
-                <span><a href="#none">Saiba mais</a></span>
+                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/branding.svg" class="p-2 m-2"/>
-                <h3>Lojas virtuais</h3>
+                <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1"/>
                 <h3>Marcas</h3>
-                <span><a href="#none">Saiba mais</a></span>
+                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
           </div>
           <div class="row mt-5">
-            <div class="col"><button @click="scrollToElement('#none')" class="btn btn-primary"> Veja mais serviços</button></div>
+            <div class="col"><NuxtLink to="/servicos" class="btn btn-primary">Ver todos os serviços</NuxtLink></div>
           </div>
         </div>
       </div>
@@ -164,7 +165,7 @@
             <div class="subheadline d-flex justify-content-center py-2">
               <p>Potencialize seu negócio com soluções criativas e inovadoras. Nós entregamos resultados excepcionais através de estratégias personalizadas e tecnologia de ponta.</p>
             </div>
-            <button @click="scrollToElement('#none')" class="btn btn-white"><em>Começar orçamento</em></button>  
+            <NuxtLink to="/contato" class="btn btn-white"><em>Entrar agora em contato</em></NuxtLink>  
           </div>
         </div>
       </div>
@@ -277,6 +278,12 @@ export default defineComponent({
 });
 </script>
 
+<script setup>
+import { useCardAnimation } from '~/composables/useCardAnimation';
+
+// Chame o composable para inicializar a animação dos cartões
+useCardAnimation();
+</script>
 <style scoped>
 #index h1 {
   font-size: var(--texto-grande);
@@ -322,31 +329,14 @@ export default defineComponent({
   filter: blur(0) !important;
 }
 
-/* servicos */
-#servicos p {
-  width: calc(1100px - 30%) !important;
-}
-#servicos img {
-  width: 50% !important;
-}
-#servicos .gscard {
-  width: auto !important;
-  margin: 1px !important;
-  padding: 2rem !important;
-  height: 100% !important;
+
+.row {
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
 
-/* cta */
-#cta .container {
-  height: 50vh !important;
-  border-radius: 10px !important;
-}
-#cta .col p {
-  width: calc(900px - 20%) !important;
-}
-#cta section h2 {
-  color: #fff !important;
-}
+
+
 .fade-enter-active, .fade-leave-active {
   transition: all 0.5s ease;
 }

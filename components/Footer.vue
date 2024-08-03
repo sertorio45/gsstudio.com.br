@@ -2,7 +2,7 @@
 
 <footer>
 
-<section class="py-3 py-md-5 py-xl-6 py-xxl-7 text-left">
+<!-- <section class="py-3 py-md-5 py-xl-6 py-xxl-7 text-left">
   <div class="container">
     <div class="row gy-3">
       <div class="col-6 col-md-3">
@@ -180,7 +180,7 @@
   </div>
 </section>
 
-<!-- App Store & Links  - Bootstrap Brain Component -->
+
 <div class="py-3 py-md-4 py-xl-5">
   <div class="container">
     <div class="row gy-3 align-items-md-center">
@@ -259,10 +259,10 @@
       </div>
     </div>
   </div>
-</div>
+</div>  -->
 
 <!-- Copyright - Bootstrap Brain Component -->
-<div class="py-3 py-md-4 border-top bg-light">
+<div class="py-3 py-md-4">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -275,6 +275,7 @@
 </div>
 
 </footer>
+
   </template>
   
   <script>
@@ -284,9 +285,6 @@
   </script>
   
   <style scoped>
-  footer {
-    background-color: #fff;
-    padding: 10px;
-  }
+
   </style>
   

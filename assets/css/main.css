@@ -14,9 +14,7 @@
   --color-bg-cta: #3424ad;
   --color-tags: #eedeff;
   --branco: #fff;
-  --custom-primary: #FF3366 !important; /* Sua cor primária personalizada */
-  --custom-primary-rgb: 100, 51, 102 !important; /* Valores RGB da cor primária personalizada */
-
+  --bs-color-primary: #1e00ff !important;
 
   --color-bg: #ffffff;
   --color-text: #212529;
@@ -24,8 +22,8 @@
   --color-link-hover: #3424ad;
   
   --font-family: 'Poppins', sans-serif;
-  --text-size: 14px;
-  --texto-grande: 5rem;
+  --text-size: 15px;
+  --texto-grande: 5.3rem;
   --texto-medio: 2rem;
   --texto-pequeno: 1.25rem;
 
@@ -228,19 +226,21 @@ a:hover {
 
  }
  .gscard {
-  padding: 2rem !important;
-  margin: 5px !important;
-  align-content: center !important;
-  justify-content: center !important;
-  height: auto !important;
+  padding: 2rem;
+  margin: 5px;
+  height: 100%;
   opacity: 0;
   transform: translateY(-20px);
   filter: blur(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+}
+.gscard.animate {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-.gscard.animate {
-  animation: fadeInDownBlur 0.5s forwards;
-}
+/* Caso você queira manter a animação como keyframe: */
 
 @keyframes fadeInDownBlur {
   to {
@@ -278,36 +278,8 @@ em {
     background-position: 0% 50%;
   }
 }
-em {
-  font-style: normal !important;
-  background: linear-gradient(270deg, var(--color-primary), var(--color-secondary), var(--color-primary));
-  background-size: 600% 600% !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  animation: gradientAnimation 5s ease infinite !important;
-  display: inline-block;
-}
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-em + em {
-  background: linear-gradient(270deg, var(--color-secondary), var(--color-primary), var(--color-secondary)) !important;
-  background-size: 600% 600% !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  animation: gradientAnimation 5s ease infinite reverse !important;
-  display: inline-block;
-}
 
 
 .topo {
@@ -389,3 +361,49 @@ em + em {
 ::selection {
   background-color: var(--color-tags);
 } 
+
+/* servicos */
+
+#servicos img {
+  width: 50% !important;
+}
+#servicos .gscard {
+  width: auto !important;
+  margin: 1px !important;
+  padding: 2rem !important;
+  height: 100% !important;
+}
+
+/* cta */
+#cta .container {
+  height: 50vh !important;
+  border-radius: 10px !important; 
+}
+#cta .col p {
+  width: calc(900px - 20%) !important;
+}
+#cta section h2 {
+  color: #fff !important;
+}
+  
+
+.row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.form-control:focus {
+  border-color: var(--color-tags) !important;
+  box-shadow: 0 0 0 .25rem var(--color-tags) !important;
+}
+
+.form-check-input:checked {
+  background-color:var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+}
+
+.form-check-input:focus {
+  border-color: var(--color-tags) !important;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem var(--color-tags) !important;
+}

@@ -5,9 +5,9 @@
       <div class="row d-flex justify-content-center align-items-center">
         <!-- Coluna da Logo -->
         <div class="col-2">
-          <a href="/" class="d-flex">
+          <NuxtLink href="/" class="d-flex">
           <img src="/logotipo.svg" alt="Logo" class="logo" />
-          </a>
+          </NuxtLink>
         </div>
         
         <!-- Coluna da Navegação -->
@@ -18,16 +18,19 @@
                 <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Produtos</a>
+                <NuxtLink to="/empresa" class="nav-link">Sobre nós</NuxtLink>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Serviços</a>
+                <NuxtLink to="/servicos" class="nav-link">Serviços</NuxtLink>
               </li>
               <li class="nav-item">
+                <NuxtLink to="/produtos" class="nav-link">Produtos</NuxtLink>
+              </li>
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Aprenda Conosco</a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
+                <NuxtLink to="/blog" class="nav-link">Blog</NuxtLink>
               </li>
               <li class="nav-item">
                 <NuxtLink to="/contato" class="nav-link">Contato</NuxtLink>
@@ -38,7 +41,7 @@
         
         <!-- Coluna do Botão -->
         <div class="col-2 d-flex justify-content-center">
-          <button class="btn btn-primary">Click Me</button>
+          <button class="btn btn-primary">Orçamento</button>
         </div>
       </div>
     </div>

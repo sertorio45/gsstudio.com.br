@@ -144,10 +144,7 @@ const submitForm = async () => {
 .btn-back {
   align-self: flex-start;
 }
-.privacy-policy-link {
-  color: #ff3366; /* Ajuste para a cor desejada */
-  text-decoration: none;
-}
+
 .privacy-policy-link:hover {
   text-decoration: underline;
 }

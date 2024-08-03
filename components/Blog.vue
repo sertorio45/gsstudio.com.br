@@ -45,7 +45,7 @@
       </div>
       <div class="row">
         <div class="col d-flex align-content-center justify-content-center">
-          <button class="btn btn-primary">Ver mais artigos</button>
+          <NuxtLink to="/blog"class="btn btn-primary">Ver mais artigos</NuxtLink>
         </div>
       </div>
     </div>
@@ -200,24 +200,46 @@ export default defineComponent({
   transition: transform 0.3s ease;
 }
 
-.skeleton {
-  background-color: #e0e0e0;
-  border-radius: 4px;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
+
+.skeleton {
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
 .skeleton-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   margin: 0;
 }
+
 .skeleton-title {
   height: 20px;
   width: 100%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-category {
   height: 15px;
   width: 60%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
+
 .blur-effect {
   transition: filter 0.2s ease;
 }

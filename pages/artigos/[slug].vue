@@ -193,31 +193,63 @@ export default defineComponent({
   background: transparent;
   color: var(--bs-primary);
 }
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .skeleton {
-  background-color: #e0e0e0;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
   border-radius: 4px;
   margin: 10px 0;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-img {
   width: 100%;
   height: 400px;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-title {
   height: 30px;
   width: 100%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-category {
   height: 20px;
   width: 30%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-date {
   height: 20px;
   width: 20%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .skeleton-content {
   height: 100px;
   width: 100%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
+
 .blur-effect {
   transition: filter 0.2s ease;
 }

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/swiper-bundle.css';
+import { ref } from 'vue';
 
 const parceiros = ref<string[]>([
   'img/parceiros/cliente-1.webp',
@@ -37,18 +35,37 @@ const parceiros = ref<string[]>([
   'img/parceiros/cliente-31.webp',
   'img/parceiros/cliente-32.webp',
   'img/parceiros/cliente-33.webp',
+  'img/parceiros/cliente-34.webp',
+  'img/parceiros/cliente-35.webp',
+  'img/parceiros/cliente-36.webp',
+  'img/parceiros/cliente-37.webp',
+  'img/parceiros/cliente-38.webp',
+  'img/parceiros/cliente-39.webp',
+  'img/parceiros/cliente-40.webp',
+  'img/parceiros/cliente-41.webp',
+  'img/parceiros/cliente-42.webp',
+  'img/parceiros/cliente-43.webp',
+  'img/parceiros/cliente-44.webp',
+  'img/parceiros/cliente-45.webp',
+  'img/parceiros/cliente-46.webp',
+  'img/parceiros/cliente-47.webp',
+  'img/parceiros/cliente-48.webp',
+  'img/parceiros/cliente-49.webp',
+  'img/parceiros/cliente-50.webp',
+  'img/parceiros/cliente-51.webp',
+  'img/parceiros/cliente-52.webp',
 ]);
-
 </script>
+
 
 <template>
   <div class="swiper-container my-5">
     <Swiper
       :modules="[SwiperAutoplay]"
       :slides-per-view="7"
-      :space-between="10"
+      :space-between="30"
       :loop="true"
-      :autoplay="{ delay: 500, disableOnInteraction: false }"
+      :autoplay="{ delay: 700, disableOnInteraction: false }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros" :key="index">
         <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)">
