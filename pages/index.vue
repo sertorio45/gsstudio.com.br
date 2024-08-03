@@ -58,8 +58,8 @@
 <!-- Quem somos -->
 
     <!-- Conquistas -->
-    <section class="py-5 text-center" id="conquistas">
-      <div class="container my-3">
+    <section class="text-center my-5 py-5 d-flex justify-items-center align-items-center" id="conquistas">
+      <div class="container">
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="gscard gscard-border">
@@ -105,9 +105,7 @@
     </section>
     <!-- Parceiros -->
 
-    <!-- Portifolio -->
-    <Portifolio />
-  
+    
 
     <!-- Solucoes e servicos -->
     <section class="min-vh-100 align-content-center justify-content-center bg-light" id="servicos">
@@ -155,6 +153,10 @@
       </div>
     </section>
     <!-- Solucoes e servicos -->
+
+    <!-- Portifolio -->
+    <Portifolio />
+    <!-- Portifolio -->
 
     <!-- CTA -->
     <section class="text-center gscard my-5" id="cta">
@@ -275,6 +277,7 @@ export default defineComponent({
       }
     });
   }
+  
 });
 </script>
 
@@ -300,35 +303,10 @@ useCardAnimation();
   font-size: 1.5em !important;
   font-weight: bold;
 }
-
-/* parceiros */
-.carousel-item {
-  transition: transform 0.5s ease, opacity 0.5s ease !important;
+#conquistas .gscard {
+  background-color: var(--color-dark) !important;
+  color: var(--branco);
 }
-.carousel-fade .carousel-item {
-  opacity: 0 !important;
-  transition-duration: 0.5s !important;
-  transition-property: opacity !important;
-}
-.carousel-fade .carousel-item.active,
-.carousel-fade .carousel-item-next.carousel-item-start,
-.carousel-fade .carousel-item-prev.carousel-item-end {
-  opacity: 1 !important;
-}
-.carousel-fade .carousel-item-next,
-.carousel-fade .carousel-item-prev,
-.carousel-fade .carousel-item.active.carousel-item-start,
-.carousel-fade .carousel-item.active.carousel-item-end {
-  transform: translateX(0) !important;
-}
-.carousel-item img {
-  filter: blur(5px) !important;
-  transition: filter 0.5s ease !important;
-}
-.carousel-item.active img {
-  filter: blur(0) !important;
-}
-
 
 .row {
   display: flex !important;

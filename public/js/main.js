@@ -27,3 +27,21 @@ function initCardAnimation() {
     }
   });
 }
+
+
+// aaa
+
+document.querySelectorAll('.gscard-border').forEach(card => {
+  const hole = document.createElement('div');
+  hole.classList.add('gradient-hole');
+  card.appendChild(hole);
+
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    hole.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px) translate(-50%, -50%)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    hole.style.opacity = '0';
+  });
+});

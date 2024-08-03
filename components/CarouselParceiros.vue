@@ -63,12 +63,12 @@ const parceiros = ref<string[]>([
     <Swiper
       :modules="[SwiperAutoplay]"
       :slides-per-view="7"
-      :space-between="30"
+      :space-between="45"
       :loop="true"
       :autoplay="{ delay: 700, disableOnInteraction: false }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros" :key="index">
-        <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)">
+        <NuxtImg :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)" loading="lazy"/>
       </SwiperSlide>
     </Swiper>
     <div class="swiper-gradient-left"></div>
@@ -87,17 +87,20 @@ const parceiros = ref<string[]>([
   object-fit: cover;
   filter: grayscale(100%);
   transition: filter 0.3s ease;
+  transition: .2s ease-out ;
 }
 
 .parceiro-img:hover {
   filter: grayscale(0%);
+  scale: 1.1;
+  transition: .2s ease-in ;
 }
 
 .swiper-gradient-left, .swiper-gradient-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40%;
+  width: 20%;
   z-index: 10;
 }
 

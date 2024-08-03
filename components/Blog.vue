@@ -45,7 +45,7 @@
       </div>
       <div class="row">
         <div class="col d-flex align-content-center justify-content-center">
-          <NuxtLink to="/blog"class="btn btn-primary">Ver mais artigos</NuxtLink>
+          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
         </div>
       </div>
     </div>
@@ -114,7 +114,10 @@ export default defineComponent({
       if (entries[0].isIntersecting) {
         fetchArticles(VITE_STRAPI_TENANT_ID)
         fetchCategories()
-        observer.unobserve(document.querySelector('#blog'))
+        const blogSection = document.querySelector('#blog')
+        if (blogSection) {
+          observer.unobserve(blogSection)
+        }
       }
     }
 
@@ -122,7 +125,10 @@ export default defineComponent({
 
     onMounted(() => {
       observer = new IntersectionObserver(onIntersect)
-      observer.observe(document.querySelector('#blog'))
+      const blogSection = document.querySelector('#blog')
+      if (blogSection) {
+        observer.observe(blogSection)
+      }
     })
 
     return {
@@ -238,7 +244,6 @@ export default defineComponent({
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
-
 
 .blur-effect {
   transition: filter 0.2s ease;

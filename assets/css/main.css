@@ -10,7 +10,7 @@
   --color-warning: #ffc107;
   --color-danger: #dc3545;
   --color-light: #f8f9fa;
-  --color-dark: #343a40;
+  --color-dark: #030303;
   --color-bg-cta: #3424ad;
   --color-tags: #eedeff;
   --branco: #fff;
@@ -23,7 +23,7 @@
   
   --font-family: 'Poppins', sans-serif;
   --text-size: 15px;
-  --texto-grande: 5.3rem;
+  --texto-grande: 3.3rem;
   --texto-medio: 2rem;
   --texto-pequeno: 1.25rem;
 
@@ -57,6 +57,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text) !important;
 }
+
 
 h3 {
   font-size: var(--texto-pequeno) !important;
@@ -221,11 +222,53 @@ a:hover {
 
 /* Estilo para gscard */
 .gscard-border {
-  border-radius: 10px !important;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3) !important;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
 
- }
- .gscard {
+.gscard-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px; /* Espessura da borda */
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background-size: 200% 200%;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.gscard-border:hover::before {
+  opacity: 1;
+  animation: moveGradient 5s linear infinite;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gscard {
   padding: 2rem;
   margin: 5px;
   height: 100%;
@@ -234,6 +277,7 @@ a:hover {
   filter: blur(20px);
   transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 }
+
 .gscard.animate {
   opacity: 1;
   transform: translateY(0);
@@ -241,7 +285,6 @@ a:hover {
 }
 
 /* Caso você queira manter a animação como keyframe: */
-
 @keyframes fadeInDownBlur {
   to {
     opacity: 1;
@@ -249,7 +292,6 @@ a:hover {
     filter: blur(0);
   }
 }
-
 
 .bg-cta { background-color: var(--color-bg-cta) !important; }
 
