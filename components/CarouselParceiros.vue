@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+
 const parceiros = ref<string[]>([
   'img/parceiros/cliente-1.webp',
   'img/parceiros/cliente-2.webp',
@@ -55,8 +56,11 @@ const parceiros = ref<string[]>([
   'img/parceiros/cliente-51.webp',
   'img/parceiros/cliente-52.webp',
 ]);
-</script>
 
+const metade = Math.ceil(parceiros.value.length / 2);
+const parceiros1 = ref(parceiros.value.slice(0, metade));
+const parceiros2 = ref(parceiros.value.slice(metade));
+</script>
 
 <template>
   <div class="swiper-container my-5">
@@ -65,9 +69,53 @@ const parceiros = ref<string[]>([
       :slides-per-view="7"
       :space-between="45"
       :loop="true"
-      :autoplay="{ delay: 700, disableOnInteraction: false }"
+      :autoplay="{ delay: 1000, disableOnInteraction: false }"
+      :breakpoints="{
+        300: {
+          slidesPerView: 4,
+        },
+        640: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        1024: {
+          slidesPerView: 7,
+        }
+      }"
     >
-      <SwiperSlide v-for="(parceiro, index) in parceiros" :key="index">
+      <SwiperSlide v-for="(parceiro, index) in parceiros1" :key="index">
+        <NuxtImg :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)" loading="lazy"/>
+      </SwiperSlide>
+    </Swiper>
+    <div class="swiper-gradient-left"></div>
+    <div class="swiper-gradient-right"></div>
+  </div>
+
+  <div class="swiper-container my-5">
+    <Swiper
+      :modules="[SwiperAutoplay]"
+      :slides-per-view="7"
+      :space-between="45"
+      :loop="true"
+      :autoplay="{ delay: 1000, disableOnInteraction: false, reverseDirection: true }"
+      :breakpoints="{
+        300: {
+          slidesPerView: 4,
+        },
+        640: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        1024: {
+          slidesPerView: 7,
+        }
+      }"
+    >
+      <SwiperSlide v-for="(parceiro, index) in parceiros2" :key="index">
         <NuxtImg :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)" loading="lazy"/>
       </SwiperSlide>
     </Swiper>
@@ -86,14 +134,12 @@ const parceiros = ref<string[]>([
   max-height: 150px;
   object-fit: cover;
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
-  transition: .2s ease-out ;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .parceiro-img:hover {
   filter: grayscale(0%);
-  scale: 1.1;
-  transition: .2s ease-in ;
+  transform: scale(1.1);
 }
 
 .swiper-gradient-left, .swiper-gradient-right {

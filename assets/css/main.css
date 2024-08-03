@@ -1,4 +1,3 @@
-
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 :root {
@@ -20,31 +19,18 @@
   --color-text: #212529;
   --color-link: var(--color-primary);
   --color-link-hover: #3424ad;
-  
+
   --font-family: 'Poppins', sans-serif;
-  --text-size: 15px;
-  --texto-grande: 3.3rem;
-  --texto-medio: 2rem;
+  --text-size: 1.2rem;
+  --texto-grande: 5.5rem;
+  --texto-medio: 2.5rem;
   --texto-pequeno: 1.25rem;
 
-  --vs-primary: #ff3366 ;
+  --vs-primary: #ff3366;
 }
 
-.vs-con-textarea h4 {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  padding: 8px;
-  padding-bottom: 8px;
-  padding-bottom: 0;
-  cursor: default;
-  -webkit-transition: all .25s ease;
-  transition: all .25s ease;
-  border-radius: 5px 5px 0 0;
-}
-
-.vs-select--label {
-  font-size: 14px !important;
-  color: rgba(0,0,0,.6);
+html {
+  font-size: 16px !important; /* 1rem = 16px */
 }
 
 body {
@@ -58,7 +44,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text) !important;
 }
 
-
 h3 {
   font-size: var(--texto-pequeno) !important;
 }
@@ -68,10 +53,6 @@ h4 {
   font-weight: bold !important;
 }
 
-img {
-  border-radius: 10px !important;
-}
-
 a {
   color: var(--color-link) !important;
   font-size: var(--text-size) !important;
@@ -79,6 +60,10 @@ a {
 
 a:hover {
   color: var(--color-link-hover) !important;
+}
+
+img {
+  border-radius: 10px !important;
 }
 
 .btn {
@@ -95,11 +80,11 @@ a:hover {
   background-color: var(--color-secondary) !important;
   color: var(--branco) !important;
   border: 2px solid var(--color-secondary) !important;
-  position: relative; /* Para pseudo-elementos */
-  overflow: hidden; /* Para pseudo-elementos */
-  transition: all 0.7s linear; /* Transição suave para todos os estados */
-  transform: translateY(0) scale(1); /* Estado inicial */
-  box-shadow: 0 8px 10px rgba(30, 0, 255, 0); /* Estado inicial */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s linear;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 8px 10px rgba(30, 0, 255, 0);
 }
 
 .btn-primary::before {
@@ -111,7 +96,7 @@ a:hover {
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
   opacity: 0;
-  transition: all 0.7s linear; /* Transição suave */
+  transition: all 0.7s linear;
 }
 
 .btn-primary:hover::before {
@@ -121,22 +106,22 @@ a:hover {
 .btn-primary:hover {
   background-color: var(--color-link-hover) !important;
   color: var(--branco) !important;
-  transform: translateY(-2px) scale(1); /* Eleva e aumenta ligeiramente o botão */
-  box-shadow: 0 10px 20px rgba(30, 0, 255, 0.4); /* Sombra suave com opacidade */
+  transform: translateY(-2px) scale(1);
+  box-shadow: 0 10px 20px rgba(30, 0, 255, 0.4);
 }
 
 .btn-primary:active {
-  transform: translateY(0px) scale(1); /* Levemente menos elevado */
-  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4); /* Sombra reduzida */
+  transform: translateY(0px) scale(1);
+  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4);
 }
 
 .btn-primary-border {
   background-color: transparent !important;
   color: var(--color-secondary) !important;
   border: 2px solid var(--color-secondary) !important;
-  position: relative; /* Para pseudo-elementos */
-  overflow: hidden; /* Para pseudo-elementos */
-  transition: all 0.7s linear; /* Transição suave */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s linear;
 }
 
 .btn-primary-border::before {
@@ -148,7 +133,7 @@ a:hover {
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
   opacity: 0;
-  transition: all 0.7s linear; /* Transição suave */
+  transition: all 0.7s linear;
 }
 
 .btn-primary-border:hover::before {
@@ -158,22 +143,23 @@ a:hover {
 .btn-primary-border:hover {
   background-color: var(--color-link-hover) !important;
   color: var(--branco) !important;
-  border: 2px solid var(--color-link-hover) !important; /* Transição suave para a borda */
-  transform: translateY(-2px) scale(1); /* Eleva e aumenta ligeiramente o botão */
-  box-shadow: 0 10px 20px rgba(30, 0, 255, 0.4); /* Sombra suave com opacidade */
+  border: 2px solid var(--color-link-hover) !important;
+  transform: translateY(-2px) scale(1);
+  box-shadow: 0 10px 20px rgba(30, 0, 255, 0.4);
 }
 
 .btn-primary-border:active {
-  transform: translateY(0px) scale(1); /* Levemente menos elevado */
-  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4); /* Sombra reduzida */
+  transform: translateY(0px) scale(1);
+  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4);
 }
+
 .btn-white {
   background-color: var(--branco) !important;
   color: var(--color-primary) !important;
   border: 2px solid var(--branco) !important;
-  position: relative; /* Para pseudo-elementos */
-  overflow: hidden; /* Para pseudo-elementos */
-  transition: all 0.7s linear; /* Transição suave */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s linear;
 }
 
 .btn-white::before {
@@ -185,7 +171,7 @@ a:hover {
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
   opacity: 0;
-  transition: all 0.7s linear; /* Transição suave */
+  transition: all 0.7s linear;
 }
 
 .btn-white:hover::before {
@@ -195,14 +181,14 @@ a:hover {
 .btn-white:hover {
   background-color: var(--branco) !important;
   color: var(--color-primary) !important;
-  border: 2px solid var(--color-danger) !important; /* Transição suave para a borda */
-  transform: translateY(-2px) scale(1); /* Eleva e aumenta ligeiramente o botão */
-  box-shadow: 0 10px 20px rgba(255, 0, 102, 0.4); /* Sombra suave com opacidade */
+  border: 2px solid var(--color-danger) !important;
+  transform: translateY(-2px) scale(1);
+  box-shadow: 0 10px 20px rgba(255, 0, 102, 0.4);
 }
 
 .btn-white:active {
-  transform: translateY(0px) scale(1); /* Levemente menos elevado */
-  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4); /* Sombra reduzida */
+  transform: translateY(0px) scale(1);
+  box-shadow: 0 8px 15px rgba(30, 0, 255, 0.4);
 }
 
 .btn-back {
@@ -236,15 +222,11 @@ a:hover {
   right: 0;
   bottom: 0;
   border-radius: inherit;
-  padding: 2px; /* Espessura da borda */
+  padding: 2px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   background-size: 200% 200%;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: destination-out;
   transition: opacity 0.5s;
@@ -284,7 +266,6 @@ a:hover {
   filter: blur(0);
 }
 
-/* Caso você queira manter a animação como keyframe: */
 @keyframes fadeInDownBlur {
   to {
     opacity: 1;
@@ -293,9 +274,11 @@ a:hover {
   }
 }
 
-.bg-cta { background-color: var(--color-bg-cta) !important; }
+.bg-cta {
+  background-color: var(--color-bg-cta) !important;
+}
 
-.min-vh-50 { 
+.min-vh-50 {
   height: 50vh !important;
 }
 
@@ -322,25 +305,19 @@ em {
   }
 }
 
-
-
-
 .topo {
   height: 10rem !important;
-  padding-top:7rem;
+  padding-top: 7rem;
   background-color: var(--color-light) !important;
-
 }
 
-.topo h1{
+.topo h1 {
   font-size: var(--text-size);
   padding: 0;
-
 }
 
 .vs-input {
   width: 100% !important;
-
 }
 
 .article-category {
@@ -352,6 +329,7 @@ em {
   background-color: var(--color-tags);
   color: var(--color-secondary);
 }
+
 .vs-card {
   display: flex;
   flex-direction: column;
@@ -359,7 +337,7 @@ em {
   border-radius: 10px !important;
 }
 
-.vs-card__img{
+.vs-card__img {
   border-radius: 10px !important;
 }
 
@@ -367,23 +345,24 @@ em {
   display: block;
   width: 100%;
   height: auto;
-  filter: saturate(0); /* Remove saturation for all images */
+  filter: saturate(0);
   transition: filter 0.3s ease;
 }
 
 .blur {
-  filter: saturate(0) blur(2px); /* Adding a subtle blur to the images */
+  filter: saturate(0) blur(2px);
 }
 
 .no-blur {
-  filter: saturate(0) !important; /* Ensure no blur is applied to these images */
+  filter: saturate(0) !important;
 }
 
-.fade-left, .fade-right {
+.fade-left,
+.fade-right {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40%; /* Adjusted width for a more subtle effect */
+  width: 40%;
   z-index: 2;
   pointer-events: none;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
@@ -394,22 +373,20 @@ em {
   background: linear-gradient(to left, rgba(255, 255, 255, 0.7), transparent);
 }
 
-
 .sticky-top {
   top: 80px !important;
   transition: top 1s ease-in-out !important;
 }
 
-
 ::selection {
   background-color: var(--color-tags);
-} 
+}
 
 /* servicos */
-
 #servicos img {
   width: 50% !important;
 }
+
 #servicos .gscard {
   width: auto !important;
   margin: 1px !important;
@@ -420,15 +397,16 @@ em {
 /* cta */
 #cta .container {
   height: 50vh !important;
-  border-radius: 10px !important; 
+  border-radius: 10px !important;
 }
+
 #cta .col p {
   width: calc(900px - 20%) !important;
 }
+
 #cta section h2 {
   color: #fff !important;
 }
-  
 
 .row {
   display: flex !important;
@@ -441,7 +419,7 @@ em {
 }
 
 .form-check-input:checked {
-  background-color:var(--color-secondary) !important;
+  background-color: var(--color-secondary) !important;
   border-color: var(--color-secondary) !important;
 }
 
@@ -449,4 +427,118 @@ em {
   border-color: var(--color-tags) !important;
   outline: 0;
   box-shadow: 0 0 0 .25rem var(--color-tags) !important;
+}
+
+/* Media Queries para dispositivos móveis e tablets */
+
+@media (max-width: 768px) {
+  :root {
+    --text-size: 14px;
+    --texto-grande: 3.5rem;
+    --texto-medio: 2rem;
+    --texto-pequeno: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5rem !important;
+  }
+
+  .btn {
+    font-size: 14px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  #sobre {
+    text-align: center ;
+  }
+
+  #sobre .container {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem;
+  }
+
+  #conquistas .gscard {
+    padding: 2rem !important;
+    align-content: center !important;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  #servicos .gscard {
+    padding: 1rem !important;
+    height: auto !important;
+  }
+
+  .gscard {
+    padding: 1rem !important;
+  }
+
+  .topo {
+    height: 8rem !important;
+    padding-top: 5rem;
+  }
+
+  #servicos img {
+    width: 75% !important;
+  }
+
+  #cta .container {
+    height: auto !important;
+  }
+
+  #cta .col p {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --text-size: calc(1rem - 15%);
+    --texto-grande: 2.5rem;
+    --texto-medio: 1.5rem;
+    --texto-pequeno: 0.875rem;
+  }
+
+  section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem !important;
+  }
+
+  h3, h4, h5, h6 {
+    font-size: 1rem !important;
+  }
+
+  .btn {
+    font-size: 13px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .gscard {
+    padding: 0.5rem;
+  }
+
+  .topo {
+    height: 6rem !important;
+    padding-top: 3rem;
+  }
+
+  #servicos img {
+    width: 100% !important;
+  }
+
+  #cta .container {
+    height: 50vh  !important;
+    padding: 2rem !important;
+  }
+
+  #cta .col p {
+    width: 100% !important;
+  }
+
 }

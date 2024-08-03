@@ -23,10 +23,10 @@ const rows = ref(2);
 const loading = ref(false);
 const visibleRef = ref(false);
 const indexRef = ref(0);
-const selectedTab = ref('All');
+const selectedTab = ref('Todos');
 
 // Predefined categories
-const tabs = ref(['All', 'Gestão de Conteúdo', 'Branding', 'Comunicação Visual']);
+const tabs = ref(['Todos', 'Gestão de Conteúdo', 'Branding', 'Comunicação Visual']);
 
 // Load images from imported modules
 const fetchImages = () => {
@@ -44,7 +44,7 @@ const determineCategory = (path: string): string => {
   if (path.includes('gestao-de-conteudo')) return 'Gestão de Conteúdo';
   if (path.includes('branding')) return 'Branding';
   if (path.includes('comunicacao-visual')) return 'Comunicação Visual';
-  return 'All'; // Categoria padrão para subpastas não categorizadas
+  return 'Todos'; // Categoria padrão para subpastas não categorizadas
 };
 
 onMounted(() => {
@@ -68,7 +68,7 @@ const onHide = () => {
 };
 
 const filteredImages = computed(() => {
-  if (selectedTab.value === 'All') {
+  if (selectedTab.value === 'Todos') {
     return images.value.slice(0, rows.value * 5); // Supondo 5 imagens por linha
   }
   return images.value.filter(image => image.category === selectedTab.value).slice(0, rows.value * 5);
@@ -81,13 +81,13 @@ const filteredImages = computed(() => {
       <div class="row">
         <div class="col-12 text-center">
           <h2>Portifolio</h2>
-          <div class="tabs my-5">
+          <div class="tabs my-5 d-flex justify-content-center flex-wrap">
             <button 
               v-for="tab in tabs" 
               :key="tab" 
               :class="{ active: selectedTab === tab }" 
               @click="selectedTab = tab"
-              class="tab-btn">
+              class="tab-btn m-1">
               {{ tab }}
             </button>
           </div>
@@ -100,6 +100,7 @@ const filteredImages = computed(() => {
               :src="image.src"
               @click="showImg(index)"
               class="image-thumbnail img-fluid"
+              loading="lazy"
             />
           </div>
         </div>
@@ -140,8 +141,7 @@ const filteredImages = computed(() => {
   transition: transform 0.3s ease;
 }
 .image-thumbnail:hover {
-  transform: scale(1.5);
-
+  transform: scale(1.05);
 }
 
 .tabs {
@@ -161,5 +161,37 @@ const filteredImages = computed(() => {
   background-color: var(--color-secondary) ;
   color: #fff;
   border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+  .image-container {
+    flex: 1 0 25%; /* Aproximadamente 4 imagens por linha */
+  }
+}
+
+@media (max-width: 992px) {
+  .image-container {
+    flex: 1 0 33.33%; /* Aproximadamente 3 imagens por linha */
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    flex: 1 0 50%; /* Aproximadamente 2 imagens por linha */
+  }
+
+  .image-thumbnail {
+    height: 30vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-container {
+    flex: 1 0 33%; /* Aproximadamente 1 imagem por linha */
+  }
+
+  .image-thumbnail {
+    height: 25vh;
+  }
 }
 </style>
