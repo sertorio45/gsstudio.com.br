@@ -4,11 +4,21 @@
       <div class="row">
         <div class="col-12 text-center">
           <h2>Portifolio</h2>
+          <div class="tabs my-5">
+            <button 
+              v-for="tab in tabs" 
+              :key="tab" 
+              :class="{ active: selectedTab === tab }" 
+              @click="selectedTab = tab"
+              class="tab-btn">
+              {{ tab }}
+            </button>
+          </div>
         </div>
       </div>
       <div class="row justify-content-center my-5">
         <div class="col-12 image-grid">
-          <div v-for="(image, index) in images" :key="index" class="image-container">
+          <div v-for="(image, index) in filteredImages" :key="index" class="image-container">
             <img
               :src="image.src"
               @click="showImg(index)"
@@ -25,7 +35,7 @@
           </button>
         </div>
       </div>
-      <vue-easy-lightbox :visible="visibleRef" :imgs="images" :index="indexRef" @hide="onHide" />
+      <vue-easy-lightbox :visible="visibleRef" :imgs="filteredImages" :index="indexRef" @hide="onHide" />
     </div>
   </section>
 </template>
@@ -39,20 +49,33 @@ interface ImageModule {
 }
 
 // Import images dynamically using import.meta.glob
-const imageModules = import.meta.glob<{ default: string }>('public/img/portifolio/*.{png,jpg,jpeg,webp,gif}', { eager: true });
+const imageModules = import.meta.glob<{ default: string }>('public/img/portifolio/**/*.{png,jpg,jpeg,webp,gif}', { eager: true });
 
-const images = ref<Array<{ src: string }>>([]);
+const images = ref<Array<{ src: string, category: string }>>([]);
 const rows = ref(2);
 const loading = ref(false);
 const visibleRef = ref(false);
 const indexRef = ref(0);
+const selectedTab = ref('All');
+
+// Predefined categories
+const tabs = ref(['All', 'Gestão de Conteúdo', 'Branding', 'Comunicação Visual']);
 
 // Load images from imported modules
 const fetchImages = () => {
   for (const path in imageModules) {
     const module = imageModules[path] as ImageModule;
-    images.value.push({ src: module.default });
+    const category = determineCategory(path); // Função que determina a categoria com base no caminho ou no nome do arquivo
+    images.value.push({ src: module.default, category });
   }
+};
+
+// Determine category based on the folder name
+const determineCategory = (path: string): string => {
+  if (path.includes('gestao-de-conteudo')) return 'Gestão de Conteúdo';
+  if (path.includes('branding')) return 'Branding';
+  if (path.includes('comunicacao-visual')) return 'Comunicação Visual';
+  return 'All'; // Categoria padrão para subpastas não categorizadas
 };
 
 onMounted(() => {
@@ -74,6 +97,13 @@ const showImg = (index: number) => {
 const onHide = () => {
   visibleRef.value = false;
 };
+
+const filteredImages = computed(() => {
+  if (selectedTab.value === 'All') {
+    return images.value.slice(0, rows.value * 5); // Supondo 5 imagens por linha
+  }
+  return images.value.filter(image => image.category === selectedTab.value).slice(0, rows.value * 5);
+});
 </script>
 
 <style scoped>
@@ -96,5 +126,22 @@ const onHide = () => {
   object-fit: cover;
   cursor: pointer;
   border-radius: 0 !important;
+}
+
+.tabs {
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: #007bff;
+  color: #fff;
 }
 </style>
