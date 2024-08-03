@@ -261,6 +261,7 @@ em {
   font-style: normal !important;
   background: linear-gradient(270deg, var(--color-primary), var(--color-secondary), var(--color-primary));
   background-size: 600% 600% !important;
+  background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   animation: gradientAnimation 5s ease infinite !important;
