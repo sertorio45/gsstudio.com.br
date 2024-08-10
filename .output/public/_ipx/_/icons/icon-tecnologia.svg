@@ -1,54 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 124.3 76.68"><defs><style>.cls-1 {
-        fill: #bac7df;
-        mix-blend-mode: multiply;
-      }
-
-      .cls-1, .cls-2, .cls-3, .cls-4 {
-        stroke-width: 0px;
-      }
-
-      .cls-5 {
-        fill: url(#linear-gradient);
-      }
-
-      .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 3px;
-      }
-
-      .cls-5, .cls-6, .cls-8 {
-        stroke: #4633fa;
-      }
-
-      .cls-6, .cls-7, .cls-9 {
-        fill: none;
-      }
-
-      .cls-7 {
-        stroke: url(#Gradiente_sem_nome_57-2);
-      }
-
-      .cls-8 {
-        fill: url(#linear-gradient-3);
-      }
-
-      .cls-9 {
-        stroke: url(#Gradiente_sem_nome_57);
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 76.7 76.7"><defs><style>.cls-1 {
+        fill: url(#Gradiente_sem_nome_2);
       }
 
       .cls-2 {
-        fill: url(#linear-gradient-4);
-      }
-
-      .cls-3 {
-        fill: url(#linear-gradient-2);
-      }
-
-      .cls-10 {
-        isolation: isolate;
-      }
-
-      .cls-4 {
-        fill: #fff;
-      }</style><linearGradient id="linear-gradient" x1="1.5" y1="23.14" x2="57.44" y2="23.14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4633fa"/><stop offset="1" stop-color="#ff2c5e"/></linearGradient><linearGradient id="Gradiente_sem_nome_57" data-name="Gradiente sem nome 57" x1="0" y1="23.14" x2="58.94" y2="23.14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff2c5e"/><stop offset="1" stop-color="#4633fa"/></linearGradient><linearGradient id="linear-gradient-2" x1="1.5" y1="51.83" x2="57.44" y2="51.83" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4633fa"/><stop offset="1" stop-color="#f63c85"/></linearGradient><linearGradient id="linear-gradient-3" x1="-2366.23" y1="-1598.81" x2="-2310.29" y2="-1598.81" gradientTransform="translate(-2243.43 -1545.27) rotate(-180)" xlink:href="#linear-gradient"/><linearGradient id="Gradiente_sem_nome_57-2" data-name="Gradiente sem nome 57" x1="-2367.73" y1="-1598.81" x2="-2308.79" y2="-1598.81" gradientTransform="translate(-2243.43 -1545.27) rotate(-180)" xlink:href="#Gradiente_sem_nome_57"/><linearGradient id="linear-gradient-4" x1="-2366.23" y1="-1570.12" x2="-2310.29" y2="-1570.12" gradientTransform="translate(-2243.43 -1545.27) rotate(-180)" xlink:href="#linear-gradient-2"/></defs><g class="cls-10"><g id="Camada_2" data-name="Camada 2"><g id="Camada_1-2" data-name="Camada 1"><g><path class="cls-5" d="M57.44,1.5L8.19,23.26c-4.07,1.8-6.69,5.83-6.69,10.27h0c0,8.12,8.35,13.56,15.77,10.27l40.17-17.75"/><path class="cls-1" d="M9.59,47.2l47.85-21.14v-12.6L4.93,36.66c-2.09.92-3.43,2.99-3.43,5.27h0c0,4.16,4.28,6.95,8.09,5.27Z"/><path class="cls-9" d="M57.44,1.5L8.19,23.26c-4.07,1.8-6.69,5.83-6.69,10.27h0c0,8.12,8.35,13.56,15.77,10.27l40.17-17.75V1.5"/><path class="cls-3" d="M57.44,75.18L8.19,53.42c-4.07-1.8-6.69-5.83-6.69-10.27v-9.85c0-3.48,3.58-5.81,6.76-4.41l49.18,21.73"/><path class="cls-4" d="M6.49,28.11l51,23.12v6.21L10.9,36.34c-2.34-1.06-4.99.64-5.02,3.2l-.11,11.79c0,.27.03.53.05.8-2.79-2.12-4.5-5.44-4.47-9.04l.11-11.79c.02-2.57,2.68-4.26,5.02-3.2Z"/><path class="cls-6" d="M57.44,50.62L8.26,28.89c-3.18-1.41-6.76.92-6.76,4.41v9.85c0,4.45,2.62,8.48,6.69,10.27l49.25,21.76"/><path class="cls-8" d="M66.86,75.18l49.25-21.76c4.07-1.8,6.69-5.83,6.69-10.27h0c0-8.12-8.35-13.56-15.77-10.27l-40.17,17.75"/><path class="cls-1" d="M114.71,29.48l-47.85,21.14v12.6l52.51-23.2c2.09-.92,3.43-2.99,3.43-5.27h0c0-4.16-4.28-6.95-8.09-5.27Z"/><path class="cls-7" d="M66.86,75.18l49.25-21.76c4.07-1.8,6.69-5.83,6.69-10.27h0c0-8.12-8.35-13.56-15.77-10.27l-40.17,17.75v24.56"/><path class="cls-2" d="M66.86,1.5l49.25,21.76c4.07,1.8,6.69,5.83,6.69,10.27v9.85c0,3.48-3.58,5.81-6.76,4.41l-49.18-21.73"/><path class="cls-4" d="M117.81,48.57l-51-23.12v-6.21l46.59,21.1c2.34,1.06,4.99-.64,5.02-3.2l.11-11.79c0-.27-.03-.53-.05-.8,2.79,2.12,4.5,5.44,4.47,9.04l-.11,11.79c-.02,2.57-2.68,4.26-5.02,3.2Z"/><path class="cls-6" d="M66.86,26.06l49.18,21.73c3.18,1.41,6.76-.92,6.76-4.41v-9.85c0-4.45-2.62-8.48-6.69-10.27L66.86,1.5"/></g></g></g></g></svg>
+        fill: url(#Gradiente_sem_nome_2-2);
+      }</style><linearGradient id="Gradiente_sem_nome_2" data-name="Gradiente sem nome 2" x1="10.4" y1="49.1" x2="67.9" y2="49.1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4633fa"/><stop offset="1" stop-color="#ff2c5e"/></linearGradient><linearGradient id="Gradiente_sem_nome_2-2" data-name="Gradiente sem nome 2" y1="20.3" y2="20.3" xlink:href="#Gradiente_sem_nome_2"/></defs><!--Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)--><g><g id="Camada_1"><g><path class="cls-1" d="M67.1,32.3H11.2c-.4,0-.8.4-.8.8v26.4c0,3.5,2.9,6.4,6.4,6.4h44.7c3.5,0,6.4-2.9,6.4-6.4v-26.4c0-.4-.4-.8-.8-.8ZM32.5,54.6c-.4.3-.8.5-1.3.5s-1.1-.2-1.5-.7l-3.2-3.7c-.6-.7-.7-1.7,0-2.5l3.2-4.3c.7-.9,1.9-1.1,2.8-.4.9.7,1.1,1.9.4,2.8l-2.2,3,2.1,2.5c.7.8.6,2.1-.2,2.8ZM42.7,44l-3.1,11.2c-.2.9-1,1.5-1.9,1.5s-.4,0-.5,0c-1.1-.3-1.7-1.4-1.4-2.5l3.1-11.2c.3-1.1,1.4-1.7,2.5-1.4,1.1.3,1.7,1.4,1.4,2.5ZM51.9,50l-3.2,4.3c-.4.5-1,.8-1.6.8s-.8-.1-1.2-.4c-.9-.7-1.1-1.9-.4-2.8l2.2-3-2.1-2.5c-.7-.8-.6-2.1.2-2.8.8-.7,2.1-.6,2.8.2l3.2,3.7c.6.7.7,1.7,0,2.5Z"/><path class="cls-2" d="M61.5,12.4H16.8c-3.5,0-6.4,2.9-6.4,6.4v8.7c0,.4.4.8.8.8h55.9c.4,0,.8-.4.8-.8v-8.7c0-3.5-2.9-6.4-6.4-6.4ZM20,23.6c-1.8,0-3.2-1.4-3.2-3.2s1.4-3.2,3.2-3.2,3.2,1.4,3.2,3.2-1.4,3.2-3.2,3.2ZM30.4,23.6c-1.8,0-3.2-1.4-3.2-3.2s1.4-3.2,3.2-3.2,3.2,1.4,3.2,3.2-1.4,3.2-3.2,3.2Z"/></g></g></g></svg>

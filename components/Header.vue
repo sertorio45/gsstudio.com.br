@@ -18,7 +18,7 @@
                 <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink to="/sobre" class="nav-link">Sobre nós</NuxtLink>
+                <NuxtLink to="/" class="nav-link">Sobre nós</NuxtLink>
               </li>
               <li class="nav-item">
                 <NuxtLink to="/servicos" class="nav-link">Serviços</NuxtLink>
@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#">Aprenda Conosco</a>
               </li> -->
               <li class="nav-item">
-                <NuxtLink to="/blog" class="nav-link">Blog</NuxtLink>
+                <NuxtLink to="/" class="nav-link">Blog</NuxtLink>
               </li>
               <li class="nav-item">
                 <NuxtLink to="/contato" class="nav-link">Contato</NuxtLink>

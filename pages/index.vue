@@ -306,10 +306,6 @@ useCardAnimation();
   font-size: 1.5em !important;
   font-weight: bold;
 }
-#conquistas .gscard {
-  /* background-color: var(--color-dark) !important;
-  color: var(--branco); */
-}
 
 .row {
   display: flex !important;

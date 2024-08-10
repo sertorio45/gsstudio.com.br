@@ -26,7 +26,7 @@
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gscloud</h3>
             <p>Uma solução robusta de servidor em nuvem, ideal para hospedagem de sites, gerenciamento de lojas virtuais e e-mails corporativos, com alta segurança e escalabilidade.</p>
-            <NuxtLink to="/solucoes/gscloud" class="btn btn-link">Conheça</NuxtLink>
+            
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -41,7 +41,6 @@
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gscrm</h3>
             <p>Plataforma completa de CRM para controle e gerenciamento de contatos, otimizada para melhorar a organização e eficiência no relacionamento com seus clientes.</p>
-            <NuxtLink to="/solucoes/gscrm" class="btn btn-link">Conheça</NuxtLink>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
@@ -49,7 +48,6 @@
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gsendy</h3>
             <p>Solução avançada para envio de campanhas de e-mail marketing, com alta taxa de entrega e capacidade de segmentação, ideal para alcançar o público certo de forma eficaz.</p>
-            <NuxtLink to="/solucoes/gssendy" class="btn btn-link">Conheça</NuxtLink>
           </div>
         </div>
       </div>

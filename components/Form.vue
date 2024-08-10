@@ -93,7 +93,7 @@
           />
           <label class="form-check-label">
             Ao enviar você será protegido por Google reCAPTCHA e sujeito à
-            <NuxtLink to="/politica-de-privacidade" class="privacy-policy-link">Política de privacidade</NuxtLink>
+            <!-- <NuxtLink to="/politica-de-privacidade" class="privacy-policy-link">Política de privacidade</NuxtLink> -->
           </label>
         </div>
         <div class="form-group">

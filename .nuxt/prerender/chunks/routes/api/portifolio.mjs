@@ -67,7 +67,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/gsstudio/",
-    "buildId": "07c60dda-93a3-4820-92cf-91de469987d2",
+    "buildId": "a425606e-0420-44f7-a54d-ce87742e1a77",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },

@@ -588,12 +588,27 @@ const _routes = [
   {
     name: "artigos-slug",
     path: "/artigos/:slug()",
-    component: () => import('./_slug_-BOmCV39Z.mjs').then((m2) => m2.default || m2)
+    component: () => import('./_slug_-D9ZRvEPl.mjs').then((m2) => m2.default || m2)
+  },
+  {
+    name: "contato",
+    path: "/contato",
+    component: () => import('./contato-kVlLCzC-.mjs').then((m2) => m2.default || m2)
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-CwOI19rz.mjs').then((m2) => m2.default || m2)
+    component: () => import('./index-Df79NoP3.mjs').then((m2) => m2.default || m2)
+  },
+  {
+    name: "servicos",
+    path: "/servicos",
+    component: () => import('./servicos-Cg29Xlvi.mjs').then((m2) => m2.default || m2)
+  },
+  {
+    name: "solucoes",
+    path: "/solucoes",
+    component: () => import('./solucoes-BIhxjt7v.mjs').then((m2) => m2.default || m2)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1220,7 +1235,7 @@ const plugins = [
   prerender_server_LXx1wM9sKF
 ];
 const layouts = {
-  default: () => import('./default-p_vAfVl9.mjs').then((m2) => m2.default || m2)
+  default: () => import('./default-DzAKTHWd.mjs').then((m2) => m2.default || m2)
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",

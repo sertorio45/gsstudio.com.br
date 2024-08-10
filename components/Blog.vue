@@ -45,7 +45,7 @@
       </div>
       <div class="row">
         <div class="col d-flex align-content-center justify-content-center">
-          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
+          <NuxtLink to="/" class="btn btn-primary">Ver mais artigos</NuxtLink>
         </div>
       </div>
     </div>

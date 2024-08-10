@@ -29,6 +29,10 @@
   --vs-primary: #ff3366;
 }
 
+* {
+  cursor: default; /* Isso forçaria todos os elementos a terem o cursor padrão */
+}
+
 html {
   font-size: 16px !important; /* 1rem = 16px */
 }
@@ -213,6 +217,7 @@ img {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   background-color: #fff;
+  z-index: 0; /* Define uma hierarquia clara */
 }
 
 .gscard-border::before {
@@ -232,8 +237,9 @@ img {
   -webkit-mask-composite: destination-out;
   transition: opacity 0.5s;
   opacity: 0;
+  pointer-events: none; /* Torna o pseudoelemento invisível para eventos de interação */
+  z-index: -1; /* Certifica-se de que o pseudoelemento está atrás do conteúdo */
 }
-
 .gscard-border:hover::before {
   opacity: 1;
   animation: moveGradient 5s linear infinite;
@@ -258,6 +264,7 @@ img {
   transform: translateY(-20px);
   filter: blur(20px);
   transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+  z-index: 2;
 }
 
 .gscard.animate {
