@@ -5,8 +5,8 @@
       <div class="row d-flex justify-content-center align-items-center">
         <!-- Coluna da Logo -->
         <div class="col-2">
-          <NuxtLink href="/" class="d-flex">
-          <img src="/logotipo.svg" alt="Logo" class="logo" />
+          <NuxtLink to="/" class="d-flex">
+          <img src="https://s3.gsstudio.com.br/gsstudio/branding/gsstudio-logotipo.svg" alt="Logo" class="logo" />
           </NuxtLink>
         </div>
         
@@ -18,13 +18,13 @@
                 <NuxtLink to="/" class="nav-link">Página inicial</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink to="/empresa" class="nav-link">Sobre nós</NuxtLink>
+                <NuxtLink to="/sobre" class="nav-link">Sobre nós</NuxtLink>
               </li>
               <li class="nav-item">
                 <NuxtLink to="/servicos" class="nav-link">Serviços</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink to="/produtos" class="nav-link">Produtos</NuxtLink>
+                <NuxtLink to="/solucoes" class="nav-link">Soluções</NuxtLink>
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Aprenda Conosco</a>
@@ -57,7 +57,7 @@ export default {
 <style scoped>
 .logo {
   max-width: 100%;
-  width: 140px;
+  width: 180px;
 }
 
 .simbolo {

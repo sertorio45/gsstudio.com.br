@@ -295,13 +295,11 @@ useCardAnimation();
 }
 
 #sobre img {
-  width: 100% !important;
-  height: 5rem;
+  width: 100px !important;
 }
 
 #servicos img {
-  width: 100% !important;
-  height: 5rem !important;
+  width: 100px !important;
 }
 
 #conquistas h3 {

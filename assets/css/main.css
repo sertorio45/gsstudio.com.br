@@ -21,7 +21,7 @@
   --color-link-hover: #3424ad;
 
   --font-family: 'Poppins', sans-serif;
-  --text-size: 1.2rem;
+  --text-size: 1rem;
   --texto-grande: 5.5rem;
   --texto-medio: 2.5rem;
   --texto-pequeno: 1.25rem;
@@ -212,6 +212,7 @@ img {
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background-color: #fff;
 }
 
 .gscard-border::before {
@@ -252,7 +253,6 @@ img {
 
 .gscard {
   padding: 2rem;
-  margin: 5px;
   height: 100%;
   opacity: 0;
   transform: translateY(-20px);
