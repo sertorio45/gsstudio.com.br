@@ -23,9 +23,9 @@
               <li class="nav-item">
                 <NuxtLink to="/servicos" class="nav-link">Serviços</NuxtLink>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <NuxtLink to="/solucoes" class="nav-link">Soluções</NuxtLink>
-              </li>
+              </li> -->
               <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Aprenda Conosco</a>
               </li> -->

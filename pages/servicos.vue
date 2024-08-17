@@ -1,67 +1,66 @@
 <template>
   <!-- Fale conosco -->
-  <section class="topo">
-    <div class="container">
-      <div class="row">
-        <div class="col d-flex align-items-center flex-wrap">
-          <NuxtLink to="/" class="m-1">Página inicial</NuxtLink> / 
-          <h1 class="m-1">Serviços</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Hero Section -->
-  <section class="py-5 bg-light">
-    <div class="container">
+  <section class="py-5 bg-dark min-vh-100 d-flex" id="topo">
+    <div class="container d-flex justify-content-center align-items-center">
       <div class="row">
-        <div class="col text-center text-md-start">
-          <h1>Transforme Sua Visão em Realidade</h1>
-          <p>Descubra nossos serviços em Design, Marketing e Tecnologia para impulsionar o crescimento do seu negócio.</p>
-          <NuxtLink to="/contato" class="btn btn-primary btn-lg">Entre em Contato</NuxtLink>
+        <div class="col text-center text-light my-2">
+          <div class="my-2">
+            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> / 
+            <span>Serviços</span>
+          </div>
+            <h1 class="text-light">Transformando <em>ideias</em> em <em>resultados</em> exponenciais.</h1>
+            <p class="my-4">Descubra nossos serviços em Design, Marketing e Tecnologia para impulsionar o crescimento do seu negócio.</p>
+            <NuxtLink to="#tecnologia" class="btn btn-primary btn-lg my-3">Ver serviços</NuxtLink>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Design Section -->
-  <section id="design" class="py-5 min-vh-100">
-    <div class="container">
+
+  <!-- Tecnologia Section -->
+  <section id="tecnologia" class="py-5 min-vh-100 d-flex">
+    <div class="container justify-content-center align-content-center">
       <div class="row mb-4">
         <div class="col text-center">
-          <h2>Design</h2>
-          <p>Criação de Marcas, Comunicação Visual, Web Design</p>
+          <h2>Tecnologia</h2>
+          <p>Desenvolvimento de Sites, Lojas Virtuais, Soluções Personalizadas</p>
         </div>
       </div>
       <div class="row text-center gy-4">
         <div class="col-12 col-sm-6 col-md-4">
           <div class="gscard gscard-border">
+            <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" width="100px"/>
+            <h3>Desenvolvimento de Sites</h3>
+            <p>Construímos sites personalizados que não apenas parecem incríveis, mas também funcionam perfeitamente.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="gscard gscard-border">
+            <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" width="100px"/>
+            <h3>Lojas Virtuais</h3>
+            <p>Criamos e-commerce robustos e escaláveis que proporcionam uma experiência de compra fluida para seus clientes.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="gscard gscard-border">
             <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" width="100px"/>
-            <h3>Criação de Marcas</h3>
-            <p>Desenvolvemos identidades visuais que capturam a essência da sua empresa e se conectam com seu público-alvo.</p>
+            <h3>Soluções Personalizadas</h3>
+            <p>Desenvolvemos soluções tecnológicas sob medida para atender às necessidades específicas do seu negócio.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="gscard gscard-border">
-            <NuxtImg src="icons/servicos/comunicacao_visual.svg" class="p-2 my-1" width="100px"/>
-            <h3>Comunicação Visual</h3>
-            <p>Projetamos materiais visuais impactantes que reforçam a sua mensagem e destacam a sua marca.</p>
+        <div class="my-5">
+            <NuxtLink to="/contato" class="btn btn-primary">Faça agora seu orçamento</NuxtLink>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="gscard gscard-border">
-            <NuxtImg src="icons/servicos/producao_de_video.svg" class="p-2 my-1" width="100px"/>
-            <h3>Audiovisual</h3>
-            <p>Produzimos vídeos e outros conteúdos audiovisuais que capturam a atenção e transmitem sua mensagem de forma envolvente.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
+
+ 
   <!-- Marketing Section -->
-  <section id="marketing" class="py-5 bg-light min-vh-100">
-    <div class="container">
+  <section id="marketing" class="py-5 bg-light min-vh-100 d-flex">
+    <div class="container justify-content-center align-content-center">
       <div class="row mb-4">
         <div class="col text-center">
           <h2>Marketing</h2>
@@ -94,37 +93,40 @@
     </div>
   </section>
 
-  <!-- Tecnologia Section -->
-  <section id="tecnologia" class="py-5 min-vh-100">
-    <div class="container">
+   <!-- Design Section -->
+   <section id="design" class="py-5 min-vh-100 d-flex">
+    <div class="container justify-content-center align-content-center">
       <div class="row mb-4">
         <div class="col text-center">
-          <h2>Tecnologia</h2>
-          <p>Desenvolvimento de Sites, Lojas Virtuais, Soluções Personalizadas</p>
+          <h2>Design</h2>
+          <p>Criação de Marcas, Comunicação Visual, Web Design</p>
         </div>
       </div>
       <div class="row text-center gy-4">
         <div class="col-12 col-sm-6 col-md-4">
           <div class="gscard gscard-border">
-            <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" width="100px"/>
-            <h3>Desenvolvimento de Sites</h3>
-            <p>Construímos sites personalizados que não apenas parecem incríveis, mas também funcionam perfeitamente.</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="gscard gscard-border">
-            <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" width="100px"/>
-            <h3>Lojas Virtuais</h3>
-            <p>Criamos e-commerce robustos e escaláveis que proporcionam uma experiência de compra fluida para seus clientes.</p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="gscard gscard-border">
             <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" width="100px"/>
-            <h3>Soluções Personalizadas</h3>
-            <p>Desenvolvemos soluções tecnológicas sob medida para atender às necessidades específicas do seu negócio.</p>
+            <h3>Criação de Marcas</h3>
+            <p>Desenvolvemos identidades visuais que capturam a essência da sua empresa e se conectam com seu público-alvo.</p>
           </div>
         </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="gscard gscard-border">
+            <NuxtImg src="icons/servicos/comunicacao_visual.svg" class="p-2 my-1" width="100px"/>
+            <h3>Comunicação Visual</h3>
+            <p>Projetamos materiais visuais impactantes que reforçam a sua mensagem e destacam a sua marca.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="gscard gscard-border">
+            <NuxtImg src="icons/servicos/producao_de_video.svg" class="p-2 my-1" width="100px"/>
+            <h3>Audiovisual</h3>
+            <p>Produzimos vídeos e outros conteúdos audiovisuais que capturam a atenção e transmitem sua mensagem de forma envolvente.</p>
+          </div>
+        </div>
+          <div class="my-5">
+            <NuxtLink to="/contato" class="btn btn-primary">Quero posicionar minha marca</NuxtLink>
+          </div>
       </div>
     </div>
   </section>
@@ -154,6 +156,14 @@ useCardAnimation();
 </script>
 
 <style scoped>
+
+#topo h1 {
+  font-size: var(--texto-grande) !important;
+}
+#topo p {
+  font-size: var(--texto-medio) !important;
+}
+
 .topo .col {
   display: flex;
   align-items: center;
@@ -163,6 +173,7 @@ useCardAnimation();
 .topo .col h1 {
   margin-left: 5px;
   display: inline;
+  font-weight: normal !important;
   color: #000;
 }
 

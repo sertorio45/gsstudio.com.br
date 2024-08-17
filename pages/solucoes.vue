@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="row text-center my-3">
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6 my-3">
           <div class="gscard gscard-border">
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gscloud</h3>
@@ -29,21 +29,21 @@
             
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6 my-3">
           <div class="gscard gscard-border">
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gschat</h3>
             <p>Ferramenta poderosa para envio de mensagens em múltiplas plataformas, incluindo WhatsApp, chat integrado para websites, Messenger, e muito mais, proporcionando uma comunicação eficiente e centralizada.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6 my-3">
           <div class="gscard gscard-border">
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gscrm</h3>
             <p>Plataforma completa de CRM para controle e gerenciamento de contatos, otimizada para melhorar a organização e eficiência no relacionamento com seus clientes.</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6 my-3">
           <div class="gscard gscard-border">
             <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
             <h3>gsendy</h3>
@@ -181,6 +181,7 @@ useCardAnimation();
 .topo .col h1 {
   margin-left: 5px;
   display: inline;
+  font-weight: normal !important;
   color: #000;
 }
 

@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 :root {
-  --color-secondary-rgb: 30, 0, 255; /* Substitua pelos valores RGB da sua cor secundária */
+  --color-secondary-rgb: 30, 0, 255; 
   --color-primary: #FF3366;
   --color-secondary: #1e00ff;
   --color-success: #28a745;
@@ -20,21 +20,12 @@
   --color-link: var(--color-primary);
   --color-link-hover: #3424ad;
 
-  --font-family: 'Poppins', sans-serif;
+  --font-family: 'DM Sans', sans-serif;
   --text-size: 1rem;
   --texto-grande: 5.5rem;
   --texto-medio: 2.5rem;
   --texto-pequeno: 1.25rem;
-
-  --vs-primary: #ff3366;
-}
-
-* {
-  cursor: default; /* Isso forçaria todos os elementos a terem o cursor padrão */
-}
-
-html {
-  font-size: 16px !important; /* 1rem = 16px */
+  --font-weight-bold: 600; /* Define bold */
 }
 
 body {
@@ -46,7 +37,14 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text) !important;
+  font-weight: var(--font-weight-bold) !important; /* Aplica negrito */
+  font-family: 'Poppins', sans-serif !important; /* Corrige a fonte para DM Sans com Poppins como fallback */
 }
+
+h1, h2 {
+  font-size: 2.2rem;
+}
+
 
 h3 {
   font-size: var(--texto-pequeno) !important;
@@ -434,6 +432,17 @@ em {
   border-color: var(--color-tags) !important;
   outline: 0;
   box-shadow: 0 0 0 .25rem var(--color-tags) !important;
+}
+
+.bg-light {
+  background-color: var(--branco) !important;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.02),  /* Sombra interna no topo */
+              inset 0 -10px 20px rgba(0, 0, 0, 0.02); /* Sombra interna na parte inferior */
+  
+}
+
+.bg-dark {
+  background-color: #000 !important;
 }
 
 /* Media Queries para dispositivos móveis e tablets */

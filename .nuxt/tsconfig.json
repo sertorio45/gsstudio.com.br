@@ -98,6 +98,9 @@
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
       ],
+      "#robots": [
+        "./robots"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -105,7 +108,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev.json"
+        "./manifest/meta/dev"
       ],
       "#build": [
         "."
@@ -154,6 +157,8 @@
     "../node_modules/@nuxt/image/runtime",
     "../node_modules/nuxt-swiper/runtime",
     "../node_modules/nuxt-easy-lightbox/runtime",
+    "../node_modules/@nuxtjs/google-fonts/runtime",
+    "../node_modules/@nuxtjs/robots/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     ".."
@@ -165,6 +170,8 @@
     "../node_modules/@nuxt/image/runtime/server",
     "../node_modules/nuxt-swiper/runtime/server",
     "../node_modules/nuxt-easy-lightbox/runtime/server",
+    "../node_modules/@nuxtjs/google-fonts/runtime/server",
+    "../node_modules/@nuxtjs/robots/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../.output"

@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, getRequestHeaders, removeResponseHeader, createError, getResponseHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, getRequestHeaders, removeResponseHeader, createError, getResponseHeader, setHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
 import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
@@ -66,8 +66,8 @@ const appConfig = defuFn(inlineAppConfig);
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/gsstudio/",
-    "buildId": "a425606e-0420-44f7-a54d-ce87742e1a77",
+    "baseURL": "/gsstudio",
+    "buildId": "0579d965-1d6d-414a-b328-daf9773f4a01",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -783,6 +783,83 @@ const _f4b49z = eventHandler((event) => {
   return readAsset(id);
 });
 
+const robots = {
+  "UserAgent": "*",
+  "Disallow": ""
+};
+
+const _kKQj7G = defineEventHandler(async (event) => {
+  setHeader(event, "Content-Type", "text/plain");
+  return render(await getRules(robots, event.req));
+});
+var Correspondence = /* @__PURE__ */ ((Correspondence2) => {
+  Correspondence2[Correspondence2["User-agent"] = 0] = "User-agent";
+  Correspondence2[Correspondence2["Crawl-delay"] = 1] = "Crawl-delay";
+  Correspondence2[Correspondence2["Disallow"] = 2] = "Disallow";
+  Correspondence2[Correspondence2["Allow"] = 3] = "Allow";
+  Correspondence2[Correspondence2["Host"] = 4] = "Host";
+  Correspondence2[Correspondence2["Sitemap"] = 5] = "Sitemap";
+  Correspondence2[Correspondence2["Clean-param"] = 6] = "Clean-param";
+  Correspondence2[Correspondence2["Comment"] = 7] = "Comment";
+  Correspondence2[Correspondence2["BlankLine"] = 8] = "BlankLine";
+  return Correspondence2;
+})(Correspondence || {});
+function render(rules) {
+  return rules.map((rule) => {
+    const value = String(rule.value).trim();
+    switch (rule.key.toString()) {
+      case Correspondence[7 /* Comment */]:
+        return `# ${value}`;
+      case Correspondence[8 /* BlankLine */]:
+        return "";
+      default:
+        return `${rule.key}: ${value}`;
+    }
+  }).join("\n");
+}
+async function getRules(options, req) {
+  const correspondences = {
+    useragent: "User-agent",
+    crawldelay: "Crawl-delay",
+    disallow: "Disallow",
+    allow: "Allow",
+    host: "Host",
+    sitemap: "Sitemap",
+    cleanparam: "Clean-param",
+    comment: "Comment",
+    blankline: "BlankLine"
+  };
+  const rules = [];
+  const parseRule = (rule) => {
+    const parsed = {};
+    for (const [key, value] of Object.entries(rule)) {
+      parsed[String(key).toLowerCase().replace(/[\W_]+/g, "")] = value;
+    }
+    return parsed;
+  };
+  for (const rule of Array.isArray(options) ? options : [options]) {
+    const parsed = parseRule(rule);
+    const keys = Object.keys(correspondences).filter((key) => typeof parsed[key] !== "undefined");
+    for (const key of keys) {
+      const parsedKey = parsed[key];
+      let values;
+      values = typeof parsedKey === "function" ? await parsedKey(req) : parsedKey;
+      values = Array.isArray(values) ? values : [values];
+      for (const value of values) {
+        const v = typeof value === "function" ? await value(req) : value;
+        if (v === false) {
+          continue;
+        }
+        rules.push({
+          key: correspondences[key],
+          value: v
+        });
+      }
+    }
+  }
+  return rules;
+}
+
 const _rf0h91 = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
@@ -809,6 +886,7 @@ const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },
   { route: '/api/parceiros', handler: _lazy_jqIX24, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
+  { route: '/robots.txt', handler: _kKQj7G, lazy: false, middleware: false, method: undefined },
   { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
 ];

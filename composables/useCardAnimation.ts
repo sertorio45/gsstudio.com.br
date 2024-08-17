@@ -8,7 +8,7 @@ export function useCardAnimation() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const randomDelay = Math.random() * 1000; // Delay aleatório entre 0 e 1000ms
+          const randomDelay = Math.random() * 500; // Delay aleatório entre 0 e 1000ms
           setTimeout(() => {
             entry.target.classList.add('animate');
             observer.unobserve(entry.target); // Para de observar após a animação
@@ -16,7 +16,7 @@ export function useCardAnimation() {
         }
       });
     }, {
-      threshold: 0.5 // Ajuste este valor conforme necessário
+      threshold: 0.3 // Ajuste este valor conforme necessário
     });
 
     cards.forEach(card => {

@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, setHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { promises } from 'fs';
 import path from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -27,6 +27,7 @@ import { consola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/
 import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unctx/dist/index.mjs';
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/errx/dist/index.js';
 import { isVNode, version, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
+import robots from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/robots.mjs';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 import { isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
@@ -83,7 +84,7 @@ const appConfig = defuFn(inlineAppConfig);
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/gsstudio/",
+    "baseURL": "/gsstudio",
     "buildId": "dev",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
@@ -844,6 +845,78 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
+const _kKQj7G = defineEventHandler(async (event) => {
+  setHeader(event, "Content-Type", "text/plain");
+  return render(await getRules(robots, event.req));
+});
+var Correspondence = /* @__PURE__ */ ((Correspondence2) => {
+  Correspondence2[Correspondence2["User-agent"] = 0] = "User-agent";
+  Correspondence2[Correspondence2["Crawl-delay"] = 1] = "Crawl-delay";
+  Correspondence2[Correspondence2["Disallow"] = 2] = "Disallow";
+  Correspondence2[Correspondence2["Allow"] = 3] = "Allow";
+  Correspondence2[Correspondence2["Host"] = 4] = "Host";
+  Correspondence2[Correspondence2["Sitemap"] = 5] = "Sitemap";
+  Correspondence2[Correspondence2["Clean-param"] = 6] = "Clean-param";
+  Correspondence2[Correspondence2["Comment"] = 7] = "Comment";
+  Correspondence2[Correspondence2["BlankLine"] = 8] = "BlankLine";
+  return Correspondence2;
+})(Correspondence || {});
+function render(rules) {
+  return rules.map((rule) => {
+    const value = String(rule.value).trim();
+    switch (rule.key.toString()) {
+      case Correspondence[7 /* Comment */]:
+        return `# ${value}`;
+      case Correspondence[8 /* BlankLine */]:
+        return "";
+      default:
+        return `${rule.key}: ${value}`;
+    }
+  }).join("\n");
+}
+async function getRules(options, req) {
+  const correspondences = {
+    useragent: "User-agent",
+    crawldelay: "Crawl-delay",
+    disallow: "Disallow",
+    allow: "Allow",
+    host: "Host",
+    sitemap: "Sitemap",
+    cleanparam: "Clean-param",
+    comment: "Comment",
+    blankline: "BlankLine"
+  };
+  const rules = [];
+  const parseRule = (rule) => {
+    const parsed = {};
+    for (const [key, value] of Object.entries(rule)) {
+      parsed[String(key).toLowerCase().replace(/[\W_]+/g, "")] = value;
+    }
+    return parsed;
+  };
+  for (const rule of Array.isArray(options) ? options : [options]) {
+    const parsed = parseRule(rule);
+    const keys = Object.keys(correspondences).filter((key) => typeof parsed[key] !== "undefined");
+    for (const key of keys) {
+      const parsedKey = parsed[key];
+      let values;
+      values = typeof parsedKey === "function" ? await parsedKey(req) : parsedKey;
+      values = Array.isArray(values) ? values : [values];
+      for (const value of values) {
+        const v = typeof value === "function" ? await value(req) : value;
+        if (v === false) {
+          continue;
+        }
+        rules.push({
+          key: correspondences[key],
+          value: v
+        });
+      }
+    }
+  }
+  return rules;
+}
+
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -882,6 +955,7 @@ const handlers = [
   { route: '/api/parceiros', handler: _lazy_jqIX24, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined },
+  { route: '/robots.txt', handler: _kKQj7G, lazy: false, middleware: false, method: undefined },
   { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
 ];
@@ -1158,7 +1232,7 @@ const unheadPlugins = true ? [CapoPlugin({ track: true })] : [];
 
 const renderSSRHeadOptions = {"omitLineBreaks":false};
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Descrição da GS Studio"},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia","htmlAttrs":{"lang":"pt-br"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Descrição da GS Studio, uma agência especializada em design, marketing e tecnologia."},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design, marketing, tecnologia, agência, GS Studio"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia"},{"property":"og:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia, oferecendo soluções completas para empresas."},{"property":"og:image","content":"/og-image.png"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"summary_large_image"},{"property":"twitter:title","content":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"/og-image.png"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia","htmlAttrs":{"lang":"pt-br"}};
 
 const appRootTag = "div";
 

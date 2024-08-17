@@ -10,7 +10,6 @@ import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, 
 import { toRouteMatcher, createRouter as createRouter$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
 import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
 import { hasProtocol, isScriptProtocol, joinURL, withQuery } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
-import { createPinia } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pinia/dist/pinia.prod.cjs';
 import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/server-renderer/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
@@ -588,27 +587,27 @@ const _routes = [
   {
     name: "artigos-slug",
     path: "/artigos/:slug()",
-    component: () => import('./_slug_-D9ZRvEPl.mjs').then((m2) => m2.default || m2)
+    component: () => import('./_slug_-BOoRQhWW.mjs').then((m2) => m2.default || m2)
   },
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-kVlLCzC-.mjs').then((m2) => m2.default || m2)
+    component: () => import('./contato-BLo3uTIZ.mjs').then((m2) => m2.default || m2)
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Df79NoP3.mjs').then((m2) => m2.default || m2)
+    component: () => import('./index-Dx685AJ_.mjs').then((m2) => m2.default || m2)
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-Cg29Xlvi.mjs').then((m2) => m2.default || m2)
+    component: () => import('./servicos-ByAB6UxY.mjs').then((m2) => m2.default || m2)
   },
   {
     name: "solucoes",
     path: "/solucoes",
-    component: () => import('./solucoes-BIhxjt7v.mjs').then((m2) => m2.default || m2)
+    component: () => import('./solucoes-Cjd8Jyga.mjs').then((m2) => m2.default || m2)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1187,10 +1186,6 @@ defineComponent({
 const plugin_ucMK8VhJjR = /* @__PURE__ */ defineNuxtPlugin((_nuxtApp) => {
   _nuxtApp.vueApp.use(N);
 });
-const pinia_48xmdi2HHl = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
-  const pinia = createPinia();
-  nuxtApp.vueApp.use(pinia);
-});
 let routes;
 const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
   let __temp, __restore;
@@ -1231,11 +1226,10 @@ const plugins = [
   revive_payload_server_eJ33V7gbc6,
   components_plugin_KR1HBZs4kY,
   plugin_ucMK8VhJjR,
-  pinia_48xmdi2HHl,
   prerender_server_LXx1wM9sKF
 ];
 const layouts = {
-  default: () => import('./default-DzAKTHWd.mjs').then((m2) => m2.default || m2)
+  default: () => import('./default-CDwjfBVx.mjs').then((m2) => m2.default || m2)
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -1531,8 +1525,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-khToBYL2.mjs').then((r) => r.default || r));
-    const _Error = defineAsyncComponent(() => import('./error-500-DvPkWi5X.mjs').then((r) => r.default || r));
+    const _Error404 = defineAsyncComponent(() => import('./error-404-D821aHd7.mjs').then((r) => r.default || r));
+    const _Error = defineAsyncComponent(() => import('./error-500-BTjZyw6v.mjs').then((r) => r.default || r));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));

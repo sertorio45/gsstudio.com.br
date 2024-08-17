@@ -1,10 +1,14 @@
 <template>
   <!-- Fale conosco -->
-  <section class="topo">
-    <div class="container">
+  <section class="py-5 bg-dark d-flex my-5" id="topo">
+    <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
-        <div class="col d-flex align-items-center">
-          <NuxtLink to="/" class="m-1">Página inicial</NuxtLink> / <h1 class="m-1">Contato</h1>
+        <div class="col text-center text-light my-2">
+          <div class="my-2">
+            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> / 
+            <span>Contato</span>
+          </div>
+            <h1 class="text-light">Contato</h1>
         </div>
       </div>
     </div>
