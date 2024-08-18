@@ -5,43 +5,80 @@
       <div class="row">
         <div class="col text-center text-light my-2">
           <div class="my-2">
-            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> / 
+            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> /
             <span>Contato</span>
           </div>
-            <h1 class="text-light">Contato</h1>
+          <h1 class="text-light">Contato</h1>
         </div>
       </div>
     </div>
   </section>
-  <section id="contato">
+  
+  <section id="contato" class="my-3">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-4 mb-4 mb-lg-0">
-          <h2>Fale conosco</h2>
-          <p>
-            Preencha o formulário ou entre em contato em algum dos nossos canais e em breve vamos entrar em contato.
-          </p>
-          <div class="mt-4">
-            <div class="contact-item d-flex align-items-center mb-3">
-              <div class="icon-circle">
-                <i class='bx bxl-whatsapp'></i>
-              </div>
-              <span><a href="https://api.whatsapp.com/send/?phone=551640422902&text=Ol%C3%A1%2C+vim+pelo+site%2C+gostaria+de+tirar+algumas+d%C3%BAvidas.&type=phone_number&app_absent=0" target="_blank">+55 (16) 4042-2902</a></span>
-            </div>
-            <div class="contact-item d-flex align-items-center">
-              <div class="icon-circle">
-                <i class="bx bxs-map"></i>
-              </div>
-              <span><a href="https://maps.app.goo.gl/uGtYZvxZGYV1KemF8" target="_blank">Avenida Maria de Jesus Condeixa, 600, Sala 424, Ribeirão Preto, São Paulo</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
+      <div class="row">
+        <div class="col m-5">
           <Form />
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Nova Seção de Contato -->
+  <section class="contact-options text-dark py-5 my-3">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <div class="contact-option gscard gscard-border p-4 h-100">
+            <div class="icon-circle bg-white mb-3 mx-auto">
+              <i class="bx bx-envelope"></i>
+            </div>
+            <h4>E-mail</h4>
+            <p>Tem alguma dúvida?</p>
+            <a href="mailto:hello@gsstudio.com.br" class="text-dark">hello@gsstudio.com.br</a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="contact-option gscard gscard-border p-4 h-100">
+            <div class="icon-circle bg-white mb-3 mx-auto">
+              <i class="bx bx-phone"></i>
+            </div>
+            <h4>Localização</h4>
+            <p><a href="https://maps.app.goo.gl/8h4Ee8B4VMYssSNM8" class="text-dark" target="_blank">Av. Maria de Jesus Condeixa, 600, Jardim Palma Travassos, CEP: 14091-240, Condomínio NEO, Ribeirão Preto - SP</a></p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="contact-option gscard gscard-border p-4 h-100">
+            <div class="icon-circle bg-white mb-3 mx-auto">
+              <i class="bx bx-chat"></i>
+            </div>
+            <h4>Atendimento</h4>
+            <p>Fale com nossa atendente Zoe</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#botModal">
+              Abrir Chat
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="botModal" tabindex="-1" aria-labelledby="botModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"> <!-- Adicionada a classe 'modal-dialog-centered' -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe
+            src="https://bot.gsstudio.com.br/iniciar"
+            style="border: none; width: 100%; height: 600px"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Fale conosco -->
 </template>
 
@@ -68,6 +105,13 @@ export default {
 }
 </script>
 
+<script setup>
+import { useCardAnimation } from '~/composables/useCardAnimation';
+
+// Chame o composable para inicializar a animação dos cartões
+useCardAnimation();
+</script>
+
 <style scoped>
 .topo .col {
   display: flex;
@@ -85,28 +129,25 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  min-width: 50px; /* Garante que o tamanho não mude */
-  min-height: 50px; /* Garante que o tamanho não mude */
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
   border-radius: 50%;
-  background-color: var(--color-tags);
+  background-color: var(--color-tags) !important;
   margin-right: 15px;
-  flex-shrink: 0; /* Impede que o tamanho diminua */
+  flex-shrink: 0;
 }
 
 .icon-circle i {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: var(--color-secondary) !important;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-}
-
-.contact-item span.material-icons {
-  font-size: 30px;
 }
 
 #contato .btn {
@@ -116,5 +157,48 @@ export default {
 #contato a {
   color: #000 !important;
   text-decoration: none;
+}
+
+/* Estilo da nova seção de contato */
+.contact-options .contact-option {
+  border-radius: 8px;
+  color: #000; /* Texto preto */
+}
+
+.contact-options .contact-option a {
+  color: #000; /* Links na cor preta */
+  text-decoration: none;
+}
+
+.contact-options .contact-option h4 {
+  margin-top: 15px;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.icon-circle i {
+  color: #6C2BD9; /* Cor roxa dos ícones */
+  font-size: 2rem;
+}
+
+/* Centralizando completamente o modal */
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100% - 1rem);
+}
+
+.modal-content {
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 </style>
