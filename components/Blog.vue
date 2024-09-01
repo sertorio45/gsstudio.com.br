@@ -1,5 +1,5 @@
 <template>
-  <section class="my-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
+  <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
     <div class="container my-5">
       <div class="row">
         <h2 class="text-center">Blog</h2>
@@ -18,7 +18,7 @@
           </div>
         </div>
         <!-- Actual Cards -->
-        <div v-else class="col-md-3 my-5" v-for="article in articles" :key="article.id">
+        <div v-else class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="image-container">
               <nuxt-link :to="`/artigos/${article.slug}`">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
           <NuxtLink to="/" class="btn btn-primary">Ver mais artigos</NuxtLink>
         </div>

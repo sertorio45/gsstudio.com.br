@@ -17,7 +17,7 @@
   <section id="contato" class="my-3">
     <div class="container">
       <div class="row">
-        <div class="col m-5">
+        <div class="col my-5 py-5 d-sm-block">
           <Form />
         </div>
       </div>
@@ -102,6 +102,7 @@ export default {
       this.currentComponent = null;
     }
   }
+  
 }
 </script>
 

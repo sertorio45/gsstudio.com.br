@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  ssr: false,  // Certifique-se de que o SSR está habilitado, se necessário
   app: {
     head: {
       title: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia',

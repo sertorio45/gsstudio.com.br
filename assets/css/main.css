@@ -22,8 +22,8 @@
 
   --font-family: 'DM Sans', sans-serif;
   --text-size: 1rem;
-  --texto-grande: 5.5rem;
-  --texto-medio: 2.5rem;
+  --texto-grande: 5rem;
+  --texto-medio: 2rem;
   --texto-pequeno: 1.25rem;
   --font-weight-bold: 600; /* Define bold */
 }
@@ -401,7 +401,7 @@ em {
 
 /* cta */
 #cta .container {
-  height: 50vh !important;
+  
   border-radius: 10px !important;
 }
 
@@ -516,9 +516,9 @@ em {
     --texto-pequeno: 0.875rem;
   }
 
-  section {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important; 
   }
 
   h2 {

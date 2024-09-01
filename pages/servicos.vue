@@ -1,8 +1,8 @@
 <template>
   <!-- Fale conosco -->
   <!-- Hero Section -->
-  <section class="py-5 bg-dark min-vh-100 d-flex" id="topo">
-    <div class="container d-flex justify-content-center align-items-center">
+  <section class="bg-dark min-vh-100 d-flex justify-content-center align-items-center pt-5" id="topo">
+    <div class="container d-flex ">
       <div class="row">
         <div class="col text-center text-light my-2">
           <div class="my-2">
@@ -19,7 +19,7 @@
 
 
   <!-- Tecnologia Section -->
-  <section id="tecnologia" class="py-5 min-vh-100 d-flex">
+  <section id="tecnologia" class="my-5 py-5 min-vh-100 d-flex">
     <div class="container justify-content-center align-content-center">
       <div class="row mb-4">
         <div class="col text-center">
@@ -60,7 +60,7 @@
  
   <!-- Marketing Section -->
   <section id="marketing" class="py-5 bg-light min-vh-100 d-flex">
-    <div class="container justify-content-center align-content-center">
+    <div class="container my-5 justify-content-center align-content-center text-center ">
       <div class="row mb-4">
         <div class="col text-center">
           <h2>Marketing</h2>
@@ -90,12 +90,17 @@
           </div>
         </div>
       </div>
-    </div>
+      <div class="my-5">
+            <NuxtLink to="/contato" class="btn btn-primary">Quero crescer minha marca, produtos e serviços</NuxtLink>
+          </div>
+      </div>
+
+
   </section>
 
    <!-- Design Section -->
    <section id="design" class="py-5 min-vh-100 d-flex">
-    <div class="container justify-content-center align-content-center">
+    <div class="container my-5 justify-content-center align-content-center">
       <div class="row mb-4">
         <div class="col text-center">
           <h2>Design</h2>
@@ -131,21 +136,21 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="text-center gscard my-5" id="cta">
-    <div class="container justify-content-center align-content-center bg-cta my-5">
-      <div class="row">
-        <div class="col text-light">
-          <h2 class="text-light">Transforme Resultados com Design, Marketing e Tecnologia!</h2>
-          <div class="subheadline d-flex justify-content-center py-2">
-            <p>Potencialize seu negócio com soluções criativas e inovadoras. Nós entregamos resultados excepcionais através de estratégias personalizadas e tecnologia de ponta.</p>
+<!-- CTA -->
+<section class="text-center gscard" id="cta">
+      <div class="container d-flex align-items-center justify-content-center bg-cta">
+        <div class="row">
+          <div class="col text-light">
+            <h2 class="text-light">Transforme Resultados com Design, Marketing e Tecnologia!</h2>
+            <div class="subheadline d-flex justify-content-center py-2">
+              <p>Potencialize seu negócio com soluções criativas e inovadoras. Nós entregamos resultados excepcionais através de estratégias personalizadas e tecnologia de ponta.</p>
+            </div>
+            <NuxtLink to="/contato" class="btn btn-white"><em>Entrar agora em contato</em></NuxtLink>  
           </div>
-          <NuxtLink to="/contato" class="btn btn-white"><em>Começar orçamento</em></NuxtLink>  
         </div>
       </div>
-    </div>
-  </section>
-  <!-- CTA -->
+    </section>
+    <!-- CTA -->
 </template>
 
 <script setup>
@@ -156,6 +161,10 @@ useCardAnimation();
 </script>
 
 <style scoped>
+
+#topo {
+  background-image: url('img/fundo-header-default.svg');
+}
 
 #topo h1 {
   font-size: var(--texto-grande) !important;
@@ -177,19 +186,4 @@ useCardAnimation();
   color: #000;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Ajuste de espaçamento entre cartões no mobile */
-.gscard {
-  margin-bottom: 20px;
-}
-
-/* Ajustes para CTA */
-#cta .subheadline p {
-  margin-bottom: 0;
-  padding: 0 10px;
-}
 </style>
