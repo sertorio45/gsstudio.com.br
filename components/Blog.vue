@@ -21,7 +21,7 @@
         <div v-else class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="image-container">
-              <nuxt-link :to="`/artigos/${article.slug}`">
+              <nuxt-link :to="`${article.slug}`">
                 <NuxtImg 
                   :src="getArticleImage(article)" 
                   class="img-fluid blur-effect" 
@@ -36,7 +36,7 @@
               <div class="mb-2">
                 <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
               </div>
-              <nuxt-link :to="`/artigos/${article.slug}`">
+              <nuxt-link :to="`${article.slug}`">
                 {{ article.titulo }}
               </nuxt-link>
             </div>

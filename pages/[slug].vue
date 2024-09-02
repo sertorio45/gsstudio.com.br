@@ -3,15 +3,30 @@
     <section class="my-5" id="article-detail">
       <div class="container my-5">
         <div class="row">
-          <div class="col-lg-2 col-sm-12 col-md-12 mb-4 sticky-top">
+          <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
             <div class="back-fixed">
-              <button @click="goBack" class="btn btn-primary-border ">< Voltar</button>
+              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+              <!-- Ícones de Compartilhamento Social -->
+              <div class="social-share d-flex">
+                <a
+                  v-for="(network, index) in socialNetworks"
+                  :key="index"
+                  :href="network.url"
+                  target="_blank"
+                  class="social-icon"
+                  :title="network.name"
+                  @click.prevent="share(network)"
+                >
+                  <i :class="network.icon"></i>
+                </a>
+              </div>
             </div>
           </div>
           <div class="col-sm-7 col-md-12 col-lg-7">
             <div v-if="loading">
               <div class="d-flex mb-3">
-                <div class="skeleton skeleton-category me-2"></div> <div class="skeleton skeleton-date"></div>
+                <div class="skeleton skeleton-category me-2"></div> 
+                <div class="skeleton skeleton-date"></div>
               </div>
               <div class="skeleton skeleton-title mb-3"></div>
               <div class="skeleton skeleton-img mb-3"></div>
@@ -36,10 +51,9 @@
               <p>Artigo não encontrado.</p>
             </div>
           </div>
-          <div class=" col-sm-12 col-md-12 col-lg-3">
-            
-            <!-- Newsletter Form -->
-            <div class="newsletter-cta p-4  bg-light rounded news-fixed my-xl-0 my-4 ">
+          <div class="col-sm-12 col-md-12 col-lg-3">
+            <!-- Formulário de Newsletter -->
+            <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
               <h3>Assine para novas atualizações.</h3>
               <form method="POST" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/20534155/d57a69e4-6f43-4768-a600-5f7d30306260" class="form">
                 <div class="mb-3">
@@ -48,10 +62,7 @@
                 <button type="submit" class="btn btn-primary">Inscrever-se</button>
               </form>
             </div>
-            
-           
           </div>
-
         </div>
       </div>
     </section>
@@ -71,7 +82,10 @@ interface Article {
     url?: string;
   };
   published_at: string;
-  category: number;
+  category: {
+    id: number;
+    title: string;
+  };
   content: string;
 }
 
@@ -90,6 +104,15 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
     const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
+
+    const socialNetworks = ref([
+      { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
+      { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
+      { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
+      { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
+      { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
+      { name: 'Link', url: window.location.href, icon: 'bx bx-link' }
+    ]);
 
     const fetchArticleBySlug = async (slug: string) => {
       try {
@@ -152,6 +175,16 @@ export default defineComponent({
       router.go(-1)
     }
 
+    const share = (network: { name: string, url: string }) => {
+      if (network.name === 'Link') {
+        navigator.clipboard.writeText(network.url).then(() => {
+          alert('Link copiado para a área de transferência!');
+        });
+      } else {
+        window.open(network.url, '_blank', 'noopener,noreferrer')
+      }
+    }
+
     onMounted(async () => {
       const slug = route.params.slug as string
       console.log('Fetching article with slug:', slug)
@@ -166,22 +199,22 @@ export default defineComponent({
       categories,
       loading,
       imageLoaded,
+      socialNetworks,
       getArticleImage,
       getCategoryTitle,
       formatDate,
       hasThumbnail,
       onImageLoad,
-      goBack
+      goBack,
+      share
     }
   }
 })
 </script>
 
 <style scoped>
-
-
 #article-detail {
-  padding: 2rem;
+  padding-top: 1.9rem;
 }
 .btn-primary-border {
   border: 1px solid var(--bs-primary);
@@ -208,7 +241,6 @@ export default defineComponent({
 .skeleton-img {
   width: 100%;
   height: 400px;
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -216,32 +248,24 @@ export default defineComponent({
 .skeleton-title {
   height: 30px;
   width: 100%;
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 .skeleton-category {
   height: 20px;
   width: 30%;
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 .skeleton-date {
   height: 20px;
   width: 20%;
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 .skeleton-content {
   height: 100px;
   width: 100%;
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
@@ -251,32 +275,58 @@ export default defineComponent({
 .blurred {
   filter: blur(20px);
 }
-@media (max-width: 575px)  {
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff !important;
+  font-size: 18px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: var(--bs-secondary);
+  color: #fff;
+}
+
+@media (max-width: 575px) {
   .publish_date {
     font-size: 0.9rem !important;
-}
+  }
   .social-links {
     display: none;
-}
-.back-fixed {
+  }
+  .social-share {
+    gap: 0.3em;
+  }
+  .back-fixed {
+    display: inline-flex;
     position: fixed !important;
     z-index: 9998 !important;
     width: 100%;
     background-color: #fff;
     bottom: 510px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    gap: 10px;
   }
-
 }
-@media (min-width: 576px)  {
+
+@media (min-width: 576px) {
   .publish_date {
     font-size: 1.1rem !important;
-}
+  }
   .social-links {
     display: none;
-}
-.back-fixed {
+  }
+  .back-fixed {
+    display: inline-flex;
     position: fixed !important;
     z-index: 9998 !important;
     width: 100%;
@@ -284,14 +334,17 @@ export default defineComponent({
     padding-top: 20px;
     padding-bottom: 20px;
     margin-top: -60px;
+    gap: 10px;
   }
-
+  .social-share {
+    display: inline-flex;
+    gap: 0.3em;
+  }
 }
 
-
-
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
   .back-fixed {
+    display: block;
     position: fixed !important;
     z-index: 9998 !important;
     width: 100%;
@@ -299,14 +352,22 @@ export default defineComponent({
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
+  }
 
-}
-
-.news-fixed {
+  .news-fixed {
     position: fixed;
     width: 20vw;
   }
- }
+  .social-share {
+    display: flex;
+    gap: 0.3em;
+    margin-top: 0.5em;
+  }
+  .social-icon {
+  width: 25px;
+  height: 25px;
 
-
+  padding: 0.2em;
+}
+}
 </style>
