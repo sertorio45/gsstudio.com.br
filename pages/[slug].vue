@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
             <div class="back-fixed">
-              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+              <button @click="goBack" class="btn btn-primary-border m-0">< Voltar</button>
               <!-- Ícones de Compartilhamento Social -->
               <div class="social-share d-flex">
                 <a
@@ -364,8 +364,8 @@ export default defineComponent({
     margin-top: 0.5em;
   }
   .social-icon {
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
 
   padding: 0.2em;
 }
