@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
             <div class="back-fixed">
-              <button @click="goBack" class="btn btn-primary-border m-0">< Voltar</button>
+              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
               <!-- Ícones de Compartilhamento Social -->
               <div class="social-share d-flex">
                 <a
@@ -25,7 +25,7 @@
           <div class="col-sm-7 col-md-12 col-lg-7">
             <div v-if="loading">
               <div class="d-flex mb-3">
-                <div class="skeleton skeleton-category me-2"></div> 
+                <div class="skeleton skeleton-category me-2"></div>
                 <div class="skeleton skeleton-date"></div>
               </div>
               <div class="skeleton skeleton-title mb-3"></div>
@@ -55,9 +55,9 @@
             <!-- Formulário de Newsletter -->
             <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
               <h3>Assine para novas atualizações.</h3>
-              <form method="POST" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/20534155/d57a69e4-6f43-4768-a600-5f7d30306260" class="form">
+              <form @submit.prevent="submitForm" class="form">
                 <div class="mb-3">
-                  <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                  <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Inscrever-se</button>
               </form>
@@ -70,9 +70,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import axios from 'axios'
-import { useRoute, useRouter } from 'vue-router'
+import { defineComponent, ref, onMounted } from 'vue';
+import axios from 'axios';
+import { useRoute, useRouter } from 'vue-router';
 
 interface Article {
   id: number;
@@ -97,13 +97,14 @@ interface Category {
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
-    const article = ref<Article | null>(null)
-    const categories = ref<Category[]>([])
-    const loading = ref(true)
-    const imageLoaded = ref(false)
-    const route = useRoute()
-    const router = useRouter()
-    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
+    const article = ref<Article | null>(null);
+    const categories = ref<Category[]>([]);
+    const loading = ref(true);
+    const imageLoaded = ref(false);
+    const route = useRoute();
+    const router = useRouter();
+    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br';
+    const email = ref(''); // Campo para armazenar o email do formulário
 
     const socialNetworks = ref([
       { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
@@ -111,69 +112,62 @@ export default defineComponent({
       { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
       { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
       { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
-      { name: 'Link', url: window.location.href, icon: 'bx bx-link' }
+      { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
     ]);
 
     const fetchArticleBySlug = async (slug: string) => {
       try {
-        console.log(`Fetching article from ${baseURL}/articles?slug=${slug}`)
-        const response = await axios.get(`${baseURL}/articles?slug=${slug}`)
-        console.log('Response:', response)
+        const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
         if (response.data.length) {
-          article.value = response.data[0]
+          article.value = response.data[0];
         } else {
-          console.error('Article not found')
+          console.error('Artigo não encontrado');
         }
       } catch (error) {
-        console.error('Error fetching article:', error.response ? error.response.data : error.message)
+        console.error('Erro ao buscar o artigo:', error.response ? error.response.data : error.message);
       } finally {
-        loading.value = false
+        loading.value = false;
       }
-    }
+    };
 
     const fetchCategories = async () => {
       try {
-        console.log(`Fetching categories from ${baseURL}/categories`)
-        const response = await axios.get(`${baseURL}/categories`)
-        console.log('Response:', response)
-        categories.value = response.data
+        const response = await axios.get(`${baseURL}/categories`);
+        categories.value = response.data;
       } catch (error) {
-        console.error('Error fetching categories:', error.response ? error.response.data : error.message)
+        console.error('Erro ao buscar categorias:', error.response ? error.response.data : error.message);
       }
-    }
+    };
 
     const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
-        const url = new URL(article.thumb.url, baseURL).href
-        console.log('Generated image URL:', url)
-        return url
+        return new URL(article.thumb.url, baseURL).href;
       }
-      return '/thumb_blog_gsstudio.webp' // Substitua por uma URL de imagem padrão
-    }
+      return '/thumb_blog_gsstudio.webp'; // Substitua por uma URL de imagem padrão
+    };
 
     const formatDate = (date: string) => {
-      if (!date) return ''
-      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('pt-BR', options)
-    }
+      if (!date) return '';
+      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(date).toLocaleDateString('pt-BR', options);
+    };
 
     const getCategoryTitle = (categoryId: number) => {
-      if (!categoryId) return ''
-      const category = categories.value.find(cat => cat.id === categoryId)
-      return category ? category.title : ''
-    }
+      const category = categories.value.find(cat => cat.id === categoryId);
+      return category ? category.title : '';
+    };
 
     const hasThumbnail = (article: Article) => {
-      return article && article.thumb && article.thumb.url
-    }
+      return article && article.thumb && article.thumb.url;
+    };
 
     const onImageLoad = () => {
-      imageLoaded.value = true
-    }
+      imageLoaded.value = true;
+    };
 
     const goBack = () => {
-      router.go(-1)
-    }
+      router.go(-1);
+    };
 
     const share = (network: { name: string, url: string }) => {
       if (network.name === 'Link') {
@@ -181,24 +175,38 @@ export default defineComponent({
           alert('Link copiado para a área de transferência!');
         });
       } else {
-        window.open(network.url, '_blank', 'noopener,noreferrer')
+        window.open(network.url, '_blank', 'noopener,noreferrer');
       }
-    }
+    };
+
+    const submitForm = async () => {
+      const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/e99c7f8d-d097-4bc3-8052-3b492824d00b';
+      try {
+        const response = await axios.post(webhookUrl, { email: email.value }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        alert('Formulário enviado com sucesso!');
+        email.value = ''; // Limpa o campo de email após o envio
+      } catch (error) {
+        console.error('Erro ao enviar o formulário:', error.response ? error.response.data : error.message);
+        alert('Erro ao enviar o formulário.');
+      }
+    };
 
     onMounted(async () => {
-      const slug = route.params.slug as string
-      console.log('Fetching article with slug:', slug)
-      await fetchArticleBySlug(slug)
-      await fetchCategories()
-      console.log('Article:', article.value)
-      console.log('Categories:', categories.value)
-    })
+      const slug = route.params.slug as string;
+      await fetchArticleBySlug(slug);
+      await fetchCategories();
+    });
 
     return {
       article,
       categories,
       loading,
       imageLoaded,
+      email,
       socialNetworks,
       getArticleImage,
       getCategoryTitle,
@@ -206,10 +214,11 @@ export default defineComponent({
       hasThumbnail,
       onImageLoad,
       goBack,
-      share
-    }
-  }
-})
+      share,
+      submitForm,
+    };
+  },
+});
 </script>
 
 <style scoped>
@@ -364,10 +373,9 @@ export default defineComponent({
     margin-top: 0.5em;
   }
   .social-icon {
-  width: 23px;
-  height: 23px;
-
-  padding: 0.2em;
-}
+    width: 25px;
+    height: 25px;
+    padding: 0.2em;
+  }
 }
 </style>

@@ -1,10 +1,24 @@
 <template>
-  <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
+  <!-- Fale conosco -->
+  <section class="py-5 bg-dark d-flex my-5" id="topo">
+    <div class="container d-flex justify-content-center align-items-center my-5 py-5">
+      <div class="row">
+        <div class="col text-center text-light my-2">
+          <div class="my-2">
+            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> /
+            <span>Contato</span>
+          </div>
+          <h1 class="text-light">Contato</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class=" py-5 min-vh-100 justify-content-center align-content-center" id="blog">
     <div class="container my-5">
       <div class="row">
-        <h2 class="text-center">Blog</h2>
+        
         <!-- Skeleton Cards -->
-        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="loading && articles.length === 0" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="image-container">
               <div class="skeleton skeleton-img"></div>
@@ -43,107 +57,122 @@
           </div>
         </div>
       </div>
-      <div class="row my-3">
-        <div class="col d-flex align-content-center justify-content-center">
-          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
-        </div>
-      </div>
+      <div class="row my-5">
+    <div class="col d-flex align-content-center justify-content-center">
+      <button @click="loadMoreArticles" :disabled="loadingMore || !hasMoreArticles" class="btn btn-primary">
+        <span v-if="loadingMore" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span v-else>Ver mais artigos</span>
+      </button>
+    </div>
+  </div>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import axios from 'axios'
-import type { Article, Category } from '~/types'
+import { defineComponent, ref, onMounted, computed } from 'vue';
+import axios from 'axios';
+import type { Article, Category } from '~/types';
 
 export default defineComponent({
   name: 'Blog',
   setup() {
-    const articles = ref<Article[]>([])
-    const categories = ref<Category[]>([])
-    const loading = ref(true)
-    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
-    const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID
+    const articles = ref<Article[]>([]);
+    const categories = ref<Category[]>([]);
+    const loading = ref(true);
+    const loadingMore = ref(false);
+    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br';
+    const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID;
+    const articlesPerPage = 4;
+    const loadedArticlesCount = ref(articlesPerPage); // Inicialmente carrega apenas 4 artigos
 
     const fetchArticles = async (tenantId: string) => {
       try {
-        const response = await axios.get(`${baseURL}/tenants/${tenantId}`)
+        const response = await axios.get(`${baseURL}/tenants/${tenantId}`);
         articles.value = response.data.articles
           .sort((a: Article, b: Article) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
-          .slice(0, 4)
-          .map((article: Article) => ({ ...article, imageLoaded: false })) // Adiciona a propriedade imageLoaded
+          .map((article: Article) => ({ ...article, imageLoaded: false }));
       } catch (error) {
-        console.error('Error fetching articles:', error)
+        console.error('Error fetching articles:', error);
       } finally {
-        loading.value = false
+        loading.value = false;
       }
-    }
+    };
+
+    const loadMoreArticles = () => {
+      if (loadingMore.value || !hasMoreArticles.value) return;
+
+      loadingMore.value = true;
+
+      setTimeout(() => {
+        // Simula o carregamento de mais artigos
+        loadedArticlesCount.value += articlesPerPage;
+        loadingMore.value = false;
+      }, 1000);
+    };
+
+    const displayedArticles = computed(() => {
+      return articles.value.slice(0, loadedArticlesCount.value);
+    });
+
+    const hasMoreArticles = computed(() => {
+      return loadedArticlesCount.value < articles.value.length;
+    });
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${baseURL}/categories`)
-        categories.value = response.data
+        const response = await axios.get(`${baseURL}/categories`);
+        categories.value = response.data;
       } catch (error) {
-        console.error('Error fetching categories:', error)
+        console.error('Error fetching categories:', error);
       }
-    }
+    };
 
     const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
-        const url = new URL(article.thumb.url, baseURL).href
-        console.log('Generated image URL:', url)
-        return url
+        const url = new URL(article.thumb.url, baseURL).href;
+        return url;
       }
-      return 'thumb_blog_gsstudio.webp'
-    }
-
-    const formatDate = (date: string) => {
-      if (!date) return ''
-      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('pt-BR', options)
-    }
+      return 'thumb_blog_gsstudio.webp';
+    };
 
     const getCategoryTitle = (categoryId: number) => {
-      if (!categoryId) return ''
-      const category = categories.value.find(cat => cat.id === categoryId)
-      return category ? category.title : ''
-    }
-
-    const onIntersect = (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting) {
-        fetchArticles(VITE_STRAPI_TENANT_ID)
-        fetchCategories()
-        const blogSection = document.querySelector('#blog')
-        if (blogSection) {
-          observer.unobserve(blogSection)
-        }
-      }
-    }
-
-    let observer: IntersectionObserver
+      if (!categoryId) return '';
+      const category = categories.value.find(cat => cat.id === categoryId);
+      return category ? category.title : '';
+    };
 
     onMounted(() => {
-      observer = new IntersectionObserver(onIntersect)
-      const blogSection = document.querySelector('#blog')
-      if (blogSection) {
-        observer.observe(blogSection)
-      }
-    })
+      fetchArticles(VITE_STRAPI_TENANT_ID);
+      fetchCategories();
+    });
 
     return {
-      articles,
-      categories,
+      articles: displayedArticles,
       loading,
+      loadingMore,
       getArticleImage,
       getCategoryTitle,
-      formatDate
-    }
-  }
-})
+      loadMoreArticles,
+      hasMoreArticles,
+    };
+  },
+});
 </script>
 
 <style scoped>
+.topo .col {
+  display: flex;
+  align-items: center;
+}
+
+.topo .col h1 {
+  margin-left: 5px;
+  display: inline;
+  font-weight: normal !important;
+  color: #000;
+}
+
 .card {
   margin-bottom: 20px;
   border: 0;
@@ -248,6 +277,7 @@ export default defineComponent({
 .blur-effect {
   transition: filter 0.2s ease;
 }
+
 .blurred {
   filter: blur(20px);
 }
