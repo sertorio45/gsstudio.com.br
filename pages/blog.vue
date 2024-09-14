@@ -6,9 +6,9 @@
         <div class="col text-center text-light my-2">
           <div class="my-2">
             <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> /
-            <span>Contato</span>
+            <span>Blog</span>
           </div>
-          <h1 class="text-light">Contato</h1>
+          <h1 class="text-light">Blog</h1>
         </div>
       </div>
     </div>

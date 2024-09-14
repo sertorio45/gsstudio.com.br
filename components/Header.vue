@@ -35,7 +35,7 @@
               <NuxtLink to="/" class="nav-link" @click="toggleMenu">Página inicial</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/" class="nav-link" @click="toggleMenu">Sobre nós</NuxtLink>
+              <NuxtLink to="/sobre" class="nav-link" @click="toggleMenu">Sobre nós</NuxtLink>
             </li>
             <li class="nav-item">
               <NuxtLink to="/servicos" class="nav-link" @click="toggleMenu">Serviços</NuxtLink>

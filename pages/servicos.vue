@@ -1,5 +1,4 @@
 <template>
-  <!-- Fale conosco -->
   <!-- Hero Section -->
   <section class="bg-dark min-vh-100 d-flex justify-content-center align-items-center pt-5" id="topo">
     <div class="container d-flex ">
@@ -164,6 +163,8 @@ useCardAnimation();
 
 #topo {
   background-image: url('img/fundo-header-default.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #topo h1 {
