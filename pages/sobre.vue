@@ -15,7 +15,7 @@
   </section>
 
   <!-- Seção 1: Nossa História -->
-<section class="py-5 mb-5 min-vh-100 d-flex align-items-center justify-items-center bg-dark text-light" id="topo">
+<section class="py-5 min-vh-100 d-flex align-items-center justify-items-center bg-dark text-light" id="topo">
   <div class="container">
     <div class="row align-items-center g-5 my-5">
       <div class="col-md-6 mb-4 order-2 order-md-1">
@@ -25,7 +25,13 @@
       </div>
       <div class="col-md-6 order-1 order-md-2">
         <h2 class="text-light">Nossa Trajetória</h2>
-        <p>A GS STUDIO foi fundada em 2016 por Giovanni Sertorio, um profissional apaixonado por tecnologia e design com vasta experiência no setor. Com o desejo de transformar o mercado de comunicação visual e marketing, Giovanni estabeleceu a agência com o objetivo de ajudar empresas a se destacarem e a se conectarem profundamente com seus consumidores. Desde o início, a GS STUDIO tem se dedicado a inovar e a elevar o padrão de qualidade em todos os projetos.</p>
+        <p>
+          A GS STUDIO foi fundada por Giovanni Sertorio, um entusiasta de tecnologia e design. Desde a adolescência, 
+          Giovanni aprimorou suas habilidades em design gráfico, web design, hardware e programação. Com experiência em ensino, 
+          ele formou diversos alunos nas áreas em que atua. Motivado a transformar o mercado de comunicação visual e marketing, 
+          Giovanni criou a GS STUDIO para ajudar empresas a se destacarem com soluções criativas e de alta qualidade, 
+          focadas em criar conexões impactantes com seus consumidores.
+        </p>
         <!-- Botão que aparece apenas em tablets e telas maiores -->
         <a href="#marcos" class="btn btn-primary d-none d-md-inline-flex">Um pouco mais sobre nossa história</a>
       </div>
@@ -33,7 +39,30 @@
   </div>
 </section>
 
-
+<section class="mission-vision-values">
+  <div class="container">
+    <div class="row">
+      <!-- Missão -->
+      <div class="col-md-4 col-sm-12 text-center">
+        <i class="bx bxs-rocket"></i>
+        <h3>Missão</h3>
+        <p>Entregar excelência e inovação com agilidade, foco em resultados e total compromisso com clientes e parceiros.</p>
+      </div>
+      <!-- Visão -->
+      <div class="col-md-4 col-sm-12 text-center">
+        <i class="bx bxs-bulb"></i>
+        <h3>Visão</h3>
+        <p>Ser referência em soluções criativas e de alta qualidade, desenvolvendo projetos que integram comunicação visual, design, web design e marketing.</p>
+      </div>
+      <!-- Valores -->
+      <div class="col-md-4 col-sm-12 text-center">
+        <i class="bx bxs-heart"></i>
+        <h3>Valores</h3>
+        <p>Transformar a percepção de produtos e serviços através de estratégias eficazes, com foco em atrair clientes e gerar resultados comerciais.</p>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- Seção 2: Linha do Tempo (Marcos Importantes) -->
   <section class="my-5 min-vh-100 py-5" id="marcos">
     <div class="container timeline-container my-5 py-5">
@@ -95,6 +124,9 @@
       </div>
     </div>
   </section>
+
+
+
 
   <!-- Chamada para Ação -->
   <section class="py-5 bg-dark text-light text-center">
@@ -256,5 +288,55 @@ useCardAnimation();
   background-position: center;
 }
 
+.mission-vision-values {
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
+
+.mission-vision-values .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mission-vision-values h3 {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  color: #333;
+}
+
+.mission-vision-values p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 10px;
+  padding: 0 15px;
+}
+
+.mission-vision-values .bx {
+  font-size: 50px;
+  color: var(--color-primary);
+}
+
+.mission-vision-values .col-md-4 {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .mission-vision-values .col-md-4 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .mission-vision-values h3 {
+    font-size: 1.5rem;
+  }
+  .mission-vision-values p {
+    font-size: 0.9rem;
+  }
+  .mission-vision-values .bx {
+    font-size: 40px;
+  }
+}
 
 </style>

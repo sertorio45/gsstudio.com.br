@@ -41,6 +41,9 @@
               <NuxtLink to="/servicos" class="nav-link" @click="toggleMenu">Serviços</NuxtLink>
             </li>
             <li class="nav-item">
+              <NuxtLink to="/#portifolio" class="nav-link" @click="toggleMenu">Portifolio</NuxtLink>
+            </li>
+            <li class="nav-item">
               <NuxtLink to="/blog" class="nav-link" @click="toggleMenu">Blog</NuxtLink>
             </li>
             <li class="nav-item">

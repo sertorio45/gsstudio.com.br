@@ -26,7 +26,7 @@
 
   --font-family: 'DM Sans', sans-serif;
   --text-size: 1rem;
-  --texto-grande: 5rem;
+  --texto-grande: 5vw;
   --texto-medio: 2rem;
   --texto-pequeno: 1.25rem;
   --font-weight-bold: 600; /* Define bold */
@@ -41,8 +41,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text) !important;
-  font-weight: var(--font-weight-bold) !important; /* Aplica negrito */
-  font-family: 'Poppins', sans-serif !important; /* Corrige a fonte para DM Sans com Poppins como fallback */
+  font-family: 'Unbounded', sans-serif !important; /* Corrige a fonte para DM Sans com Poppins como fallback */
+  font-display: uppercase;
 }
 
 h1, h2 {

@@ -38,7 +38,8 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'DM Sans': [400, 700], // Incluindo regular e bold (400 e 700)
+      'DM Sans': [400, 700],
+      'Unbounded' : [400, 700] // Incluindo regular e bold (400 e 700)
     },
     display: 'swap',
   },

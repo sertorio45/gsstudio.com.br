@@ -76,7 +76,7 @@ const filteredImages = computed(() => {
 </script>
 
 <template>
-  <section class="portfolio-section my-5 py-5 text-center">
+  <section class="portfolio-section my-5 py-5 text-center" id="portifolio">
     <div class="container-fluid my-5">
       <div class="row">
         <div class="col-12 text-center">
