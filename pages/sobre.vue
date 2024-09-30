@@ -9,19 +9,20 @@
             <span>Sobre</span>
           </div>
           <h1 class="text-light">Sobre a GS STUDIO</h1>
+           <a href="#topo"><Icon icon="bx bxs-chevrons-down my-3" fontSize="3em" color="#fff"/></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Seção 1: Nossa História -->
-<section class="py-5 min-vh-100 d-flex align-items-center justify-items-center bg-dark text-light" id="topo">
+<section class="py-5 min-vh-100 d-flex align-items-center justify-items-center bg-dark text-light section" id="topo">
   <div class="container">
     <div class="row align-items-center g-5 my-5">
       <div class="col-md-6 mb-4 order-2 order-md-1">
         <img src="/img/ceo.webp" alt="Foto de Giovanni Sertorio" class="img-fluid">
         <!-- Botão que aparece apenas no mobile -->
-        <a href="#marcos" class="btn btn-primary d-sm-block d-md-none my-4">Um pouco mais sobre nossa história</a>
+        <a href="#marcos" class="btn btn-primary d-sm-block d-md-none my-4">Continue...</a>
       </div>
       <div class="col-md-6 order-1 order-md-2">
         <h2 class="text-light">Nossa Trajetória</h2>
@@ -33,13 +34,13 @@
           focadas em criar conexões impactantes com seus consumidores.
         </p>
         <!-- Botão que aparece apenas em tablets e telas maiores -->
-        <a href="#marcos" class="btn btn-primary d-none d-md-inline-flex">Um pouco mais sobre nossa história</a>
+        <a href="#marcos" class="btn btn-primary d-none d-md-inline-flex">Continue...</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="mission-vision-values">
+<section class="mission-vision-values section" id="marcos">
   <div class="container">
     <div class="row">
       <!-- Missão -->
@@ -61,10 +62,14 @@
         <p>Transformar a percepção de produtos e serviços através de estratégias eficazes, com foco em atrair clientes e gerar resultados comerciais.</p>
       </div>
     </div>
+    <div class="d-flex justify-content-center my-3">
+      <a href="#timeline" class="btn btn-primary text-center">Continue...</a>
+    </div>
   </div>
+  
 </section>
   <!-- Seção 2: Linha do Tempo (Marcos Importantes) -->
-  <section class="my-5 min-vh-100 py-5" id="marcos">
+  <section class="my-5 min-vh-100 py-5" id="timeline">
     <div class="container timeline-container my-5 py-5">
       <div class="row">
         <div class="col text-center">
@@ -143,6 +148,7 @@ import { useCardAnimation } from '~/composables/useCardAnimation';
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
+
 </script>
 
 <style scoped>

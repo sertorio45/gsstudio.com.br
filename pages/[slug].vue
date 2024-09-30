@@ -32,7 +32,7 @@
               <div class="skeleton skeleton-img mb-3"></div>
               <div class="skeleton skeleton-content mb-3"></div>
             </div>
-            <div v-else-if="article">
+            <div v-else-if="article" class="content_blog">
               <div class="mb-3 mx-0">
                 <span class="article-category">{{ article.category.title }}</span>
                 <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
@@ -41,9 +41,25 @@
               <div class="my-4">
                 <picture v-if="hasThumbnail(article)">
                   <source :srcset="getArticleImage(article)" @load="onImageLoad">
-                  <NuxtImg :src="getArticleImage(article)" class="img-fluid blur-effect" :class="{ 'blurred': !imageLoaded }" :alt="article.titulo" @load="onImageLoad" lazy="loading" />
+                  <NuxtImg 
+                    :src="getArticleImage(article)" 
+                    class="img-fluid blur-effect" 
+                    :class="{ 'blurred': !imageLoaded }" 
+                    :alt="article.titulo" 
+                    @load="onImageLoad" 
+                    lazy="loading" 
+                  />
                 </picture>
-                <nuxt-img v-else src="/thumb_blog_gsstudio.webp" class="img-fluid blur-effect" :class="{ 'blurred': !imageLoaded }" alt="Default Image" lazy="loading" @load="onImageLoad" />
+                <NuxtImg 
+                  v-else 
+                  src="/thumb_blog_gsstudio.webp" 
+                  class="img-fluid blur-effect" 
+                  :class="{ 'blurred': !imageLoaded }" 
+                  alt="Default Image" 
+                  lazy="loading" 
+                  @load="onImageLoad" 
+                  style="width: 100%;" 
+                />
               </div>
               <div v-html="article.content"></div>
             </div>
@@ -78,6 +94,8 @@ interface Article {
   id: number;
   slug: string;
   titulo: string;
+  seo_description: string;
+  seo_keywords: string;  // Adicionando campo para keywords
   thumb?: {
     url?: string;
   };
@@ -89,21 +107,15 @@ interface Article {
   content: string;
 }
 
-interface Category {
-  id: number;
-  title: string;
-}
-
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
     const article = ref<Article | null>(null);
-    const categories = ref<Category[]>([]);
     const loading = ref(true);
-    const imageLoaded = ref(false);
+    const imageLoaded = ref(false); // Controle de carregamento da imagem
     const route = useRoute();
     const router = useRouter();
-    const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br';
+    const baseURL = import.meta.env.VITE_STRAPI_URL;
     const email = ref(''); // Campo para armazenar o email do formulário
 
     const socialNetworks = ref([
@@ -120,22 +132,18 @@ export default defineComponent({
         const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
         if (response.data.length) {
           article.value = response.data[0];
+          updateMetaTags(); // Atualiza as meta tags SEO após o artigo ser carregado
         } else {
           console.error('Artigo não encontrado');
         }
-      } catch (error) {
-        console.error('Erro ao buscar o artigo:', error.response ? error.response.data : error.message);
+      } catch (error: unknown) {  
+        if (axios.isAxiosError(error)) {
+          console.error('Erro ao buscar o artigo:', error.response ? error.response.data : error.message);
+        } else {
+          console.error('Erro inesperado:', error);
+        }
       } finally {
         loading.value = false;
-      }
-    };
-
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(`${baseURL}/categories`);
-        categories.value = response.data;
-      } catch (error) {
-        console.error('Erro ao buscar categorias:', error.response ? error.response.data : error.message);
       }
     };
 
@@ -152,17 +160,12 @@ export default defineComponent({
       return new Date(date).toLocaleDateString('pt-BR', options);
     };
 
-    const getCategoryTitle = (categoryId: number) => {
-      const category = categories.value.find(cat => cat.id === categoryId);
-      return category ? category.title : '';
-    };
-
     const hasThumbnail = (article: Article) => {
       return article && article.thumb && article.thumb.url;
     };
 
     const onImageLoad = () => {
-      imageLoaded.value = true;
+      imageLoaded.value = true;  // A imagem foi carregada, remova o blur
     };
 
     const goBack = () => {
@@ -190,28 +193,47 @@ export default defineComponent({
         alert('Formulário enviado com sucesso!');
         email.value = ''; // Limpa o campo de email após o envio
       } catch (error) {
-        console.error('Erro ao enviar o formulário:', error.response ? error.response.data : error.message);
         alert('Erro ao enviar o formulário.');
+      }
+    };
+
+    // Atualiza as meta tags dinamicamente com os dados do artigo
+    const updateMetaTags = () => {
+      if (article.value) {
+        useHead({
+          title: article.value.titulo,
+          meta: [
+            { name: 'description', content: article.value.seo_description },
+            { name: 'keywords', content: article.value.seo_keywords },  // Adicionando meta tag de keywords
+            { property: 'og:title', content: article.value.titulo },
+            { property: 'og:description', content: article.value.seo_description },
+            { property: 'og:image', content: getArticleImage(article.value) },
+            { property: 'og:type', content: 'article' },
+            { property: 'og:url', content: window.location.href },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: article.value.titulo },
+            { name: 'twitter:description', content: article.value.seo_description },
+            { name: 'twitter:image', content: getArticleImage(article.value) },
+          ],
+          link: [{ rel: 'canonical', href: window.location.href }],
+        });
       }
     };
 
     onMounted(async () => {
       const slug = route.params.slug as string;
       await fetchArticleBySlug(slug);
-      await fetchCategories();
     });
 
     return {
       article,
-      categories,
       loading,
       imageLoaded,
       email,
       socialNetworks,
       getArticleImage,
-      getCategoryTitle,
-      formatDate,
       hasThumbnail,
+      formatDate,
       onImageLoad,
       goBack,
       share,
@@ -222,14 +244,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.content_blog h2 {
+  font-size: 20px !important;
+}
+
 #article-detail {
   padding-top: 1.9rem;
 }
+
 .btn-primary-border {
   border: 1px solid var(--bs-primary);
   background: transparent;
   color: var(--bs-primary);
 }
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -279,7 +307,7 @@ export default defineComponent({
 }
 
 .blur-effect {
-  transition: filter 0.2s ease;
+  transition: filter 0.5s ease;
 }
 .blurred {
   filter: blur(20px);
@@ -289,12 +317,12 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: #000;
   color: #fff !important;
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
   transition: background-color 0.3s;
 }
@@ -375,7 +403,8 @@ export default defineComponent({
   .social-icon {
     width: 25px;
     height: 25px;
-    padding: 0.2em;
+    padding: 0.18em;
+    margin-top: 10px;
   }
 }
 </style>

@@ -32,6 +32,10 @@
   --font-weight-bold: 600; /* Define bold */
 }
 
+html {
+  scroll-padding-top: 80px;
+}
+
 body {
   background-color: var(--color-bg) !important;
   color: var(--color-text) !important;
@@ -555,14 +559,14 @@ em {
     width: 100% !important;
   }
 
-  #cta .container {
-    
-  }
-
   #cta .col p {
     width: 100% !important;
   }
 
+}
+
+.content_blog h2 {
+  font-size: 20px !important;
 }
 
 

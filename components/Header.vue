@@ -86,6 +86,7 @@ function toggleMenu() {
   top: 0;
   left: 0;
   z-index: 9999;
+  
 }
 
 .nav-link {
@@ -106,6 +107,7 @@ function toggleMenu() {
 /* Fullscreen para o Navbar */
 .navbar-collapse {
   display: none; /* Esconde o menu por padrão */
+  
 }
 
 .navbar-collapse.show-fullscreen {
@@ -244,3 +246,5 @@ function toggleMenu() {
   }
 }
 </style>
+
+aplica o codigo nesse codigo em nuxt 3
