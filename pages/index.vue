@@ -27,27 +27,24 @@
               Design publicitário, marketing online/offline e websites. Na GS STUDIO, combinamos criatividade e estratégias comprovadas para desenvolver campanhas de marketing eficazes e impactantes. Nossos especialistas em tecnologia oferecem soluções personalizadas para maximizar a eficiência do seu negócio.
             </p>
           </div>
-          <div class="col-12 col-md-7 text-center d-flex align-items-center justify-content-center px-5">
+          <div class="col-12 col-md-7 text-center d-flex align-items-center justify-content-end">
             <div class="row w-100">
               <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-design.svg" class="p-2 my-1"/>
+                  <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="Icone de Design" />
                   <h3>Design</h3>
-                  <!-- <a href="#none">Saiba mais</a> -->
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1"/>
+                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="Icone de Marketing" />
                   <h3>Marketing</h3>
-                  <!-- <a href="#none">Saiba mais</a> -->
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-4 d-flex">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-tecnologia.svg" class="p-2 my-1"/>
+                  <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="Icone de Tecnologia" />
                   <h3>Tecnologia</h3>
-                  <!-- <a href="#none">Saiba mais</a> -->
                 </div>
               </div>
             </div>
@@ -117,30 +114,26 @@
           <div class="row p-3">
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1"/>
+                <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" alt="Sites" />
                 <h3>Sites</h3>
-                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1"/>
+                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1" alt="Redes sociais" />
                 <h3>Redes sociais</h3>
-                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1"/>
+                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" alt="Lojas virtuais" />
                 <h3>Lojas virtuais</h3>
-                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1"/>
+                <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" alt="Marcas" />
                 <h3>Marcas</h3>
-                <!-- <span><a href="#none">Saiba mais</a></span> -->
               </div>
             </div>
           </div>
@@ -190,6 +183,7 @@ export default defineComponent({
     Portifolio,
     Blog
   },
+ 
   methods: {
     importAll(r) {
       return r.keys().map(r);
@@ -282,6 +276,10 @@ export default defineComponent({
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
+useSeoMeta({
+  title: 'Início - Gs Studio - Agência de marketing, design e tecnologia',
+});
+
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
 </script>
@@ -294,11 +292,7 @@ useCardAnimation();
   font-size: var(--texto-medio) !important;
 }
 
-#sobre img {
-  width: 100px !important;
-}
-
-#servicos img {
+#sobre img, #servicos img {
   width: 100px !important;
 }
 

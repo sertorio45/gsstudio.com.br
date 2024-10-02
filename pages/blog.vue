@@ -9,14 +9,16 @@
             <span>Blog</span>
           </div>
           <h1 class="text-light">Blog</h1>
+          <a href="#blog"><Icon icon="bx bxs-chevrons-down my-3" fontSize="3em" color="#fff"/></a>
         </div>
       </div>
     </div>
   </section>
-  <section class=" py-5 min-vh-100 justify-content-center align-content-center" id="blog">
+
+  <!-- Blog Section -->
+  <section class="py-5 justify-content-center align-content-center" id="blog">
     <div class="container my-5">
       <div class="row">
-        
         <!-- Skeleton Cards -->
         <div v-if="loading && articles.length === 0" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
@@ -31,18 +33,20 @@
             </div>
           </div>
         </div>
+
         <!-- Actual Cards -->
         <div v-else class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="image-container">
               <nuxt-link :to="`${article.slug}`">
-                <NuxtImg 
+                <img
                   :src="getArticleImage(article)" 
-                  class="img-fluid blur-effect" 
-                  :class="{ 'blurred': !article.imageLoaded }" 
-                  :alt="article.titulo" 
-                  @load="article.imageLoaded = true" 
-                  loading="lazy" 
+                  class="img-fluid blur-effect"
+                  :class="{ 'blurred': !article.imageLoaded }"
+                  :alt="article.titulo"
+                  @load="article.imageLoaded = true"
+                  @error="handleImageError($event)"
+                  loading="lazy"
                 />
               </nuxt-link>
             </div>
@@ -50,21 +54,23 @@
               <div class="mb-2">
                 <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
               </div>
-              <nuxt-link :to="`${article.slug}`">
+              <NuxtLink :to="`${article.slug}`">
                 {{ article.titulo }}
-              </nuxt-link>
+              </NuxtLink>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Load More Button -->
       <div class="row my-5">
-    <div class="col d-flex align-content-center justify-content-center">
-      <button @click="loadMoreArticles" :disabled="loadingMore || !hasMoreArticles" class="btn btn-primary">
-        <span v-if="loadingMore" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span v-else>Ver mais artigos</span>
-      </button>
-    </div>
-  </div>
+        <div class="col d-flex align-content-center justify-content-center">
+          <button @click="loadMoreArticles" :disabled="loadingMore || !hasMoreArticles" class="btn btn-primary">
+            <span v-if="loadingMore" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span v-else>Ver mais artigos</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -105,7 +111,6 @@ export default defineComponent({
       loadingMore.value = true;
 
       setTimeout(() => {
-        // Simula o carregamento de mais artigos
         loadedArticlesCount.value += articlesPerPage;
         loadingMore.value = false;
       }, 1000);
@@ -130,16 +135,19 @@ export default defineComponent({
 
     const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
-        const url = new URL(article.thumb.url, baseURL).href;
-        return url;
+        return new URL(article.thumb.url, baseURL).href;
       }
-      return 'thumb_blog_gsstudio.webp';
+      return 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp';
+    };
+
+    const handleImageError = (event: Event) => {
+      const img = event.target as HTMLImageElement;
+      img.src = 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp';
     };
 
     const getCategoryTitle = (categoryId: number) => {
-      if (!categoryId) return '';
       const category = categories.value.find(cat => cat.id === categoryId);
-      return category ? category.title : '';
+      return category ? category.title : 'Categoria desconhecida';
     };
 
     onMounted(() => {
@@ -155,6 +163,7 @@ export default defineComponent({
       getCategoryTitle,
       loadMoreArticles,
       hasMoreArticles,
+      handleImageError,
     };
   },
 });

@@ -22,13 +22,11 @@
           <div class="card">
             <div class="image-container">
               <nuxt-link :to="`${article.slug}`">
-                <NuxtImg 
+                <img 
                   :src="getArticleImage(article)" 
                   class="img-fluid blur-effect" 
-                  :class="{ 'blurred': !article.imageLoaded }" 
                   :alt="article.titulo" 
-                  @load="article.imageLoaded = true" 
-                  loading="lazy" 
+                  @error="onImageError"
                 />
               </nuxt-link>
             </div>
@@ -64,7 +62,7 @@ export default defineComponent({
     const categories = ref<Category[]>([])
     const loading = ref(true)
     const baseURL = import.meta.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br'
-    const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID
+    const fallbackImage = 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp' // URL da imagem de fallback
 
     const fetchArticles = async (tenantId: string) => {
       try {
@@ -72,7 +70,6 @@ export default defineComponent({
         articles.value = response.data.articles
           .sort((a: Article, b: Article) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
           .slice(0, 4)
-          .map((article: Article) => ({ ...article, imageLoaded: false })) // Adiciona a propriedade imageLoaded
       } catch (error) {
         console.error('Error fetching articles:', error)
       } finally {
@@ -91,44 +88,24 @@ export default defineComponent({
 
     const getArticleImage = (article: Article) => {
       if (article.thumb && article.thumb.url) {
-        const url = new URL(article.thumb.url, baseURL).href
-        console.log('Generated image URL:', url)
-        return url
+        return new URL(article.thumb.url, baseURL).href
       }
-      return 'thumb_blog_gsstudio.webp'
-    }
-
-    const formatDate = (date: string) => {
-      if (!date) return ''
-      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('pt-BR', options)
+      return fallbackImage // Retorna imagem de fallback caso não haja thumb
     }
 
     const getCategoryTitle = (categoryId: number) => {
-      if (!categoryId) return ''
       const category = categories.value.find(cat => cat.id === categoryId)
-      return category ? category.title : ''
+      return category ? category.title : 'Categoria desconhecida'
     }
 
-    const onIntersect = (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting) {
-        fetchArticles(VITE_STRAPI_TENANT_ID)
-        fetchCategories()
-        const blogSection = document.querySelector('#blog')
-        if (blogSection) {
-          observer.unobserve(blogSection)
-        }
-      }
+    const onImageError = (event: Event) => {
+      const target = event.target as HTMLImageElement
+      target.src = fallbackImage // Substitui pela imagem de fallback se ocorrer erro
     }
-
-    let observer: IntersectionObserver
 
     onMounted(() => {
-      observer = new IntersectionObserver(onIntersect)
-      const blogSection = document.querySelector('#blog')
-      if (blogSection) {
-        observer.observe(blogSection)
-      }
+      fetchArticles(import.meta.env.VITE_STRAPI_TENANT_ID)
+      fetchCategories()
     })
 
     return {
@@ -136,8 +113,8 @@ export default defineComponent({
       categories,
       loading,
       getArticleImage,
-      getCategoryTitle,
-      formatDate
+      getCategoryTitle, // Retornando a função getCategoryTitle
+      onImageError
     }
   }
 })
@@ -247,8 +224,5 @@ export default defineComponent({
 
 .blur-effect {
   transition: filter 0.2s ease;
-}
-.blurred {
-  filter: blur(20px);
 }
 </style>

@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
-  ssr: false,  // Certifique-se de que o SSR está habilitado, se necessário
+  ssr: true,
   app: {
     head: {
       title: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia',
@@ -18,40 +18,41 @@ export default defineNuxtConfig({
         { name: 'author', content: 'GS Studio' },
         { property: 'og:title', content: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia' },
         { property: 'og:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia, oferecendo soluções completas para empresas.' },
-        { property: 'og:image', content: '/og-image.png' },
+        { property: 'og:image', content: 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_gsstudio.webp' },
         { property: 'og:url', content: 'https://www.gsstudio.com.br' },
         { property: 'og:type', content: 'website' },
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:title', content: 'GS Studio - Agência Especializada em Design, Marketing e Tecnologia' },
         { property: 'twitter:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
-        { property: 'twitter:image', content: '/og-image.png' }
+        { property: 'twitter:image', content: 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_gsstudio.webp' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
       ],
     },
-    baseURL: '/gsstudio'
+    baseURL: '/',
   },
 
   devtools: { enabled: true },
-  modules: ["@nuxt/image", "nuxt-swiper", "nuxt-easy-lightbox", "@nuxtjs/google-fonts", "@nuxtjs/robots"],
-
+  modules: ["@nuxt/image", "nuxt-swiper", "nuxt-easy-lightbox", "@nuxtjs/google-fonts", "@nuxtjs/robots", "@vee-validate/nuxt"],
+  
   googleFonts: {
     families: {
       'DM Sans': [400, 700],
-      'Unbounded' : [400, 700] // Incluindo regular e bold (400 e 700)
+      'Unbounded' : [400, 700], // Incluindo regular e bold (400 e 700)
     },
-    display: 'swap',
-  },
-
-  robots: {
-    UserAgent: '*',
-    Disallow: '/admin',
-    Allow: '/'
+    fontsDir: 'assets/fonts',
+    base64: true,
+    overwriting: false,
   },
 
   swiper: {
     prefix: 'Swiper',
+  },
+
+  image: {
+    quality: 80,
+    domains: [ 's3.gsstudio.com.br' , 'gsstudio.com.br' ],
   },
 
   css: [
@@ -67,5 +68,5 @@ export default defineNuxtConfig({
     '@/plugins/bootstrap.client.ts',
   ],
 
-  compatibilityDate: '2024-07-22'
+  compatibilityDate: '2024-09-30',
 });

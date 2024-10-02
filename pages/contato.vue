@@ -9,6 +9,7 @@
             <span>Contato</span>
           </div>
           <h1 class="text-light">Contato</h1>
+          <a href="#form"><Icon icon="bx bxs-chevrons-down my-3" fontSize="3em" color="#fff"/></a>
         </div>
       </div>
     </div>
@@ -17,7 +18,7 @@
   <section id="contato" class="my-3">
     <div class="container">
       <div class="row">
-        <div class="col my-5 py-5 d-sm-block">
+        <div class="col my-5 py-5 d-sm-block" id="form">
           <Form />
         </div>
       </div>
@@ -85,6 +86,7 @@
 <script>
 import Form from '~/components/Form.vue'
 
+
 export default {
   components: {
     Form
@@ -108,6 +110,10 @@ export default {
 
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
+
+useSeoMeta({
+  title: 'Contato - Gs Studio - Agência de marketing, design e tecnologia',
+});
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();

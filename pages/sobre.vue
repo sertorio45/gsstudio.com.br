@@ -146,6 +146,11 @@
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
+useSeoMeta({
+  title: 'Sobre nós - Gs Studio - Agência de marketing, design e tecnologia',
+})
+
+
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
 

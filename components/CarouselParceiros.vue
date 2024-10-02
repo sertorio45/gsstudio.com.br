@@ -53,8 +53,6 @@ const parceiros = ref<string[]>([
   'img/parceiros/cliente-48.webp',
   'img/parceiros/cliente-49.webp',
   'img/parceiros/cliente-50.webp',
-  'img/parceiros/cliente-51.webp',
-  'img/parceiros/cliente-52.webp',
 ]);
 
 const metade = Math.ceil(parceiros.value.length / 2);
@@ -67,18 +65,18 @@ const parceiros2 = ref(parceiros.value.slice(metade));
     <Swiper
       :modules="[SwiperAutoplay]"
       :slides-per-view="7"
-      :space-between="45"
+      :space-between="35"
       :loop="true"
       :autoplay="{ delay: 1000, disableOnInteraction: false }"
       :breakpoints="{
         300: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
         640: {
           slidesPerView: 3,
         },
         768: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
         1024: {
           slidesPerView: 7,
@@ -97,18 +95,18 @@ const parceiros2 = ref(parceiros.value.slice(metade));
     <Swiper
       :modules="[SwiperAutoplay]"
       :slides-per-view="7"
-      :space-between="45"
+      :space-between="35"
       :loop="true"
       :autoplay="{ delay: 1000, disableOnInteraction: false, reverseDirection: true }"
       :breakpoints="{
         300: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
         640: {
           slidesPerView: 3,
         },
         768: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
         1024: {
           slidesPerView: 7,

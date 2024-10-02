@@ -40,23 +40,24 @@
               <h1>{{ article.titulo }}</h1>
               <div class="my-4">
                 <picture v-if="hasThumbnail(article)">
-                  <source :srcset="getArticleImage(article)" @load="onImageLoad">
-                  <NuxtImg 
+                  <source :srcset="getArticleImage(article)" @load="onImageLoad" />
+                  <img 
                     :src="getArticleImage(article)" 
                     class="img-fluid blur-effect" 
                     :class="{ 'blurred': !imageLoaded }" 
                     :alt="article.titulo" 
                     @load="onImageLoad" 
-                    lazy="loading" 
+                    @error="handleImageError" 
+                    loading="lazy" 
                   />
                 </picture>
-                <NuxtImg 
+                <img 
                   v-else 
-                  src="/thumb_blog_gsstudio.webp" 
+                  src="https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp" 
                   class="img-fluid blur-effect" 
                   :class="{ 'blurred': !imageLoaded }" 
                   alt="Default Image" 
-                  lazy="loading" 
+                  loading="lazy" 
                   @load="onImageLoad" 
                   style="width: 100%;" 
                 />
@@ -71,11 +72,31 @@
             <!-- Formulário de Newsletter -->
             <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
               <h3>Assine para novas atualizações.</h3>
-              <form @submit.prevent="submitForm" class="form">
+              <form @submit.prevent="submitNewsletterForm" class="form">
                 <div class="mb-3">
                   <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Inscrever-se</button>
+                <div class="">
+                  <button
+                    type="submit"
+                    :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
+                    :disabled="isSubmitting"
+                  >
+                    <span v-if="isSubmitting">
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Enviando...
+                    </span>
+                    <span v-else-if="success">
+                      <i class="bx bx-check-circle"></i> Sucesso!
+                    </span>
+                    <span v-else-if="error">
+                      <i class="bx bx-error"></i> Erro ao enviar!
+                    </span>
+                    <span v-else>
+                      <i class="bx bx-send"></i> Inscrever-se
+                    </span>
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -95,7 +116,7 @@ interface Article {
   slug: string;
   titulo: string;
   seo_description: string;
-  seo_keywords: string;  // Adicionando campo para keywords
+  seo_keywords: string;
   thumb?: {
     url?: string;
   };
@@ -107,41 +128,36 @@ interface Article {
   content: string;
 }
 
+interface SocialNetwork {
+  name: string;
+  url: string;
+  icon: string;
+}
+
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
     const article = ref<Article | null>(null);
     const loading = ref(true);
     const imageLoaded = ref(false); // Controle de carregamento da imagem
+    const socialNetworks = ref<SocialNetwork[]>([]);
     const route = useRoute();
     const router = useRouter();
     const baseURL = import.meta.env.VITE_STRAPI_URL;
-    const email = ref(''); // Campo para armazenar o email do formulário
+    const email = ref('');
 
-    const socialNetworks = ref([
-      { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
-      { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
-      { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
-      { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
-      { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
-      { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
-    ]);
+    const isSubmitting = ref(false);
+    const success = ref(false);
+    const error = ref(false);
 
     const fetchArticleBySlug = async (slug: string) => {
       try {
         const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
         if (response.data.length) {
           article.value = response.data[0];
-          updateMetaTags(); // Atualiza as meta tags SEO após o artigo ser carregado
-        } else {
-          console.error('Artigo não encontrado');
         }
-      } catch (error: unknown) {  
-        if (axios.isAxiosError(error)) {
-          console.error('Erro ao buscar o artigo:', error.response ? error.response.data : error.message);
-        } else {
-          console.error('Erro inesperado:', error);
-        }
+      } catch (err) {
+        console.error('Erro ao buscar o artigo:', err);
       } finally {
         loading.value = false;
       }
@@ -151,7 +167,7 @@ export default defineComponent({
       if (article.thumb && article.thumb.url) {
         return new URL(article.thumb.url, baseURL).href;
       }
-      return '/thumb_blog_gsstudio.webp'; // Substitua por uma URL de imagem padrão
+      return 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp'; // Substitua por uma URL de imagem padrão
     };
 
     const formatDate = (date: string) => {
@@ -165,64 +181,68 @@ export default defineComponent({
     };
 
     const onImageLoad = () => {
-      imageLoaded.value = true;  // A imagem foi carregada, remova o blur
+      imageLoaded.value = true;
+    };
+
+    const handleImageError = (event: Event) => {
+      const img = event.target as HTMLImageElement;
+      img.src = 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp';
     };
 
     const goBack = () => {
       router.go(-1);
     };
 
-    const share = (network: { name: string, url: string }) => {
+    const share = (network: SocialNetwork) => {
       if (network.name === 'Link') {
-        navigator.clipboard.writeText(network.url).then(() => {
-          alert('Link copiado para a área de transferência!');
-        });
+        navigator.clipboard.writeText(network.url);
       } else {
         window.open(network.url, '_blank', 'noopener,noreferrer');
       }
     };
 
-    const submitForm = async () => {
-      const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/e99c7f8d-d097-4bc3-8052-3b492824d00b';
+    const submitNewsletterForm = async () => {
+      isSubmitting.value = true;
+      success.value = false;
+      error.value = false;
+      const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/gsstudionewsletter';
       try {
         const response = await axios.post(webhookUrl, { email: email.value }, {
           headers: {
             'Content-Type': 'application/json',
           },
         });
-        alert('Formulário enviado com sucesso!');
-        email.value = ''; // Limpa o campo de email após o envio
-      } catch (error) {
-        alert('Erro ao enviar o formulário.');
-      }
-    };
 
-    // Atualiza as meta tags dinamicamente com os dados do artigo
-    const updateMetaTags = () => {
-      if (article.value) {
-        useHead({
-          title: article.value.titulo,
-          meta: [
-            { name: 'description', content: article.value.seo_description },
-            { name: 'keywords', content: article.value.seo_keywords },  // Adicionando meta tag de keywords
-            { property: 'og:title', content: article.value.titulo },
-            { property: 'og:description', content: article.value.seo_description },
-            { property: 'og:image', content: getArticleImage(article.value) },
-            { property: 'og:type', content: 'article' },
-            { property: 'og:url', content: window.location.href },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:title', content: article.value.titulo },
-            { name: 'twitter:description', content: article.value.seo_description },
-            { name: 'twitter:image', content: getArticleImage(article.value) },
-          ],
-          link: [{ rel: 'canonical', href: window.location.href }],
-        });
+        // Verifica se o status HTTP está dentro da faixa 200 (indica sucesso)
+        if (response.status >= 200 && response.status < 300) {
+          success.value = true; // Envio bem-sucedido
+          setTimeout(() => {
+            email.value = ''; // Limpa o campo de email após o envio
+            success.value = false; // Reseta o estado de sucesso após um tempo
+          }, 2000);
+        } else {
+          error.value = true; // O webhook retornou erro
+        }
+      } catch (err) {
+        error.value = true; // Ocorreu um erro na solicitação
+      } finally {
+        isSubmitting.value = false;
       }
     };
 
     onMounted(async () => {
       const slug = route.params.slug as string;
       await fetchArticleBySlug(slug);
+      if (process.client) {
+        socialNetworks.value = [
+          { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
+          { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
+          { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
+          { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
+          { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
+          { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
+        ];
+      }
     });
 
     return {
@@ -237,7 +257,11 @@ export default defineComponent({
       onImageLoad,
       goBack,
       share,
-      submitForm,
+      submitNewsletterForm,
+      handleImageError,
+      isSubmitting,
+      success,
+      error,
     };
   },
 });

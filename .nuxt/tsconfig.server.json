@@ -59,9 +59,6 @@
       "@vue/compiler-sfc": [
         "../node_modules/@vue/compiler-sfc"
       ],
-      "@vue/runtime-dom": [
-        "../node_modules/@vue/runtime-dom"
-      ],
       "vue-router": [
         "../node_modules/vue-router"
       ],
@@ -110,11 +107,26 @@
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
       ],
-      "#robots": [
-        "./robots"
-      ],
       "#vue-router": [
         "./vue-router"
+      ],
+      "#internal/nuxt-site-config": [
+        "../node_modules/nuxt-site-config/dist/runtime/nitro/composables"
+      ],
+      "#internal/nuxt-site-config/*": [
+        "../node_modules/nuxt-site-config/dist/runtime/nitro/composables/*"
+      ],
+      "#internal/nuxt-simple-robots": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables"
+      ],
+      "#internal/nuxt-simple-robots/*": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
+      ],
+      "#internal/nuxt-robots": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables"
+      ],
+      "#internal/nuxt-robots/*": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
       ]
     },
     "lib": [
@@ -129,9 +141,13 @@
     "../node_modules/nuxt-swiper/runtime/server",
     "../node_modules/nuxt-easy-lightbox/runtime/server",
     "../node_modules/@nuxtjs/google-fonts/runtime/server",
+    "../node_modules/nuxt-site-config/dist/module.mjs/runtime/server",
     "../node_modules/@nuxtjs/robots/runtime/server",
+    "../node_modules/@vee-validate/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
+    "./module/nuxt-site-config.d.ts",
+    "./module/nuxt-robots.d.ts",
     "./types/nitro.d.ts",
     "../**/*",
     "../server/**/*"
@@ -139,6 +155,7 @@
   "exclude": [
     "../node_modules",
     "../node_modules/nuxt/node_modules",
+    "../node_modules/nuxt-site-config/dist/node_modules",
     "../dist"
   ]
 }

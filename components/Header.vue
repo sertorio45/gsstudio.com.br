@@ -32,7 +32,7 @@
         <div :class="['navbar-collapse justify-content-center', { 'show-fullscreen': isOpen }]" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <NuxtLink to="/" class="nav-link" @click="toggleMenu">Página inicial</NuxtLink>
+              <NuxtLink to="/" class="nav-link" @click="toggleMenu">Início</NuxtLink>
             </li>
             <li class="nav-item">
               <NuxtLink to="/sobre" class="nav-link" @click="toggleMenu">Sobre nós</NuxtLink>
@@ -54,7 +54,7 @@
 
         <!-- Botão de Orçamento -->
         <div class="d-none d-lg-flex ms-auto">
-          <button class="btn btn-primary">Orçamento</button>
+          <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=551640422901&text=Ol%C3%A1%2C+vim+pelo+site%2C+gostaria+de+tirar+algumas+d%C3%BAvidas.&type=phone_number&app_absent=0" target="_blank">Atendimento rápido</a>
         </div>
       </nav>
     </div>
@@ -85,7 +85,7 @@ function toggleMenu() {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 9998;
   
 }
 
@@ -246,5 +246,3 @@ function toggleMenu() {
   }
 }
 </style>
-
-aplica o codigo nesse codigo em nuxt 3

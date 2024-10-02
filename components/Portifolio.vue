@@ -16,7 +16,7 @@ function shuffleArray(array: Array<{ src: string, category: string }>): Array<{ 
 }
 
 // Import images dynamically using import.meta.glob
-const imageModules = import.meta.glob<{ default: string }>('public/img/portifolio/**/*.{png,jpg,jpeg,webp,gif}', { eager: true });
+const imageModules = import.meta.glob<{ default: string }>('assets/img/portifolio/**/*.{png,jpg,jpeg,webp,gif}', { eager: true });
 
 const images = ref<Array<{ src: string, category: string }>>([]);
 const rows = ref(2);
@@ -130,6 +130,7 @@ const filteredImages = computed(() => {
   margin: 0;
   position: relative;
   overflow: hidden;
+  z-index: 9997;
 }
 
 .image-thumbnail {
