@@ -1,3 +1,4 @@
+export { defineAddress, defineAggregateOffer, defineAggregateRating, defineArticle, defineBook, defineBookEdition, defineBreadcrumb, defineComment, defineCourse, defineEvent, defineFoodEstablishment, defineHowTo, defineHowToStep, defineImage, defineItemList, defineJobPosting, defineListItem, defineLocalBusiness, defineMovie, defineOffer, defineOpeningHours, defineOrganization, definePerson, definePlace, defineProduct, defineQuestion, defineReadAction, defineRecipe, defineReview, defineSearchAction, defineSoftwareApp, defineVideo, defineVirtualLocation, defineWebPage, defineWebSite } from '@unhead/schema-org/vue';
 export { useScriptTriggerConsent, useScriptEventPage, useScriptTriggerElement, useScript, useScriptGoogleAnalytics, useScriptPlausibleAnalytics, useScriptClarity, useScriptCloudflareWebAnalytics, useScriptFathomAnalytics, useScriptMatomoAnalytics, useScriptGoogleTagManager, useScriptGoogleAdsense, useScriptSegment, useScriptMetaPixel, useScriptXPixel, useScriptIntercom, useScriptHotjar, useScriptStripe, useScriptLemonSqueezy, useScriptVimeoPlayer, useScriptYouTubePlayer, useScriptGoogleMaps, useScriptNpm, useScriptCrisp } from '#app/composables/script-stubs';
 export { isVue2, isVue3 } from 'vue-demi';
 export { defineNuxtLink } from '#app/components/nuxt-link';
@@ -40,5 +41,6 @@ export { A11y as SwiperA11y, Autoplay as SwiperAutoplay, Controller as SwiperCon
 export { defineRobotMeta } from '../node_modules/@nuxtjs/robots/dist/runtime/nuxt/composables/defineRobotMeta';
 export { useRobotsRule } from '../node_modules/@nuxtjs/robots/dist/runtime/nuxt/composables/useRobotsRule';
 export { useField, useForm, useFieldArray, useFieldError, useFieldValue, useFormErrors, useFormValues, useIsFieldDirty, useIsFieldTouched, useIsFieldValid, useIsFormDirty, useIsFormTouched, useIsFormValid, useIsSubmitting, useResetForm, useSubmitCount, useSubmitForm, useValidateField, useValidateForm } from 'vee-validate';
+export { useSchemaOrg } from '../node_modules/nuxt-schema-org/dist/runtime/nuxt/imports/useSchemaOrg';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

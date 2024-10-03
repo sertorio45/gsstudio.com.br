@@ -3,13 +3,13 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getQuery as getQuery$1, getRequestHeaders, setHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, readBody, getResponseStatusText } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getQuery as getQuery$1, getRequestHeaders, setHeader, getHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, readBody, getResponseStatusText } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { promises } from 'fs';
 import path from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, hasProtocol, withHttps, withoutProtocol, withLeadingSlash, withoutTrailingSlash, withBase, joinRelativeURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, hasProtocol, withHttps, withoutProtocol, withLeadingSlash, withoutTrailingSlash, withBase, joinRelativeURL, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/server-renderer/index.mjs';
 import { propsToString, renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/ssr/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
@@ -95,6 +95,12 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/sitemap.xsl": {
+        "headers": {
+          "Content-Type": "application/xslt+xml"
+        }
+      },
+      "/sitemap.xml": {},
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
@@ -107,7 +113,66 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {},
+  "public": {
+    "nuxt-schema-org": {
+      "reactive": true,
+      "minify": false,
+      "scriptAttributes": {
+        "id": "schema-org-graph"
+      },
+      "identity": "",
+      "version": "3.3.9"
+    }
+  },
+  "sitemap": {
+    "isI18nMapped": false,
+    "sitemapName": "sitemap.xml",
+    "isMultiSitemap": false,
+    "excludeAppSources": [],
+    "cacheMaxAgeSeconds": 0,
+    "autoLastmod": false,
+    "defaultSitemapsChunkSize": 1000,
+    "minify": false,
+    "sortEntries": true,
+    "debug": false,
+    "discoverImages": true,
+    "discoverVideos": true,
+    "sitemapsPathPrefix": "/__sitemap__/",
+    "isNuxtContentDocumentDriven": false,
+    "xsl": "/__sitemap__/style.xsl",
+    "xslTips": true,
+    "xslColumns": [
+      {
+        "label": "URL",
+        "width": "50%"
+      },
+      {
+        "label": "Images",
+        "width": "25%",
+        "select": "count(image:image)"
+      },
+      {
+        "label": "Last Updated",
+        "width": "25%",
+        "select": "concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)),concat(' ', substring(sitemap:lastmod,20,6)))"
+      }
+    ],
+    "credits": true,
+    "version": "6.1.1",
+    "sitemaps": {
+      "sitemap.xml": {
+        "sitemapName": "sitemap.xml",
+        "route": "sitemap.xml",
+        "defaults": {},
+        "include": [],
+        "exclude": [
+          "/_nuxt/**",
+          "/_**"
+        ],
+        "includeAppSources": true
+      }
+    }
+  },
   "nuxt-site-config": {
     "stack": [
       {
@@ -120,6 +185,12 @@ const _inlineRuntimeConfig = {
         "_context": "package.json",
         "_priority": -10,
         "name": "nuxt-app"
+      },
+      {
+        "_priority": -3,
+        "_context": "nuxt-site-config:config",
+        "url": "https://gsstudio.com.br",
+        "name": "GS STUDIO"
       }
     ],
     "version": "2.2.18",
@@ -143,7 +214,11 @@ const _inlineRuntimeConfig = {
         "_rules": []
       }
     ],
-    "sitemap": [],
+    "sitemap": [
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml"
+    ],
     "header": true,
     "robotsEnabledValue": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     "robotsDisabledValue": "noindex, nofollow",
@@ -167,7 +242,11 @@ const _inlineRuntimeConfig = {
         "_rules": []
       }
     ],
-    "sitemap": [],
+    "sitemap": [
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml"
+    ],
     "header": true,
     "robotsEnabledValue": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     "robotsDisabledValue": "noindex, nofollow",
@@ -718,7 +797,7 @@ const _Ou7SulB9Vu = (function(nitro) {
 
 const rootDir = "/Users/giovannisertorio/Desktop/Sites/gsstudio2";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Descrição da GS Studio, uma agência especializada em design, marketing e tecnologia."},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design, marketing, tecnologia, agência, GS Studio"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia"},{"property":"og:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia, oferecendo soluções completas para empresas."},{"property":"og:image","content":"https://s3.gsstudio.com.br/gsstudio/site/img/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"summary_large_image"},{"property":"twitter:title","content":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"https://s3.gsstudio.com.br/gsstudio/site/img/thumb_gsstudio.webp"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Agência Especializada em Design, Marketing e Tecnologia","htmlAttrs":{"lang":"pt-br"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"GS Studio é uma agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados em Ribeirão Preto, Sertãozinho, São Paulo e outras cidades"},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirao preto, tráfego pago em sertaozinho, criação de sites em são paulo"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil"},{"property":"og:description","content":"GS Studio é uma agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados em Ribeirão Preto, Sertãozinho, São Paulo e outras cidades"},{"property":"og:image","content":"/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"/thumb_gsstudio.webp"},{"property":"twitter:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"/thumb_gsstudio.webp"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil","htmlAttrs":{"lang":"pt-br"}};
 
 const appRootTag = "div";
 
@@ -919,7 +998,7 @@ function resolveSitePath(pathOrUrl, options) {
   if (base !== "/" && path.startsWith(base)) {
     path = path.slice(base.length);
   }
-  let origin = withoutTrailingSlash(options.siteUrl );
+  let origin = withoutTrailingSlash(options.absolute ? options.siteUrl : "");
   if (base !== "/" && origin.endsWith(base)) {
     origin = origin.slice(0, origin.indexOf(base));
   }
@@ -939,6 +1018,19 @@ function fixSlashes(trailingSlash, pathOrUrl) {
   return `${$url.protocol ? `${$url.protocol}//` : ""}${$url.host || ""}${fixedPath}${$url.search || ""}${$url.hash || ""}`;
 }
 
+function createSitePathResolver(e, options = {}) {
+  const siteConfig = useSiteConfig(e);
+  const nitroOrigin = useNitroOrigin(e);
+  const nuxtBase = useRuntimeConfig(e).app.baseURL || "/";
+  return (path) => {
+    return resolveSitePath(path, {
+      ...options,
+      siteUrl: options.canonical !== false || false ? siteConfig.url : nitroOrigin,
+      trailingSlash: siteConfig.trailingSlash,
+      base: nuxtBase
+    });
+  };
+}
 function withSiteUrl(e, path, options = {}) {
   const siteConfig = e.context.siteConfig?.get();
   let siteUrl = e.context.siteConfigNitroOrigin;
@@ -1025,10 +1117,10 @@ function defineRenderHandler(handler) {
   });
 }
 
-function withoutQuery(path) {
+function withoutQuery$1(path) {
   return path.split("?")[0];
 }
-function createNitroRouteRuleMatcher() {
+function createNitroRouteRuleMatcher$1() {
   const { nitro, app } = useRuntimeConfig();
   const _routeRulesMatcher = toRouteMatcher(
     createRouter({
@@ -1040,7 +1132,7 @@ function createNitroRouteRuleMatcher() {
   return (path) => {
     return defu$1({}, ..._routeRulesMatcher.matchAll(
       // radix3 does not support trailing slashes
-      withoutBase(withoutTrailingSlash(withoutQuery(path)), app.baseURL)
+      withoutBase(withoutTrailingSlash(withoutQuery$1(path)), app.baseURL)
     ).reverse());
   };
 }
@@ -1212,7 +1304,7 @@ function getPathRobotConfig(e, options) {
       }
     };
   }
-  nitroApp._robotsRuleMactcher = nitroApp._robotsRuleMactcher || createNitroRouteRuleMatcher();
+  nitroApp._robotsRuleMactcher = nitroApp._robotsRuleMactcher || createNitroRouteRuleMatcher$1();
   const routeRules = normaliseRobotsRouteRule(nitroApp._robotsRuleMactcher(path));
   if (routeRules && (routeRules.allow || routeRules.rule)) {
     return {
@@ -1298,7 +1390,7 @@ async function resolveRobotsTxtContext(e, nitro = useNitroApp()) {
   return generateRobotsTxtCtx;
 }
 
-const logger = createConsola({
+const logger$1 = createConsola({
   defaults: { tag: "@nuxtjs/robots" }
 });
 
@@ -1312,7 +1404,7 @@ const _n98FBqtowz = defineNitroPlugin(async (nitroApp) => {
     try {
       urls = await (await nitroApp.localFetch("/__robots__/nuxt-content.json", {})).json();
     } catch (e) {
-      logger.error("Failed to read robot rules from content files.", e);
+      logger$1.error("Failed to read robot rules from content files.", e);
     }
     if (urls && Array.isArray(urls) && urls.length) {
       urls.forEach((url) => nuxtContentUrls.add(withoutTrailingSlash(url)));
@@ -1543,6 +1635,953 @@ const _Ve4uqT = defineEventHandler(async (e) => {
   });
 });
 
+const logger = createConsola({
+  defaults: {
+    tag: "@nuxt/sitemap"
+  }
+});
+const merger = createDefu((obj, key, value) => {
+  if (Array.isArray(obj[key]) && Array.isArray(value))
+    obj[key] = Array.from(/* @__PURE__ */ new Set([...obj[key], ...value]));
+  return obj[key];
+});
+function mergeOnKey(arr, key) {
+  const res = {};
+  arr.forEach((item) => {
+    const k = item[key];
+    res[k] = merger(item, res[k] || {});
+  });
+  return Object.values(res);
+}
+function splitForLocales(path, locales) {
+  const prefix = withLeadingSlash(path).split("/")[1];
+  if (locales.includes(prefix))
+    return [prefix, path.replace(`/${prefix}`, "")];
+  return [null, path];
+}
+const StringifiedRegExpPattern = /\/(.*?)\/([gimsuy]*)$/;
+function normalizeRuntimeFilters(input) {
+  return (input || []).map((rule) => {
+    if (rule instanceof RegExp || typeof rule === "string")
+      return rule;
+    const match = rule.regex.match(StringifiedRegExpPattern);
+    if (match)
+      return new RegExp(match[1], match[2]);
+    return false;
+  }).filter(Boolean);
+}
+function createPathFilter(options = {}) {
+  const urlFilter = createFilter(options);
+  return (loc) => {
+    let path = loc;
+    try {
+      path = parseURL(loc).pathname;
+    } catch {
+      return false;
+    }
+    return urlFilter(path);
+  };
+}
+function createFilter(options = {}) {
+  const include = options.include || [];
+  const exclude = options.exclude || [];
+  if (include.length === 0 && exclude.length === 0)
+    return () => true;
+  return function(path) {
+    for (const v of [{ rules: exclude, result: false }, { rules: include, result: true }]) {
+      const regexRules = v.rules.filter((r) => r instanceof RegExp);
+      if (regexRules.some((r) => r.test(path)))
+        return v.result;
+      const stringRules = v.rules.filter((r) => typeof r === "string");
+      if (stringRules.length > 0) {
+        const routes = {};
+        for (const r of stringRules) {
+          if (r === path)
+            return v.result;
+          routes[r] = true;
+        }
+        const routeRulesMatcher = toRouteMatcher(createRouter({ routes, strictTrailingSlash: false }));
+        if (routeRulesMatcher.matchAll(path).length > 0)
+          return Boolean(v.result);
+      }
+    }
+    return include.length === 0;
+  };
+}
+
+function useSimpleSitemapRuntimeConfig(e) {
+  const clone = JSON.parse(JSON.stringify(useRuntimeConfig(e).sitemap));
+  for (const k in clone.sitemaps) {
+    const sitemap = clone.sitemaps[k];
+    sitemap.include = normalizeRuntimeFilters(sitemap.include);
+    sitemap.exclude = normalizeRuntimeFilters(sitemap.exclude);
+    clone.sitemaps[k] = sitemap;
+  }
+  return Object.freeze(clone);
+}
+
+async function fetchDataSource(input, event) {
+  const context = typeof input.context === "string" ? { name: input.context } : input.context || { name: "fetch" };
+  context.tips = context.tips || [];
+  const url = typeof input.fetch === "string" ? input.fetch : input.fetch[0];
+  const options = typeof input.fetch === "string" ? {} : input.fetch[1];
+  const start = Date.now();
+  const timeout = options.timeout || 5e3;
+  const timeoutController = new AbortController();
+  const abortRequestTimeout = setTimeout(() => timeoutController.abort(), timeout);
+  let isHtmlResponse = false;
+  try {
+    const fetchContainer = url.startsWith("/") && event ? event : globalThis;
+    const urls = await fetchContainer.$fetch(url, {
+      ...options,
+      responseType: "json",
+      signal: timeoutController.signal,
+      headers: defu$1(options?.headers, {
+        Accept: "application/json"
+      }, event ? { Host: getRequestHost(event, { xForwardedHost: true }) } : {}),
+      // @ts-expect-error untyped
+      onResponse({ response }) {
+        if (typeof response._data === "string" && response._data.startsWith("<!DOCTYPE html>"))
+          isHtmlResponse = true;
+      }
+    });
+    const timeTakenMs = Date.now() - start;
+    if (isHtmlResponse) {
+      context.tips.push("This is usually because the URL isn't correct or is throwing an error. Please check the URL");
+      return {
+        ...input,
+        context,
+        urls: [],
+        timeTakenMs,
+        error: "Received HTML response instead of JSON"
+      };
+    }
+    return {
+      ...input,
+      context,
+      timeTakenMs,
+      urls
+    };
+  } catch (_err) {
+    const error = _err;
+    if (error.message.includes("This operation was aborted"))
+      context.tips.push("The request has taken too long. Make sure app sources respond within 5 seconds or adjust the timeout fetch option.");
+    else
+      context.tips.push(`Response returned a status of ${error.response?.status || "unknown"}.`);
+    console.error("[@nuxtjs/sitemap] Failed to fetch source.", { url, error });
+    return {
+      ...input,
+      context,
+      urls: [],
+      error: error.message
+    };
+  } finally {
+    if (abortRequestTimeout) {
+      clearTimeout(abortRequestTimeout);
+    }
+  }
+}
+function globalSitemapSources() {
+  return Promise.resolve().then(function () { return globalSources; }).then((m) => m.sources);
+}
+function childSitemapSources(definition) {
+  return definition?._hasSourceChunk ? Promise.resolve().then(function () { return childSources; }).then((m) => m.sources[definition.sitemapName] || []) : Promise.resolve([]);
+}
+async function resolveSitemapSources(sources, event) {
+  return (await Promise.all(
+    sources.map((source) => {
+      if (typeof source === "object" && "urls" in source) {
+        return {
+          timeTakenMs: 0,
+          ...source,
+          urls: source.urls
+        };
+      }
+      if (source.fetch)
+        return fetchDataSource(source, event);
+      return {
+        ...source,
+        error: "Invalid source"
+      };
+    })
+  )).flat();
+}
+
+const _4afAPb = defineEventHandler(async (e) => {
+  const _runtimeConfig = useSimpleSitemapRuntimeConfig();
+  const { sitemaps: _sitemaps } = _runtimeConfig;
+  const runtimeConfig = { ..._runtimeConfig };
+  delete runtimeConfig.sitemaps;
+  const globalSources = await globalSitemapSources();
+  const nitroOrigin = useNitroOrigin(e);
+  const sitemaps = {};
+  for (const s of Object.keys(_sitemaps)) {
+    sitemaps[s] = {
+      ..._sitemaps[s],
+      sources: await resolveSitemapSources(await childSitemapSources(_sitemaps[s]))
+    };
+  }
+  return {
+    nitroOrigin,
+    sitemaps,
+    runtimeConfig,
+    globalSources: await resolveSitemapSources(globalSources)
+  };
+});
+
+const _zoiIGo = defineEventHandler(async (e) => {
+  const fixPath = createSitePathResolver(e, { absolute: false, withBase: true });
+  const { sitemapName: fallbackSitemapName, cacheMaxAgeSeconds, version, xslColumns, xslTips } = useSimpleSitemapRuntimeConfig();
+  setHeader(e, "Content-Type", "application/xslt+xml");
+  if (cacheMaxAgeSeconds)
+    setHeader(e, "Cache-Control", `public, max-age=${cacheMaxAgeSeconds}, must-revalidate`);
+  else
+    setHeader(e, "Cache-Control", `no-cache, no-store`);
+  const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="icon" style="margin-right: 4px; font-size: 25px;" width="1em" height="1em" viewBox="0 0 32 32"><path fill="#93c5fd" d="M4 26h4v4H4zm10 0h4v4h-4zm10 0h4v4h-4zm1-10h-8v-2h-2v2H7a2.002 2.002 0 0 0-2 2v6h2v-6h8v6h2v-6h8v6h2v-6a2.002 2.002 0 0 0-2-2zM9 2v10h14V2zm2 2h2v6h-2zm10 6h-6V4h6z"></path></svg>`;
+  const creditName = `<a href="https://github.com/nuxt-modules/sitemap" style="color: black; display: flex; align-items: center; font-weight: 500;" target="_blank" rel="noopener">${svgIcon} Nuxt Sitemap v${version}</a>`;
+  const { name: siteName, url: siteUrl } = useSiteConfig(e);
+  const referrer = getHeader(e, "Referer") || "/";
+  const referrerPath = parseURL(referrer).pathname;
+  const isNotIndexButHasIndex = referrerPath !== "/sitemap.xml" && referrerPath !== "/sitemap_index.xml" && referrerPath.endsWith(".xml");
+  const sitemapName = parseURL(referrer).pathname.split("/").pop()?.split("-sitemap")[0] || fallbackSitemapName;
+  const title = `${siteName}${sitemapName !== "sitemap.xml" ? ` - ${sitemapName === "sitemap_index.xml" ? "index" : sitemapName}` : ""}`.replace(/&/g, "&amp;");
+  const canonicalQuery = getQuery(referrer).canonical;
+  const isShowingCanonical = typeof canonicalQuery !== "undefined" && canonicalQuery !== "false";
+  const conditionalTips = [
+    'You are looking at a <a href="https://developer.mozilla.org/en-US/docs/Web/XSLT/Transforming_XML_with_XSLT/An_Overview" style="color: #398465" target="_blank">XML stylesheet</a>. Read the <a href="https://nuxtseo.com/sitemap/guides/customising-ui" style="color: #398465" target="_blank">docs</a> to learn how to customize it. View the page source to see the raw XML.',
+    `URLs missing? Check Nuxt Devtools Sitemap tab (or the <a href="${withQuery("/__sitemap__/debug.json", { sitemap: sitemapName })}" style="color: #398465" target="_blank">debug endpoint</a>).`
+  ];
+  if (!isShowingCanonical) {
+    const canonicalPreviewUrl = withQuery(referrer, { canonical: "" });
+    conditionalTips.push(`Your canonical site URL is <strong>${siteUrl}</strong>.`);
+    conditionalTips.push(`You can preview your canonical sitemap by visiting <a href="${canonicalPreviewUrl}" style="color: #398465; white-space: nowrap;">${fixPath(canonicalPreviewUrl)}?canonical</a>`);
+  } else {
+    conditionalTips.push(`You are viewing the canonical sitemap. You can switch to using the request origin: <a href="${fixPath(referrer)}" style="color: #398465; white-space: nowrap ">${fixPath(referrer)}</a>`);
+  }
+  const tips = conditionalTips.map((t) => `<li><p>${t}</p></li>`).join("\n");
+  const showTips = xslTips !== false;
+  let columns = [...xslColumns];
+  if (!columns.length) {
+    columns = [
+      { label: "URL", width: "50%" },
+      { label: "Images", width: "25%", select: "count(image:image)" },
+      { label: "Last Updated", width: "25%", select: "concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)),concat(' ', substring(sitemap:lastmod,20,6)))" }
+    ];
+  }
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+                xmlns:html="http://www.w3.org/TR/REC-html40"
+                xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+                xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+  <xsl:template match="/">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+        <title>XML Sitemap</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style type="text/css">
+          body {
+            font-family: Inter, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+          }
+
+          table {
+            border: none;
+            border-collapse: collapse;
+          }
+
+          .bg-yellow-200 {
+            background-color: #fef9c3;
+          }
+
+          .p-5 {
+            padding: 1.25rem;
+          }
+
+          .rounded {
+            border-radius: 4px;
+            }
+
+          .shadow {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          }
+
+          #sitemap tr:nth-child(odd) td {
+            background-color: #f8f8f8 !important;
+          }
+
+          #sitemap tbody tr:hover td {
+            background-color: #fff;
+          }
+
+          #sitemap tbody tr:hover td, #sitemap tbody tr:hover td a {
+            color: #000;
+          }
+
+          .expl a {
+            color: #398465
+            font-weight: 600;
+          }
+
+          .expl a:visited {
+            color: #398465
+          }
+
+          a {
+            color: #000;
+            text-decoration: none;
+          }
+
+          a:visited {
+            color: #777;
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
+
+          td {
+            font-size: 12px;
+          }
+
+          .text-2xl {
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.25;
+          }
+
+          th {
+            text-align: left;
+            padding-right: 30px;
+            font-size: 12px;
+          }
+
+          thead th {
+            border-bottom: 1px solid #000;
+          }
+          .fixed { position: fixed; }
+          .right-2 { right: 2rem; }
+          .top-2 { top: 2rem; }
+          .w-30 { width: 30rem; }
+          p { margin: 0; }
+          li { padding-bottom: 0.5rem; line-height: 1.5; }
+          h1 { margin: 0; }
+          .mb-5 { margin-bottom: 1.25rem; }
+          .mb-3 { margin-bottom: 0.75rem; }
+        </style>
+      </head>
+      <body>
+        <div style="grid-template-columns: 1fr 1fr; display: grid; margin: 3rem;">
+            <div>
+             <div id="content">
+          <h1 class="text-2xl mb-3">XML Sitemap</h1>
+          <h2>${title}</h2>
+          ${isNotIndexButHasIndex ? `<p style="font-size: 12px; margin-bottom: 1rem;"><a href="${fixPath("/sitemap_index.xml")}">${fixPath("/sitemap_index.xml")}</a></p>` : ""}
+          <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
+            <p class="expl" style="margin-bottom: 1rem;">
+              This XML Sitemap Index file contains
+              <xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/> sitemaps.
+            </p>
+            <table id="sitemap" cellpadding="3">
+              <thead>
+                <tr>
+                  <th width="75%">Sitemap</th>
+                  <th width="25%">Last Modified</th>
+                </tr>
+              </thead>
+              <tbody>
+                <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
+                  <xsl:variable name="sitemapURL">
+                    <xsl:value-of select="sitemap:loc"/>
+                  </xsl:variable>
+                  <tr>
+                    <td>
+                      <a href="{$sitemapURL}">
+                        <xsl:value-of select="sitemap:loc"/>
+                      </a>
+                    </td>
+                    <td>
+                      <xsl:value-of
+                        select="concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)),concat(' ', substring(sitemap:lastmod,20,6)))"/>
+                    </td>
+                  </tr>
+                </xsl:for-each>
+              </tbody>
+            </table>
+          </xsl:if>
+          <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &lt; 1">
+            <p class="expl" style="margin-bottom: 1rem;">
+              This XML Sitemap contains
+              <xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs.
+            </p>
+            <table id="sitemap" cellpadding="3">
+              <thead>
+                <tr>
+                  ${columns.map((c) => `<th width="${c.width}">${c.label}</th>`).join("\n")}
+                </tr>
+              </thead>
+              <tbody>
+                <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
+                <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+                <xsl:for-each select="sitemap:urlset/sitemap:url">
+                  <tr>
+                    <td>
+                      <xsl:variable name="itemURL">
+                        <xsl:value-of select="sitemap:loc"/>
+                      </xsl:variable>
+                      <a href="{$itemURL}">
+                        <xsl:value-of select="sitemap:loc"/>
+                      </a>
+                    </td>
+                    ${columns.filter((c) => c.label !== "URL").map((c) => `<td>
+<xsl:value-of select="${c.select}"/>
+</td>`).join("\n")}
+                  </tr>
+                </xsl:for-each>
+              </tbody>
+            </table>
+          </xsl:if>
+        </div>
+        </div>
+                    ${showTips ? `<div class="w-30 top-2 shadow rounded p-5 right-2" style="margin: 0 auto;"><p><strong>Sitemap Tips (development only)</strong></p><ul style="margin: 1rem; padding: 0;">${tips}</ul><p style="margin-top: 1rem;">${creditName}</p></div>` : ""}
+        </div>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
+`;
+});
+
+function withoutQuery(path) {
+  return path.split("?")[0];
+}
+function createNitroRouteRuleMatcher() {
+  const { nitro, app } = useRuntimeConfig();
+  const _routeRulesMatcher = toRouteMatcher(
+    createRouter({
+      routes: Object.fromEntries(
+        Object.entries(nitro?.routeRules || {}).map(([path, rules]) => [path === "/" ? path : withoutTrailingSlash(path), rules])
+      )
+    })
+  );
+  return (pathOrUrl) => {
+    const path = pathOrUrl[0] === "/" ? pathOrUrl : parseURL(pathOrUrl, app.baseURL).pathname;
+    const pathWithoutQuery = withoutQuery(path);
+    return defu$1({}, ..._routeRulesMatcher.matchAll(
+      // radix3 does not support trailing slashes
+      withoutBase(pathWithoutQuery === "/" ? pathWithoutQuery : withoutTrailingSlash(pathWithoutQuery), app.baseURL)
+    ).reverse());
+  };
+}
+
+function resolve(s, resolvers) {
+  if (typeof s === "undefined" || !resolvers)
+    return s;
+  s = typeof s === "string" ? s : s.toString();
+  if (hasProtocol(s, { acceptRelative: true, strict: false }))
+    return resolvers.fixSlashes(s);
+  return resolvers.canonicalUrlResolver(s);
+}
+function removeTrailingSlash(s) {
+  return s.replace(/\/(\?|#|$)/, "$1");
+}
+function preNormalizeEntry(_e, resolvers) {
+  const e = typeof _e === "string" ? { loc: _e } : { ..._e };
+  if (e.url && !e.loc) {
+    e.loc = e.url;
+    delete e.url;
+  }
+  if (typeof e.loc !== "string") {
+    e.loc = "";
+  }
+  e.loc = removeTrailingSlash(e.loc);
+  e._abs = hasProtocol(e.loc, { acceptRelative: false, strict: false });
+  try {
+    e._path = e._abs ? parseURL(e.loc) : parsePath(e.loc);
+  } catch (e2) {
+    e2._path = null;
+  }
+  if (e._path) {
+    const query = parseQuery(e._path.search);
+    const qs = stringifyQuery(query);
+    e._relativeLoc = `${encodePath(e._path?.pathname)}${qs.length ? `?${qs}` : ""}`;
+    if (e._path.host) {
+      e.loc = stringifyParsedURL(e._path);
+    } else {
+      e.loc = e._relativeLoc;
+    }
+  } else {
+    e.loc = encodeURI(e.loc);
+  }
+  if (e.loc === "")
+    e.loc = `/`;
+  e.loc = resolve(e.loc, resolvers);
+  e._key = `${e._sitemap || ""}${withoutTrailingSlash(e.loc)}`;
+  return e;
+}
+function normaliseEntry(_e, defaults, resolvers) {
+  const e = defu$1(_e, defaults);
+  if (e.lastmod) {
+    const date = normaliseDate(e.lastmod);
+    if (date)
+      e.lastmod = date;
+    else
+      delete e.lastmod;
+  }
+  if (!e.lastmod)
+    delete e.lastmod;
+  e.loc = resolve(e.loc, resolvers);
+  if (e.alternatives) {
+    e.alternatives = mergeOnKey(e.alternatives.map((e2) => {
+      const a = { ...e2 };
+      if (typeof a.href === "string")
+        a.href = resolve(a.href, resolvers);
+      else if (typeof a.href === "object" && a.href)
+        a.href = resolve(a.href.href, resolvers);
+      return a;
+    }), "hreflang");
+  }
+  if (e.images) {
+    e.images = mergeOnKey(e.images.map((i) => {
+      i = { ...i };
+      i.loc = resolve(i.loc, resolvers);
+      return i;
+    }), "loc");
+  }
+  if (e.videos) {
+    e.videos = e.videos.map((v) => {
+      v = { ...v };
+      if (v.content_loc)
+        v.content_loc = resolve(v.content_loc, resolvers);
+      return v;
+    });
+  }
+  return e;
+}
+const IS_VALID_W3C_DATE = [
+  /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/,
+  /^\d{4}-[01]\d-[0-3]\d$/,
+  /^\d{4}-[01]\d$/,
+  /^\d{4}$/
+];
+function isValidW3CDate(d) {
+  return IS_VALID_W3C_DATE.some((r) => r.test(d));
+}
+function normaliseDate(d) {
+  if (typeof d === "string") {
+    if (d.includes("T")) {
+      const t = d.split("T")[1];
+      if (!t.includes("+") && !t.includes("-") && !t.includes("Z")) {
+        d += "Z";
+      }
+    }
+    if (!isValidW3CDate(d))
+      return false;
+    d = new Date(d);
+    d.setMilliseconds(0);
+    if (Number.isNaN(d.getTime()))
+      return false;
+  }
+  const z = (n) => `0${n}`.slice(-2);
+  const date = `${d.getUTCFullYear()}-${z(d.getUTCMonth() + 1)}-${z(d.getUTCDate())}`;
+  if (d.getUTCHours() > 0 || d.getUTCMinutes() > 0 || d.getUTCSeconds() > 0) {
+    return `${date}T${z(d.getUTCHours())}:${z(d.getUTCMinutes())}:${z(d.getUTCSeconds())}Z`;
+  }
+  return date;
+}
+
+function sortSitemapUrls(urls) {
+  return urls.sort(
+    (a, b) => {
+      const aLoc = typeof a === "string" ? a : a.loc;
+      const bLoc = typeof b === "string" ? b : b.loc;
+      return aLoc.localeCompare(bLoc, void 0, { numeric: true });
+    }
+  ).sort((a, b) => {
+    const aLoc = (typeof a === "string" ? a : a.loc) || "";
+    const bLoc = (typeof b === "string" ? b : b.loc) || "";
+    const aSegments = aLoc.split("/").length;
+    const bSegments = bLoc.split("/").length;
+    if (aSegments > bSegments)
+      return 1;
+    if (aSegments < bSegments)
+      return -1;
+    return 0;
+  });
+}
+
+function resolveKey(k) {
+  switch (k) {
+    case "images":
+      return "image";
+    case "videos":
+      return "video";
+    // news & others?
+    case "news":
+      return "news";
+    default:
+      return k;
+  }
+}
+function handleObject(key, obj) {
+  return [
+    `        <${key}:${key}>`,
+    ...Object.entries(obj).map(([sk, sv]) => {
+      if (key === "video" && Array.isArray(sv)) {
+        return sv.map((v) => {
+          if (typeof v === "string") {
+            return [
+              `            `,
+              `<${key}:${sk}>`,
+              escapeValueForXml(v),
+              `</${key}:${sk}>`
+            ].join("");
+          }
+          const attributes = Object.entries(v).filter(([ssk]) => ssk !== sk).map(([ssk, ssv]) => `${ssk}="${escapeValueForXml(ssv)}"`).join(" ");
+          return [
+            `            <${key}:${sk} ${attributes}>`,
+            // value is the same sk
+            v[sk],
+            `</${key}:${sk}>`
+          ].join("");
+        }).join("\n");
+      }
+      if (typeof sv === "object") {
+        if (key === "video") {
+          const attributes = Object.entries(sv).filter(([ssk]) => ssk !== sk).map(([ssk, ssv]) => `${ssk}="${escapeValueForXml(ssv)}"`).join(" ");
+          return [
+            `            <${key}:${sk} ${attributes}>`,
+            // value is the same sk
+            sv[sk],
+            `</${key}:${sk}>`
+          ].join("");
+        }
+        return [
+          `            <${key}:${sk}>`,
+          ...Object.entries(sv).map(([ssk, ssv]) => `                <${key}:${ssk}>${escapeValueForXml(ssv)}</${key}:${ssk}>`),
+          `            </${key}:${sk}>`
+        ].join("\n");
+      }
+      return `            <${key}:${sk}>${escapeValueForXml(sv)}</${key}:${sk}>`;
+    }),
+    `        </${key}:${key}>`
+  ].join("\n");
+}
+function handleArray(key, arr) {
+  if (arr.length === 0)
+    return false;
+  key = resolveKey(key);
+  if (key === "alternatives") {
+    return arr.map((obj) => [
+      `        <xhtml:link rel="alternate" ${Object.entries(obj).map(([sk, sv]) => `${sk}="${escapeValueForXml(sv)}"`).join(" ")} />`
+    ].join("\n")).join("\n");
+  }
+  return arr.map((obj) => handleObject(key, obj)).join("\n");
+}
+function handleEntry(k, e) {
+  return Array.isArray(e[k]) ? handleArray(k, e[k]) : typeof e[k] === "object" ? handleObject(k, e[k]) : `        <${k}>${escapeValueForXml(e[k])}</${k}>`;
+}
+function wrapSitemapXml(input, resolvers, options) {
+  const xsl = options.xsl ? resolvers.relativeBaseUrlResolver(options.xsl) : false;
+  const credits = options.credits;
+  input.unshift(`<?xml version="1.0" encoding="UTF-8"?>${xsl ? `<?xml-stylesheet type="text/xsl" href="${xsl}"?>` : ""}`);
+  if (credits)
+    input.push(`<!-- XML Sitemap generated by @nuxtjs/sitemap v${options.version} at ${(/* @__PURE__ */ new Date()).toISOString()} -->`);
+  if (options.minify)
+    return input.join("").replace(/(?<!<[^>]*)\s(?![^<]*>)/g, "");
+  return input.join("\n");
+}
+function escapeValueForXml(value) {
+  if (value === true || value === false)
+    return value ? "yes" : "no";
+  return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+}
+
+function resolveSitemapEntries(sitemap, sources, runtimeConfig, resolvers) {
+  const {
+    autoI18n,
+    isI18nMapped
+  } = runtimeConfig;
+  const filterPath = createPathFilter({
+    include: sitemap.include,
+    exclude: sitemap.exclude
+  });
+  const _urls = sources.flatMap((e) => e.urls).map((_e) => {
+    const e = preNormalizeEntry(_e, resolvers);
+    if (!e.loc || !filterPath(e.loc))
+      return false;
+    return e;
+  }).filter(Boolean);
+  let validI18nUrlsForTransform = [];
+  let warnIncorrectI18nTransformUsage = false;
+  const withoutPrefixPaths = {};
+  if (autoI18n && autoI18n.strategy !== "no_prefix") {
+    const localeCodes = autoI18n.locales.map((l) => l.code);
+    validI18nUrlsForTransform = _urls.map((_e, i) => {
+      if (_e._abs)
+        return false;
+      const split = splitForLocales(_e._relativeLoc, localeCodes);
+      let localeCode = split[0];
+      const pathWithoutPrefix = split[1];
+      if (!localeCode)
+        localeCode = autoI18n.defaultLocale;
+      const e = _e;
+      e._pathWithoutPrefix = pathWithoutPrefix;
+      const locale = autoI18n.locales.find((l) => l.code === localeCode);
+      if (!locale)
+        return false;
+      e._locale = locale;
+      e._index = i;
+      e._key = `${e._sitemap || ""}${e._path?.pathname || "/"}${e._path.search}`;
+      withoutPrefixPaths[pathWithoutPrefix] = withoutPrefixPaths[pathWithoutPrefix] || [];
+      if (!withoutPrefixPaths[pathWithoutPrefix].some((e2) => e2._locale.code === locale.code))
+        withoutPrefixPaths[pathWithoutPrefix].push(e);
+      return e;
+    }).filter(Boolean);
+    for (const e of validI18nUrlsForTransform) {
+      if (!e._i18nTransform && !e.alternatives?.length) {
+        const alternatives = withoutPrefixPaths[e._pathWithoutPrefix].map((u) => {
+          const entries = [];
+          if (u._locale.code === autoI18n.defaultLocale) {
+            entries.push({
+              href: u.loc,
+              hreflang: "x-default"
+            });
+          }
+          entries.push({
+            href: u.loc,
+            hreflang: u._locale._hreflang || autoI18n.defaultLocale
+          });
+          return entries;
+        }).flat().filter(Boolean);
+        if (alternatives.length)
+          e.alternatives = alternatives;
+      } else if (e._i18nTransform) {
+        delete e._i18nTransform;
+        if (autoI18n.strategy === "no_prefix") {
+          warnIncorrectI18nTransformUsage = true;
+        }
+        if (autoI18n.differentDomains) {
+          e.alternatives = [
+            {
+              // apply default locale domain
+              ...autoI18n.locales.find((l) => [l.code, l.language].includes(autoI18n.defaultLocale)),
+              code: "x-default"
+            },
+            ...autoI18n.locales.filter((l) => !!l.domain)
+          ].map((locale) => {
+            return {
+              hreflang: locale._hreflang,
+              href: joinURL(withHttps(locale.domain), e._pathWithoutPrefix)
+            };
+          });
+        } else {
+          for (const l of autoI18n.locales) {
+            let loc = joinURL(`/${l.code}`, e._pathWithoutPrefix);
+            if (autoI18n.differentDomains || ["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy) && l.code === autoI18n.defaultLocale)
+              loc = e._pathWithoutPrefix;
+            const _sitemap = isI18nMapped ? l._sitemap : void 0;
+            const newEntry = preNormalizeEntry({
+              _sitemap,
+              ...e,
+              _index: void 0,
+              _key: `${_sitemap || ""}${loc || "/"}${e._path.search}`,
+              _locale: l,
+              loc,
+              alternatives: [{ code: "x-default", _hreflang: "x-default" }, ...autoI18n.locales].map((locale) => {
+                const code = locale.code === "x-default" ? autoI18n.defaultLocale : locale.code;
+                const isDefault = locale.code === "x-default" || locale.code === autoI18n.defaultLocale;
+                let href = "";
+                if (autoI18n.strategy === "prefix") {
+                  href = joinURL("/", code, e._pathWithoutPrefix);
+                } else if (["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy)) {
+                  if (isDefault) {
+                    href = e._pathWithoutPrefix;
+                  } else {
+                    href = joinURL("/", code, e._pathWithoutPrefix);
+                  }
+                }
+                if (!filterPath(href))
+                  return false;
+                return {
+                  hreflang: locale._hreflang,
+                  href
+                };
+              }).filter(Boolean)
+            }, resolvers);
+            if (e._locale.code === newEntry._locale.code) {
+              _urls[e._index] = newEntry;
+              e._index = void 0;
+            } else {
+              _urls.push(newEntry);
+            }
+          }
+        }
+      }
+      if (isI18nMapped) {
+        e._sitemap = e._sitemap || e._locale._sitemap;
+        e._key = `${e._sitemap || ""}${e.loc || "/"}${e._path.search}`;
+      }
+      if (e._index)
+        _urls[e._index] = e;
+    }
+  }
+  if (warnIncorrectI18nTransformUsage) {
+    logger.warn("You're using _i18nTransform with the `no_prefix` strategy. This will cause issues with the sitemap. Please remove the _i18nTransform flag or change i18n strategy.");
+  }
+  return _urls;
+}
+async function buildSitemapUrls(sitemap, resolvers, runtimeConfig) {
+  const {
+    sitemaps,
+    // enhancing
+    autoI18n,
+    isI18nMapped,
+    isMultiSitemap,
+    // sorting
+    sortEntries,
+    // chunking
+    defaultSitemapsChunkSize
+  } = runtimeConfig;
+  const isChunking = typeof sitemaps.chunks !== "undefined" && !Number.isNaN(Number(sitemap.sitemapName));
+  function maybeSort(urls) {
+    return sortEntries ? sortSitemapUrls(urls) : urls;
+  }
+  function maybeSlice(urls) {
+    if (isChunking && defaultSitemapsChunkSize) {
+      const chunk = Number(sitemap.sitemapName);
+      return urls.slice(chunk * defaultSitemapsChunkSize, (chunk + 1) * defaultSitemapsChunkSize);
+    }
+    return urls;
+  }
+  if (autoI18n?.differentDomains) {
+    const domain = autoI18n.locales.find((e) => [e.language, e.code].includes(sitemap.sitemapName))?.domain;
+    if (domain) {
+      const _tester = resolvers.canonicalUrlResolver;
+      resolvers.canonicalUrlResolver = (path) => resolveSitePath(path, {
+        absolute: true,
+        withBase: false,
+        siteUrl: withHttps(domain),
+        trailingSlash: _tester("/test/").endsWith("/"),
+        base: "/"
+      });
+    }
+  }
+  const sources = sitemap.includeAppSources ? await globalSitemapSources() : [];
+  sources.push(...await childSitemapSources(sitemap));
+  const resolvedSources = await resolveSitemapSources(sources, resolvers.event);
+  const enhancedUrls = resolveSitemapEntries(sitemap, resolvedSources, { autoI18n, isI18nMapped }, resolvers);
+  const filteredUrls = enhancedUrls.filter((e) => {
+    if (isMultiSitemap && e._sitemap && sitemap.sitemapName)
+      return e._sitemap === sitemap.sitemapName;
+    return true;
+  });
+  const sortedUrls = maybeSort(filteredUrls);
+  return maybeSlice(sortedUrls);
+}
+function urlsToXml(urls, resolvers, { version, xsl, credits, minify }) {
+  const urlset = urls.map((e) => {
+    const keys = Object.keys(e).filter((k) => !k.startsWith("_"));
+    return [
+      "    <url>",
+      keys.map((k) => handleEntry(k, e)).filter(Boolean).join("\n"),
+      "    </url>"
+    ].join("\n");
+  });
+  return wrapSitemapXml([
+    '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    urlset.join("\n"),
+    "</urlset>"
+  ], resolvers, { version, xsl, credits, minify });
+}
+
+function useNitroUrlResolvers(e) {
+  const canonicalQuery = getQuery$1(e).canonical;
+  const isShowingCanonical = typeof canonicalQuery !== "undefined" && canonicalQuery !== "false";
+  const siteConfig = useSiteConfig(e);
+  return {
+    event: e,
+    fixSlashes: (path) => fixSlashes(siteConfig.trailingSlash, path),
+    // we need these as they depend on the nitro event
+    canonicalUrlResolver: createSitePathResolver(e, {
+      canonical: isShowingCanonical || !true,
+      absolute: true,
+      withBase: true
+    }),
+    relativeBaseUrlResolver: createSitePathResolver(e, { absolute: false, withBase: true })
+  };
+}
+async function createSitemap(event, definition, runtimeConfig) {
+  const { sitemapName } = definition;
+  const nitro = useNitroApp();
+  const resolvers = useNitroUrlResolvers(event);
+  let sitemapUrls = await buildSitemapUrls(definition, resolvers, runtimeConfig);
+  const routeRuleMatcher = createNitroRouteRuleMatcher();
+  const { autoI18n } = runtimeConfig;
+  sitemapUrls = sitemapUrls.map((u) => {
+    const path = u._path?.pathname || u.loc;
+    if (!getPathRobotConfig(event, { path, skipSiteIndexable: true }).indexable)
+      return false;
+    let routeRules = routeRuleMatcher(path);
+    if (autoI18n?.locales && autoI18n?.strategy !== "no_prefix") {
+      const match = splitForLocales(path, autoI18n.locales.map((l) => l.code));
+      const pathWithoutPrefix = match[1];
+      if (pathWithoutPrefix && pathWithoutPrefix !== path)
+        routeRules = defu$1(routeRules, routeRuleMatcher(pathWithoutPrefix));
+    }
+    if (routeRules.sitemap === false)
+      return false;
+    if (typeof routeRules.index !== "undefined" && !routeRules.index || typeof routeRules.robots !== "undefined" && !routeRules.robots) {
+      return false;
+    }
+    const hasRobotsDisabled = Object.entries(routeRules.headers || {}).some(([name, value]) => name.toLowerCase() === "x-robots-tag" && value.toLowerCase().includes("noindex"));
+    if (routeRules.redirect || hasRobotsDisabled)
+      return false;
+    return routeRules.sitemap ? defu$1(u, routeRules.sitemap) : u;
+  }).filter(Boolean);
+  const resolvedCtx = {
+    urls: sitemapUrls,
+    sitemapName
+  };
+  await nitro.hooks.callHook("sitemap:resolved", resolvedCtx);
+  const maybeSort = (urls2) => runtimeConfig.sortEntries ? sortSitemapUrls(urls2) : urls2;
+  const normalizedPreDedupe = resolvedCtx.urls.map((e) => normaliseEntry(e, definition.defaults, resolvers));
+  const urls = maybeSort(mergeOnKey(normalizedPreDedupe, "_key").map((e) => normaliseEntry(e, definition.defaults, resolvers)));
+  const sitemap = urlsToXml(urls, resolvers, runtimeConfig);
+  const ctx = { sitemap, sitemapName };
+  await nitro.hooks.callHook("sitemap:output", ctx);
+  setHeader(event, "Content-Type", "text/xml; charset=UTF-8");
+  if (runtimeConfig.cacheMaxAgeSeconds)
+    setHeader(event, "Cache-Control", `public, max-age=${runtimeConfig.cacheMaxAgeSeconds}, must-revalidate`);
+  else
+    setHeader(event, "Cache-Control", `no-cache, no-store`);
+  event.context._isSitemap = true;
+  return ctx.sitemap;
+}
+
+const _BQUWeh = defineEventHandler(async (e) => {
+  const runtimeConfig = useSimpleSitemapRuntimeConfig();
+  const { sitemaps } = runtimeConfig;
+  if ("index" in sitemaps) {
+    return sendRedirect(e, withBase("/sitemap_index.xml", useRuntimeConfig().app.baseURL), 302 );
+  }
+  return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
+});
+
+const _vIlr1E = defineEventHandler(async (e) => {
+  const _config = useRuntimeConfig();
+  const runtimeConfig = _config["nuxt-schema-org"] || _config.public["nuxt-schema-org"];
+  const nitroOrigin = useNitroOrigin(e);
+  return {
+    nitroOrigin,
+    runtimeConfig
+  };
+});
+
 const _rf0h91 = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
@@ -1575,6 +2614,10 @@ const handlers = [
   { route: '', handler: _pOElCc, lazy: false, middleware: false, method: undefined },
   { route: '/__robots__/debug.json', handler: _j6KKcV, lazy: false, middleware: false, method: undefined },
   { route: '/__robots__/debug-path.json', handler: _Ve4uqT, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/debug.json', handler: _4afAPb, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/style.xsl', handler: _zoiIGo, lazy: false, middleware: false, method: undefined },
+  { route: '/sitemap.xml', handler: _BQUWeh, lazy: false, middleware: false, method: undefined },
+  { route: '/__schema-org__/debug.json', handler: _vIlr1E, lazy: false, middleware: false, method: undefined },
   { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
 ];
@@ -1769,6 +2812,59 @@ const template$1 = (messages) => {
 const errorDev = /*#__PURE__*/Object.freeze({
   __proto__: null,
   template: template$1
+});
+
+const sources$1 = [
+    {
+        "context": {
+            "name": "sitemap:urls",
+            "description": "Set with the `sitemap.urls` config."
+        },
+        "urls": [],
+        "sourceType": "user"
+    },
+    {
+        "context": {
+            "name": "nuxt:pages",
+            "description": "Generated from your static page files.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:pages'] }`."
+            ]
+        },
+        "urls": [
+            {
+                "loc": "/blog"
+            },
+            {
+                "loc": "/contato"
+            },
+            {
+                "loc": "/"
+            },
+            {
+                "loc": "/politica-de-privacidade"
+            },
+            {
+                "loc": "/servicos"
+            },
+            {
+                "loc": "/sobre"
+            }
+        ],
+        "sourceType": "app"
+    }
+];
+
+const globalSources = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  sources: sources$1
+});
+
+const sources = {};
+
+const childSources = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  sources: sources
 });
 
 const parceiros = defineEventHandler(async (event) => {

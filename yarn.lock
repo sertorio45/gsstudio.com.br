@@ -1728,7 +1728,7 @@
   optionalDependencies:
     ipx "^2.1.0"
 
-"@nuxt/kit@3.13.2", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.12.3", "@nuxt/kit@^3.12.4", "@nuxt/kit@^3.13.0", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0":
+"@nuxt/kit@3.13.2", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.12.2", "@nuxt/kit@^3.12.3", "@nuxt/kit@^3.12.4", "@nuxt/kit@^3.13.0", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0":
   version "3.13.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.13.2.tgz#4c019a87e08c33ec14d1059497ba40568b82bfed"
   integrity sha512-KvRw21zU//wdz25IeE1E5m/aFSzhJloBRAQtv+evcFeZvuroIxpIQuUqhbzuwznaUwpiWbmwlcsp5uOWmi4vwA==
@@ -1911,7 +1911,7 @@
     std-env "^3.7.0"
     ufo "^1.5.4"
 
-"@nuxtjs/sitemap@^6.0.1":
+"@nuxtjs/sitemap@^6.0.1", "@nuxtjs/sitemap@^6.1.1":
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-6.1.1.tgz#dcad8ddbb5e30f3ec7a380358f7b4406be3d1d2a"
   integrity sha512-wjvaqLm+kecH7K22E9eKzxolfWlcBL3Nw1/UHJUz7UcLMfFNl8T28MMx7xeVKR5oNeFYCHJTWbqNJ+ZXjb727g==
@@ -2616,6 +2616,13 @@
   dependencies:
     "@unhead/schema" "1.11.7"
     "@unhead/shared" "1.11.7"
+
+"@unhead/schema-org@^1.11.2":
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/@unhead/schema-org/-/schema-org-1.11.7.tgz#8598634820abaf00c4bc0874be6c44d31e461906"
+  integrity sha512-yo3SL1G7+CWeyoSbP8cMYqtWoPpatoMEL5zs2bBvoWJtKmT22eDNQ3HH9hqBhIx8DOLvZw7S0Y/o2AA5q/IZeg==
+  dependencies:
+    ufo "^1.5.4"
 
 "@unhead/schema@1.11.7", "@unhead/schema@^1.7.0":
   version "1.11.7"
@@ -7457,6 +7464,19 @@ nuxt-easy-lightbox@^1.0.2:
     "@nuxt/kit" "^3.11.2"
     vue-easy-lightbox "^1.19.0"
 
+nuxt-schema-org@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/nuxt-schema-org/-/nuxt-schema-org-3.4.0.tgz#522255a575956bac1cd7d2ae20050d35f255c613"
+  integrity sha512-VbLGmaMi6scKfQg0F9NrMNH9fpKrt1QTIPULsmR6Wwy7CUKXHUHR0n9qIBreodZ4+wHsUcjxHbxQowgoD/lofw==
+  dependencies:
+    "@nuxt/devtools-kit" "^1.4.1"
+    "@nuxt/kit" "^3.13.1"
+    "@unhead/schema-org" "^1.11.2"
+    nuxt-site-config "^2.2.16"
+    nuxt-site-config-kit "^2.2.16"
+    pathe "^1.1.2"
+    sirv "^2.0.4"
+
 nuxt-shiki@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/nuxt-shiki/-/nuxt-shiki-0.3.0.tgz#53405ccbde20ff85e429500a218198acf16c95e0"
@@ -7510,6 +7530,15 @@ nuxt-swiper@^1.2.2:
   dependencies:
     "@nuxt/kit" "^3.7.0"
     swiper "^10.2.0"
+
+nuxt-vitalizer@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/nuxt-vitalizer/-/nuxt-vitalizer-0.10.0.tgz#1a9a163fd5de852ce736280aa55448ddc2ce8da6"
+  integrity sha512-z5leudr8wD2msKl7ETLGUICSOVoXVLMA8bAeRuWN4/UuYl7g7G2k7Idzl1z8ft/VmoYZ9ld3J0/2UZOZuxxzog==
+  dependencies:
+    "@nuxt/kit" "^3.12.2"
+    defu "^6.1.4"
+    knitwork "^1.1.0"
 
 nuxt@^3.12.4:
   version "3.13.2"

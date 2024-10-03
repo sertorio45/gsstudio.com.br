@@ -5,8 +5,8 @@
       <div class="container text-center">
         <div class="row">
           <div class="col">
-            <h1>Aumente a <em>performance</em> da sua <em>empresa.</em></h1>
-            <p class="my-4">Destaque sua empresa à frente de seus concorrentes com estratégias de branding, marketing e tecnologia.</p>
+            <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
+            <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
             <div class="d-flex justify-content-center flex-wrap">
               <button @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</button>
               <NuxtLink to="/contato" class="btn btn-primary-border my-2">Faça agora seu orçamento</NuxtLink>
@@ -24,8 +24,12 @@
           <div class="col-12 col-md-5">
             <h2>Somos especialistas</h2>
             <p class="my-3">
-              Design publicitário, marketing online/offline e websites. Na GS STUDIO, combinamos criatividade e estratégias comprovadas para desenvolver campanhas de marketing eficazes e impactantes. Nossos especialistas em tecnologia oferecem soluções personalizadas para maximizar a eficiência do seu negócio.
+              A GS Studio é uma agência que combina marketing, design e tecnologia para criar soluções criativas que impulsionam o sucesso de negócios. 
+              Nosso foco está em entregar resultados que realmente fazem a diferença.
             </p>
+            <NuxtLink to="/sobre" class="btn btn-primary">
+              Conheça mais sobre nós
+            </NuxtLink>
           </div>
           <div class="col-12 col-md-7 text-center d-flex align-items-center justify-content-end">
             <div class="row w-100">
@@ -66,7 +70,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
             <div class="gscard gscard-border">
-              <h3><em>+ de <em class="count" data-count="250">0</em></em></h3>
+              <h3><em>+ de <em class="count" data-count="400">0</em></em></h3>
               <span>Clientes ativos</span>
             </div>
           </div>

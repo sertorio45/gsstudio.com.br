@@ -91,6 +91,10 @@ export default defineComponent({
     const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID;
     const articlesPerPage = 4;
     const loadedArticlesCount = ref(articlesPerPage); // Inicialmente carrega apenas 4 artigos
+    
+    useSeoMeta ({
+      title: 'Blog - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+    });
 
     const fetchArticles = async (tenantId: string) => {
       try {
@@ -168,6 +172,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style scoped>
 .topo .col {
