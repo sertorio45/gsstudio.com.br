@@ -494,9 +494,7 @@ declare module 'nuxt/schema' {
       cookies: {
          necessary: Array<any>,
 
-         optional: Array<{
-
-         }>,
+         optional: Array<any>,
       },
 
       cookieExpiryOffsetMs: number,

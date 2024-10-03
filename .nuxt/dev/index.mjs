@@ -120,7 +120,7 @@ const _inlineRuntimeConfig = {
       "defer": false,
       "compatibility": false,
       "nonce": "2726c7f26c",
-      "enabled": false,
+      "enabled": true,
       "debug": true,
       "loadScript": true,
       "enableRouterSync": true,
@@ -136,7 +136,7 @@ const _inlineRuntimeConfig = {
       "version": "3.3.9"
     },
     "cookieControl": {
-      "barPosition": "bottom-left",
+      "barPosition": "bottom-full",
       "closeModalOnClickOutside": false,
       "colors": {
         "barBackground": "#000",
@@ -168,18 +168,7 @@ const _inlineRuntimeConfig = {
       },
       "cookies": {
         "necessary": [],
-        "optional": [
-          {
-            "name": "Google Tag Manager",
-            "description": "Cookies utilizados pelo Google Tag Manager para análise de tráfego.",
-            "id": "gtm",
-            "cookies": [
-              "_ga",
-              "_gid",
-              "_gat"
-            ]
-          }
-        ]
+        "optional": []
       },
       "cookieExpiryOffsetMs": 31536000000,
       "cookieNameIsConsentGiven": "ncc_c",
@@ -189,8 +178,8 @@ const _inlineRuntimeConfig = {
         "sameSite": "strict",
         "secure": ""
       },
-      "isAcceptNecessaryButtonEnabled": false,
-      "isControlButtonEnabled": false,
+      "isAcceptNecessaryButtonEnabled": true,
+      "isControlButtonEnabled": true,
       "isCookieIdVisible": false,
       "isCssEnabled": true,
       "isCssPonyfillEnabled": false,
@@ -198,7 +187,6 @@ const _inlineRuntimeConfig = {
       "isIframeBlocked": false,
       "isModalForced": false,
       "locales": [
-        "pt",
         "en"
       ],
       "localeTexts": {
@@ -345,6 +333,9 @@ const _inlineRuntimeConfig = {
       "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -371,6 +362,9 @@ const _inlineRuntimeConfig = {
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",

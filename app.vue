@@ -1,10 +1,10 @@
 <template>
   <div>
+    <CookieConsent />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <CookieControl locale="pt" />
-
+    
   </div>
 </template>
 

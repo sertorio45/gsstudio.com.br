@@ -56,7 +56,7 @@ export default defineNuxtConfig({
     defer: false, 
     compatibility: false, 
     nonce: '2726c7f26c', 
-    enabled: false,
+    enabled: true,
     debug: true,
     loadScript: true,
     enableRouterSync: true,
@@ -71,27 +71,6 @@ export default defineNuxtConfig({
     },
   },
   
-  cookieControl: {
-    colors: {
-      barTextColor: '#fff',
-    },
-    closeModalOnClickOutside: false,
-    isAcceptNecessaryButtonEnabled: false,
-    isControlButtonEnabled: false,
-    barPosition: 'bottom-left',
-    locales: ['pt'],  
-    cookies: {
-      optional: [
-        {
-          name: 'Google Tag Manager',
-          description: 'Cookies utilizados pelo Google Tag Manager para análise de tráfego.',
-          id: 'gtm',
-          cookies: ['_ga', '_gid', '_gat'],
-        }
-      ],
-    },
-  },
-
   googleFonts: {
     families: {
       'DM Sans': [400, 700],
@@ -122,7 +101,6 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/main.client.ts',
     '@/plugins/bootstrap.client.ts',
-    '@/plugins/gtmConsent.client.ts',
   ],
 
   compatibilityDate: '2024-09-30',

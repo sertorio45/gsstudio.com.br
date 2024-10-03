@@ -29,7 +29,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js").default> &
   InjectionType<typeof import("../../plugins/main.client").default> &
   InjectionType<typeof import("../../plugins/bootstrap.client").default> &
-  InjectionType<typeof import("../../plugins/gtmConsent.client").default> &
   InjectionType<typeof import("../../plugins/imask").default>
 
 declare module '#app' {
