@@ -281,8 +281,14 @@ export default defineComponent({
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
 useSeoMeta({
-  title: 'Início - Gs Studio - Agência de marketing, design e tecnologia',
-});
+      title: 'Soluções em Marketing, Comunicação e Tecnologia Web | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+      description: 'Agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.',
+      ogTitle: 'Soluções em Marketing, Comunicação e Tecnologia Web | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+      ogDescription: 'Agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.',
+      ogSiteName: 'GS STUDIO',
+      ogLocale: 'pt_BR',
+      canonical: 'https://gsstudio.com.br/'
+    });
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();

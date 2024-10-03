@@ -19,6 +19,9 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/check-if-page-unused.js").default> &
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.server.js").default> &
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js").default> &
+  InjectionType<typeof import("../../node_modules/nuxt-delay-hydration/dist/runtime/nuxt-plugin.js").default> &
+  InjectionType<typeof import("../pwa-icons-plugin").default> &
+  InjectionType<typeof import("../../node_modules/@vite-pwa/nuxt/dist/runtime/plugins/pwa.client.js").default> &
   InjectionType<typeof import("../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/plugin.js").default> &
   InjectionType<typeof import("../../node_modules/@zadigetvoltaire/nuxt-gtm/dist/runtime/plugin.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-schema-org/dist/runtime/nuxt/plugin/defaults.js").default> &
@@ -35,7 +38,7 @@ declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }
 
   interface NuxtAppLiterals {
-    pluginName: 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt-site-config:init' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'nuxt:global-components' | 'nuxt:prefetch' | 'nuxt:checkIfPageUnused' | 'nuxt-schema-org:defaults' | 'nuxt-schema-org:init' | 'nuxt:checkIfLayoutUsed'
+    pluginName: 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt-site-config:init' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'nuxt:global-components' | 'nuxt:prefetch' | 'nuxt:checkIfPageUnused' | 'vite-pwa:nuxt:pwa-icons-plugin' | 'nuxt-schema-org:defaults' | 'nuxt-schema-org:init' | 'nuxt:checkIfLayoutUsed'
   }
 }
 

@@ -107,6 +107,12 @@
       "#cookie-control/*": [
         "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/*"
       ],
+      "#pwa": [
+        "../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index"
+      ],
+      "#nuxt-delay-hydration/api": [
+        "./delay-hydration.mjs"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -184,6 +190,14 @@
     "../node_modules/@zadigetvoltaire/nuxt-gtm/dist/runtime",
     "../node_modules/@dargmuesli/nuxt-cookie-control/runtime",
     "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime",
+    "../node_modules/@nuxtjs/html-validator/runtime",
+    "../node_modules/@nuxtjs/html-validator/dist/runtime",
+    "../node_modules/@nuxtjs/partytown/runtime",
+    "../node_modules/@nuxtjs/partytown/dist/runtime",
+    "../node_modules/@vite-pwa/nuxt/runtime",
+    "../node_modules/@vite-pwa/nuxt/dist/runtime",
+    "../node_modules/nuxt-delay-hydration/runtime",
+    "../node_modules/nuxt-delay-hydration/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -219,6 +233,14 @@
     "../node_modules/@zadigetvoltaire/nuxt-gtm/dist/runtime/server",
     "../node_modules/@dargmuesli/nuxt-cookie-control/runtime/server",
     "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/server",
+    "../node_modules/@nuxtjs/html-validator/runtime/server",
+    "../node_modules/@nuxtjs/html-validator/dist/runtime/server",
+    "../node_modules/@nuxtjs/partytown/runtime/server",
+    "../node_modules/@nuxtjs/partytown/dist/runtime/server",
+    "../node_modules/@vite-pwa/nuxt/runtime/server",
+    "../node_modules/@vite-pwa/nuxt/dist/runtime/server",
+    "../node_modules/nuxt-delay-hydration/runtime/server",
+    "../node_modules/nuxt-delay-hydration/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",

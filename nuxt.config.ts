@@ -1,10 +1,13 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  delayHydration: {
+    mode: 'init',
+  },
   ssr: true,
   app: {
     head: {
-      title: 'GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+      titleTemplate: '%s | GS STUDIO',
       htmlAttrs: {
         lang: 'pt-br',
       },
@@ -13,18 +16,15 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: 'GS Studio é uma agência especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'keywords', content: 'design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirão preto, tráfego pago em sertãozinho, criação de sites em são paulo' }, 
+        { name: 'keywords', content: 'design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirao preto, tráfego pago em sertaozinho, criação de sites em são paulo, marketing, desenvolvimento de sites, sites, comprar site, fazer loja online, ecommerce, e-commerce, gestao de conteudo, conteudo para redes sociais, agencia de marketing, agencia de publicidade' }, 
         { name: 'robots', content: 'index,follow' },
         { name: 'author', content: 'GS Studio' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/' },
         { property: 'og:title', content: 'GS Studio - Soluções em Marketing, Design e Tecnologia' },
         { property: 'og:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
-        { property: 'og:image', content: '/thumb_gsstudio.webp' },
-        { property: 'og:url', content: 'https://www.gsstudio.com.br' },
+        { property: 'og:image', content: 'https://www.gsstudio.com.br/thumb_gsstudio.webp' },
+        { property: 'og:url', content: 'https://www.gsstudio.com.br/' },
         { property: 'og:type', content: 'website' },
-        { property: 'twitter:card', content: 'summary_large_image' },
-        { property: 'twitter:title', content: 'GS Studio - Soluções em Marketing, Design e Tecnologia' },
-        { property: 'twitter:description', content: 'GS Studio é uma agência focada em design, marketing e tecnologia.' },
-        { property: 'twitter:image', content: '/thumb_gsstudio.webp' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }],
     },
@@ -36,6 +36,7 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
+
 
   modules: [
     '@nuxt/image',
@@ -49,11 +50,16 @@ export default defineNuxtConfig({
     'nuxt-vitalizer',
     '@zadigetvoltaire/nuxt-gtm',
     '@dargmuesli/nuxt-cookie-control',
+    '@nuxtjs/html-validator',
+    '@nuxtjs/partytown',
+    '@vite-pwa/nuxt',
+    'nuxt-delay-hydration',
   ],
+  
 
   gtm: {
     id: 'GTM-N3X2JT4',
-    defer: false, 
+    defer: true, 
     compatibility: false, 
     nonce: '2726c7f26c', 
     enabled: true,

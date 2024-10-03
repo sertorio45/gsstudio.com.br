@@ -1,0 +1,43 @@
+const interopDefault = r => r.default || r || [];
+const styles = {
+  "node_modules/nuxt/dist/app/entry.js": () => import('./entry-styles.-M5WsNwB.mjs').then(interopDefault),
+  "pages/contato.vue": () => import('./contato-styles.Bxk2KHaN.mjs').then(interopDefault),
+  "pages/index.vue": () => import('./index-styles.I0Yz5FNe.mjs').then(interopDefault),
+  "pages/politica-de-privacidade.vue": () => import('./politica-de-privacidade-styles.CiTKRdzz.mjs').then(interopDefault),
+  "pages/servicos.vue": () => import('./servicos-styles.Cv-eyPrL.mjs').then(interopDefault),
+  "pages/sobre.vue": () => import('./sobre-styles.lxu0ca0c.mjs').then(interopDefault),
+  "pages/contato.vue?vue&type=style&index=0&scoped=9c66bb8b&lang.css": () => import('./contato-styles.0HFKF20L.mjs').then(interopDefault),
+  "pages/politica-de-privacidade.vue?vue&type=style&index=0&scoped=a7a1e7be&lang.css": () => import('./politica-de-privacidade-styles.t0jvs6tl.mjs').then(interopDefault),
+  "pages/servicos.vue?vue&type=style&index=0&scoped=e3bc4830&lang.css": () => import('./servicos-styles.B7Aia62W.mjs').then(interopDefault),
+  "pages/sobre.vue?vue&type=style&index=0&scoped=8ddfd892&lang.css": () => import('./sobre-styles.C4jPBZh2.mjs').then(interopDefault),
+  "node_modules/nuxt/dist/app/components/error-404.vue": () => import('./error-404-styles.BcoFjqgl.mjs').then(interopDefault),
+  "node_modules/nuxt/dist/app/components/error-500.vue": () => import('./error-500-styles.DPP87-Dp.mjs').then(interopDefault),
+  "components/CookieConsent.vue": () => import('./CookieConsent-styles.CaZCky7y.mjs').then(interopDefault),
+  "components/CookieConsent.vue?vue&type=style&index=0&scoped=f5594720&lang.css": () => import('./CookieConsent-styles.CcMz40S_.mjs').then(interopDefault),
+  "layouts/default.vue": () => import('./default-styles.D1PighmN.mjs').then(interopDefault),
+  "pages/[slug].vue": () => import('./_slug_-styles.CVrcoaRz.mjs').then(interopDefault),
+  "pages/[slug].vue?vue&type=style&index=0&scoped=e4d6d82c&lang.css": () => import('./_slug_-styles.JLqTD8Sk.mjs').then(interopDefault),
+  "pages/artigos/[slug].vue": () => import('./_slug_-styles.BCgRmhOc.mjs').then(interopDefault),
+  "pages/artigos/[slug].vue?vue&type=style&index=0&scoped=15d43160&lang.css": () => import('./_slug_-styles.CZQJovk-.mjs').then(interopDefault),
+  "pages/blog.vue": () => import('./blog-styles.5aXI_63k.mjs').then(interopDefault),
+  "pages/index.vue?vue&type=style&index=0&scoped=21266e46&lang.css": () => import('./index-styles._ZP6w5yr.mjs').then(interopDefault),
+  "pages/blog.vue?vue&type=style&index=0&scoped=dd81981c&lang.css": () => import('./blog-styles.CBS8ZwB_.mjs').then(interopDefault),
+  "components/Form.vue": () => import('./Form-styles.C3-u8gqu.mjs').then(interopDefault),
+  "components/Form.vue?vue&type=style&index=0&scoped=24b81c3c&lang.css": () => import('./Form-styles.Bby4ZP6r.mjs').then(interopDefault),
+  "node_modules/nuxt/dist/app/components/error-404.vue?vue&type=style&index=0&scoped=00b6b518&lang.css": () => import('./error-404-styles.DRLC0U6S.mjs').then(interopDefault),
+  "layouts/default.vue?vue&type=style&index=0&scoped=ebfcb0d7&lang.css": () => import('./default-styles.D-lq8cAS.mjs').then(interopDefault),
+  "node_modules/nuxt/dist/app/components/error-500.vue?vue&type=style&index=0&scoped=f7ad9679&lang.css": () => import('./error-500-styles.DqmriZ_b.mjs').then(interopDefault),
+  "components/Footer.vue": () => import('./Footer-styles.DiA8ZsU_.mjs').then(interopDefault),
+  "components/Header.vue": () => import('./Header-styles.CxGnML2h.mjs').then(interopDefault),
+  "components/Footer.vue?vue&type=style&index=0&scoped=6f7c98ed&lang.css": () => import('./Footer-styles.bwxP0wfS.mjs').then(interopDefault),
+  "components/Portifolio.vue": () => import('./Portifolio-styles.CYX_GQf1.mjs').then(interopDefault),
+  "components/Portifolio.vue?vue&type=style&index=0&scoped=17257a9b&lang.css": () => import('./Portifolio-styles.9YYalBHL.mjs').then(interopDefault),
+  "components/Blog.vue": () => import('./Blog-styles.CXwPGRa-.mjs').then(interopDefault),
+  "components/CarouselParceiros.vue": () => import('./CarouselParceiros-styles.DtS_mCma.mjs').then(interopDefault),
+  "components/CarouselParceiros.vue?vue&type=style&index=0&scoped=17d2e8fe&lang.css": () => import('./CarouselParceiros-styles.Dc4wNojX.mjs').then(interopDefault),
+  "components/Blog.vue?vue&type=style&index=0&scoped=ac9fe8f7&lang.css": () => import('./Blog-styles.B0ODHllX.mjs').then(interopDefault),
+  "components/Header.vue?vue&type=style&index=0&scoped=01295761&lang.css": () => import('./Header-styles.Oj8WFSGM.mjs').then(interopDefault)
+};
+
+export { styles as default };
+//# sourceMappingURL=styles.mjs.map

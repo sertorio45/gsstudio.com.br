@@ -28,6 +28,9 @@ import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudi
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/errx/dist/index.js';
 import { isVNode, toValue, version, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
 import devalue from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { packString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/packrup/dist/index.mjs';
+import chalk from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/chalk/source/index.js';
+import { HtmlValidate, formatterFactory } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/html-validate/dist/es/index.js';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 import { isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
@@ -117,7 +120,7 @@ const _inlineRuntimeConfig = {
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
-      "defer": false,
+      "defer": true,
       "compatibility": false,
       "nonce": "2726c7f26c",
       "enabled": true,
@@ -206,23 +209,6 @@ const _inlineRuntimeConfig = {
           "manageCookies": "Learn more and customize",
           "save": "Save",
           "settingsUnsaved": "You have unsaved settings"
-        },
-        "pt": {
-          "accept": "Aceitar todos",
-          "acceptAll": "Aceitar",
-          "bannerDescription": "Nós utilizamos os nossos próprios cookies e de terceiros para que possamos lhe mostrar este site e compreender a forma como o utiliza, de forma a melhorarmos os serviços que oferecemos. Ao continuar a navegar no site, consideramos que aceitou a utilização de cookies.",
-          "bannerTitle": "Cookies",
-          "close": "Fechar",
-          "cookiesFunctional": "Cookies funcionais",
-          "cookiesNecessary": "Cookies necessários",
-          "cookiesOptional": "Cookies opcionais",
-          "decline": "Eu aceito o necessário",
-          "declineAll": "Apagar todos",
-          "here": "aqui",
-          "iframeBlocked": "Para visualizar isto, por favor, active os cookies funcionais",
-          "manageCookies": "Gerir cookies",
-          "save": "Gravar",
-          "settingsUnsaved": "Tem alterações não guardadas"
         }
       }
     }
@@ -330,12 +316,6 @@ const _inlineRuntimeConfig = {
       "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -362,12 +342,6 @@ const _inlineRuntimeConfig = {
       }
     ],
     "sitemap": [
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
@@ -855,9 +829,9 @@ function normalizeCookieHeaders(headers) {
   return outgoingHeaders;
 }
 
-const config = useRuntimeConfig();
+const config$1 = useRuntimeConfig();
 const _routeRulesMatcher = toRouteMatcher(
-  createRouter({ routes: config.nitro.routeRules })
+  createRouter({ routes: config$1.nitro.routeRules })
 );
 function createRouteRulesHandler(ctx) {
   return eventHandler((event) => {
@@ -913,7 +887,7 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
-const script = `
+const script$1 = `
 if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
   Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
     value: {},
@@ -926,13 +900,13 @@ window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 
 const _Ou7SulB9Vu = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script}<\/script>`);
+    htmlContext.head.push(`<script>${script$1}<\/script>`);
   });
 });
 
 const rootDir = "/Users/giovannisertorio/Desktop/Sites/gsstudio2";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"GS Studio é uma agência especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados."},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirão preto, tráfego pago em sertãozinho, criação de sites em são paulo"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia"},{"property":"og:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"og:image","content":"/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"summary_large_image"},{"property":"twitter:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"/thumb_gsstudio.webp"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil","htmlAttrs":{"lang":"pt-br"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"GS Studio é uma agência especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados."},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirao preto, tráfego pago em sertaozinho, criação de sites em são paulo, marketing, desenvolvimento de sites, sites, comprar site, fazer loja online, ecommerce, e-commerce, gestao de conteudo, conteudo para redes sociais, agencia de marketing, agencia de publicidade"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"name":"canonical","content":"https://www.gsstudio.com.br/"},{"property":"og:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia"},{"property":"og:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"og:image","content":"https://www.gsstudio.com.br/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br/"},{"property":"og:type","content":"website"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[{"id":"partytown-config","innerHTML":"partytown = { debug: true, forward: [], lib: \"/~partytown/\" }"},{"id":"partytown","innerHTML":"/* Partytown 0.10.2 - MIT builder.io */\nconst t={preserveBehavior:!1},e=e=>{if(\"string\"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{\"function\"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,\"/\"==(c=(s.lib||\"/~partytown/\")+(s.debug?\"debug/\":\"\"))[0]&&(l=r.querySelectorAll('script[type=\"text/partytown\"]'),i!=t?i.dispatchEvent(new CustomEvent(\"pt1\",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener(\"pt0\",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||\"partytown-sw.js\"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener(\"statechange\",(function(t){\"activated\"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?\"script\":\"iframe\"),t._pttab=Date.now(),e||(p.style.display=\"block\",p.style.width=\"0\",p.style.height=\"0\",p.style.border=\"0\",p.style.visibility=\"hidden\",p.setAttribute(\"aria-hidden\",!0)),p.src=c+\"partytown-\"+(e?\"atomics.js?v=0.10.2\":\"sandbox-sw.html?\"+t._pttab),r.querySelector(s.sandboxParent||\"body\").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(\".\")[0]]})),n=0;n<l.length;n++)(o=r.createElement(\"script\")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(\".\").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);\"function\"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),\"complete\"==r.readyState?h():(t.addEventListener(\"DOMContentLoaded\",h),t.addEventListener(\"load\",h))}(window,document,navigator,top,window.crossOriginIsolated);"}],"noscript":[],"titleTemplate":"%s | GS STUDIO","htmlAttrs":{"lang":"pt-br"}};
 
 const appRootTag = "div";
 
@@ -1548,11 +1522,188 @@ const _n98FBqtowz = defineNitroPlugin(async (nitroApp) => {
   nitroApp._robots.nuxtContentUrls = nuxtContentUrls;
 });
 
+const script = "function eventListeners(){const c=new AbortController;const p=new Promise(resolve=>{const hydrateOnEvents=\"mousemove,scroll,keydown,click,touchstart,wheel\".split(\",\");function handler(e){hydrateOnEvents.forEach(e=>w.removeEventListener(e,handler));requestAnimationFrame(()=>resolve(e))}hydrateOnEvents.forEach(e=>{w.addEventListener(e,handler,{capture:true,once:true,passive:true,signal:c.signal})})});return{c:()=>c.abort(),p:p}}function idleListener(){let id;const p=new Promise(resolve=>{const isMobile=w.innerWidth<640;const timeout=isMobile?Number.parseInt(\"5000\"):Number.parseInt(\"4000\");const timeoutDelay=()=>setTimeout(()=>requestAnimationFrame(()=>resolve(\"timeout\")),timeout);id=w.requestIdleCallback(timeoutDelay,{timeout:Number.parseInt(\"7000\")})});return{c:()=>window.cancelIdleCallback(id),p:p}}const triggers=[idleListener(),eventListeners()];const hydrationPromise=Promise.race(triggers.map(t=>t.p)).finally(()=>{triggers.forEach(t=>t.c())});";
+const mode = "init";
+const include = [];
+const exclude = ["/_nuxt/**","/api/**"];
+
+function createFilter$1(options = {}) {
+  const include = options.include || [];
+  const exclude = options.exclude || [];
+  return function(path) {
+    for (const v of [{ rules: exclude, result: false }, { rules: include, result: true }]) {
+      const regexRules = v.rules.filter((r) => r instanceof RegExp);
+      if (regexRules.some((r) => r.test(path)))
+        return v.result;
+      const stringRules = v.rules.filter((r) => typeof r === "string");
+      if (stringRules.length > 0) {
+        const routes = {};
+        for (const r of stringRules) {
+          if (r === path)
+            return v.result;
+          routes[r] = true;
+        }
+        const routeRulesMatcher = toRouteMatcher(createRouter({ routes, ...options }));
+        if (routeRulesMatcher.matchAll(path).length > 0)
+          return Boolean(v.result);
+      }
+    }
+    return include.length === 0;
+  };
+}
+
+const SCRIPT_REGEX = /<script(.*?)>/g;
+const _iqnh33vcMo = defineNitroPlugin((nitro) => {
+  const filter = createFilter$1({ include, exclude });
+  const config = useRuntimeConfig();
+  nitro.hooks.hook("render:html", (htmlContext, ctx) => {
+    const event = ctx.event;
+    if (!filter(event.path))
+      return;
+    let currentMode = mode;
+    if (typeof ctx.event.context._nitro?.routeRules?.delayHydration !== "undefined")
+      currentMode = ctx.event.context._nitro?.routeRules?.delayHydration;
+    if (!currentMode)
+      return;
+    if (currentMode === "manual") {
+      if (!htmlContext.body.some((h) => h.includes("<!--[--><!--nuxt-delay-hydration-component--><!--[-->"))) {
+        return;
+      }
+    }
+    let extraScripts = "";
+    if (currentMode === "init") {
+      const ASSET_RE = new RegExp(`<script[^>]*src="${config.app.buildAssetsDir}[^>]+><\\/script>`);
+      const LINK_ASSET_RE = new RegExp(`<link rel="modulepreload" as="script" [^>]*href="${config.app.buildAssetsDir}[^>]+>`, "g");
+      htmlContext.head = htmlContext.head.map((head) => head.replaceAll(LINK_ASSET_RE, ""));
+      const toLoad = [];
+      const isPageSSR = htmlContext.bodyAppend.some((b) => b.includes("$snuxt-delay-hydration-mode"));
+      if (!isPageSSR)
+        return;
+      htmlContext.bodyAppend = htmlContext.bodyAppend.filter(
+        (b) => {
+          if (b.includes("window.__NUXT__") || !ASSET_RE.test(b))
+            return true;
+          let match;
+          while ((match = SCRIPT_REGEX.exec(b)) !== null) {
+            if (match.index === SCRIPT_REGEX.lastIndex)
+              SCRIPT_REGEX.lastIndex++;
+            if (match)
+              toLoad.push(packString(match[1]));
+          }
+          return false;
+        }
+      );
+      extraScripts = `;window._$delayHydration.then(e => {
+  ;(${JSON.stringify(toLoad)}).forEach(s => {
+    const script = document.createElement('script');
+    Object.entries(s).forEach(([k, v]) => script.setAttribute(k, v));
+    document.body.appendChild(script);
+  })
+})`;
+    }
+    let html = `<script>
+(function() {
+  const w = window; w._$delayHydration = (function() { if (!('requestIdleCallback' in w) || !('requestAnimationFrame' in w)) { return new Promise(resolve => resolve('not supported')) } ${script} return hydrationPromise; })();
+  ${"w._$delayHydration.then((e) => { console.log('[nuxt-delay-hydration] Hydration event', e) })" }
+  ${extraScripts}
+})();
+<\/script>`;
+    htmlContext.bodyAppend.push(html);
+  });
+});
+
+const getValidator = (options = {}) => {
+  return new HtmlValidate(options);
+};
+const useChecker = (validator, usePrettier = false, logLevel = "verbose") => {
+  const invalidPages = [];
+  const checkHTML = async (url, html) => {
+    let couldFormat = false;
+    try {
+      if (usePrettier) {
+        const { format } = await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/prettier/index.mjs');
+        html = await format(html, { parser: "html" });
+        couldFormat = true;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    html = typeof html === "string" ? html.replace(/ ?data-v-[-A-Za-z0-9]+(=["'][^"']*["'])?/g, "") : html;
+    const { valid, results } = await validator.validateString(html);
+    if (valid && !results.length) {
+      if (logLevel === "verbose") {
+        console.log(`No HTML validation errors found for ${chalk.bold(url)}`);
+      }
+      return { valid, results };
+    }
+    if (!valid) {
+      invalidPages.push(url);
+    }
+    const formatter = couldFormat ? formatterFactory("codeframe") : formatterFactory("stylish");
+    const formattedResult = formatter?.(results);
+    const message = [
+      `HTML validation errors found for ${chalk.bold(url)}`,
+      formattedResult
+    ].filter(Boolean).join("\n");
+    if (valid) {
+      if (logLevel === "verbose" || logLevel === "warning") {
+        console.warn(message);
+      }
+    } else {
+      console.error(message);
+    }
+    return { valid, results };
+  };
+  return { checkHTML, invalidPages };
+};
+function isIgnored(path, ignore = []) {
+  return ignore.some((i) => typeof i === "string" ? path === i : i.test(path));
+}
+
+const config = {
+  usePrettier: false,
+  failOnError: false,
+  options: {
+  "extends": [
+    "html-validate:document",
+    "html-validate:recommended",
+    "html-validate:standard"
+  ],
+  "rules": {
+    "svg-focusable": "off",
+    "no-unknown-elements": "error",
+    "void-style": "off",
+    "no-trailing-whitespace": "off",
+    "require-sri": "off",
+    "attribute-boolean-style": "off",
+    "doctype-style": "off",
+    "no-inline-style": "off"
+  }
+},
+  hookable: false,
+  ignore: [
+  /\.(xml|rss|json)$/
+],
+  logLevel: "verbose"
+};
+
+const _yrXucinxhi = (function(nitro) {
+  const validator = getValidator(config.options);
+  const { checkHTML } = useChecker(validator, config.usePrettier, config.logLevel);
+  nitro.hooks.hook("render:response", async (response, { event }) => {
+    if (typeof response.body === "string" && (response.headers?.["Content-Type"] || response.headers?.["content-type"])?.includes("html") && !isIgnored(event.path, config.ignore)) {
+      checkHTML(event.path, response.body);
+    }
+  });
+});
+
 const plugins = [
   _Ou7SulB9Vu,
 _XKP7Y2XuYp,
 _1OecQxelmZ,
-_n98FBqtowz
+_n98FBqtowz,
+_iqnh33vcMo,
+_yrXucinxhi
 ];
 
 const errorHandler = (async function errorhandler(error, event) {

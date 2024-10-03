@@ -119,6 +119,12 @@
       "#cookie-control/*": [
         "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/*"
       ],
+      "#pwa": [
+        "../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index"
+      ],
+      "#nuxt-delay-hydration/api": [
+        "./delay-hydration"
+      ],
       "#vue-router": [
         "./vue-router"
       ],
@@ -161,6 +167,10 @@
     "../node_modules/nuxt-vitalizer/runtime/server",
     "../node_modules/@zadigetvoltaire/nuxt-gtm/runtime/server",
     "../node_modules/@dargmuesli/nuxt-cookie-control/runtime/server",
+    "../node_modules/@nuxtjs/html-validator/runtime/server",
+    "../node_modules/@nuxtjs/partytown/runtime/server",
+    "../node_modules/@vite-pwa/nuxt/runtime/server",
+    "../node_modules/nuxt-delay-hydration/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./module/nuxt-site-config.d.ts",

@@ -91,9 +91,22 @@ export default defineComponent({
     const VITE_STRAPI_TENANT_ID = import.meta.env.VITE_STRAPI_TENANT_ID;
     const articlesPerPage = 4;
     const loadedArticlesCount = ref(articlesPerPage); // Inicialmente carrega apenas 4 artigos
+
+    useHead ({
+      meta: [
+        { name: 'robots', content: 'index,follow' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/blog' },
+      ],
+    })
     
-    useSeoMeta ({
-      title: 'Blog - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+    useSeoMeta({
+      title: 'Blog | GS STUDIO',
+      description: 'Artigos para você aprender, novidades sobre tecnologia, marketing e toda área de comunicação on e offline.',
+      ogTitle: 'Blog | GS STUDIO',
+      ogDescription: 'Artigos para você aprender, novidades sobre tecnologia, marketing e toda área de comunicação on e offline.',
+      ogUrl: 'https://gsstudio.com.br/blog',
+      ogSiteName: 'GS STUDIO',
+      ogLocale: 'pt_BR',
     });
 
     const fetchArticles = async (tenantId: string) => {

@@ -155,9 +155,20 @@
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
-useSeoMeta({
-  title: 'Serviços - Gs Studio - Agência de marketing, design e tecnologia',
-});
+useHead ({
+      meta: [
+        { name: 'robots', content: 'index,follow' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/servicos' },
+      ],
+    })
+    
+    useSeoMeta({
+      title: 'Serviços | GS STUDIO',
+      ogTitle: 'Serviços | GS STUDIO',
+      ogUrl: 'https://gsstudio.com.br/servicos',
+      ogSiteName: 'GS STUDIO',
+      ogLocale: 'pt_BR',
+    });
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();

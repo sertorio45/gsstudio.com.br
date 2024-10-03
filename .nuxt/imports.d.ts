@@ -44,5 +44,6 @@ export { useField, useForm, useFieldArray, useFieldError, useFieldValue, useForm
 export { useSchemaOrg } from '../node_modules/nuxt-schema-org/dist/runtime/nuxt/imports/useSchemaOrg';
 export { useGtm } from '@gtm-support/vue-gtm';
 export { useCookieControl } from '../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables';
+export { useTransparentPwaIcon, useMaskablePwaIcon, useFaviconPwaIcon, useApplePwaIcon, useAppleSplashScreenPwaIcon } from '../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

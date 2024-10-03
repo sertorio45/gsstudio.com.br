@@ -1,0 +1,4 @@
+const index_vue_vue_type_style_index_0_scoped_21266e46_lang = "#index h1[data-v-21266e46]{font-size:var(--texto-grande)!important}#index p[data-v-21266e46]{font-size:var(--texto-medio)!important}#servicos img[data-v-21266e46],#sobre img[data-v-21266e46]{width:100px!important}#conquistas h3[data-v-21266e46]{font-size:1.5em!important;font-weight:700}.row[data-v-21266e46]{display:flex!important;flex-wrap:wrap!important}.fade-enter-active[data-v-21266e46],.fade-leave-active[data-v-21266e46]{transition:all .5s ease}.fade-enter[data-v-21266e46],.fade-leave-to[data-v-21266e46]{opacity:0;transform:translateY(30px)}";
+
+export { index_vue_vue_type_style_index_0_scoped_21266e46_lang as i };
+//# sourceMappingURL=index-styles-1.mjs-Cnf_lmoH.mjs.map

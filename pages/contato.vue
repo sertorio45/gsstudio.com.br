@@ -111,9 +111,20 @@ export default {
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
-useSeoMeta({
-  title: 'Contato - Gs Studio - Agência de marketing, design e tecnologia',
-});
+useHead ({
+      meta: [
+        { name: 'robots', content: 'noindex,follow' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/contato' },
+      ],
+    })
+    
+    useSeoMeta({
+      title: 'Contato | GS STUDIO',
+      ogTitle: 'Contato | GS STUDIO',
+      ogUrl: 'https://gsstudio.com.br/contato',
+      ogSiteName: 'GS STUDIO',
+      ogLocale: 'pt_BR',
+    });
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
