@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@dargmuesli/nuxt-cookie-control": "^8.4.13",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/robots": "^4.1.7",
@@ -26,6 +27,7 @@
     "inputmask": "^5.0.9",
     "maska": "^3.0.2",
     "nuxt": "^3.12.4",
+    "nuxt-cookie-control": "^1.9.93",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-schema-org": "^3.4.0",
     "nuxt-svgo": "^4.0.2",
@@ -41,6 +43,7 @@
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {
     "@types/vue-the-mask": "^0.11.5",
+    "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "nuxt-site-config": "^2.2.18",
     "nuxt-site-config-kit": "^2.2.18"
   }

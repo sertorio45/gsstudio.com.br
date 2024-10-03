@@ -110,6 +110,15 @@
       "#sitemap": [
         "../node_modules/@nuxtjs/sitemap/dist/runtime/types"
       ],
+      "#cookie-control/set-vars": [
+        "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/set-vars/native"
+      ],
+      "#cookie-control": [
+        "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime"
+      ],
+      "#cookie-control/*": [
+        "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/*"
+      ],
       "#vue-router": [
         "./vue-router"
       ],
@@ -150,6 +159,8 @@
     "../node_modules/@nuxtjs/sitemap/runtime/server",
     "../node_modules/nuxt-schema-org/runtime/server",
     "../node_modules/nuxt-vitalizer/runtime/server",
+    "../node_modules/@zadigetvoltaire/nuxt-gtm/runtime/server",
+    "../node_modules/@dargmuesli/nuxt-cookie-control/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./module/nuxt-site-config.d.ts",

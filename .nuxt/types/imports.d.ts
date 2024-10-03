@@ -164,6 +164,7 @@ declare global {
   const useAttrs: typeof import('../../node_modules/vue')['useAttrs']
   const useCardAnimation: typeof import('../../composables/useCardAnimation')['useCardAnimation']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
+  const useCookieControl: typeof import('../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables')['useCookieControl']
   const useCssModule: typeof import('../../node_modules/vue')['useCssModule']
   const useCssVars: typeof import('../../node_modules/vue')['useCssVars']
   const useError: typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']
@@ -175,6 +176,7 @@ declare global {
   const useForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useForm']
   const useFormErrors: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormErrors']
   const useFormValues: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormValues']
+  const useGtm: typeof import('../../node_modules/@gtm-support/vue-gtm')['useGtm']
   const useHead: typeof import('../../node_modules/@unhead/vue')['useHead']
   const useHeadSafe: typeof import('../../node_modules/@unhead/vue')['useHeadSafe']
   const useHydration: typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
@@ -435,6 +437,7 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('../../node_modules/vue')['useAttrs']>
     readonly useCardAnimation: UnwrapRef<typeof import('../../composables/useCardAnimation')['useCardAnimation']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
+    readonly useCookieControl: UnwrapRef<typeof import('../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables')['useCookieControl']>
     readonly useCssModule: UnwrapRef<typeof import('../../node_modules/vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('../../node_modules/vue')['useCssVars']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
@@ -446,6 +449,7 @@ declare module 'vue' {
     readonly useForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useForm']>
     readonly useFormErrors: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormErrors']>
     readonly useFormValues: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useFormValues']>
+    readonly useGtm: UnwrapRef<typeof import('../../node_modules/@gtm-support/vue-gtm')['useGtm']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>

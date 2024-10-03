@@ -42,5 +42,7 @@ export { defineRobotMeta } from '../node_modules/@nuxtjs/robots/dist/runtime/nux
 export { useRobotsRule } from '../node_modules/@nuxtjs/robots/dist/runtime/nuxt/composables/useRobotsRule';
 export { useField, useForm, useFieldArray, useFieldError, useFieldValue, useFormErrors, useFormValues, useIsFieldDirty, useIsFieldTouched, useIsFieldValid, useIsFormDirty, useIsFormTouched, useIsFormValid, useIsSubmitting, useResetForm, useSubmitCount, useSubmitForm, useValidateField, useValidateForm } from 'vee-validate';
 export { useSchemaOrg } from '../node_modules/nuxt-schema-org/dist/runtime/nuxt/imports/useSchemaOrg';
+export { useGtm } from '@gtm-support/vue-gtm';
+export { useCookieControl } from '../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

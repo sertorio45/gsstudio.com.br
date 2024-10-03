@@ -114,6 +114,18 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "gtm": {
+      "devtools": true,
+      "id": "GTM-N3X2JT4",
+      "defer": false,
+      "compatibility": false,
+      "nonce": "2726c7f26c",
+      "enabled": false,
+      "debug": true,
+      "loadScript": true,
+      "enableRouterSync": true,
+      "trackOnNextTick": false
+    },
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
@@ -122,6 +134,109 @@ const _inlineRuntimeConfig = {
       },
       "identity": "",
       "version": "3.3.9"
+    },
+    "cookieControl": {
+      "barPosition": "bottom-left",
+      "closeModalOnClickOutside": false,
+      "colors": {
+        "barBackground": "#000",
+        "barButtonBackground": "#fff",
+        "barButtonColor": "#000",
+        "barButtonHoverBackground": "#333",
+        "barButtonHoverColor": "#fff",
+        "barTextColor": "#fff",
+        "checkboxActiveBackground": "#000",
+        "checkboxActiveCircleBackground": "#fff",
+        "checkboxDisabledBackground": "#ddd",
+        "checkboxDisabledCircleBackground": "#fff",
+        "checkboxInactiveBackground": "#000",
+        "checkboxInactiveCircleBackground": "#fff",
+        "controlButtonBackground": "#fff",
+        "controlButtonHoverBackground": "#000",
+        "controlButtonIconColor": "#000",
+        "controlButtonIconHoverColor": "#fff",
+        "focusRingColor": "#808080",
+        "modalBackground": "#fff",
+        "modalButtonBackground": "#000",
+        "modalButtonColor": "#fff",
+        "modalButtonHoverBackground": "#333",
+        "modalButtonHoverColor": "#fff",
+        "modalOverlay": "#000",
+        "modalOverlayOpacity": 0.8,
+        "modalTextColor": "#000",
+        "modalUnsavedColor": "#fff"
+      },
+      "cookies": {
+        "necessary": [],
+        "optional": [
+          {
+            "name": "Google Tag Manager",
+            "description": "Cookies utilizados pelo Google Tag Manager para análise de tráfego.",
+            "id": "gtm",
+            "cookies": [
+              "_ga",
+              "_gid",
+              "_gat"
+            ]
+          }
+        ]
+      },
+      "cookieExpiryOffsetMs": 31536000000,
+      "cookieNameIsConsentGiven": "ncc_c",
+      "cookieNameCookiesEnabledIds": "ncc_e",
+      "cookieOptions": {
+        "path": "/",
+        "sameSite": "strict",
+        "secure": ""
+      },
+      "isAcceptNecessaryButtonEnabled": false,
+      "isControlButtonEnabled": false,
+      "isCookieIdVisible": false,
+      "isCssEnabled": true,
+      "isCssPonyfillEnabled": false,
+      "isDashInDescriptionEnabled": true,
+      "isIframeBlocked": false,
+      "isModalForced": false,
+      "locales": [
+        "pt",
+        "en"
+      ],
+      "localeTexts": {
+        "en": {
+          "accept": "Accept",
+          "acceptAll": "Accept all",
+          "bannerDescription": "We use our own cookies and third-party cookies so that we can display this website correctly and better understand how this website is used, with a view to improving the services we offer. A decision on cookie usage permissions can be changed anytime using the cookie button that will appear after a selection has been made on this banner.",
+          "bannerTitle": "Cookies",
+          "close": "Close",
+          "cookiesFunctional": "Functional cookies",
+          "cookiesNecessary": "Necessary cookies",
+          "cookiesOptional": "Optional cookies",
+          "decline": "Decline",
+          "declineAll": "Decline all",
+          "here": "here",
+          "iframeBlocked": "To see this, please enable functional cookies",
+          "manageCookies": "Learn more and customize",
+          "save": "Save",
+          "settingsUnsaved": "You have unsaved settings"
+        },
+        "pt": {
+          "accept": "Aceitar todos",
+          "acceptAll": "Aceitar",
+          "bannerDescription": "Nós utilizamos os nossos próprios cookies e de terceiros para que possamos lhe mostrar este site e compreender a forma como o utiliza, de forma a melhorarmos os serviços que oferecemos. Ao continuar a navegar no site, consideramos que aceitou a utilização de cookies.",
+          "bannerTitle": "Cookies",
+          "close": "Fechar",
+          "cookiesFunctional": "Cookies funcionais",
+          "cookiesNecessary": "Cookies necessários",
+          "cookiesOptional": "Cookies opcionais",
+          "decline": "Eu aceito o necessário",
+          "declineAll": "Apagar todos",
+          "here": "aqui",
+          "iframeBlocked": "Para visualizar isto, por favor, active os cookies funcionais",
+          "manageCookies": "Gerir cookies",
+          "save": "Gravar",
+          "settingsUnsaved": "Tem alterações não guardadas"
+        }
+      }
     }
   },
   "sitemap": {
@@ -217,6 +332,19 @@ const _inlineRuntimeConfig = {
     "sitemap": [
       "/sitemap.xml",
       "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -243,6 +371,19 @@ const _inlineRuntimeConfig = {
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
+      "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml",
       "/sitemap.xml"
@@ -797,7 +938,7 @@ const _Ou7SulB9Vu = (function(nitro) {
 
 const rootDir = "/Users/giovannisertorio/Desktop/Sites/gsstudio2";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"GS Studio é uma agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados em Ribeirão Preto, Sertãozinho, São Paulo e outras cidades"},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirao preto, tráfego pago em sertaozinho, criação de sites em são paulo"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil"},{"property":"og:description","content":"GS Studio é uma agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados em Ribeirão Preto, Sertãozinho, São Paulo e outras cidades"},{"property":"og:image","content":"/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"/thumb_gsstudio.webp"},{"property":"twitter:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"/thumb_gsstudio.webp"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil","htmlAttrs":{"lang":"pt-br"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"GS Studio é uma agência especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados."},{"name":"format-detection","content":"telephone=no"},{"name":"keywords","content":"design em Ribeirão Preto, design em Sertãozinho, criação de marca em São Paulo, marketing em ribeirão preto, tráfego pago em sertãozinho, criação de sites em são paulo"},{"name":"robots","content":"index,follow"},{"name":"author","content":"GS Studio"},{"property":"og:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia"},{"property":"og:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"og:image","content":"/thumb_gsstudio.webp"},{"property":"og:url","content":"https://www.gsstudio.com.br"},{"property":"og:type","content":"website"},{"property":"twitter:card","content":"summary_large_image"},{"property":"twitter:title","content":"GS Studio - Soluções em Marketing, Design e Tecnologia"},{"property":"twitter:description","content":"GS Studio é uma agência focada em design, marketing e tecnologia."},{"property":"twitter:image","content":"/thumb_gsstudio.webp"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.svg"}],"style":[],"script":[],"noscript":[],"title":"GS Studio - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil","htmlAttrs":{"lang":"pt-br"}};
 
 const appRootTag = "div";
 

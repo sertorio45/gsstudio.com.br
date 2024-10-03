@@ -42,6 +42,14 @@ declare module '@nuxt/schema' {
      */
     ["vitalizer"]: typeof import("nuxt-vitalizer").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
+     * Configuration for `@zadigetvoltaire/nuxt-gtm`
+     */
+    ["gtm"]: typeof import("@zadigetvoltaire/nuxt-gtm").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@dargmuesli/nuxt-cookie-control`
+     */
+    ["cookieControl"]: typeof import("@dargmuesli/nuxt-cookie-control").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `@nuxt/devtools`
      */
     ["devtools"]: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? O : Record<string, any>
@@ -92,6 +100,14 @@ declare module '@nuxt/schema' {
      */
     ["vitalizer"]?: typeof import("nuxt-vitalizer").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@zadigetvoltaire/nuxt-gtm`
+     */
+    ["gtm"]?: typeof import("@zadigetvoltaire/nuxt-gtm").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@dargmuesli/nuxt-cookie-control`
+     */
+    ["cookieControl"]?: typeof import("@dargmuesli/nuxt-cookie-control").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@nuxt/devtools`
      */
     ["devtools"]?: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
@@ -99,7 +115,7 @@ declare module '@nuxt/schema' {
      * Configuration for `@nuxt/telemetry`
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
 }
 declare module 'nuxt/schema' {
@@ -155,6 +171,16 @@ declare module 'nuxt/schema' {
      */
     ["vitalizer"]: typeof import("nuxt-vitalizer").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
+     * Configuration for `@zadigetvoltaire/nuxt-gtm`
+     * @see https://www.npmjs.com/package/@zadigetvoltaire/nuxt-gtm
+     */
+    ["gtm"]: typeof import("@zadigetvoltaire/nuxt-gtm").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@dargmuesli/nuxt-cookie-control`
+     * @see https://www.npmjs.com/package/@dargmuesli/nuxt-cookie-control
+     */
+    ["cookieControl"]: typeof import("@dargmuesli/nuxt-cookie-control").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `@nuxt/devtools`
      * @see https://www.npmjs.com/package/@nuxt/devtools
      */
@@ -217,6 +243,16 @@ declare module 'nuxt/schema' {
      */
     ["vitalizer"]?: typeof import("nuxt-vitalizer").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@zadigetvoltaire/nuxt-gtm`
+     * @see https://www.npmjs.com/package/@zadigetvoltaire/nuxt-gtm
+     */
+    ["gtm"]?: typeof import("@zadigetvoltaire/nuxt-gtm").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
+     * Configuration for `@dargmuesli/nuxt-cookie-control`
+     * @see https://www.npmjs.com/package/@dargmuesli/nuxt-cookie-control
+     */
+    ["cookieControl"]?: typeof import("@dargmuesli/nuxt-cookie-control").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@nuxt/devtools`
      * @see https://www.npmjs.com/package/@nuxt/devtools
      */
@@ -226,7 +262,7 @@ declare module 'nuxt/schema' {
      * @see https://www.npmjs.com/package/@nuxt/telemetry
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
@@ -360,6 +396,28 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
+   gtm: {
+      devtools: boolean,
+
+      id: string,
+
+      defer: boolean,
+
+      compatibility: boolean,
+
+      nonce: string,
+
+      enabled: boolean,
+
+      debug: boolean,
+
+      loadScript: boolean,
+
+      enableRouterSync: boolean,
+
+      trackOnNextTick: boolean,
+   },
+
    "nuxt-schema-org": {
       reactive: boolean,
 
@@ -372,6 +430,172 @@ declare module 'nuxt/schema' {
       identity: any,
 
       version: string,
+   },
+
+   cookieControl: {
+      barPosition: string,
+
+      closeModalOnClickOutside: boolean,
+
+      colors: {
+         barBackground: string,
+
+         barButtonBackground: string,
+
+         barButtonColor: string,
+
+         barButtonHoverBackground: string,
+
+         barButtonHoverColor: string,
+
+         barTextColor: string,
+
+         checkboxActiveBackground: string,
+
+         checkboxActiveCircleBackground: string,
+
+         checkboxDisabledBackground: string,
+
+         checkboxDisabledCircleBackground: string,
+
+         checkboxInactiveBackground: string,
+
+         checkboxInactiveCircleBackground: string,
+
+         controlButtonBackground: string,
+
+         controlButtonHoverBackground: string,
+
+         controlButtonIconColor: string,
+
+         controlButtonIconHoverColor: string,
+
+         focusRingColor: string,
+
+         modalBackground: string,
+
+         modalButtonBackground: string,
+
+         modalButtonColor: string,
+
+         modalButtonHoverBackground: string,
+
+         modalButtonHoverColor: string,
+
+         modalOverlay: string,
+
+         modalOverlayOpacity: number,
+
+         modalTextColor: string,
+
+         modalUnsavedColor: string,
+      },
+
+      cookies: {
+         necessary: Array<any>,
+
+         optional: Array<{
+
+         }>,
+      },
+
+      cookieExpiryOffsetMs: number,
+
+      cookieNameIsConsentGiven: string,
+
+      cookieNameCookiesEnabledIds: string,
+
+      cookieOptions: {
+         path: string,
+
+         sameSite: string,
+
+         secure: any,
+      },
+
+      isAcceptNecessaryButtonEnabled: boolean,
+
+      isControlButtonEnabled: boolean,
+
+      isCookieIdVisible: boolean,
+
+      isCssEnabled: boolean,
+
+      isCssPonyfillEnabled: boolean,
+
+      isDashInDescriptionEnabled: boolean,
+
+      isIframeBlocked: boolean,
+
+      isModalForced: boolean,
+
+      locales: Array<string>,
+
+      localeTexts: {
+         en: {
+            accept: string,
+
+            acceptAll: string,
+
+            bannerDescription: string,
+
+            bannerTitle: string,
+
+            close: string,
+
+            cookiesFunctional: string,
+
+            cookiesNecessary: string,
+
+            cookiesOptional: string,
+
+            decline: string,
+
+            declineAll: string,
+
+            here: string,
+
+            iframeBlocked: string,
+
+            manageCookies: string,
+
+            save: string,
+
+            settingsUnsaved: string,
+         },
+
+         pt: {
+            accept: string,
+
+            acceptAll: string,
+
+            bannerDescription: string,
+
+            bannerTitle: string,
+
+            close: string,
+
+            cookiesFunctional: string,
+
+            cookiesNecessary: string,
+
+            cookiesOptional: string,
+
+            decline: string,
+
+            declineAll: string,
+
+            here: string,
+
+            iframeBlocked: string,
+
+            manageCookies: string,
+
+            save: string,
+
+            settingsUnsaved: string,
+         },
+      },
    },
   }
 }

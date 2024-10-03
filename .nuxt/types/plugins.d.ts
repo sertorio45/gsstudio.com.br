@@ -19,6 +19,8 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/check-if-page-unused.js").default> &
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.server.js").default> &
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js").default> &
+  InjectionType<typeof import("../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/plugin.js").default> &
+  InjectionType<typeof import("../../node_modules/@zadigetvoltaire/nuxt-gtm/dist/runtime/plugin.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-schema-org/dist/runtime/nuxt/plugin/defaults.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-schema-org/dist/runtime/nuxt/plugin/init.js").default> &
   InjectionType<typeof import("../../node_modules/@nuxtjs/robots/dist/runtime/nuxt/plugins/robot-meta.server.js").default> &
@@ -27,6 +29,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js").default> &
   InjectionType<typeof import("../../plugins/main.client").default> &
   InjectionType<typeof import("../../plugins/bootstrap.client").default> &
+  InjectionType<typeof import("../../plugins/gtmConsent.client").default> &
   InjectionType<typeof import("../../plugins/imask").default>
 
 declare module '#app' {
