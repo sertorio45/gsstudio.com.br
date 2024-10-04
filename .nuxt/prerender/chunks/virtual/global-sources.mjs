@@ -47,6 +47,24 @@ const sources = [
         },
         "urls": [
             {
+                "loc": "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site"
+            },
+            {
+                "loc": "/como-o-trafego-pago-impulsiona-sua-visibilidade-online"
+            },
+            {
+                "loc": "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio"
+            },
+            {
+                "loc": "/por-que-seu-site-precisa-de-um-blog"
+            },
+            {
+                "loc": "/como-um-site-influencia-a-sua-visibilidade-online"
+            },
+            {
+                "loc": "/como-o-design-impacta-na-percepcao-da-sua-marca"
+            },
+            {
                 "loc": "/",
                 "images": [
                     {
@@ -223,7 +241,15 @@ const sources = [
                 ]
             },
             {
-                "loc": "/politica-de-privacidade"
+                "loc": "/sobre",
+                "images": [
+                    {
+                        "loc": "https://gsstudio.com.br/img/ceo.webp"
+                    }
+                ]
+            },
+            {
+                "loc": "/blog"
             },
             {
                 "loc": "/servicos",
@@ -255,18 +281,10 @@ const sources = [
                 ]
             },
             {
-                "loc": "/sobre",
-                "images": [
-                    {
-                        "loc": "https://gsstudio.com.br/img/ceo.webp"
-                    }
-                ]
-            },
-            {
-                "loc": "/blog"
-            },
-            {
                 "loc": "/contato"
+            },
+            {
+                "loc": "/politica-de-privacidade"
             }
         ],
         "sourceType": "app"

@@ -159,12 +159,18 @@ useHead ({
       meta: [
         { name: 'robots', content: 'index,follow' },
         { name: 'canonical', content: 'https://www.gsstudio.com.br/servicos' },
+        { name: 'og:image', property: 'og:image', content: 'https://www.gsstudio.com.br/img/thumb_gsstudio.jpg?400x400' },
+        { hid: 'og:image', property: 'og:image', content: 'https://www.gsstudio.com.br/img/thumb_gsstudio.jpg?400x400' },
+        { property: 'og:image:type', content: 'image/jpeg' },
+        { property: 'og:image:width', content: '400' },
+        { property: 'og:image:height', content: '400' },
       ],
     })
     
     useSeoMeta({
-      title: 'Serviços | GS STUDIO',
-      ogTitle: 'Serviços | GS STUDIO',
+      ogImage: 'https://www.gsstudio.com.br/img/thumb_gsstudio.jpg?400x400',
+      title: 'Serviços',
+      ogTitle: 'Serviços',
       ogUrl: 'https://gsstudio.com.br/servicos',
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',

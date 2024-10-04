@@ -113,6 +113,12 @@
       "#nuxt-delay-hydration/api": [
         "./delay-hydration.mjs"
       ],
+      "#nuxt-og-image-utils": [
+        "../node_modules/nuxt-og-image/dist/runtime/shared"
+      ],
+      "#nuxt-og-image-cache": [
+        "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/cache/lru"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -198,6 +204,8 @@
     "../node_modules/@vite-pwa/nuxt/dist/runtime",
     "../node_modules/nuxt-delay-hydration/runtime",
     "../node_modules/nuxt-delay-hydration/dist/runtime",
+    "../node_modules/nuxt-og-image/runtime",
+    "../node_modules/nuxt-og-image/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -241,6 +249,8 @@
     "../node_modules/@vite-pwa/nuxt/dist/runtime/server",
     "../node_modules/nuxt-delay-hydration/runtime/server",
     "../node_modules/nuxt-delay-hydration/dist/runtime/server",
+    "../node_modules/nuxt-og-image/runtime/server",
+    "../node_modules/nuxt-og-image/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",

@@ -1,3 +1,4 @@
+
 <template>
   <main>
     <section class="my-5" id="article-detail">
@@ -107,10 +108,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, watch } from 'vue';
 import axios from 'axios';
-import { useRoute, useRouter } from 'vue-router';
-import { useSeoMeta } from '#app'; // Certifique-se de importar corretamente o useSeoMeta
 
 interface Article {
   id: number;
@@ -134,6 +132,8 @@ interface SocialNetwork {
   url: string;
   icon: string;
 }
+
+ 
 
 export default defineComponent({
   name: 'ArticleDetail',
@@ -230,21 +230,37 @@ export default defineComponent({
       }
     };
 
-    // Inicialmente define os metadados de SEO padrão
+
+// Atualiza os metadados de SEO quando o artigo for carregado
+watch(article, (newArticle) => {
+  if (newArticle) {
+    const currentUrl = window.location.href; // Pega a URL atual da página
+
     useSeoMeta({
-      title: 'Blog - Soluções em Marketing, Design e Tecnologia | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
+      title: newArticle.titulo,
+      description: newArticle.seo_description,
+      keywords: newArticle.seo_keywords,
+      ogTitle: newArticle.titulo,
+      ogDescription: newArticle.seo_description,
+      ogUrl: currentUrl, // Define automaticamente a URL atual
+      ogSiteName: 'GS STUDIO',
+      ogImage: newArticle.thumb?.url
+        ? getArticleImage(newArticle)
+        : 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp',
+      ogLocale: 'pt_BR',
     });
 
-    // Atualiza os metadados de SEO quando o artigo for carregado
-    watch(article, (newArticle) => {
-      if (newArticle) {
-        useSeoMeta({
-          title: newArticle.titulo,
-          description: newArticle.seo_description,
-          keywords: newArticle.seo_keywords,
-        });
-      }
+    useHead({
+      meta: [
+        { name: 'robots', content: 'index, follow' },
+        { name: 'canonical', content: currentUrl }, // Define automaticamente a URL atual
+      ],
     });
+  }
+});
+
+console.log(route.params.slug)
+
 
     onMounted(async () => {
       const slug = route.params.slug as string;

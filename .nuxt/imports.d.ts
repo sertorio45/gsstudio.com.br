@@ -45,5 +45,8 @@ export { useSchemaOrg } from '../node_modules/nuxt-schema-org/dist/runtime/nuxt/
 export { useGtm } from '@gtm-support/vue-gtm';
 export { useCookieControl } from '../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables';
 export { useTransparentPwaIcon, useMaskablePwaIcon, useFaviconPwaIcon, useApplePwaIcon, useAppleSplashScreenPwaIcon } from '../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index';
+export { defineOgImage } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImage';
+export { defineOgImageComponent } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImageComponent';
+export { defineOgImageScreenshot } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImageScreenshot';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
