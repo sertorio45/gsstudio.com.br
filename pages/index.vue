@@ -1,5 +1,4 @@
 <template>
-  <main>
     <!-- Topo -->
     <section class="d-flex align-items-center min-vh-100" id="index">
       <div class="container text-center">
@@ -35,19 +34,19 @@
             <div class="row w-100">
               <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="Icone de Design" />
+                  <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="GS STUDIO - Design para marketing e comunicação" />
                   <h3>Design</h3>
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="Icone de Marketing" />
+                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="GS STUDIO - Marketing e comunicação digital" />
                   <h3>Marketing</h3>
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-4 d-flex">
                 <div class="gscard gscard-border w-100">
-                  <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="Icone de Tecnologia" />
+                  <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="GS STUDIO - Tecnologia para sites e comunicação" />
                   <h3>Tecnologia</h3>
                 </div>
               </div>
@@ -118,25 +117,25 @@
           <div class="row p-3">
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" alt="Sites" />
+                <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" alt="GS STUDIO - Criação de sites e comunicação" />
                 <h3>Sites</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1" alt="Redes sociais" />
+                <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1" alt="GS STUDIO - Gestão de conteúdo e redes sociais" />
                 <h3>Redes sociais</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" alt="Lojas virtuais" />
+                <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" alt="GS STUDIO - Lojas virtuais e marketing digital" />
                 <h3>Lojas virtuais</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
-                <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" alt="Marcas" />
+                <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" alt="GS STUDIO - Criação de marcas e branding" />
                 <h3>Marcas</h3>
               </div>
             </div>
@@ -172,7 +171,7 @@
     <!-- CTA -->
 
     <Blog />
-  </main>
+
 </template>
 
 <script>

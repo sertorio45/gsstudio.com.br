@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+
   delayHydration: {
     mode: 'init',
   },
@@ -28,6 +29,14 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }],
     },
+  },
+
+  router: {
+    options: {
+      // Remova a opção `mode` e deixe apenas as opções de roteamento que precisa
+      linkActiveClass: 'active-link',  // exemplo de outras opções permitidas
+      linkExactActiveClass: 'exact-active-link'
+    }
   },
 
   site: {

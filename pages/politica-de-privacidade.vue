@@ -79,10 +79,10 @@
 useHead ({
       meta: [
         { name: 'robots', content: 'noindex,nofollow' },
-        { name: 'canonical', content: 'https://www.gsstudio.com.br/servicos' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/politica-de-privacidade' },
       ],
     })
-Meta({
+useSeoMeta({
       title: 'Política de Privacidade | GS STUDIO',
       description: 'Nos importamos com a integridade de cada usuário em nosso site.',
       ogTitle: 'Política de Privacidade | GS STUDIO',
@@ -90,7 +90,6 @@ Meta({
       ogUrl: 'https://gsstudio.com.br/politica-de-privacidade',
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
-      canonical: 'https://gsstudio.com.br/politica-de-privacidade'
     });
 </script>
 

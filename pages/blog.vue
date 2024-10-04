@@ -38,7 +38,7 @@
         <div v-else class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="image-container">
-              <nuxt-link :to="`${article.slug}`">
+              <NuxtLink :to="`${article.slug}`">
                 <img
                   :src="getArticleImage(article)" 
                   class="img-fluid blur-effect"
@@ -48,7 +48,7 @@
                   @error="handleImageError($event)"
                   loading="lazy"
                 />
-              </nuxt-link>
+              </NuxtLink>
             </div>
             <div class="card-body">
               <div class="mb-2">
