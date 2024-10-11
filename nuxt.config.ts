@@ -2,6 +2,10 @@ import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
 
+  generate: {
+    dir: 'dist'  // Certifique-se que o caminho está correto ou altere para `.output/public`
+  },
+
   delayHydration: {
     mode: 'init',
   },
