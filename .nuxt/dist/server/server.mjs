@@ -646,7 +646,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-CKkmY3qC.js")
+    component: () => import("./_nuxt/index-Bai9VpiA.js")
   },
   {
     name: "politica-de-privacidade",
@@ -656,7 +656,7 @@ const _routes = [
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import("./_nuxt/servicos-BvhltnQt.js")
+    component: () => import("./_nuxt/servicos-DqstzWM-.js")
   },
   {
     name: "sobre",
@@ -2249,7 +2249,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import("./_nuxt/default-BZ8483Xa.js")
+  default: () => import("./_nuxt/default--OeVQW5O.js")
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",

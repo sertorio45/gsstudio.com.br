@@ -1,7 +1,7 @@
-import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/defu/dist/defu.mjs';
-import { appendHeader } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/h3/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/radix3/dist/index.mjs';
-import { withoutTrailingSlash, withoutBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ufo/dist/index.mjs';
+import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
+import { appendHeader } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
+import { withoutTrailingSlash, withoutBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
 import { g as useNuxtApp, b as useRoute, h as useOgImageRuntimeConfig, n as normaliseOptions, s as separateProps, j as createOgImageMeta, k as getOgImagePath, l as useRequestEvent, f as useRuntimeConfig } from './server.mjs';
 
 function withoutQuery(path) {

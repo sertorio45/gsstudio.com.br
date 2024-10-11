@@ -1,4 +1,4 @@
-import { prefixStorage } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/dist/index.mjs';
+import { prefixStorage } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/dist/index.mjs';
 import { a as useStorage, e as emojiCache } from '../routes/api/portifolio.mjs';
 
 const theme = {};

@@ -1,4 +1,4 @@
-import { defineEventHandler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/h3/dist/index.mjs';
+import { defineEventHandler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { promises } from 'fs';
 import path from 'path';
 
