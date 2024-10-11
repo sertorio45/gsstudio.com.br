@@ -1,5 +1,5 @@
-import { computed, mergeProps, useSSRContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
-import { ssrRenderAttrs } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/server-renderer/index.mjs';
+import { computed, mergeProps, useSSRContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/index.mjs';
+import { ssrRenderAttrs } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/server-renderer/index.mjs';
 
 const _sfc_main = {
   __name: "Icon",

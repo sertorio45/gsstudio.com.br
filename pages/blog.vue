@@ -80,6 +80,8 @@ import { defineComponent, ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 import type { Article, Category } from '~/types';
 
+
+
 export default defineComponent({
   name: 'Blog',
   setup() {
@@ -92,17 +94,25 @@ export default defineComponent({
     const articlesPerPage = 4;
     const loadedArticlesCount = ref(articlesPerPage); // Inicialmente carrega apenas 4 artigos
 
+    defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
+
     useHead ({
       meta: [
-        { name: 'robots', content: 'index,follow' },
+        { name: 'lang', content: 'pt-BR' },
+        { name: 'language', content: 'pt-BR' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br/blog' },
+        { name: 'keywords', content: 'marketing digital, criação de sites, otimização de sites (SEO), Google Ads, campanhas online, agência digital, agência de marketing, lojas virtuais, e-commerce, gestão de redes sociais, desenvolvimento web, design responsivo, tráfego pago, branding, identidade visual, marketing para empresas, marketing para pequenas empresas, marketing em Sertãozinho, marketing em Ribeirão Preto, SEO local, social media marketing, estratégia de marketing digital, anúncios online, agência de SEO, criação de conteúdo, marketing de conteúdo, hospedagem de sites, otimização de conversão (CRO), email marketing, automação de marketing, consultoria em marketing digital, campanhas pagas no Google, performance digital, WordPress, criação de blogs, gestão de tráfego, otimização de desempenho do site, desenvolvimento de sistemas web, produção audiovisual, estratégias de marketing SP, agência de marketing em SP.' },
+
         { name: 'canonical', content: 'https://www.gsstudio.com.br/blog' },
       ],
     })
     
     useSeoMeta({
-      title: 'Blog | GS STUDIO',
+      title: 'Blog',
       description: 'Artigos para você aprender, novidades sobre tecnologia, marketing e toda área de comunicação on e offline.',
-      ogTitle: 'Blog | GS STUDIO',
+      ogTitle: 'Blog',
       ogDescription: 'Artigos para você aprender, novidades sobre tecnologia, marketing e toda área de comunicação on e offline.',
       ogUrl: 'https://gsstudio.com.br/blog',
       ogSiteName: 'GS STUDIO',

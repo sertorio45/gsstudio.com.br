@@ -33,6 +33,9 @@ const sources = [
             },
             {
                 "loc": "/sobre"
+            },
+            {
+                "loc": "/solucoes/gscrm"
             }
         ],
         "sourceType": "app"
@@ -50,19 +53,71 @@ const sources = [
                 "loc": "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site"
             },
             {
-                "loc": "/como-o-trafego-pago-impulsiona-sua-visibilidade-online"
-            },
-            {
-                "loc": "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio"
+                "loc": "/como-um-site-influencia-a-sua-visibilidade-online"
             },
             {
                 "loc": "/por-que-seu-site-precisa-de-um-blog"
             },
             {
-                "loc": "/como-um-site-influencia-a-sua-visibilidade-online"
+                "loc": "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio"
+            },
+            {
+                "loc": "/como-o-trafego-pago-impulsiona-sua-visibilidade-online"
             },
             {
                 "loc": "/como-o-design-impacta-na-percepcao-da-sua-marca"
+            },
+            {
+                "loc": "/sobre",
+                "images": [
+                    {
+                        "loc": "https://gsstudio.com.br/img/ceo.webp"
+                    }
+                ]
+            },
+            {
+                "loc": "/politica-de-privacidade"
+            },
+            {
+                "loc": "/servicos",
+                "images": [
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/sites.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/lojas_virtuais.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/branding.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/gestao_de_conteudo.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/trafego_pago.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/otimizacao_seo.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/comunicacao_visual.svg"
+                    },
+                    {
+                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/producao_de_video.svg"
+                    }
+                ]
+            },
+            {
+                "loc": "/blog"
+            },
+            {
+                "loc": "/solucoes/gscrm"
+            },
+            {
+                "loc": "/contato"
+            },
+            {
+                "loc": "/planos"
             },
             {
                 "loc": "/",
@@ -239,52 +294,6 @@ const sources = [
                         "loc": "https://gsstudio.com.br/_ipx/q_80/icons/servicos/branding.svg"
                     }
                 ]
-            },
-            {
-                "loc": "/sobre",
-                "images": [
-                    {
-                        "loc": "https://gsstudio.com.br/img/ceo.webp"
-                    }
-                ]
-            },
-            {
-                "loc": "/blog"
-            },
-            {
-                "loc": "/servicos",
-                "images": [
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/sites.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/lojas_virtuais.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/branding.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/gestao_de_conteudo.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/trafego_pago.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/otimizacao_seo.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/comunicacao_visual.svg"
-                    },
-                    {
-                        "loc": "https://gsstudio.com.br/_ipx/w_100&amp;q_80/icons/servicos/producao_de_video.svg"
-                    }
-                ]
-            },
-            {
-                "loc": "/contato"
-            },
-            {
-                "loc": "/politica-de-privacidade"
             }
         ],
         "sourceType": "app"

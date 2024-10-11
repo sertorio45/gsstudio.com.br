@@ -1,32 +1,32 @@
 import { t as theme, a as applyEmojis, l as loadFont } from './emojis.mjs';
 import { h as decodeHtml, t as toBase64Image, b as useNitroOrigin, a as useStorage, f as fetchIsland, i as htmlDecodeQuotes, u as useOgImageRuntimeConfig, n as normaliseFontInput, j as fontCache } from '../routes/api/portifolio.mjs';
-import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
-import { html } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/satori-html/dist/index.js';
-import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/image-size/dist/index.js';
-import { withBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
-import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/npm/consola.mjs';
-import { createGenerator } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unocss/core/dist/index.mjs';
-import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unocss/preset-wind/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/klona/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/scule/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ohash/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs-lite.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/lru-cache.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/packrup/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
+import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/defu/dist/defu.mjs';
+import { html } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/satori-html/dist/index.js';
+import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/image-size/dist/index.js';
+import { withBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ufo/dist/index.mjs';
+import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/npm/consola.mjs';
+import { createGenerator } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unocss/core/dist/index.mjs';
+import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unocss/preset-wind/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/h3/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ofetch/dist/node.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/destr/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/fetch/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/hookable/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/klona/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/scule/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ohash/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs-lite.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/lru-cache.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/radix3/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/packrup/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/devalue/index.js';
 import 'node:fs';
 import 'node:url';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/pathe/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ipx/dist/index.mjs';
 
 const cssInlineInstance = { instance: void 0 };
 const sharpInstance = { instance: void 0 };
@@ -43,11 +43,11 @@ async function useSatori() {
   return satoriInstance.instance.satori;
 }
 async function useSharp() {
-  sharpInstance.instance = sharpInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
+  sharpInstance.instance = sharpInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
   return sharpInstance.instance;
 }
 async function useCssInline() {
-  cssInlineInstance.instance = cssInlineInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
+  cssInlineInstance.instance = cssInlineInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
   await cssInlineInstance.instance.initWasmPromise;
   return cssInlineInstance.instance.cssInline;
 }

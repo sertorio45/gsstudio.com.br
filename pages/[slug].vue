@@ -110,6 +110,7 @@
 <script lang="ts">
 import axios from 'axios';
 
+
 interface Article {
   id: number;
   slug: string;
@@ -232,10 +233,13 @@ export default defineComponent({
 
 
 // Atualiza os metadados de SEO quando o artigo for carregado
+// Atualiza os metadados de SEO quando o artigo for carregado
 watch(article, (newArticle) => {
   if (newArticle) {
     const currentUrl = window.location.href; // Pega a URL atual da página
+    const ogImage = hasThumbnail(newArticle) ? getArticleImage(newArticle) : 'https://gsstudio.com.br/img/thumb_gsstudio.jpg'; // Define imagem dinâmica ou padrão
 
+    // Define os metadados Open Graph explicitamente
     useSeoMeta({
       title: newArticle.titulo,
       description: newArticle.seo_description,
@@ -244,16 +248,34 @@ watch(article, (newArticle) => {
       ogDescription: newArticle.seo_description,
       ogUrl: currentUrl, // Define automaticamente a URL atual
       ogSiteName: 'GS STUDIO',
-      ogImage: newArticle.thumb?.url
-        ? getArticleImage(newArticle)
-        : 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp',
       ogLocale: 'pt_BR',
+      ogImage: ogImage, // Imagem dinâmica
+      ogImageAlt: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web',
+      ogType: 'article',
     });
 
+    // Define a imagem OG explicitamente com base no artigo ou padrão
+    defineOgImage({
+      url: ogImage,
+      width: 1200,
+      height: 600,
+      alt: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web'
+    });
+
+    // Atualiza a tag <head> explicitamente
     useHead({
       meta: [
         { name: 'robots', content: 'index, follow' },
         { name: 'canonical', content: currentUrl }, // Define automaticamente a URL atual
+        { property: 'og:type', content: 'article' },
+        { property: 'og:title', content: newArticle.titulo },
+        { property: 'og:description', content: newArticle.seo_description },
+        { property: 'og:url', content: currentUrl },
+        { property: 'og:site_name', content: 'GS STUDIO' },
+        { property: 'og:image', content: ogImage },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '600' },
+        { property: 'og:image:alt', content: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web' },
       ],
     });
   }

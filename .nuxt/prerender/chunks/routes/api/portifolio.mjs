@@ -1,26 +1,26 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, setResponseStatus, setResponseHeader, send, getRequestHeaders, removeResponseHeader, getResponseHeader, setHeader, getHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
-import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
-import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/klona/dist/index.mjs';
-import { snakeCase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/scule/dist/index.mjs';
-import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ohash/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, hasProtocol, withHttps, withoutProtocol, withTrailingSlash, withLeadingSlash, withoutTrailingSlash, withBase, withoutLeadingSlash, decodePath, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
-import { createStorage, defineDriver, prefixStorage, normalizeKey } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs.mjs';
-import fsDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs-lite.mjs';
-import lruCacheDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/lru-cache.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
-import { toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
-import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/npm/consola.mjs';
-import { packString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/packrup/dist/index.mjs';
-import { parse } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, setResponseStatus, setResponseHeader, send, getRequestHeaders, removeResponseHeader, getResponseHeader, setHeader, getHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/h3/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ofetch/dist/node.mjs';
+import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/destr/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/hookable/dist/index.mjs';
+import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/klona/dist/index.mjs';
+import { snakeCase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/scule/dist/index.mjs';
+import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/defu/dist/defu.mjs';
+import { hash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ohash/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, hasProtocol, withHttps, withoutProtocol, withTrailingSlash, withLeadingSlash, withoutTrailingSlash, withBase, withoutLeadingSlash, decodePath, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ufo/dist/index.mjs';
+import { createStorage, defineDriver, prefixStorage, normalizeKey } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs.mjs';
+import fsDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs-lite.mjs';
+import lruCacheDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/lru-cache.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/radix3/dist/index.mjs';
+import { toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/index.mjs';
+import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/npm/consola.mjs';
+import { packString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/packrup/dist/index.mjs';
+import { parse } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/devalue/index.js';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, resolve as resolve$1, isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
-import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
+import { dirname, resolve as resolve$1, isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/pathe/dist/index.mjs';
+import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ipx/dist/index.mjs';
 
 function getEnv(key, opts) {
   const envKey = snakeCase(key).toUpperCase();
@@ -71,7 +71,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "c4a627ad-e7b8-4f2f-841d-5e285eef486e",
+    "buildId": "59ad1a5d-efce-4e07-b30a-837fa91dfb47",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -90,10 +90,15 @@ const _inlineRuntimeConfig = {
         }
       },
       "/sitemap.xml": {
-        "headers": {
-          "Content-Type": "text/xml; charset=UTF-8",
-          "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-10-04T14:43:27.020Z"
+        "swr": 600,
+        "cache": {
+          "swr": true,
+          "maxAge": 600,
+          "varies": [
+            "X-Forwarded-Host",
+            "X-Forwarded-Proto",
+            "Host"
+          ]
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -264,7 +269,7 @@ const _inlineRuntimeConfig = {
       {
         "_context": "system",
         "_priority": -15,
-        "name": "gsstudio2",
+        "name": "gsstudio",
         "env": "production"
       },
       {
@@ -376,7 +381,7 @@ const _inlineRuntimeConfig = {
     "alias": {},
     "fs": {
       "dir": [
-        "/Users/giovannisertorio/Desktop/Sites/gsstudio2/public"
+        "/Users/giovannisertorio/Desktop/Sites/gsstudio/public"
       ]
     },
     "http": {
@@ -442,7 +447,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"nuxt-og-image:fonts","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/cache/nuxt-og-image@3.0.4/_fonts"},{"baseName":"server","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/server/assets"}];
+const serverAssets = [{"baseName":"nuxt-og-image:fonts","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio/.nuxt/cache/nuxt-og-image@3.0.4/_fonts"},{"baseName":"server","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -451,7 +456,7 @@ for (const asset of serverAssets) {
 }
 
 const normalizeFsKey = (item) => item.replaceAll(":", "_");
-const _47Users_47giovannisertorio_47Desktop_47Sites_47gsstudio2_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js = defineDriver((opts) => {
+const _47Users_47giovannisertorio_47Desktop_47Sites_47gsstudio_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js = defineDriver((opts) => {
   const fs = fsDriver({ base: opts.base });
   const lru = lruCacheDriver({ max: 1e3 });
   return {
@@ -476,12 +481,12 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('internal:nuxt:prerender', _47Users_47giovannisertorio_47Desktop_47Sites_47gsstudio2_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js({"driver":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt/dist/core/runtime/nitro/cache-driver.js","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/cache/nitro/prerender"}));
-storage.mount('data', fsDriver({"driver":"fsLite","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/.data/kv"}));
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('internal:nuxt:prerender', _47Users_47giovannisertorio_47Desktop_47Sites_47gsstudio_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js({"driver":"/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt/dist/core/runtime/nitro/cache-driver.js","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio/.nuxt/cache/nitro/prerender"}));
+storage.mount('data', fsDriver({"driver":"fsLite","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -1553,7 +1558,7 @@ function stringifyString(str) {
 }
 
 const PRERENDER_NO_SSR_ROUTES$1 = /* @__PURE__ */ new Set(["/index.html", "/200.html", "/404.html"]);
-const _1OecQxelmZ = defineNitroPlugin(async (nitroApp) => {
+const _jzS11EIDSr = defineNitroPlugin(async (nitroApp) => {
   nitroApp.hooks.hook("render:html", async (ctx, { event }) => {
     const routeOptions = getRouteRules(event);
     const isIsland = process.env.NUXT_COMPONENT_ISLANDS && event.path.startsWith("/__nuxt_island");
@@ -1585,7 +1590,7 @@ const logger$1 = createConsola({
 });
 
 const PRERENDER_NO_SSR_ROUTES = /* @__PURE__ */ new Set(["/index.html", "/200.html", "/404.html"]);
-const _n98FBqtowz = defineNitroPlugin(async (nitroApp) => {
+const _nYge9arT1O = defineNitroPlugin(async (nitroApp) => {
   const { usingNuxtContent, robotsDisabledValue } = useRuntimeConfig()["nuxt-robots"];
   nitroApp._robots = {};
   await resolveRobotsTxtContext(void 0, nitroApp);
@@ -1649,7 +1654,7 @@ function createFilter$1(options = {}) {
 }
 
 const SCRIPT_REGEX = /<script(.*?)>/g;
-const _iqnh33vcMo = defineNitroPlugin((nitro) => {
+const _OEvGlv5QDl = defineNitroPlugin((nitro) => {
   const filter = createFilter$1({ include, exclude });
   const config = useRuntimeConfig();
   nitro.hooks.hook("render:html", (htmlContext, ctx) => {
@@ -2064,7 +2069,7 @@ async function fetchPathHtmlAndExtractOptions(e, path, key) {
   return payload;
 }
 
-const _AleS2kaKMk = defineNitroPlugin(async (nitro) => {
+const _TDcfh2zRNH = defineNitroPlugin(async (nitro) => {
   const routeRuleMatcher = createNitroRouteRuleMatcher$1();
   nitro.hooks.hook("render:html", async (html, ctx) => {
     const { head, bodyAppend } = html;
@@ -2091,10 +2096,10 @@ const _AleS2kaKMk = defineNitroPlugin(async (nitro) => {
 });
 
 const plugins = [
-  _1OecQxelmZ,
-_n98FBqtowz,
-_iqnh33vcMo,
-_AleS2kaKMk
+  _jzS11EIDSr,
+_nYge9arT1O,
+_OEvGlv5QDl,
+_TDcfh2zRNH
 ];
 
 const errorHandler = (async function errorhandler(error, event) {
@@ -2155,724 +2160,724 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const assets = {
-  "/200.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"13ffa4-9CIuZpLWCeAjUQuxy82Sk3e26vc\"",
-    "mtime": "2024-10-04T14:43:36.393Z",
-    "size": 1310628,
-    "path": "../../.output/public/200.html"
-  },
-  "/404.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"13ff69-mpUyj2BVAVsDjXgCAKUK3xfwSIg\"",
-    "mtime": "2024-10-04T14:43:36.393Z",
-    "size": 1310569,
-    "path": "../../.output/public/404.html"
-  },
   "/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:39.784Z",
+    "etag": "\"45-1kggDMGK3apRDME+CE58rIKGflA\"",
+    "mtime": "2024-10-11T20:18:58.703Z",
     "size": 69,
     "path": "../../.output/public/_payload.json"
   },
   "/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"14c6f3-Z45X2xyKMvElKvCAWL3PZraahBc\"",
-    "mtime": "2024-10-04T14:43:36.876Z",
-    "size": 1361651,
+    "etag": "\"14ca8a-Z3YNVEOoyUo6uS2ZLDAD5WTmLms\"",
+    "mtime": "2024-10-11T20:18:55.507Z",
+    "size": 1362570,
     "path": "../../.output/public/index.html"
-  },
-  "/robots.txt": {
-    "type": "text/plain; charset=utf-8",
-    "etag": "\"78-V9sRgGqIqa38gKnMXJ6g5PYp51k\"",
-    "mtime": "2024-10-04T14:43:36.232Z",
-    "size": 120,
-    "path": "../../.output/public/robots.txt"
-  },
-  "/__sitemap__/style.xsl": {
-    "type": "application/xml",
-    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2024-10-04T14:43:36.232Z",
-    "size": 5967,
-    "path": "../../.output/public/__sitemap__/style.xsl"
-  },
-  "/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.867Z",
-    "size": 69,
-    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json"
-  },
-  "/como-o-design-impacta-na-percepcao-da-sua-marca/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"1430d6-aELbxeJEdwvL4v0ZBK+MZE0gTCs\"",
-    "mtime": "2024-10-04T14:43:36.760Z",
-    "size": 1323222,
-    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/index.html"
-  },
-  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.795Z",
-    "size": 69,
-    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json"
-  },
-  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"143100-8ifgu21aa3dXkk9GoZwQrCNFwhk\"",
-    "mtime": "2024-10-04T14:43:36.737Z",
-    "size": 1323264,
-    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html"
-  },
-  "/como-um-site-influencia-a-sua-visibilidade-online/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.867Z",
-    "size": 69,
-    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/_payload.json"
-  },
-  "/como-um-site-influencia-a-sua-visibilidade-online/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"1430e2-irnWd7+dNt12zEQnCp5ZB51z/Bo\"",
-    "mtime": "2024-10-04T14:43:36.760Z",
-    "size": 1323234,
-    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/index.html"
-  },
-  "/contato/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-VDM1ZtjuSYnPVEXVAlacILN3xGw\"",
-    "mtime": "2024-10-04T14:43:39.843Z",
-    "size": 69,
-    "path": "../../.output/public/contato/_payload.json"
-  },
-  "/contato/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"143f65-X6b1z6vfIYHTh9HSVwMFutyFyZ8\"",
-    "mtime": "2024-10-04T14:43:39.241Z",
-    "size": 1326949,
-    "path": "../../.output/public/contato/index.html"
-  },
-  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.794Z",
-    "size": 69,
-    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json"
-  },
-  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"143118-BukjFzd1yJ+v9KNSflwqXR6VqT4\"",
-    "mtime": "2024-10-04T14:43:36.737Z",
-    "size": 1323288,
-    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html"
-  },
-  "/politica-de-privacidade/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-FrLb2ky2exqDLQ156llOgQy2psw\"",
-    "mtime": "2024-10-04T14:43:39.843Z",
-    "size": 69,
-    "path": "../../.output/public/politica-de-privacidade/_payload.json"
-  },
-  "/politica-de-privacidade/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"143274-0qd3qjTCb9c3Hfs1sv5BiV53hGE\"",
-    "mtime": "2024-10-04T14:43:39.523Z",
-    "size": 1323636,
-    "path": "../../.output/public/politica-de-privacidade/index.html"
   },
   "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.795Z",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.927Z",
     "size": 69,
     "path": "../../.output/public/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/_payload.json"
   },
   "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"143166-E91UfKWc0c9r6VOdz7ztHLJpcPc\"",
-    "mtime": "2024-10-04T14:43:36.738Z",
-    "size": 1323366,
+    "etag": "\"142b5e-Yfi1hDPjqP6OLjY9bT94AWtYX+k\"",
+    "mtime": "2024-10-11T20:18:54.813Z",
+    "size": 1321822,
     "path": "../../.output/public/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/index.html"
   },
   "/blog/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-8lYpNnPSHk5PMA81zw9SVZFnbC0\"",
-    "mtime": "2024-10-04T14:43:39.784Z",
+    "etag": "\"45-iqRBA7aVNxDURNIx/siU7o0Z700\"",
+    "mtime": "2024-10-11T20:18:55.367Z",
     "size": 69,
     "path": "../../.output/public/blog/_payload.json"
   },
   "/blog/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"1432e3-hfgYiDCY8mKfsHCuF05x4GEm80U\"",
-    "mtime": "2024-10-04T14:43:37.046Z",
-    "size": 1323747,
+    "etag": "\"1436ba-aqxYE2JC6lUB+BrC5l9YuIKpAyc\"",
+    "mtime": "2024-10-11T20:18:55.296Z",
+    "size": 1324730,
     "path": "../../.output/public/blog/index.html"
+  },
+  "/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.937Z",
+    "size": 69,
+    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json"
+  },
+  "/como-o-design-impacta-na-percepcao-da-sua-marca/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142ace-7uUgJ5ToNMa+QpdVIi/pB9GGAXQ\"",
+    "mtime": "2024-10-11T20:18:54.847Z",
+    "size": 1321678,
+    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/index.html"
+  },
+  "/contato/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-xSXJrS026vypeQnsO13xO6//vXU\"",
+    "mtime": "2024-10-11T20:18:55.412Z",
+    "size": 69,
+    "path": "../../.output/public/contato/_payload.json"
+  },
+  "/contato/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"144194-VFBKS971/iFoIbaCp+cnP97FCyA\"",
+    "mtime": "2024-10-11T20:18:55.334Z",
+    "size": 1327508,
+    "path": "../../.output/public/contato/index.html"
+  },
+  "/como-um-site-influencia-a-sua-visibilidade-online/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.925Z",
+    "size": 69,
+    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/_payload.json"
+  },
+  "/como-um-site-influencia-a-sua-visibilidade-online/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142ada-l7wtEGYDnYMLezIvDIxpEObJ3HE\"",
+    "mtime": "2024-10-11T20:18:54.805Z",
+    "size": 1321690,
+    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/index.html"
+  },
+  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.928Z",
+    "size": 69,
+    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json"
+  },
+  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142af8-ugtExadPMkEjZtZoEGzNVFjImeA\"",
+    "mtime": "2024-10-11T20:18:54.847Z",
+    "size": 1321720,
+    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html"
+  },
+  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.925Z",
+    "size": 69,
+    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json"
+  },
+  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142b10-GcoS0t5uritv9Trq1tFbCEmMcY4\"",
+    "mtime": "2024-10-11T20:18:54.805Z",
+    "size": 1321744,
+    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html"
+  },
+  "/planos/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-LSCdCCBJcdM9CKUUhVZQ+mMq0V8\"",
+    "mtime": "2024-10-11T20:18:55.517Z",
+    "size": 69,
+    "path": "../../.output/public/planos/_payload.json"
+  },
+  "/planos/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"1429d8-BNbyCPAs0za4gl7U3TnFaSkiEEQ\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 1321432,
+    "path": "../../.output/public/planos/index.html"
+  },
+  "/politica-de-privacidade/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-l7cAIGG6elN96R9L3IHx77nowss\"",
+    "mtime": "2024-10-11T20:18:55.327Z",
+    "size": 69,
+    "path": "../../.output/public/politica-de-privacidade/_payload.json"
+  },
+  "/politica-de-privacidade/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142ef2-7utdHi69ylvEv6mJcZ4oNee0uTA\"",
+    "mtime": "2024-10-11T20:18:55.213Z",
+    "size": 1322738,
+    "path": "../../.output/public/politica-de-privacidade/index.html"
   },
   "/por-que-seu-site-precisa-de-um-blog/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-2MWiCzcBvkCgM38F93Vj6xo8JWI\"",
-    "mtime": "2024-10-04T14:43:36.795Z",
+    "etag": "\"45-Z9HJ5y2E8MxxpNjcCVhlrUvarb8\"",
+    "mtime": "2024-10-11T20:18:54.927Z",
     "size": 69,
     "path": "../../.output/public/por-que-seu-site-precisa-de-um-blog/_payload.json"
   },
   "/por-que-seu-site-precisa-de-um-blog/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"14308e-wde0Uik2JauAHjoDerlDel4HDwU\"",
-    "mtime": "2024-10-04T14:43:36.749Z",
-    "size": 1323150,
+    "etag": "\"142a86-nJOicThebVfANCGFh4v5SzzQjn0\"",
+    "mtime": "2024-10-11T20:18:54.805Z",
+    "size": 1321606,
     "path": "../../.output/public/por-que-seu-site-precisa-de-um-blog/index.html"
   },
   "/servicos/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-nGrhXt4rxzAJ2qJ6jpM/dsZNHSc\"",
-    "mtime": "2024-10-04T14:43:39.843Z",
+    "etag": "\"45-uMPa5SEfJxGmkvNczkZTx4ntfmI\"",
+    "mtime": "2024-10-11T20:18:55.341Z",
     "size": 69,
     "path": "../../.output/public/servicos/_payload.json"
   },
   "/servicos/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"1443d5-hBdV4znRNHAH31agS3SN8jUKyho\"",
-    "mtime": "2024-10-04T14:43:37.047Z",
-    "size": 1328085,
+    "etag": "\"14472e-HEyGiLCHD2i6RIeAmqAKvjzniME\"",
+    "mtime": "2024-10-11T20:18:55.214Z",
+    "size": 1328942,
     "path": "../../.output/public/servicos/index.html"
   },
   "/sobre/_payload.json": {
     "type": "application/json",
-    "etag": "\"45-FjSo9kgsVGaY2QYsZr9CJi6Ondk\"",
-    "mtime": "2024-10-04T14:43:39.784Z",
+    "etag": "\"45-HP2MkjS+LTzDUn0HOBiUO1aU6GM\"",
+    "mtime": "2024-10-11T20:18:55.327Z",
     "size": 69,
     "path": "../../.output/public/sobre/_payload.json"
   },
   "/sobre/index.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"144665-vLYzP4uZ1v3rYp7M1R1Mit9uK8I\"",
-    "mtime": "2024-10-04T14:43:37.043Z",
-    "size": 1328741,
+    "etag": "\"144937-W+gfvVoxoXlXi4rSCNJCxCI05cw\"",
+    "mtime": "2024-10-11T20:18:55.214Z",
+    "size": 1329463,
     "path": "../../.output/public/sobre/index.html"
+  },
+  "/solucoes/gscrm/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-07c2h50H/BGOZUHZ7nIu85xQKgM\"",
+    "mtime": "2024-10-11T20:18:55.412Z",
+    "size": 69,
+    "path": "../../.output/public/solucoes/gscrm/_payload.json"
+  },
+  "/solucoes/gscrm/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"1437a0-bmzxLRERMqKa3bsUcg125DNfGP0\"",
+    "mtime": "2024-10-11T20:18:55.318Z",
+    "size": 1324960,
+    "path": "../../.output/public/solucoes/gscrm/index.html"
   },
   "/_ipx/q_80/icons/icon-design.svg": {
     "type": "image/svg+xml",
     "etag": "\"619-dtaEyLbKMEFS3Gf2bzPL3k6eyNU\"",
-    "mtime": "2024-10-04T14:43:39.461Z",
+    "mtime": "2024-10-11T20:18:58.439Z",
     "size": 1561,
     "path": "../../.output/public/_ipx/q_80/icons/icon-design.svg"
   },
   "/_ipx/q_80/icons/icon-marketing.svg": {
     "type": "image/svg+xml",
     "etag": "\"799-77gNobb592PAK/F67DmtGvI2kio\"",
-    "mtime": "2024-10-04T14:43:39.461Z",
+    "mtime": "2024-10-11T20:18:58.439Z",
     "size": 1945,
     "path": "../../.output/public/_ipx/q_80/icons/icon-marketing.svg"
   },
   "/_ipx/q_80/icons/icon-tecnologia.svg": {
     "type": "image/svg+xml",
     "etag": "\"68d-K+VthVckouIRhrsjceMd0gp7TFs\"",
-    "mtime": "2024-10-04T14:43:39.445Z",
+    "mtime": "2024-10-11T20:18:58.436Z",
     "size": 1677,
     "path": "../../.output/public/_ipx/q_80/icons/icon-tecnologia.svg"
   },
   "/_ipx/q_80/icons/servicos/branding.svg": {
     "type": "image/svg+xml",
     "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 1220,
     "path": "../../.output/public/_ipx/q_80/icons/servicos/branding.svg"
   },
   "/_ipx/q_80/icons/servicos/gestao_de_conteudo.svg": {
     "type": "image/svg+xml",
     "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 1174,
     "path": "../../.output/public/_ipx/q_80/icons/servicos/gestao_de_conteudo.svg"
   },
   "/_ipx/q_80/icons/servicos/lojas_virtuais.svg": {
     "type": "image/svg+xml",
     "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 1159,
     "path": "../../.output/public/_ipx/q_80/icons/servicos/lojas_virtuais.svg"
   },
   "/_ipx/q_80/icons/servicos/sites.svg": {
     "type": "image/svg+xml",
     "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.777Z",
     "size": 2086,
     "path": "../../.output/public/_ipx/q_80/icons/servicos/sites.svg"
   },
   "/_ipx/q_80/img/parceiros/cliente-1.webp": {
     "type": "image/webp",
     "etag": "\"8e50-L6eAnt8tFhCpr4eue9nW70juaKA\"",
-    "mtime": "2024-10-04T14:43:39.499Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 36432,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-1.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-10.webp": {
     "type": "image/webp",
     "etag": "\"7f18-mt7NydyjYX12G2F5R9giBlEAink\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 32536,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-10.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-11.webp": {
     "type": "image/webp",
     "etag": "\"a71c-Wn/KKa9kh6dTu1ZB0VChqQ4J6q8\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 42780,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-11.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-12.webp": {
     "type": "image/webp",
     "etag": "\"86fa-JiK5m7Wg7e4O3RwnyZRptIkzEv4\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 34554,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-12.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-13.webp": {
     "type": "image/webp",
     "etag": "\"6a50-xQ/tUa6bQv6j3sNa3ysACoF+6KI\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 27216,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-13.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-14.webp": {
     "type": "image/webp",
     "etag": "\"c944-SbTPXPZXztd2cjIRDfuf0w/GmnU\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 51524,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-14.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-15.webp": {
     "type": "image/webp",
     "etag": "\"eda0-XaH7Bgyci3oXdqbA7exOjNuMrRU\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 60832,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-15.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-16.webp": {
     "type": "image/webp",
     "etag": "\"a5bc-tbiFFoeAlWKg27Cn8c3C+GXPYZI\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 42428,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-16.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-17.webp": {
     "type": "image/webp",
     "etag": "\"be18-bRYYWDetN8AYSySUvDP3/0fQGQQ\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 48664,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-17.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-18.webp": {
     "type": "image/webp",
     "etag": "\"e7c8-oGlBchhI3bfbjDEC9uBRlZ7DC0c\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 59336,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-18.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-19.webp": {
     "type": "image/webp",
     "etag": "\"cca2-6LHr+iqi0wJu56ILaJqKnhEw30w\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 52386,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-19.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-2.webp": {
     "type": "image/webp",
     "etag": "\"147a-TFNrwSloSJ9zyv5FHMEeQPRZpbY\"",
-    "mtime": "2024-10-04T14:43:39.459Z",
+    "mtime": "2024-10-11T20:18:58.438Z",
     "size": 5242,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-2.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-20.webp": {
     "type": "image/webp",
     "etag": "\"76da-OHSFiLAS6DPwZbclUq+b5DiAy+A\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 30426,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-20.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-21.webp": {
     "type": "image/webp",
     "etag": "\"ead0-9+wFC1iEzxQDHdi4AnOdmFfnqvM\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 60112,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-21.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-22.webp": {
     "type": "image/webp",
     "etag": "\"7e7a-tcs1Iz68gsnT4pqXeNlKk/ZCOHE\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 32378,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-22.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-23.webp": {
     "type": "image/webp",
     "etag": "\"6d0a-5HTgauzQHRuCYn8Xdf3KdrTF3Xg\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 27914,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-23.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-24.webp": {
     "type": "image/webp",
     "etag": "\"6688-rEIvBzqgDPpOvgvcXOv4CZUJoUE\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 26248,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-24.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-25.webp": {
     "type": "image/webp",
     "etag": "\"97c2-yLdFRMAUGVAA7LKv/kjtsW5lSFQ\"",
-    "mtime": "2024-10-04T14:43:39.503Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 38850,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-25.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-26.webp": {
     "type": "image/webp",
     "etag": "\"d278-Da503Eq0n0gUiThlQDZjaghbCF4\"",
-    "mtime": "2024-10-04T14:43:39.503Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 53880,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-26.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-27.webp": {
     "type": "image/webp",
     "etag": "\"db68-giY98sdtA28vH0pRbulibJTEbTg\"",
-    "mtime": "2024-10-04T14:43:39.452Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 56168,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-27.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-28.webp": {
     "type": "image/webp",
     "etag": "\"812a-pckYguu2gmsvh5dGH/RB05FXAjI\"",
-    "mtime": "2024-10-04T14:43:39.445Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 33066,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-28.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-29.webp": {
     "type": "image/webp",
     "etag": "\"b6f2-I2sQDKymXT1BA0ZseI+GCWLt9k4\"",
-    "mtime": "2024-10-04T14:43:39.452Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 46834,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-29.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-3.webp": {
     "type": "image/webp",
     "etag": "\"58ea-cBNs7m0ZmotaL3sfHb8Ajban5jU\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 22762,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-3.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-30.webp": {
     "type": "image/webp",
     "etag": "\"881e-n8tShRfxA2OT5zf/kG+CF5C0CT4\"",
-    "mtime": "2024-10-04T14:43:39.452Z",
+    "mtime": "2024-10-11T20:18:58.444Z",
     "size": 34846,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-30.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-31.webp": {
     "type": "image/webp",
     "etag": "\"c026-2dxA1P6PZkFhnG9/xPCn0xz/bDQ\"",
-    "mtime": "2024-10-04T14:43:39.241Z",
+    "mtime": "2024-10-11T20:18:58.436Z",
     "size": 49190,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-31.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-32.webp": {
     "type": "image/webp",
     "etag": "\"1002a-7iRyYzgVAQKg4N1eRdgA2i4SL0I\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.438Z",
     "size": 65578,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-32.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-33.webp": {
     "type": "image/webp",
     "etag": "\"a8b0-03r1yqI95zYMN+t7d//DModieQo\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.438Z",
     "size": 43184,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-33.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-34.webp": {
     "type": "image/webp",
     "etag": "\"beb2-YiIH/laBthgU4pkgI1yuD8BRT5M\"",
-    "mtime": "2024-10-04T14:43:39.503Z",
+    "mtime": "2024-10-11T20:18:58.438Z",
     "size": 48818,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-34.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-35.webp": {
     "type": "image/webp",
     "etag": "\"7958-ipawtgUZonXuQYD4NXFD6lA/deI\"",
-    "mtime": "2024-10-04T14:43:39.784Z",
+    "mtime": "2024-10-11T20:18:58.777Z",
     "size": 31064,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-35.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-36.webp": {
     "type": "image/webp",
     "etag": "\"1633c-rhAG6GksrtdFRWIMWZ05jLEcBO8\"",
-    "mtime": "2024-10-04T14:43:39.843Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 90940,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-36.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-37.webp": {
     "type": "image/webp",
     "etag": "\"8c92-KdP7b3LeRREMbjttiHD8PJwFL0Y\"",
-    "mtime": "2024-10-04T14:43:39.843Z",
+    "mtime": "2024-10-11T20:18:58.777Z",
     "size": 35986,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-37.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-38.webp": {
     "type": "image/webp",
     "etag": "\"b2da-Jq4qnu+pRrnYK1TjkyZJGJLgotQ\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.438Z",
     "size": 45786,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-38.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-39.webp": {
     "type": "image/webp",
     "etag": "\"101f2-yz/NJqH9xFJ13AUo0cISDL7K8so\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.777Z",
     "size": 66034,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-39.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-4.webp": {
     "type": "image/webp",
     "etag": "\"a5ba-nLMdD+I/VgVgv+ZD3+Pp0RDoUtU\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 42426,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-4.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-40.webp": {
     "type": "image/webp",
     "etag": "\"7b84-XoMGMTBJ5xppp/Wfmisx2bHK3rg\"",
-    "mtime": "2024-10-04T14:43:39.844Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 31620,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-40.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-41.webp": {
     "type": "image/webp",
     "etag": "\"8474-+51T6IRHYlG4Z6SEDya+yY2Q/uQ\"",
-    "mtime": "2024-10-04T14:43:39.858Z",
+    "mtime": "2024-10-11T20:18:58.779Z",
     "size": 33908,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-41.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-42.webp": {
     "type": "image/webp",
     "etag": "\"d148-ch5bpdRcZjqjVDZPz0QQMoYVQ+0\"",
-    "mtime": "2024-10-04T14:43:40.033Z",
+    "mtime": "2024-10-11T20:18:58.832Z",
     "size": 53576,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-42.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-43.webp": {
     "type": "image/webp",
     "etag": "\"153c-uxgyJEYu3jUUx5WmOmqhAAyDnSA\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 5436,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-43.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-44.webp": {
     "type": "image/webp",
     "etag": "\"30b0-2wrgBD2YAJGqdou6DDWA4cj6NoQ\"",
-    "mtime": "2024-10-04T14:43:39.845Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 12464,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-44.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-45.webp": {
     "type": "image/webp",
     "etag": "\"181e-s2iHTu6TGC0T+tiH5uflsGi67b8\"",
-    "mtime": "2024-10-04T14:43:39.846Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 6174,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-45.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-46.webp": {
     "type": "image/webp",
     "etag": "\"f48-W90A9J4GR62YU5i3qKE8F4rZbjM\"",
-    "mtime": "2024-10-04T14:43:39.846Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 3912,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-46.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-47.webp": {
     "type": "image/webp",
     "etag": "\"1c0c-towOHr+hojCyvbswoIYBYmu7GOs\"",
-    "mtime": "2024-10-04T14:43:39.847Z",
+    "mtime": "2024-10-11T20:18:58.778Z",
     "size": 7180,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-47.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-48.webp": {
     "type": "image/webp",
     "etag": "\"2424-aK5pPu78bvTBKsgmU0Sgsx9BQqY\"",
-    "mtime": "2024-10-04T14:43:39.847Z",
+    "mtime": "2024-10-11T20:18:58.779Z",
     "size": 9252,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-48.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-49.webp": {
     "type": "image/webp",
     "etag": "\"14ac-Trd0UX75iKqjvekuBFdG4lY/log\"",
-    "mtime": "2024-10-04T14:43:39.847Z",
+    "mtime": "2024-10-11T20:18:58.784Z",
     "size": 5292,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-49.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-5.webp": {
     "type": "image/webp",
     "etag": "\"a75a-0KVQP7SgNV2P/bUA2qCY8l4fhYk\"",
-    "mtime": "2024-10-04T14:43:39.499Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 42842,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-5.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-50.webp": {
     "type": "image/webp",
     "etag": "\"10ea-sun74llPgCC19T8NQlPPk0Hrhf4\"",
-    "mtime": "2024-10-04T14:43:39.859Z",
+    "mtime": "2024-10-11T20:18:58.784Z",
     "size": 4330,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-50.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-6.webp": {
     "type": "image/webp",
     "etag": "\"785c-vr05lB90KxaGdCtU0/flwe2ezks\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.443Z",
     "size": 30812,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-6.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-7.webp": {
     "type": "image/webp",
     "etag": "\"db6e-rQZH9XtWBh333/triAhxxBYp6IY\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 56174,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-7.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-8.webp": {
     "type": "image/webp",
     "etag": "\"d2b2-sahRqbfl7qJBp1v6ZrWCasGF7Qs\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 53938,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-8.webp"
   },
   "/_ipx/q_80/img/parceiros/cliente-9.webp": {
     "type": "image/webp",
     "etag": "\"868e-AbjQh5TQidRVZmB7XZKjcuk/swE\"",
-    "mtime": "2024-10-04T14:43:39.500Z",
+    "mtime": "2024-10-11T20:18:58.440Z",
     "size": 34446,
     "path": "../../.output/public/_ipx/q_80/img/parceiros/cliente-9.webp"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/branding.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
-    "size": 1220,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/branding.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/comunicacao_visual.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"445-4rDWmznFE0BLoeMruf2JQtERhjw\"",
-    "mtime": "2024-10-04T14:43:39.849Z",
-    "size": 1093,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/comunicacao_visual.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/gestao_de_conteudo.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
-    "size": 1174,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/gestao_de_conteudo.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/lojas_virtuais.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
-    "size": 1159,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/lojas_virtuais.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/otimizacao_seo.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"3f8-WENYWStYyCBlz2CD574qS8sdIXo\"",
-    "mtime": "2024-10-04T14:43:39.848Z",
-    "size": 1016,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/otimizacao_seo.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/producao_de_video.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"3d7-5uaqyY4KzAXMbKpwslCwjyo/Fk8\"",
-    "mtime": "2024-10-04T14:43:39.849Z",
-    "size": 983,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/producao_de_video.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/sites.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
-    "size": 2086,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/sites.svg"
-  },
-  "/_ipx/w_200&q_80/icons/servicos/trafego_pago.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"42a-bHBYzFG5ucHp3k6L44JCWOL2pvI\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
-    "size": 1066,
-    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/trafego_pago.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/branding.svg": {
     "type": "image/svg+xml",
     "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.504Z",
     "size": 1220,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/branding.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/comunicacao_visual.svg": {
     "type": "image/svg+xml",
     "etag": "\"445-4rDWmznFE0BLoeMruf2JQtERhjw\"",
-    "mtime": "2024-10-04T14:43:39.848Z",
+    "mtime": "2024-10-11T20:18:55.498Z",
     "size": 1093,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/comunicacao_visual.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/gestao_de_conteudo.svg": {
     "type": "image/svg+xml",
     "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.507Z",
     "size": 1174,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/gestao_de_conteudo.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/lojas_virtuais.svg": {
     "type": "image/svg+xml",
     "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.506Z",
     "size": 1159,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/lojas_virtuais.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/otimizacao_seo.svg": {
     "type": "image/svg+xml",
     "etag": "\"3f8-WENYWStYyCBlz2CD574qS8sdIXo\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.498Z",
     "size": 1016,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/otimizacao_seo.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/producao_de_video.svg": {
     "type": "image/svg+xml",
     "etag": "\"3d7-5uaqyY4KzAXMbKpwslCwjyo/Fk8\"",
-    "mtime": "2024-10-04T14:43:39.849Z",
+    "mtime": "2024-10-11T20:18:55.497Z",
     "size": 983,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/producao_de_video.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/sites.svg": {
     "type": "image/svg+xml",
     "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.506Z",
     "size": 2086,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/sites.svg"
   },
   "/_ipx/w_100&q_80/icons/servicos/trafego_pago.svg": {
     "type": "image/svg+xml",
     "etag": "\"42a-bHBYzFG5ucHp3k6L44JCWOL2pvI\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:55.497Z",
     "size": 1066,
     "path": "../../.output/public/_ipx/w_100&q_80/icons/servicos/trafego_pago.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/branding.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
+    "mtime": "2024-10-11T20:18:55.506Z",
+    "size": 1220,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/branding.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/comunicacao_visual.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"445-4rDWmznFE0BLoeMruf2JQtERhjw\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 1093,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/comunicacao_visual.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/gestao_de_conteudo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 1174,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/gestao_de_conteudo.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/lojas_virtuais.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 1159,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/lojas_virtuais.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/otimizacao_seo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3f8-WENYWStYyCBlz2CD574qS8sdIXo\"",
+    "mtime": "2024-10-11T20:18:55.498Z",
+    "size": 1016,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/otimizacao_seo.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/producao_de_video.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3d7-5uaqyY4KzAXMbKpwslCwjyo/Fk8\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 983,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/producao_de_video.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/sites.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
+    "mtime": "2024-10-11T20:18:55.506Z",
+    "size": 2086,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/sites.svg"
+  },
+  "/_ipx/w_200&q_80/icons/servicos/trafego_pago.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"42a-bHBYzFG5ucHp3k6L44JCWOL2pvI\"",
+    "mtime": "2024-10-11T20:18:55.497Z",
+    "size": 1066,
+    "path": "../../.output/public/_ipx/w_200&q_80/icons/servicos/trafego_pago.svg"
   },
   "/_ipx/w_100&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg": {
     "type": "image/svg+xml",
     "etag": "\"502-71H38iOY+yZ3Jwrhvxde8HOxqzc\"",
-    "mtime": "2024-10-04T14:43:39.850Z",
+    "mtime": "2024-10-11T20:18:58.782Z",
     "size": 1282,
     "path": "../../.output/public/_ipx/w_100&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg"
   },
   "/_ipx/w_200&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg": {
     "type": "image/svg+xml",
     "etag": "\"502-71H38iOY+yZ3Jwrhvxde8HOxqzc\"",
-    "mtime": "2024-10-04T14:43:39.851Z",
+    "mtime": "2024-10-11T20:18:58.782Z",
     "size": 1282,
     "path": "../../.output/public/_ipx/w_200&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg"
   }
@@ -2968,7 +2973,7 @@ const _f4b49z = eventHandler((event) => {
   return readAsset(id);
 });
 
-const _VPBd3A = defineEventHandler(async (e) => {
+const _QLecDG = defineEventHandler(async (e) => {
   if (e.context.siteConfig)
     return;
   const runtimeConfig = useRuntimeConfig(e);
@@ -3009,7 +3014,7 @@ const _VPBd3A = defineEventHandler(async (e) => {
   e.context.siteConfig = ctx.siteConfig;
 });
 
-const _Ti4J3T = defineEventHandler(async (e) => {
+const _LhMsoX = defineEventHandler(async (e) => {
   const nitro = useNitroApp();
   const { indexable, hints } = getSiteRobotConfig(e);
   const { credits, usingNuxtContent, cacheControl } = useRuntimeConfig(e)["nuxt-robots"];
@@ -3058,7 +3063,7 @@ const _Ti4J3T = defineEventHandler(async (e) => {
   return hookCtx.robotsTxt;
 });
 
-const _pOElCc = defineEventHandler(async (e) => {
+const _CUya7E = defineEventHandler(async (e) => {
   if (e.path === "/robots.txt" || e.path.startsWith("/__") || e.path.startsWith("/api") || e.path.startsWith("/_nuxt"))
     return;
   const robotConfig = getPathRobotConfig(e);
@@ -3154,7 +3159,7 @@ function useSimpleSitemapRuntimeConfig(e) {
   return Object.freeze(clone);
 }
 
-const _zoiIGo = defineEventHandler(async (e) => {
+const _SuLsag = defineEventHandler(async (e) => {
   const fixPath = createSitePathResolver(e, { absolute: false, withBase: true });
   const { sitemapName: fallbackSitemapName, cacheMaxAgeSeconds, version, xslColumns, xslTips } = useSimpleSitemapRuntimeConfig();
   setHeader(e, "Content-Type", "application/xslt+xml");
@@ -3977,7 +3982,7 @@ async function createSitemap(event, definition, runtimeConfig) {
   return ctx.sitemap;
 }
 
-const _BQUWeh = defineEventHandler(async (e) => {
+const _UnFv0a = defineEventHandler(async (e) => {
   const runtimeConfig = useSimpleSitemapRuntimeConfig();
   const { sitemaps } = runtimeConfig;
   if ("index" in sitemaps) {
@@ -3986,7 +3991,7 @@ const _BQUWeh = defineEventHandler(async (e) => {
   return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
 });
 
-const _rf0h91 = lazyEventHandler(() => {
+const _l8EPcK = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
   const fsStorage = opts.fs?.dir ? ipxFSStorage({ ...opts.fs, dir: fsDir }) : void 0;
@@ -4004,26 +4009,26 @@ const _rf0h91 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_jqIX24 = () => import('./parceiros.mjs');
-const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio; });
-const _lazy_3weOdp = () => import('../__og-image__/font/font.mjs');
-const _lazy_LFXmnD = () => import('../__og-image__/image/image.mjs');
-const _lazy_9YkBiL = () => import('../../_/renderer.mjs').then(function (n) { return n.r; });
+const _lazy_svkGDg = () => import('./parceiros.mjs');
+const _lazy_7DwmcD = () => Promise.resolve().then(function () { return portifolio; });
+const _lazy_fiz1pz = () => import('../__og-image__/font/font.mjs');
+const _lazy_KpFT7U = () => import('../__og-image__/image/image.mjs');
+const _lazy_sFcTWS = () => import('../../_/renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },
-  { route: '/api/parceiros', handler: _lazy_jqIX24, lazy: true, middleware: false, method: undefined },
-  { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
-  { route: '', handler: _VPBd3A, lazy: false, middleware: true, method: undefined },
-  { route: '/robots.txt', handler: _Ti4J3T, lazy: false, middleware: false, method: undefined },
-  { route: '', handler: _pOElCc, lazy: false, middleware: false, method: undefined },
-  { route: '/__sitemap__/style.xsl', handler: _zoiIGo, lazy: false, middleware: false, method: undefined },
-  { route: '/sitemap.xml', handler: _BQUWeh, lazy: false, middleware: false, method: undefined },
-  { route: '/__og-image__/font/**', handler: _lazy_3weOdp, lazy: true, middleware: false, method: undefined },
-  { route: '/__og-image__/image/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
-  { route: '/__og-image__/static/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
-  { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
+  { route: '/api/parceiros', handler: _lazy_svkGDg, lazy: true, middleware: false, method: undefined },
+  { route: '/api/portifolio', handler: _lazy_7DwmcD, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _QLecDG, lazy: false, middleware: true, method: undefined },
+  { route: '/robots.txt', handler: _LhMsoX, lazy: false, middleware: false, method: undefined },
+  { route: '', handler: _CUya7E, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/style.xsl', handler: _SuLsag, lazy: false, middleware: false, method: undefined },
+  { route: '/sitemap.xml', handler: _UnFv0a, lazy: false, middleware: false, method: undefined },
+  { route: '/__og-image__/font/**', handler: _lazy_fiz1pz, lazy: true, middleware: false, method: undefined },
+  { route: '/__og-image__/image/**', handler: _lazy_KpFT7U, lazy: true, middleware: false, method: undefined },
+  { route: '/__og-image__/static/**', handler: _lazy_KpFT7U, lazy: true, middleware: false, method: undefined },
+  { route: '/_ipx/**', handler: _l8EPcK, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_sFcTWS, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {

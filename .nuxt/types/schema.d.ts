@@ -18,9 +18,9 @@ declare module '@nuxt/schema' {
      */
     ["googleFonts"]: typeof import("@nuxtjs/google-fonts").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
-     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module`
+     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module`
      */
-    ["site"]: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    ["site"]: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
      * Configuration for `@nuxtjs/robots`
      */
@@ -96,9 +96,9 @@ declare module '@nuxt/schema' {
      */
     ["googleFonts"]?: typeof import("@nuxtjs/google-fonts").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
-     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module`
+     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module`
      */
-    ["site"]?: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["site"]?: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
      * Configuration for `@nuxtjs/robots`
      */
@@ -155,7 +155,7 @@ declare module '@nuxt/schema' {
      * Configuration for `@nuxt/telemetry`
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxtjs/partytown", Exclude<NuxtConfig["partytown"], boolean>] | ["@vite-pwa/nuxt", Exclude<NuxtConfig["pwa"], boolean>] | ["nuxt-delay-hydration", Exclude<NuxtConfig["delayHydration"], boolean>] | ["nuxt-og-image", Exclude<NuxtConfig["ogImage"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxtjs/partytown", Exclude<NuxtConfig["partytown"], boolean>] | ["@vite-pwa/nuxt", Exclude<NuxtConfig["pwa"], boolean>] | ["nuxt-delay-hydration", Exclude<NuxtConfig["delayHydration"], boolean>] | ["nuxt-og-image", Exclude<NuxtConfig["ogImage"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
 }
 declare module 'nuxt/schema' {
@@ -181,10 +181,10 @@ declare module 'nuxt/schema' {
      */
     ["googleFonts"]: typeof import("@nuxtjs/google-fonts").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
-     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module`
-     * @see https://www.npmjs.com/package//Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module
+     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module`
+     * @see https://www.npmjs.com/package//Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module
      */
-    ["site"]: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    ["site"]: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
      * Configuration for `@nuxtjs/robots`
      * @see https://www.npmjs.com/package/@nuxtjs/robots
@@ -278,10 +278,10 @@ declare module 'nuxt/schema' {
      */
     ["googleFonts"]?: typeof import("@nuxtjs/google-fonts").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
-     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module`
-     * @see https://www.npmjs.com/package//Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module
+     * Configuration for `/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module`
+     * @see https://www.npmjs.com/package//Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module
      */
-    ["site"]?: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["site"]?: typeof import("/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
      * Configuration for `@nuxtjs/robots`
      * @see https://www.npmjs.com/package/@nuxtjs/robots
@@ -352,7 +352,7 @@ declare module 'nuxt/schema' {
      * @see https://www.npmjs.com/package/@nuxt/telemetry
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxtjs/partytown", Exclude<NuxtConfig["partytown"], boolean>] | ["@vite-pwa/nuxt", Exclude<NuxtConfig["pwa"], boolean>] | ["nuxt-delay-hydration", Exclude<NuxtConfig["delayHydration"], boolean>] | ["nuxt-og-image", Exclude<NuxtConfig["ogImage"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["nuxt-easy-lightbox", Exclude<NuxtConfig["easyLightbox"], boolean>] | ["@nuxtjs/google-fonts", Exclude<NuxtConfig["googleFonts"], boolean>] | ["/Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["@nuxtjs/robots", Exclude<NuxtConfig["robots"], boolean>] | ["@vee-validate/nuxt", Exclude<NuxtConfig["veeValidate"], boolean>] | ["@nuxtjs/sitemap", Exclude<NuxtConfig["sitemap"], boolean>] | ["nuxt-schema-org", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["nuxt-vitalizer", Exclude<NuxtConfig["vitalizer"], boolean>] | ["@zadigetvoltaire/nuxt-gtm", Exclude<NuxtConfig["gtm"], boolean>] | ["@dargmuesli/nuxt-cookie-control", Exclude<NuxtConfig["cookieControl"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxtjs/partytown", Exclude<NuxtConfig["partytown"], boolean>] | ["@vite-pwa/nuxt", Exclude<NuxtConfig["pwa"], boolean>] | ["nuxt-delay-hydration", Exclude<NuxtConfig["delayHydration"], boolean>] | ["nuxt-og-image", Exclude<NuxtConfig["ogImage"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
@@ -425,6 +425,20 @@ declare module 'nuxt/schema' {
             includeAppSources: boolean,
          },
       },
+   },
+
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: any,
+
+      version: string,
    },
 
    "nuxt-site-config": {
@@ -550,20 +564,6 @@ declare module 'nuxt/schema' {
       trackOnNextTick: boolean,
    },
 
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: any,
-
-      version: string,
-   },
-
    cookieControl: {
       barPosition: string,
 
@@ -640,7 +640,7 @@ declare module 'nuxt/schema' {
 
          sameSite: string,
 
-         secure: any,
+         secure: boolean,
       },
 
       isAcceptNecessaryButtonEnabled: boolean,

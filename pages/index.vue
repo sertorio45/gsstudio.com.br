@@ -1,20 +1,58 @@
+
+<script setup>
+import { useCardAnimation } from '~/composables/useCardAnimation';
+
+defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
+
+useHead({
+  meta: [
+        { name: 'lang', content: 'pt-BR' },
+        { name: 'language', content: 'pt-BR' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' },
+        { name: 'canonical', content: 'https://www.gsstudio.com.br' },
+        { name: 'keywords', content: 'marketing digital, criação de sites, otimização de sites (SEO), Google Ads, campanhas online, agência digital, agência de marketing, lojas virtuais, e-commerce, gestão de redes sociais, desenvolvimento web, design responsivo, tráfego pago, branding, identidade visual, marketing para empresas, marketing para pequenas empresas, marketing em Sertãozinho, marketing em Ribeirão Preto, SEO local, social media marketing, estratégia de marketing digital, anúncios online, agência de SEO, criação de conteúdo, marketing de conteúdo, hospedagem de sites, otimização de conversão (CRO), email marketing, automação de marketing, consultoria em marketing digital, campanhas pagas no Google, performance digital, WordPress, criação de blogs, gestão de tráfego, otimização de desempenho do site, desenvolvimento de sistemas web, produção audiovisual, estratégias de marketing SP, agência de marketing em SP.' },
+      ],
+  link: [
+    { rel: 'canonical', href: 'https://gsstudio.com.br' }
+  ]
+});
+
+useSeoMeta({
+  title: 'Marketing, Comunicação e Desenvolvimento Web em Ribeirão Preto, Sertãozinho, São Paulo, Brasil',
+  description: 'Agência full service especializada em design, marketing e tecnologia estamos localizados em Ribeirão Preto para região e Brasil.',
+  ogTitle: 'Marketing, Comunicação e Desenvolvimento Web em Ribeirão Preto, Sertãozinho, São Paulo, Brasil',
+  ogDescription: 'Agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.',
+  ogUrl: 'https://gsstudio.com.br/',
+  ogType: 'website',
+  robots: 'index, follow',
+  ogLocale: 'pt-br',
+});
+
+
+// Chame o composable para inicializar a animação dos cartões
+useCardAnimation();
+</script>
+
+
 <template>
-    <!-- Topo -->
-    <section class="d-flex align-items-center min-vh-100" id="index">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">
-            <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
-            <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
-            <div class="d-flex justify-content-center flex-wrap">
-              <button @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</button>
-              <NuxtLink to="/contato" class="btn btn-primary-border my-2">Faça agora seu orçamento</NuxtLink>
-            </div>
-          </div>
+<!-- Topo -->
+<section class="d-flex align-items-center min-vh-100" id="index">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
+        <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
+        <div class="d-flex justify-content-center flex-column flex-md-row align-items-center px-2">
+          <button @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</button>
+          <NuxtLink to="/contato" class="btn btn-primary-border my-2 ms-md-2">Faça agora seu orçamento</NuxtLink>
         </div>
       </div>
-    </section>
-    <!-- Topo -->
+    </div>
+  </div>
+</section>
+<!-- Topo -->
+
 
     <!-- Quem somos -->
     <section class="d-flex align-items-center bg-light py-5" id="sobre">
@@ -274,23 +312,6 @@ export default defineComponent({
     });
   }
 });
-</script>
-
-<script setup>
-import { useCardAnimation } from '~/composables/useCardAnimation';
-
-useSeoMeta({
-      title: 'Soluções em Marketing, Comunicação e Tecnologia Web | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
-      description: 'Agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.',
-      ogTitle: 'Soluções em Marketing, Comunicação e Tecnologia Web | Ribeirão Preto, Sertãozinho, São Paulo e Brasil',
-      ogDescription: 'Agência full service especializada em design, marketing e tecnologia, oferecendo soluções completas com foco em resultados.',
-      ogSiteName: 'GS STUDIO',
-      ogLocale: 'pt_BR',
-      canonical: 'https://gsstudio.com.br/'
-    });
-
-// Chame o composable para inicializar a animação dos cartões
-useCardAnimation();
 </script>
 
 <style scoped>

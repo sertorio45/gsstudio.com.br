@@ -1,39 +1,39 @@
-import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, h, unref, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
-import { $fetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
+import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, unref, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, h, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/index.mjs';
+import { $fetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ofetch/dist/node.mjs';
 import { b as baseURL } from '../_/renderer.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
-import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unctx/dist/index.mjs';
-import { createError as createError$1, sanitizeStatusCode, appendHeader, getRequestHeader, setCookie, getCookie, deleteCookie } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
-import { getActiveHead, CapoPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unhead/dist/index.mjs';
-import { defineHeadPlugin, composableNames, unpackMeta } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/shared/dist/index.mjs';
-import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-router/dist/vue-router.node.mjs';
-import { toRouteMatcher, createRouter as createRouter$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
-import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
-import { parseQuery, hasProtocol, joinURL, isScriptProtocol, withQuery, withTrailingSlash, withoutTrailingSlash, parseURL, withoutBase, withLeadingSlash, withBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ufo/dist/index.mjs';
-import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
-import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/klona/dist/index.mjs';
-import { parse as parse$1, stringify } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
-import { parse } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/cookie-es/dist/index.mjs';
-import { isEqual } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ohash/dist/index.mjs';
-import { SchemaOrgUnheadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/schema-org/dist/index.mjs';
-import { defineWebSite, defineWebPage, definePerson, defineOrganization } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/schema-org/dist/vue.mjs';
-import IMask from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/imask/esm/index.js';
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/server-renderer/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/ssr/dist/index.mjs';
+import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/hookable/dist/index.mjs';
+import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unctx/dist/index.mjs';
+import { createError as createError$1, sanitizeStatusCode, appendHeader, getRequestHeader, setCookie, getCookie, deleteCookie } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/h3/dist/index.mjs';
+import { getActiveHead, CapoPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unhead/dist/index.mjs';
+import { defineHeadPlugin, composableNames, unpackMeta } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unhead/shared/dist/index.mjs';
+import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue-router/dist/vue-router.node.mjs';
+import { toRouteMatcher, createRouter as createRouter$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/radix3/dist/index.mjs';
+import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/defu/dist/defu.mjs';
+import { joinURL, withQuery, parseQuery, hasProtocol, isScriptProtocol, withTrailingSlash, withoutTrailingSlash, parseURL, withoutBase, withLeadingSlash, withBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ufo/dist/index.mjs';
+import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/destr/dist/index.mjs';
+import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/klona/dist/index.mjs';
+import { stringify, parse as parse$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/devalue/index.js';
+import { parse } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/cookie-es/dist/index.mjs';
+import { isEqual } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ohash/dist/index.mjs';
+import { SchemaOrgUnheadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unhead/schema-org/dist/index.mjs';
+import { defineWebSite, defineWebPage, definePerson, defineOrganization } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unhead/schema-org/dist/vue.mjs';
+import IMask from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/imask/esm/index.js';
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue/server-renderer/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/@unhead/ssr/dist/index.mjs';
 import '../routes/api/portifolio.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/scule/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs-lite.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/lru-cache.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/npm/consola.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/packrup/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/fetch/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/scule/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/fs-lite.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unstorage/drivers/lru-cache.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/unenv/runtime/npm/consola.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/packrup/dist/index.mjs';
 import 'node:fs';
 import 'node:url';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/pathe/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio/node_modules/ipx/dist/index.mjs';
 
 if (!globalThis.$fetch) {
   globalThis.$fetch = $fetch.create({
@@ -646,27 +646,22 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-ApJzuxqc.mjs')
-  },
-  {
-    name: "artigos-slug",
-    path: "/artigos/:slug()",
-    component: () => import('./_slug_-Iz95CbSK.mjs')
+    component: () => import('./_slug_-Bp41In8T.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-wsaH31jP.mjs')
+    component: () => import('./blog-DGAYkbPb.mjs')
   },
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-BaQDsHR0.mjs')
+    component: () => import('./contato-DpYnnxDd.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-DKdx3f-V.mjs')
+    component: () => import('./index-CKkmY3qC.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -676,12 +671,17 @@ const _routes = [
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-CpGNRxqm.mjs')
+    component: () => import('./servicos-BvhltnQt.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-BWhURQ3u.mjs')
+    component: () => import('./sobre-DtJpBBI7.mjs')
+  },
+  {
+    name: "solucoes-gscrm",
+    path: "/solucoes/gscrm",
+    component: () => import('./gscrm-DlMxN_6D.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2261,7 +2261,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import('./default-CPOX8Xhp.mjs')
+  default: () => import('./default-BZ8483Xa.mjs')
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2571,7 +2571,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-DbHQuzIJ.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C57UeOZI.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2635,5 +2635,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRoute as b, createError as c, useRouter as d, entry$1 as default, useSeoMeta as e, useRequestEvent as f, useNuxtApp as g, useRuntimeConfig as h, injectHead as i, useOgImageRuntimeConfig as j, useSiteConfig as k, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRoute as b, createError as c, useRouter as d, entry$1 as default, useSeoMeta as e, useRuntimeConfig as f, useNuxtApp as g, useOgImageRuntimeConfig as h, injectHead as i, createOgImageMeta as j, getOgImagePath as k, useRequestEvent as l, useSiteConfig as m, normaliseOptions as n, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map
