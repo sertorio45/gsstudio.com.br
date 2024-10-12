@@ -1,57 +1,14 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
-
-  generate: {
-    dir: 'dist'  // Certifique-se que o caminho está correto ou altere para `.output/public`
-  },
+  
 
   delayHydration: {
     mode: 'init',
   },
   ssr: true,
   nitro: {
-    prerender: {
-      crawlLinks: true, // Nuxt rastreia links automaticamente para pré-renderizar
-      routes: [],       // Rotas dinâmicas serão geradas sob demanda com ISR
-    },
-    preset: 'node-server',
-  },
-  router: {
-    options: {
-      linkActiveClass: 'active-link',
-      linkExactActiveClass: 'exact-active-link'
-    }
-  },
-  routeRules: {
-    // Configura ISR para as rotas dinâmicas de artigos
-    '/:slug': { isr: 60 },  // A página será regenerada a cada 60 segundos
-  },
-  hooks: {
-    async 'nitro:config'(nitroConfig) {
-      nitroConfig.prerender = nitroConfig.prerender || {}
-
-      const getRoutes = async (): Promise<string[]> => {
-        const baseURL = 'https://str-gsstudio.gsstudio.com.br'
-
-        try {
-          const response = await fetch(`${baseURL}/articles`)
-          if (!response.ok) {
-            throw new Error(`Erro ao buscar artigos: ${response.statusText}`)
-          }
-          const articles = await response.json()
-
-          return articles.map((article: { slug: string }) => `/${article.slug}`)
-        } catch (error) {
-          console.error('Erro ao buscar os artigos:', error)
-          return [] // Retorna um array vazio em caso de erro
-        }
-      }
-
-      const dynamicRoutes = await getRoutes()
-      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
-      nitroConfig.prerender.routes.push(...dynamicRoutes)
-    }
+    preset: 'node-server'
   },
   app: {
     head: {

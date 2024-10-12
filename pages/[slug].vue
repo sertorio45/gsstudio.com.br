@@ -1,112 +1,3 @@
-
-<template>
-  <main>
-    <section class="my-5" id="article-detail">
-      <div class="container my-5">
-        <div class="row">
-          <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
-            <div class="back-fixed">
-              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
-              <!-- Ícones de Compartilhamento Social -->
-              <div class="social-share d-flex">
-                <a
-                  v-for="(network, index) in socialNetworks"
-                  :key="index"
-                  :href="network.url"
-                  target="_blank"
-                  class="social-icon"
-                  :title="network.name"
-                  @click.prevent="share(network)"
-                >
-                  <i :class="network.icon"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-7 col-md-12 col-lg-7">
-            <div v-if="loading">
-              <div class="d-flex mb-3">
-                <div class="skeleton skeleton-category me-2"></div>
-                <div class="skeleton skeleton-date"></div>
-              </div>
-              <div class="skeleton skeleton-title mb-3"></div>
-              <div class="skeleton skeleton-img mb-3"></div>
-              <div class="skeleton skeleton-content mb-3"></div>
-            </div>
-            <div v-else-if="article" class="content_blog">
-              <div class="mb-3 mx-0">
-                <span class="article-category">{{ article.category.title }}</span>
-                <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
-              </div>
-              <h1>{{ article.titulo }}</h1>
-              <div class="my-4">
-                <picture v-if="hasThumbnail(article)">
-                  <source :srcset="getArticleImage(article)" @load="onImageLoad" />
-                  <img 
-                    :src="getArticleImage(article)" 
-                    class="img-fluid blur-effect" 
-                    :class="{ 'blurred': !imageLoaded }" 
-                    :alt="article.titulo" 
-                    @load="onImageLoad" 
-                    @error="handleImageError" 
-                    loading="lazy" 
-                  />
-                </picture>
-                <img 
-                  v-else 
-                  src="https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp" 
-                  class="img-fluid blur-effect" 
-                  :class="{ 'blurred': !imageLoaded }" 
-                  alt="Default Image" 
-                  loading="lazy" 
-                  @load="onImageLoad" 
-                  style="width: 100%;" 
-                />
-              </div>
-              <div v-html="article.content"></div>
-            </div>
-            <div v-else>
-              <p>Artigo não encontrado.</p>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-12 col-lg-3">
-            <!-- Formulário de Newsletter -->
-            <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
-              <h3>Assine para novas atualizações.</h3>
-              <form @submit.prevent="submitNewsletterForm" class="form">
-                <div class="mb-3">
-                  <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-                </div>
-                <div class="">
-                  <button
-                    type="submit"
-                    :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
-                    :disabled="isSubmitting"
-                  >
-                    <span v-if="isSubmitting">
-                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                      Enviando...
-                    </span>
-                    <span v-else-if="success">
-                      <i class="bx bx-check-circle"></i> Sucesso!
-                    </span>
-                    <span v-else-if="error">
-                      <i class="bx bx-error"></i> Erro ao enviar!
-                    </span>
-                    <span v-else>
-                      <i class="bx bx-send"></i> Inscrever-se
-                    </span>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</template>
-
 <script lang="ts">
 import axios from 'axios';
 
@@ -321,6 +212,115 @@ console.log(route.params.slug)
   },
 });
 </script>
+
+
+<template>
+  <main>
+    <section class="my-5" id="article-detail">
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
+            <div class="back-fixed">
+              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+              <!-- Ícones de Compartilhamento Social -->
+              <div class="social-share d-flex">
+                <a
+                  v-for="(network, index) in socialNetworks"
+                  :key="index"
+                  :href="network.url"
+                  target="_blank"
+                  class="social-icon"
+                  :title="network.name"
+                  @click.prevent="share(network)"
+                >
+                  <i :class="network.icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7 col-md-12 col-lg-7">
+            <div v-if="loading">
+              <div class="d-flex mb-3">
+                <div class="skeleton skeleton-category me-2"></div>
+                <div class="skeleton skeleton-date"></div>
+              </div>
+              <div class="skeleton skeleton-title mb-3"></div>
+              <div class="skeleton skeleton-img mb-3"></div>
+              <div class="skeleton skeleton-content mb-3"></div>
+            </div>
+            <div v-else-if="article" class="content_blog">
+              <div class="mb-3 mx-0">
+                <span class="article-category">{{ article.category.title }}</span>
+                <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
+              </div>
+              <h1>{{ article.titulo }}</h1>
+              <div class="my-4">
+                <picture v-if="hasThumbnail(article)">
+                  <source :srcset="getArticleImage(article)" @load="onImageLoad" />
+                  <img 
+                    :src="getArticleImage(article)" 
+                    class="img-fluid blur-effect" 
+                    :class="{ 'blurred': !imageLoaded }" 
+                    :alt="article.titulo" 
+                    @load="onImageLoad" 
+                    @error="handleImageError" 
+                    loading="lazy" 
+                  />
+                </picture>
+                <img 
+                  v-else 
+                  src="https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp" 
+                  class="img-fluid blur-effect" 
+                  :class="{ 'blurred': !imageLoaded }" 
+                  alt="Default Image" 
+                  loading="lazy" 
+                  @load="onImageLoad" 
+                  style="width: 100%;" 
+                />
+              </div>
+              <div v-html="article.content"></div>
+            </div>
+            <div v-else>
+              <p>Artigo não encontrado.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-3">
+            <!-- Formulário de Newsletter -->
+            <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
+              <h3>Assine para novas atualizações.</h3>
+              <form @submit.prevent="submitNewsletterForm" class="form">
+                <div class="mb-3">
+                  <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="">
+                  <button
+                    type="submit"
+                    :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
+                    :disabled="isSubmitting"
+                  >
+                    <span v-if="isSubmitting">
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Enviando...
+                    </span>
+                    <span v-else-if="success">
+                      <i class="bx bx-check-circle"></i> Sucesso!
+                    </span>
+                    <span v-else-if="error">
+                      <i class="bx bx-error"></i> Erro ao enviar!
+                    </span>
+                    <span v-else>
+                      <i class="bx bx-send"></i> Inscrever-se
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
 
 
 <style scoped>

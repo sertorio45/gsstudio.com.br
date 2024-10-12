@@ -713,7 +713,7 @@ const generateRouteKey$1 = (routeProps, override) => {
 const wrapInKeepAlive = (props, children) => {
   return { default: () => children };
 };
-function toArray$1(value) {
+function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
 async function getRouteRules(url) {
@@ -728,7 +728,7 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-Bp41In8T.mjs')
+    component: () => import('./_slug_-t-HXD-yx.mjs')
   },
   {
     name: "blog",
@@ -841,8 +841,6 @@ function _getHashElementScrollMarginTop(selector) {
   return 0;
 }
 const configRouterOptions = {
-  linkActiveClass: "active-link",
-  linkExactActiveClass: "exact-active-link",
   hashMode: false,
   scrollBehaviorType: "auto"
 };
@@ -901,7 +899,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
       routerBase += "#";
     }
     const history = ((_a = routerOptions.history) == null ? void 0 : _a.call(routerOptions, routerBase)) ?? createMemoryHistory(routerBase);
-    const routes2 = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
+    const routes = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
     let startPosition;
     const router = createRouter({
       ...routerOptions,
@@ -922,7 +920,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
         }
       },
       history,
-      routes: routes2
+      routes
     });
     nuxtApp.vueApp.use(router);
     const previousRoute = shallowRef(router.currentRoute.value);
@@ -1013,7 +1011,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
           if (!componentMiddleware) {
             continue;
           }
-          for (const entry2 of toArray$1(componentMiddleware)) {
+          for (const entry2 of toArray(componentMiddleware)) {
             middlewareEntries.add(entry2);
           }
         }
@@ -2237,11 +2235,6 @@ const imask_nTmTWqzxUs = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
     }
   });
 });
-const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
-  {
-    return;
-  }
-});
 const plugins = [
   unhead_KgADcZ0jPj,
   plugin,
@@ -2258,8 +2251,7 @@ const plugins = [
   init_3TppeXojsQ,
   robot_meta_server_6Qhe4cPOr2,
   plugin_ucMK8VhJjR,
-  imask_nTmTWqzxUs,
-  prerender_server_LXx1wM9sKF
+  imask_nTmTWqzxUs
 ];
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -2536,7 +2528,7 @@ const __nuxt_component_2 = defineComponent({
 function _mergeTransitionProps(routeProps) {
   const _props = routeProps.map((prop) => ({
     ...prop,
-    onAfterLeave: prop.onAfterLeave ? toArray$1(prop.onAfterLeave) : void 0
+    onAfterLeave: prop.onAfterLeave ? toArray(prop.onAfterLeave) : void 0
   }));
   return defu(..._props);
 }
