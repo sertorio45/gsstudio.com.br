@@ -17,8 +17,6 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/chunk-reload.client.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/check-if-page-unused.js").default> &
-  InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.server.js").default> &
-  InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-og-image/dist/runtime/nuxt/plugins/og-image-canonical-urls.server.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-og-image/dist/runtime/nuxt/plugins/route-rule-og-image.server.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt-delay-hydration/dist/runtime/nuxt-plugin.js").default> &
@@ -32,6 +30,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt-easy-lightbox/dist/runtime/plugin.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.js").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js").default> &
+  InjectionType<typeof import("../../node_modules/nuxt-mail/dist/plugin-nuxt3.js").default> &
   InjectionType<typeof import("../../plugins/main.client").default> &
   InjectionType<typeof import("../../plugins/bootstrap.client").default> &
   InjectionType<typeof import("../../plugins/imask").default>

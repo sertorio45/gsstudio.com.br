@@ -1,15 +1,45 @@
-import { defineNuxtConfig } from 'nuxt/config';
-
 export default defineNuxtConfig({
-  
+  // Configuração de e-mail para envio de mensagens via SMTP
+  mail: {
+    message: {
+      from: 'noreply@gsstudio.com.br',
+      to: 'giovannistr@gmail.com',
+    },
+    smtp: {
+      host: 'mail.gsstudio.com.br',
+      port: 587,
+      auth: {
+        user: 'noreply@gsstudio.com.br',
+        pass: 'Agenciagsstudio1993#@!',
+      },
+    },
+  },
 
+  // Configuração do módulo robots para gerar o arquivo robots.txt
+  robots: {
+    credits: false,
+    mergeWithRobotsTxtPath: true,
+    robotsEnabledValue: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    enabled: true,
+    allow: [ '*' ],
+    debug: true,
+  },
+
+  // Configuração de delay na hidratação
   delayHydration: {
     mode: 'init',
   },
+
+  // Configurações gerais de SSR
   ssr: true,
+
+  // Configuração do Nitro para rodar em modo 'node-server'
   nitro: {
-    preset: 'node-server'
+    preset: 'node-server',
+    debug: true,
   },
+
+  // Configurações de meta tags e cabeçalho
   app: {
     head: {
       titleTemplate: 'GS STUDIO | %s',
@@ -26,17 +56,37 @@ export default defineNuxtConfig({
     },
   },
   
+  // Configuração do site
   site: {
     url: 'https://gsstudio.com.br',
     name: 'GS STUDIO',
   },
 
-  devtools: { enabled: true },
+  // Habilita ferramentas de desenvolvimento
+  devtools: { enabled: false },
 
+  // Módulos Nuxt utilizados
+  modules: [
+    '@nuxt/image', 
+    'nuxt-swiper', 
+    'nuxt-easy-lightbox', 
+    '@nuxtjs/google-fonts', 
+    '@nuxtjs/robots', 
+    '@vee-validate/nuxt', 
+    '@nuxtjs/sitemap', 
+    'nuxt-schema-org', 
+    'nuxt-vitalizer', 
+    '@zadigetvoltaire/nuxt-gtm', 
+    '@dargmuesli/nuxt-cookie-control', 
+    '@nuxtjs/html-validator', 
+    '@nuxtjs/partytown', 
+    '@vite-pwa/nuxt', 
+    'nuxt-delay-hydration', 
+    'nuxt-og-image', 
+    'nuxt-mail',
+  ],
 
-  modules: ['@nuxt/image', 'nuxt-swiper', 'nuxt-easy-lightbox', '@nuxtjs/google-fonts', '@nuxtjs/robots', '@vee-validate/nuxt', '@nuxtjs/sitemap', 'nuxt-schema-org', 'nuxt-vitalizer', '@zadigetvoltaire/nuxt-gtm', '@dargmuesli/nuxt-cookie-control', '@nuxtjs/html-validator', '@nuxtjs/partytown', '@vite-pwa/nuxt', 'nuxt-delay-hydration', 'nuxt-og-image'],
-  
-
+  // Configurações do Google Tag Manager (GTM)
   gtm: {
     id: 'GTM-N3X2JT4',
     defer: true, 
@@ -49,14 +99,19 @@ export default defineNuxtConfig({
     trackOnNextTick: false,
   },
   
+  
+  // Configurações em runtime (públicas)
   runtimeConfig: {
     public: {
+      apiBase: '/api',
       gtm: {
         id: 'GTM-N3X2JT4',
       },
     },
+
   },
   
+  // Configurações do Google Fonts
   googleFonts: {
     families: {
       'DM Sans': [400, 700],
@@ -67,15 +122,19 @@ export default defineNuxtConfig({
     overwriting: false,
   },
 
+  // Configurações do Swiper
   swiper: {
     prefix: 'Swiper',
   },
 
+  // Configurações de otimização de imagens
   image: {
     quality: 80,
     domains: ['s3.gsstudio.com.br', 'gsstudio.com.br'],
+    provider: 'ipx',
   },
 
+  // Arquivos CSS incluídos
   css: [
     'swiper/swiper-bundle.css',
     'swiper/css/effect-creative',
@@ -84,10 +143,12 @@ export default defineNuxtConfig({
     'boxicons/css/boxicons.min.css',
   ],
 
+  // Plugins incluídos
   plugins: [
     '@/plugins/main.client.ts',
     '@/plugins/bootstrap.client.ts',
   ],
 
+  // Data de compatibilidade
   compatibilityDate: '2024-09-30',
 });

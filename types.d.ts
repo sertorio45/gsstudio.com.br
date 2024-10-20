@@ -15,4 +15,25 @@ export interface Article {
     id: number;
     title: string;
   }
+
+  // types/nuxt-mail.d.ts
+declare module '@nuxt/schema' {
+  interface NuxtConfig {
+    mail?: {
+      message: {
+        from: string,
+        to: string
+      },
+      smtp: {
+        host: string,
+        port: number,
+        auth: {
+          user: string,
+          pass: string
+        }
+      }
+    }
+  }
+}
+
   

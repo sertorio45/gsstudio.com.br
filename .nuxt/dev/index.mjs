@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getQuery as getQuery$1, getRequestHeaders, setHeader, getHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, readBody, getResponseStatusText, H3Error } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getQuery as getQuery$1, getRequestHeaders, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getResponseStatusText, H3Error } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
 import { html as html$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/satori-html/dist/index.js';
 import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/image-size/dist/index.js';
@@ -13,8 +13,8 @@ import { createGenerator } from 'file:///Users/giovannisertorio/Desktop/Sites/gs
 import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unocss/preset-wind/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/playwright-core/index.mjs';
-import { promises } from 'fs';
-import path from 'path';
+import { readdirSync } from 'fs';
+import { join as join$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, parse, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/devalue/index.js';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
@@ -29,7 +29,7 @@ import { createStorage, prefixStorage, normalizeKey } from 'file:///Users/giovan
 import lruCacheDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/lru-cache.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
+import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
 import { hash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ohash/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/radix3/dist/index.mjs';
@@ -40,6 +40,9 @@ import devalue from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node
 import { packString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/packrup/dist/index.mjs';
 import chalk from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/chalk/source/index.js';
 import { HtmlValidate, formatterFactory } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/html-validate/dist/es/index.js';
+import nodemailer from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nodemailer/lib/nodemailer.js';
+import options from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/nuxt-mail/options.mjs';
+import send$1 from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/nuxt-mail/send.mjs';
 import { fileURLToPath } from 'node:url';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 import { isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
@@ -126,6 +129,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "apiBase": "/api",
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
@@ -297,8 +301,8 @@ const _inlineRuntimeConfig = {
   "nuxt-robots": {
     "version": "4.1.7",
     "usingNuxtContent": false,
-    "debug": false,
-    "credits": true,
+    "debug": true,
+    "credits": false,
     "groups": [
       {
         "userAgent": [
@@ -307,18 +311,19 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [],
+        "allow": [
+          "*"
+        ],
         "_indexable": true,
-        "_rules": []
+        "_rules": [
+          {
+            "pattern": "*",
+            "allow": true
+          }
+        ]
       }
     ],
     "sitemap": [
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -329,8 +334,8 @@ const _inlineRuntimeConfig = {
   "nuxt-simple-robots": {
     "version": "4.1.7",
     "usingNuxtContent": false,
-    "debug": false,
-    "credits": true,
+    "debug": true,
+    "credits": false,
     "groups": [
       {
         "userAgent": [
@@ -339,18 +344,19 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [],
+        "allow": [
+          "*"
+        ],
         "_indexable": true,
-        "_rules": []
+        "_rules": [
+          {
+            "pattern": "*",
+            "allow": true
+          }
+        ]
       }
     ],
     "sitemap": [
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
-      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -920,23 +926,6 @@ function getRouteRules(event) {
 function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
-
-const script$1 = `
-if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
-  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
-    value: {},
-    enumerable: false,
-    configurable: true,
-  })
-}
-window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
-`;
-
-const _Ou7SulB9Vu = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script$1}<\/script>`);
-  });
-});
 
 const rootDir = "/Users/giovannisertorio/Desktop/Sites/gsstudio2";
 
@@ -2089,14 +2078,18 @@ const _yrXucinxhi = (function(nitro) {
   });
 });
 
+const _3bAnhN9Xxx = defineNitroPlugin((nitro) => {
+  createDebugger(nitro.hooks, { tag: "nitro-runtime" });
+});
+
 const plugins = [
-  _Ou7SulB9Vu,
-_XKP7Y2XuYp,
+  _XKP7Y2XuYp,
 _1OecQxelmZ,
 _n98FBqtowz,
 _iqnh33vcMo,
 _AleS2kaKMk,
-_yrXucinxhi
+_yrXucinxhi,
+_3bAnhN9Xxx
 ];
 
 const errorHandler = (async function errorhandler(error, event) {
@@ -3261,6 +3254,19 @@ const _vIlr1E = defineEventHandler(async (e) => {
   };
 });
 
+const transport = nodemailer.createTransport(options.smtp);
+const _BGtM5U = defineEventHandler(async event => {
+  try {
+    await send$1(await readBody(event), options, transport);
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: error.message
+    });
+  }
+  return '';
+});
+
 const _rf0h91 = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
@@ -3279,7 +3285,7 @@ const _rf0h91 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_jqIX24 = () => Promise.resolve().then(function () { return parceiros$1; });
+const _lazy_3BeM2D = () => Promise.resolve().then(function () { return parceiros$1; });
 const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_9YkBiL = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_3weOdp = () => Promise.resolve().then(function () { return font$1; });
@@ -3287,7 +3293,7 @@ const _lazy_1IRWZS = () => Promise.resolve().then(function () { return debug_jso
 const _lazy_LFXmnD = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
-  { route: '/api/parceiros', handler: _lazy_jqIX24, lazy: true, middleware: false, method: undefined },
+  { route: '/api/parceiros', handler: _lazy_3BeM2D, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _VPBd3A, lazy: false, middleware: true, method: undefined },
@@ -3304,6 +3310,7 @@ const handlers = [
   { route: '/__og-image__/debug.json', handler: _lazy_1IRWZS, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/image/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/static/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
+  { route: '/mail/send', handler: _BGtM5U, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
 ];
@@ -7735,17 +7742,10 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
-const parceiros = defineEventHandler(async (event) => {
-  const directoryPath = path.join(process.cwd(), "public/parceiros");
-  try {
-    const files = await promises.readdir(directoryPath);
-    return files.filter((file) => /\.(png|jpe?g|webp|gif)$/i.test(file));
-  } catch (err) {
-    return {
-      status: "error",
-      message: err.message
-    };
-  }
+const parceiros = defineEventHandler(() => {
+  const dirPath = join$1(process.cwd(), "public/img/parceiros");
+  const files = readdirSync(dirPath).filter((file) => file.endsWith(".webp"));
+  return files.map((file) => `/img/parceiros/${file}`);
 });
 
 const parceiros$1 = /*#__PURE__*/Object.freeze({

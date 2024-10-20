@@ -1,8 +1,8 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, setResponseStatus, setResponseHeader, send, getRequestHeaders, removeResponseHeader, getResponseHeader, setHeader, getHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, setResponseStatus, setResponseHeader, send as send$1, getRequestHeaders, removeResponseHeader, getResponseHeader, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/destr/dist/index.mjs';
 import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
+import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
 import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/klona/dist/index.mjs';
 import { snakeCase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/scule/dist/index.mjs';
 import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/defu/dist/defu.mjs';
@@ -20,6 +20,8 @@ import { parse } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/no
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve as resolve$1, isAbsolute } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
+import nodemailer from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nodemailer/lib/nodemailer.js';
+import { findIndex, omit } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@dword-design/functions/dist/index.js';
 import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 
 function getEnv(key, opts) {
@@ -71,7 +73,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "fa9deb02-7db7-47cd-b236-cff3f1c9498c",
+    "buildId": "5e5ad96e-0e16-4dc1-bff8-fc7c1ad70caa",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -87,15 +89,10 @@ const _inlineRuntimeConfig = {
         }
       },
       "/sitemap.xml": {
-        "swr": 600,
-        "cache": {
-          "swr": true,
-          "maxAge": 600,
-          "varies": [
-            "X-Forwarded-Host",
-            "X-Forwarded-Proto",
-            "Host"
-          ]
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8",
+          "Cache-Control": "public, max-age=600, must-revalidate",
+          "X-Sitemap-Prerendered": "2024-10-16T15:23:30.157Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -116,6 +113,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "apiBase": "/api",
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
@@ -287,8 +285,8 @@ const _inlineRuntimeConfig = {
   "nuxt-robots": {
     "version": "4.1.7",
     "usingNuxtContent": false,
-    "debug": false,
-    "credits": true,
+    "debug": true,
+    "credits": false,
     "groups": [
       {
         "userAgent": [
@@ -297,9 +295,16 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [],
+        "allow": [
+          "*"
+        ],
         "_indexable": true,
-        "_rules": []
+        "_rules": [
+          {
+            "pattern": "*",
+            "allow": true
+          }
+        ]
       }
     ],
     "sitemap": [
@@ -313,8 +318,8 @@ const _inlineRuntimeConfig = {
   "nuxt-simple-robots": {
     "version": "4.1.7",
     "usingNuxtContent": false,
-    "debug": false,
-    "credits": true,
+    "debug": true,
+    "credits": false,
     "groups": [
       {
         "userAgent": [
@@ -323,9 +328,16 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [],
+        "allow": [
+          "*"
+        ],
         "_indexable": true,
-        "_rules": []
+        "_rules": [
+          {
+            "pattern": "*",
+            "allow": true
+          }
+        ]
       }
     ],
     "sitemap": [
@@ -2092,11 +2104,16 @@ const _AleS2kaKMk = defineNitroPlugin(async (nitro) => {
   });
 });
 
+const _3bAnhN9Xxx = defineNitroPlugin((nitro) => {
+  createDebugger(nitro.hooks, { tag: "nitro-runtime" });
+});
+
 const plugins = [
   _1OecQxelmZ,
 _n98FBqtowz,
 _iqnh33vcMo,
-_AleS2kaKMk
+_AleS2kaKMk,
+_3bAnhN9Xxx
 ];
 
 const errorHandler = (async function errorhandler(error, event) {
@@ -2126,7 +2143,7 @@ const errorHandler = (async function errorhandler(error, event) {
   setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
   if (isJsonRequest(event)) {
     setResponseHeader(event, "Content-Type", "application/json");
-    return send(event, JSON.stringify(errorObject));
+    return send$1(event, JSON.stringify(errorObject));
   }
   const reqHeaders = getRequestHeaders(event);
   const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
@@ -2143,7 +2160,7 @@ const errorHandler = (async function errorhandler(error, event) {
       return;
     }
     setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
-    return send(event, template(errorObject));
+    return send$1(event, template(errorObject));
   }
   const html = await res.text();
   if (event.handled) {
@@ -2153,135 +2170,37 @@ const errorHandler = (async function errorhandler(error, event) {
     setResponseHeader(event, header, value);
   }
   setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
-  return send(event, html);
+  return send$1(event, html);
 });
 
 const assets = {
-  "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.209Z",
-    "size": 69,
-    "path": "../../.output/public/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/_payload.json"
-  },
-  "/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/index.html": {
+  "/200.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"142b5e-EkElADHnrD4zpSeeF7+FJne5Rp8\"",
-    "mtime": "2024-10-12T00:56:13.172Z",
-    "size": 1321822,
-    "path": "../../.output/public/aproveitando-o-potencial-das-redes-sociais-para-alavancar-o-seu-negocio/index.html"
+    "etag": "\"13fa12-8D4qotdVcdNgc2wVmq4Z4PSS+fc\"",
+    "mtime": "2024-10-16T15:23:37.370Z",
+    "size": 1309202,
+    "path": "../../.output/public/200.html"
   },
-  "/como-um-site-influencia-a-sua-visibilidade-online/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.210Z",
-    "size": 69,
-    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/_payload.json"
-  },
-  "/como-um-site-influencia-a-sua-visibilidade-online/index.html": {
+  "/404.html": {
     "type": "text/html; charset=utf-8",
-    "etag": "\"142ada-jT4kh9g+g3BqpT1Ya3g+bJKEGrk\"",
-    "mtime": "2024-10-12T00:56:13.183Z",
-    "size": 1321690,
-    "path": "../../.output/public/como-um-site-influencia-a-sua-visibilidade-online/index.html"
+    "etag": "\"13f9d7-OuUk16I435CqMAUs5Tr+8tjDTd0\"",
+    "mtime": "2024-10-16T15:23:37.370Z",
+    "size": 1309143,
+    "path": "../../.output/public/404.html"
   },
-  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.210Z",
-    "size": 69,
-    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/_payload.json"
+  "/robots.txt": {
+    "type": "text/plain; charset=utf-8",
+    "etag": "\"4f-VVx383IkZCOUvKvWiGwB0GIgc/g\"",
+    "mtime": "2024-10-16T15:23:37.247Z",
+    "size": 79,
+    "path": "../../.output/public/robots.txt"
   },
-  "/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"142b10-gtV27szU1uqoCu4F35QWaXy+KJk\"",
-    "mtime": "2024-10-12T00:56:13.197Z",
-    "size": 1321744,
-    "path": "../../.output/public/o-impacto-da-velocidade-de-carregamento-no-seo-do-seu-site/index.html"
-  },
-  "/por-que-seu-site-precisa-de-um-blog/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.209Z",
-    "size": 69,
-    "path": "../../.output/public/por-que-seu-site-precisa-de-um-blog/_payload.json"
-  },
-  "/por-que-seu-site-precisa-de-um-blog/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"142a86-WfzZc84+NFmoTD47HigMqi7rvio\"",
-    "mtime": "2024-10-12T00:56:13.172Z",
-    "size": 1321606,
-    "path": "../../.output/public/por-que-seu-site-precisa-de-um-blog/index.html"
-  },
-  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.210Z",
-    "size": 69,
-    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/_payload.json"
-  },
-  "/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"142af8-URds89UjTgS9Kf5Kj363XpyzlMg\"",
-    "mtime": "2024-10-12T00:56:13.197Z",
-    "size": 1321720,
-    "path": "../../.output/public/como-o-trafego-pago-impulsiona-sua-visibilidade-online/index.html"
-  },
-  "/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.209Z",
-    "size": 69,
-    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/_payload.json"
-  },
-  "/como-o-design-impacta-na-percepcao-da-sua-marca/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"142ace-/lVU+oXR35ss8dgWTitQYIsClm8\"",
-    "mtime": "2024-10-12T00:56:13.172Z",
-    "size": 1321678,
-    "path": "../../.output/public/como-o-design-impacta-na-percepcao-da-sua-marca/index.html"
-  },
-  "/testse/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.209Z",
-    "size": 69,
-    "path": "../../.output/public/testse/_payload.json"
-  },
-  "/testse/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"1429d8-iQxn4RIQcJnKo8e63+V4rYYqFUw\"",
-    "mtime": "2024-10-12T00:56:13.172Z",
-    "size": 1321432,
-    "path": "../../.output/public/testse/index.html"
-  },
-  "/tstes/_payload.json": {
-    "type": "application/json",
-    "etag": "\"45-uAGOuahdgiQoXA6/0O+tYb3+dVQ\"",
-    "mtime": "2024-10-12T00:56:13.209Z",
-    "size": 69,
-    "path": "../../.output/public/tstes/_payload.json"
-  },
-  "/tstes/index.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"1429d2-vYAlJrz19OJw+yW8ewB5/Dg+E/w\"",
-    "mtime": "2024-10-12T00:56:13.172Z",
-    "size": 1321426,
-    "path": "../../.output/public/tstes/index.html"
-  },
-  "/_ipx/w_100&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"502-71H38iOY+yZ3Jwrhvxde8HOxqzc\"",
-    "mtime": "2024-10-12T00:56:15.443Z",
-    "size": 1282,
-    "path": "../../.output/public/_ipx/w_100&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg"
-  },
-  "/_ipx/w_200&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"502-71H38iOY+yZ3Jwrhvxde8HOxqzc\"",
-    "mtime": "2024-10-12T00:56:15.416Z",
-    "size": 1282,
-    "path": "../../.output/public/_ipx/w_200&q_80/https:/s3.gsstudio.com.br/gsstudio/branding/simbolo.svg"
+  "/__sitemap__/style.xsl": {
+    "type": "application/xml",
+    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
+    "mtime": "2024-10-16T15:23:37.247Z",
+    "size": 5967,
+    "path": "../../.output/public/__sitemap__/style.xsl"
   }
 };
 
@@ -2474,6 +2393,33 @@ const _pOElCc = defineEventHandler(async (e) => {
     setHeader(e, "X-Robots-Tag", robotConfig.rule);
   }
   e.context.robots = robotConfig;
+});
+
+const _j6KKcV = defineEventHandler(async (e) => {
+  const runtimeConfig = useRuntimeConfig(e)["nuxt-robots"];
+  const { indexable, hints } = await getSiteRobotConfig(e);
+  const siteConfig = useSiteConfig(e);
+  const robotsTxt = await e.$fetch("/robots.txt", {
+    query: getQuery$1(e)
+  });
+  return {
+    robotsTxt,
+    indexable,
+    hints,
+    runtimeConfig,
+    siteConfig: {
+      url: siteConfig.url,
+      env: siteConfig.env,
+      indexable: siteConfig.indexable
+    }
+  };
+});
+
+const _Ve4uqT = defineEventHandler(async (e) => {
+  const path = getQuery$1(e).path;
+  return getPathRobotConfig(e, {
+    path
+  });
 });
 
 const logger = createConsola({
@@ -3393,6 +3339,56 @@ const _BQUWeh = defineEventHandler(async (e) => {
   return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
 });
 
+const options = {
+  "message": [
+    {
+      "from": "noreply@gsstudio.com.br",
+      "to": "giovannistr@gmail.com"
+    }
+  ],
+  "smtp": {
+    "host": "mail.gsstudio.com.br",
+    "port": 587,
+    "auth": {
+      "user": "noreply@gsstudio.com.br",
+      "pass": "Agenciagsstudio1993#@!"
+    }
+  }
+};
+
+const send = async (body, options, transport) => {
+  body = {
+    config: 0,
+    ...body
+  };
+  if (typeof body.config === 'string') {
+    const configIndex = findIndex(_ => _.name === body.config)(options.message);
+    if (configIndex === -1) {
+      throw new Error(`Message config with name '${body.config}' not found.`);
+    }
+    body.config = configIndex;
+  } else if (!options.message[body.config]) {
+    throw new Error(`Message config not found at index ${body.config}.`);
+  }
+  await transport.sendMail({
+    ...omit(['config', 'to', 'cc', 'bcc'])(body),
+    ...omit(['name'])(options.message[body.config])
+  });
+};
+
+const transport = nodemailer.createTransport(options.smtp);
+const _BGtM5U = defineEventHandler(async event => {
+  try {
+    await send(await readBody(event), options, transport);
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: error.message
+    });
+  }
+  return '';
+});
+
 const _rf0h91 = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
@@ -3411,7 +3407,7 @@ const _rf0h91 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_jqIX24 = () => import('./parceiros.mjs');
+const _lazy_3BeM2D = () => import('./parceiros.mjs');
 const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_3weOdp = () => import('../__og-image__/font/font.mjs');
 const _lazy_LFXmnD = () => import('../__og-image__/image/image.mjs');
@@ -3419,16 +3415,19 @@ const _lazy_9YkBiL = () => import('../../_/renderer.mjs').then(function (n) { re
 
 const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },
-  { route: '/api/parceiros', handler: _lazy_jqIX24, lazy: true, middleware: false, method: undefined },
+  { route: '/api/parceiros', handler: _lazy_3BeM2D, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _VPBd3A, lazy: false, middleware: true, method: undefined },
   { route: '/robots.txt', handler: _Ti4J3T, lazy: false, middleware: false, method: undefined },
   { route: '', handler: _pOElCc, lazy: false, middleware: false, method: undefined },
+  { route: '/__robots__/debug.json', handler: _j6KKcV, lazy: false, middleware: false, method: undefined },
+  { route: '/__robots__/debug-path.json', handler: _Ve4uqT, lazy: false, middleware: false, method: undefined },
   { route: '/__sitemap__/style.xsl', handler: _zoiIGo, lazy: false, middleware: false, method: undefined },
   { route: '/sitemap.xml', handler: _BQUWeh, lazy: false, middleware: false, method: undefined },
   { route: '/__og-image__/font/**', handler: _lazy_3weOdp, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/image/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/static/**', handler: _lazy_LFXmnD, lazy: true, middleware: false, method: undefined },
+  { route: '/mail/send', handler: _BGtM5U, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _rf0h91, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_9YkBiL, lazy: true, middleware: false, method: undefined }
 ];

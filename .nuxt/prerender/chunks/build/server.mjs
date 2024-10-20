@@ -1,5 +1,5 @@
 import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, unref, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, h, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/index.mjs';
-import { $fetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
+import { $fetch as $fetch$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ofetch/dist/node.mjs';
 import { b as baseURL } from '../_/renderer.mjs';
 import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
 import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unctx/dist/index.mjs';
@@ -33,10 +33,12 @@ import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pack
 import 'node:fs';
 import 'node:url';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nodemailer/lib/nodemailer.js';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@dword-design/functions/dist/index.js';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 
 if (!globalThis.$fetch) {
-  globalThis.$fetch = $fetch.create({
+  globalThis.$fetch = $fetch$1.create({
     baseURL: baseURL()
   });
 }
@@ -656,12 +658,12 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-DpYnnxDd.mjs')
+    component: () => import('./contato-m0cvJy49.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Bai9VpiA.mjs')
+    component: () => import('./index-Dyul7g0y.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -671,7 +673,7 @@ const _routes = [
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-DqstzWM-.mjs')
+    component: () => import('./servicos-BScg5zpH.mjs')
   },
   {
     name: "sobre",
@@ -2143,6 +2145,22 @@ const N = Object.assign(H, { install: (e2) => {
 const plugin_ucMK8VhJjR = /* @__PURE__ */ defineNuxtPlugin((_nuxtApp) => {
   _nuxtApp.vueApp.use(N);
 });
+const plugin_nuxt3_gGdllsjxuZ = /* @__PURE__ */ defineNuxtPlugin(() => ({
+  provide: {
+    mail: {
+      send: async (config) => {
+        try {
+          await $fetch("/mail/send", {
+            body: config,
+            method: "POST"
+          });
+        } catch (error) {
+          throw new Error(error.response._data.statusMessage);
+        }
+      }
+    }
+  }
+}));
 const imask_nTmTWqzxUs = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive("mask", {
     mounted(el, binding) {
@@ -2169,6 +2187,7 @@ const plugins = [
   init_3TppeXojsQ,
   robot_meta_server_6Qhe4cPOr2,
   plugin_ucMK8VhJjR,
+  plugin_nuxt3_gGdllsjxuZ,
   imask_nTmTWqzxUs
 ];
 const _export_sfc = (sfc, props) => {
@@ -2217,7 +2236,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import('./default--OeVQW5O.mjs')
+  default: () => import('./default-CR6pRyuT.mjs')
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",

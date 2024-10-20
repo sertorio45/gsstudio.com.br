@@ -48,5 +48,5 @@ export { useTransparentPwaIcon, useMaskablePwaIcon, useFaviconPwaIcon, useAppleP
 export { defineOgImage } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImage';
 export { defineOgImageComponent } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImageComponent';
 export { defineOgImageScreenshot } from '../node_modules/nuxt-og-image/dist/runtime/nuxt/composables/defineOgImageScreenshot';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
+export { useMail } from '../node_modules/nuxt-mail/dist/composable';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

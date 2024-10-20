@@ -151,6 +151,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useNuxtApp } from '#app'; // Para acessar o método $mail
 
 // Defina a interface para os estados e cidades
 interface Estado {
@@ -178,6 +179,8 @@ const estados = ref<Estado[]>([]); // Estados do IBGE
 const cidades = ref<Cidade[]>([]); // Cidades filtradas pelo estado selecionado
 const isSubmitting = ref(false); // Variável para controlar o estado de envio
 const success = ref(false); // Variável para controlar o estado de sucesso
+
+const nuxtApp = useNuxtApp(); // Para acessar o $mail
 
 // Carregar estados na montagem do componente
 onMounted(async () => {
@@ -224,27 +227,54 @@ const resetForm = () => {
   success.value = false;
 };
 
-// Função de envio do formulário
+// Função de envio do formulário usando nuxt-mail
 const submitForm = async () => {
   isSubmitting.value = true;
   success.value = false;
+
   try {
-    const response = await fetch('https://gsstudio.com.br/send-email.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams(form.value as any).toString(),
+    // Enviar email usando $mail
+    await (nuxtApp.$mail as any).send({
+      from: 'GS STUDIO <noreply@gsstudio.com.br>', // Endereço de email inserido pelo usuário
+      to: '"GS STUDIO" <noreply@gsstudio.com.br>', // Endereço de email fixo para enviar
+      subject: `Novo contato de ${form.value.name}`,
+      html: `
+        <html>
+          <body style='margin: 0; padding: 0; font-family: "Montserrat", sans-serif; background-color: #f4f4f4; font-size: 14px;'>
+            <div style='background-color: #000; text-align: center; padding: 20px 0;'>
+              <img src='https://s3.gsstudio.com.br/images-email-marketing/logotipogssstudio.png' alt='Logo da Empresa' style='max-width: 200px;'>
+            </div>
+            <div style='max-width: 600px; margin: 20px auto; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); padding: 40px;'>
+              <p><strong>Nome:</strong> ${form.value.name}</p>
+              <p><strong>Email:</strong> ${form.value.email}</p>
+              <p><strong>Telefone:</strong> ${form.value.phone}</p>
+              <p><strong>Cidade:</strong> ${form.value.city}</p>
+              <p><strong>UF:</strong> ${form.value.uf}</p>
+              <p><strong>Empresa:</strong> ${form.value.company}</p>
+              <p><strong>Mensagem:</strong> ${form.value.message}</p>
+            </div>
+            <div style='background-color: #000; text-align: center; color: #fff; padding: 20px 0;'>
+              <p>Dúvidas?</p>
+              <p><b><a href='https://wa.me/551640422901?text=Ol%C3%A1%2C+gostaria+de+tirar+algumas+d%C3%BAvidas.' style='color: #fff; text-decoration: none;'>Clique aqui e fale conosco.</a></b></p>
+              <div style='margin: 25px 0;'>
+                <a href='https://www.instagram.com/agenciagsstudio/' target='_blank' style='margin: 0 10px;'>
+                  <img src='https://s3.gsstudio.com.br/gsstudio/social%20icons/instagram-light.webp' alt='Instagram' style='width: 30px; height: 30px;'>
+                </a>
+                <a href='https://www.linkedin.com/company/agenciagsstudio/' target='_blank' style='margin: 0 10px;'>
+                  <img src='https://s3.gsstudio.com.br/gsstudio/social%20icons/linkedin-light.webp' alt='LinkedIn' style='width: 30px; height: 30px;'>
+                </a>
+              </div>
+              <p><a href='https://www.gsstudio.com.br/politica-de-privacidade' target='_blank' style='color: #fff; text-decoration: none;'>política de privacidade</a> | <a href='https://gsstudio.com.br' style='color: #fff; text-decoration: none;'>gsstudio.com.br</a> | <a href='mailto:hello@gsstudio.com.br' style='color: #fff; text-decoration: none;'>hello@gsstudio.com.br</a></p>
+            </div>
+          </body>
+        </html>
+      `,
     });
-    const result = await response.json();
-    if (result.success) {
-      success.value = true;
-      setTimeout(() => {
-        resetForm();
-      }, 2000);
-    } else {
-      alert(result.message);
-    }
+
+    success.value = true;
+    setTimeout(() => {
+      resetForm();
+    }, 2000);
   } catch (error) {
     alert('Erro ao enviar email: ' + error);
   } finally {

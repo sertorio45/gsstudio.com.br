@@ -2,6 +2,8 @@
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
+
+
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
 useHead({
@@ -44,7 +46,7 @@ useCardAnimation();
         <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
         <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
         <div class="d-flex justify-content-center flex-column flex-md-row align-items-center px-2">
-          <button @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</button>
+          <a @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</a>
           <NuxtLink to="/contato" class="btn btn-primary-border my-2 ms-md-2">Faça agora seu orçamento</NuxtLink>
         </div>
       </div>

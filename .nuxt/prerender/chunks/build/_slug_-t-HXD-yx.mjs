@@ -28,6 +28,8 @@ import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pack
 import 'node:fs';
 import 'node:url';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pathe/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/nodemailer/lib/nodemailer.js';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@dword-design/functions/dist/index.js';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/ipx/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unhead/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/shared/dist/index.mjs';
