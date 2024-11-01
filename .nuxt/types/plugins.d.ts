@@ -33,7 +33,8 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt-mail/dist/plugin-nuxt3.js").default> &
   InjectionType<typeof import("../../plugins/main.client").default> &
   InjectionType<typeof import("../../plugins/bootstrap.client").default> &
-  InjectionType<typeof import("../../plugins/imask").default>
+  InjectionType<typeof import("../../plugins/imask").default> &
+  InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js").default>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }

@@ -543,7 +543,17 @@ declare module 'nuxt/schema' {
          id: string,
       },
 
-      identity: any,
+      identity: {
+         type: string,
+
+         name: string,
+
+         url: string,
+
+         description: string,
+
+         sameAs: Array<string>,
+      },
 
       version: string,
    },

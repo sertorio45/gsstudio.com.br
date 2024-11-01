@@ -170,7 +170,7 @@ useCardAnimation();
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
               <div class="gscard gscard-border">
                 <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" alt="GS STUDIO - Lojas virtuais e marketing digital" />
-                <h3>Lojas virtuais</h3>
+                <h3 class="h1">Lojas virtuais</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3">
@@ -331,6 +331,10 @@ export default defineComponent({
 #conquistas h3 {
   font-size: 1.5em !important;
   font-weight: bold;
+}
+
+#servicos h3{
+  font-size: 1em !important;
 }
 
 .row {

@@ -3,7 +3,7 @@ import { $fetch as $fetch$1 } from 'file:///Users/giovannisertorio/Desktop/Sites
 import { b as baseURL } from '../_/renderer.mjs';
 import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/hookable/dist/index.mjs';
 import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unctx/dist/index.mjs';
-import { createError as createError$1, sanitizeStatusCode, getRequestHeader, setCookie, getCookie, deleteCookie } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
+import { createError as createError$1, sanitizeStatusCode, appendHeader, getRequestHeader, setCookie, getCookie, deleteCookie } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/h3/dist/index.mjs';
 import { getActiveHead, CapoPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/unhead/dist/index.mjs';
 import { defineHeadPlugin, composableNames, unpackMeta } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/shared/dist/index.mjs';
 import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-router/dist/vue-router.node.mjs';
@@ -633,7 +633,7 @@ const generateRouteKey$1 = (routeProps, override) => {
 const wrapInKeepAlive = (props, children) => {
   return { default: () => children };
 };
-function toArray(value) {
+function toArray$1(value) {
   return Array.isArray(value) ? value : [value];
 }
 async function getRouteRules(url) {
@@ -663,7 +663,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Dyul7g0y.mjs')
+    component: () => import('./index-RSPceZCv.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -673,12 +673,12 @@ const _routes = [
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-BScg5zpH.mjs')
+    component: () => import('./servicos-DA6Zowbd.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-DtJpBBI7.mjs')
+    component: () => import('./sobre-CiZmll58.mjs')
   },
   {
     name: "solucoes-gscrm",
@@ -819,7 +819,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
       routerBase += "#";
     }
     const history = ((_a = routerOptions.history) == null ? void 0 : _a.call(routerOptions, routerBase)) ?? createMemoryHistory(routerBase);
-    const routes = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
+    const routes2 = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
     let startPosition;
     const router = createRouter({
       ...routerOptions,
@@ -840,7 +840,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
         }
       },
       history,
-      routes
+      routes: routes2
     });
     nuxtApp.vueApp.use(router);
     const previousRoute = shallowRef(router.currentRoute.value);
@@ -931,7 +931,7 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
           if (!componentMiddleware) {
             continue;
           }
-          for (const entry2 of toArray(componentMiddleware)) {
+          for (const entry2 of toArray$1(componentMiddleware)) {
             middlewareEntries.add(entry2);
           }
         }
@@ -993,6 +993,9 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
     return { provide: { router } };
   }
 });
+function toArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
 const useStateKeyPrefix = "$s";
 function useState(...args) {
   const autoKey = typeof args[args.length - 1] === "string" ? args.pop() : void 0;
@@ -1022,6 +1025,10 @@ function useState(...args) {
 function useRequestEvent(nuxtApp = useNuxtApp()) {
   var _a;
   return (_a = nuxtApp.ssrContext) == null ? void 0 : _a.event;
+}
+function prerenderRoutes(path) {
+  const paths = toArray(path);
+  appendHeader(useRequestEvent(), "x-nitro-prerender", paths.map((p) => encodeURIComponent(p)).join(", "));
 }
 const CookieDefaults = {
   path: "/",
@@ -2171,6 +2178,40 @@ const imask_nTmTWqzxUs = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
     }
   });
 });
+let routes;
+const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
+  let __temp, __restore;
+  if (routerOptions.hashMode) {
+    return;
+  }
+  if (routes && !routes.length) {
+    return;
+  }
+  routes || (routes = Array.from(processRoutes(([__temp, __restore] = executeAsync(() => {
+    var _a;
+    return (_a = routerOptions.routes) == null ? void 0 : _a.call(routerOptions, _routes);
+  }), __temp = await __temp, __restore(), __temp) ?? _routes)));
+  const batch = routes.splice(0, 10);
+  prerenderRoutes(batch);
+});
+const OPTIONAL_PARAM_RE = /^\/?:.*(?:\?|\(\.\*\)\*)$/;
+function processRoutes(routes2, currentPath = "/", routesToPrerender = /* @__PURE__ */ new Set()) {
+  var _a;
+  for (const route of routes2) {
+    if (OPTIONAL_PARAM_RE.test(route.path) && !((_a = route.children) == null ? void 0 : _a.length)) {
+      routesToPrerender.add(currentPath);
+    }
+    if (route.path.includes(":")) {
+      continue;
+    }
+    const fullPath = joinURL(currentPath, route.path);
+    routesToPrerender.add(fullPath);
+    if (route.children) {
+      processRoutes(route.children, fullPath, routesToPrerender);
+    }
+  }
+  return routesToPrerender;
+}
 const plugins = [
   unhead_KgADcZ0jPj,
   plugin,
@@ -2188,7 +2229,8 @@ const plugins = [
   robot_meta_server_6Qhe4cPOr2,
   plugin_ucMK8VhJjR,
   plugin_nuxt3_gGdllsjxuZ,
-  imask_nTmTWqzxUs
+  imask_nTmTWqzxUs,
+  prerender_server_LXx1wM9sKF
 ];
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -2236,7 +2278,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import('./default-CR6pRyuT.mjs')
+  default: () => import('./default--OeVQW5O.mjs')
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2465,7 +2507,7 @@ const __nuxt_component_2 = defineComponent({
 function _mergeTransitionProps(routeProps) {
   const _props = routeProps.map((prop) => ({
     ...prop,
-    onAfterLeave: prop.onAfterLeave ? toArray(prop.onAfterLeave) : void 0
+    onAfterLeave: prop.onAfterLeave ? toArray$1(prop.onAfterLeave) : void 0
   }));
   return defu(..._props);
 }

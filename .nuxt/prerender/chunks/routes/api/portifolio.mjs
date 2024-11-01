@@ -73,7 +73,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "5e5ad96e-0e16-4dc1-bff8-fc7c1ad70caa",
+    "buildId": "c33d646d-91ef-4afb-8219-4c20f0301951",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -92,7 +92,17 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-10-16T15:23:30.157Z"
+          "X-Sitemap-Prerendered": "2024-10-20T18:10:27.018Z"
+        },
+        "swr": 600,
+        "cache": {
+          "swr": true,
+          "maxAge": 600,
+          "varies": [
+            "X-Forwarded-Host",
+            "X-Forwarded-Proto",
+            "Host"
+          ]
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -256,7 +266,17 @@ const _inlineRuntimeConfig = {
     "scriptAttributes": {
       "id": "schema-org-graph"
     },
-    "identity": "",
+    "identity": {
+      "type": "Organization",
+      "name": "GS Studio - Marketing em Ribeirão Preto, Sertãozinho e São Paulo",
+      "url": "https://gsstudio.com.br",
+      "description": "Agência full service especializada em design, marketing e tecnologia, localizada em Ribeirão Preto, oferecendo soluções completas com foco em resultados.",
+      "sameAs": [
+        "https://www.facebook.com/gsstudio",
+        "https://www.instagram.com/gsstudio",
+        "https://www.linkedin.com/company/gsstudio"
+      ]
+    },
     "version": "3.3.9"
   },
   "nuxt-site-config": {
@@ -295,19 +315,13 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [
-          "*"
-        ],
+        "allow": [],
         "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "*",
-            "allow": true
-          }
-        ]
+        "_rules": []
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -328,19 +342,13 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [
-          "*"
-        ],
+        "allow": [],
         "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "*",
-            "allow": true
-          }
-        ]
+        "_rules": []
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -2174,31 +2182,17 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const assets = {
-  "/200.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"13fa12-8D4qotdVcdNgc2wVmq4Z4PSS+fc\"",
-    "mtime": "2024-10-16T15:23:37.370Z",
-    "size": 1309202,
-    "path": "../../.output/public/200.html"
-  },
-  "/404.html": {
-    "type": "text/html; charset=utf-8",
-    "etag": "\"13f9d7-OuUk16I435CqMAUs5Tr+8tjDTd0\"",
-    "mtime": "2024-10-16T15:23:37.370Z",
-    "size": 1309143,
-    "path": "../../.output/public/404.html"
-  },
   "/robots.txt": {
     "type": "text/plain; charset=utf-8",
-    "etag": "\"4f-VVx383IkZCOUvKvWiGwB0GIgc/g\"",
-    "mtime": "2024-10-16T15:23:37.247Z",
-    "size": 79,
+    "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
+    "mtime": "2024-10-20T18:10:34.702Z",
+    "size": 70,
     "path": "../../.output/public/robots.txt"
   },
   "/__sitemap__/style.xsl": {
     "type": "application/xml",
     "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2024-10-16T15:23:37.247Z",
+    "mtime": "2024-10-20T18:10:34.702Z",
     "size": 5967,
     "path": "../../.output/public/__sitemap__/style.xsl"
   }

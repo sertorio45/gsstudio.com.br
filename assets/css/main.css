@@ -544,7 +544,7 @@ em {
 @media (max-width: 576px) {
   :root {
     --text-size: calc(1rem - 15%);
-    --texto-grande: 2.3rem;
+    --texto-grande: 1.8rem;
     --texto-medio: 1.2rem;
     --texto-pequeno: 0.875rem;
   }

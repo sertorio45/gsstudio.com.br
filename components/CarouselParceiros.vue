@@ -84,7 +84,7 @@ const parceiros2 = ref(parceiros.value.slice(metade));
       }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros1" :key="index">
-        <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)"  loading="eager"/>
+        <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)"  loading="lazy" width="300px"/>
       </SwiperSlide>
     </Swiper>
     <div class="swiper-gradient-left"></div>

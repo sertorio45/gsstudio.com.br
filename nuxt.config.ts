@@ -15,14 +15,26 @@ export default defineNuxtConfig({
     },
   },
 
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: 'GS Studio - Marketing em Ribeirão Preto, Sertãozinho e São Paulo',
+      url: 'https://gsstudio.com.br',
+      description: 'Agência full service especializada em design, marketing e tecnologia, localizada em Ribeirão Preto, oferecendo soluções completas com foco em resultados.',
+      sameAs: [
+        'https://www.facebook.com/gsstudio',
+        'https://www.instagram.com/gsstudio',
+        'https://www.linkedin.com/company/gsstudio'
+      ]
+    }
+  },
+
   // Configuração do módulo robots para gerar o arquivo robots.txt
   robots: {
     credits: false,
-    mergeWithRobotsTxtPath: true,
-    robotsEnabledValue: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-    enabled: true,
-    allow: [ '*' ],
+    mergeWithRobotsTxtPath: false,
     debug: true,
+    metaTag: true,
   },
 
   // Configuração de delay na hidratação
@@ -37,6 +49,17 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server',
     debug: true,
+    prerender: {
+      crawlLinks: true,
+      routes: ["/sitemap.xml", "/robots.txt"],
+    }
+  },
+
+  hooks: {
+    'robots:config': (config) => {
+      // modify the config
+      config.sitemap = ['/sitemap.xml']
+    },
   },
 
   // Configurações de meta tags e cabeçalho
@@ -98,6 +121,11 @@ export default defineNuxtConfig({
     enableRouterSync: true,
     trackOnNextTick: false,
   },
+
+  vitalizer: {
+    // Remove the render-blocking entry CSS
+    disableStylesheets: 'entry'
+  },
   
   
   // Configurações em runtime (públicas)
@@ -129,7 +157,7 @@ export default defineNuxtConfig({
 
   // Configurações de otimização de imagens
   image: {
-    quality: 80,
+    quality: 75,
     domains: ['s3.gsstudio.com.br', 'gsstudio.com.br'],
     provider: 'ipx',
   },

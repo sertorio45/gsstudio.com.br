@@ -115,7 +115,13 @@ const _inlineRuntimeConfig = {
           "Content-Type": "application/xslt+xml"
         }
       },
-      "/sitemap.xml": {},
+      "/sitemap.xml": {
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8",
+          "Cache-Control": "public, max-age=600, must-revalidate",
+          "X-Sitemap-Prerendered": "2024-11-01T22:08:43.159Z"
+        }
+      },
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
@@ -148,7 +154,17 @@ const _inlineRuntimeConfig = {
       "scriptAttributes": {
         "id": "schema-org-graph"
       },
-      "identity": "",
+      "identity": {
+        "type": "Organization",
+        "name": "GS Studio - Marketing em Ribeirão Preto, Sertãozinho e São Paulo",
+        "url": "https://gsstudio.com.br",
+        "description": "Agência full service especializada em design, marketing e tecnologia, localizada em Ribeirão Preto, oferecendo soluções completas com foco em resultados.",
+        "sameAs": [
+          "https://www.facebook.com/gsstudio",
+          "https://www.instagram.com/gsstudio",
+          "https://www.linkedin.com/company/gsstudio"
+        ]
+      },
       "version": "3.3.9"
     },
     "cookieControl": {
@@ -311,19 +327,13 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [
-          "*"
-        ],
+        "allow": [],
         "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "*",
-            "allow": true
-          }
-        ]
+        "_rules": []
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -344,19 +354,13 @@ const _inlineRuntimeConfig = {
         "disallow": [
           ""
         ],
-        "allow": [
-          "*"
-        ],
+        "allow": [],
         "_indexable": true,
-        "_rules": [
-          {
-            "pattern": "*",
-            "allow": true
-          }
-        ]
+        "_rules": []
       }
     ],
     "sitemap": [
+      "/sitemap.xml",
       "/sitemap.xml"
     ],
     "header": true,
@@ -7723,7 +7727,7 @@ const sources$1 = [
                 "loc": "/sobre"
             },
             {
-                "loc": "/solucoes/gscrm"
+                "loc": "/solucoes.bkop/gscrm"
             }
         ],
         "sourceType": "app"
