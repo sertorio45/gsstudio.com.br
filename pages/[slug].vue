@@ -140,8 +140,6 @@ watch(article, (newArticle) => {
       ogUrl: currentUrl, // Define automaticamente a URL atual
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
-      ogImage: ogImage, // Imagem dinâmica
-      ogImageAlt: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web',
       ogType: 'article',
     });
 
@@ -245,7 +243,6 @@ console.log(route.params.slug)
                 <div class="skeleton skeleton-date"></div>
               </div>
               <div class="skeleton skeleton-title mb-3"></div>
-              <div class="skeleton skeleton-img mb-3"></div>
               <div class="skeleton skeleton-content mb-3"></div>
             </div>
             <div v-else-if="article" class="content_blog">
@@ -254,31 +251,7 @@ console.log(route.params.slug)
                 <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
               </div>
               <h1>{{ article.titulo }}</h1>
-              <div class="my-4">
-                <picture v-if="hasThumbnail(article)">
-                  <source :srcset="getArticleImage(article)" @load="onImageLoad" />
-                  <img 
-                    :src="getArticleImage(article)" 
-                    class="img-fluid blur-effect" 
-                    :class="{ 'blurred': !imageLoaded }" 
-                    :alt="article.titulo" 
-                    @load="onImageLoad" 
-                    @error="handleImageError" 
-                    loading="lazy" 
-                  />
-                </picture>
-                <img 
-                  v-else 
-                  src="https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp" 
-                  class="img-fluid blur-effect" 
-                  :class="{ 'blurred': !imageLoaded }" 
-                  alt="Default Image" 
-                  loading="lazy" 
-                  @load="onImageLoad" 
-                  style="width: 100%;" 
-                />
-              </div>
-              <div v-html="article.content"></div>
+              <div v-html="article.content" class="my-4"></div>
             </div>
             <div v-else>
               <p>Artigo não encontrado.</p>
@@ -428,7 +401,7 @@ console.log(route.params.slug)
     z-index: 9998 !important;
     width: 100%;
     background-color: #fff;
-    bottom: 510px;
+    bottom: 694px;
     padding-top: 25px;
     padding-bottom: 25px;
     gap: 10px;

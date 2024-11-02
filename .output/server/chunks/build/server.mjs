@@ -730,12 +730,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-t-HXD-yx.mjs')
+    component: () => import('./_slug_-vkgPwFCT.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-DGAYkbPb.mjs')
+    component: () => import('./blog-kTsQ6DnJ.mjs')
   },
   {
     name: "contato",
@@ -745,7 +745,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-RSPceZCv.mjs')
+    component: () => import('./index-CEPTe-p4.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -755,7 +755,7 @@ const _routes = [
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-DA6Zowbd.mjs')
+    component: () => import('./servicos-Qami3HR1.mjs')
   },
   {
     name: "sobre",
@@ -763,9 +763,9 @@ const _routes = [
     component: () => import('./sobre-CiZmll58.mjs')
   },
   {
-    name: "solucoes-gscrm",
-    path: "/solucoes/gscrm",
-    component: () => import('./gscrm-DlMxN_6D.mjs')
+    name: "solucoes.bkop-gscrm",
+    path: "/solucoes.bkop/gscrm",
+    component: () => import('./gscrm-C50irJ6b.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2324,7 +2324,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import('./default--OeVQW5O.mjs')
+  default: () => import('./default-oEsaqyD9.mjs')
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",

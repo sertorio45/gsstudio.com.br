@@ -46,7 +46,6 @@ useCardAnimation();
         <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
         <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
         <div class="d-flex justify-content-center flex-column flex-md-row align-items-center px-2">
-          <a @click="scrollToElement('#sobre')" class="btn btn-primary my-2">Nos conheça um pouco</a>
           <NuxtLink to="/contato" class="btn btn-primary-border my-2 ms-md-2">Faça agora seu orçamento</NuxtLink>
         </div>
       </div>
@@ -56,46 +55,54 @@ useCardAnimation();
 <!-- Topo -->
 
 
-    <!-- Quem somos -->
-    <section class="d-flex align-items-center bg-light py-5" id="sobre">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-5">
-            <h2>Somos especialistas</h2>
-            <p class="my-3">
-              A GS Studio é uma agência que combina marketing, design e tecnologia para criar soluções criativas que impulsionam o sucesso de negócios. 
-              Nosso foco está em entregar resultados que realmente fazem a diferença.
-            </p>
-            <NuxtLink to="/sobre" class="btn btn-primary">
-              Conheça mais sobre nós
-            </NuxtLink>
-          </div>
-          <div class="col-12 col-md-7 text-center d-flex align-items-center justify-content-end">
-            <div class="row w-100">
-              <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
-                <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="GS STUDIO - Design para marketing e comunicação" />
-                  <h3>Design</h3>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
-                <div class="gscard gscard-border w-100">
-                  <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="GS STUDIO - Marketing e comunicação digital" />
-                  <h3>Marketing</h3>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 d-flex">
-                <div class="gscard gscard-border w-100">
-                  <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="GS STUDIO - Tecnologia para sites e comunicação" />
-                  <h3>Tecnologia</h3>
-                </div>
-              </div>
+<!-- Quem somos -->
+<section class="d-flex align-items-center bg-light py-5" id="sobre">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5">
+        <h2>Somos especialistas</h2>
+        <p class="my-3">
+          A GS Studio é uma agência que combina marketing, design e tecnologia para criar soluções criativas que impulsionam o sucesso de negócios. 
+          Nosso foco está em entregar resultados que realmente fazem a diferença.
+        </p>
+        <!-- Botão para desktop -->
+        <NuxtLink to="/sobre" class="btn btn-primary d-none d-md-inline-block">
+          Conheça mais sobre nós
+        </NuxtLink>
+       
+      </div>
+      <div class="col-12 col-md-7 text-center d-flex align-items-sm-center justify-content-sm-end">
+        <div class="row w-100">
+          <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="GS STUDIO - Design para marketing e comunicação" />
+              <h3>Design</h3>
             </div>
           </div>
+          <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="GS STUDIO - Marketing e comunicação digital" />
+              <h3>Marketing</h3>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 d-flex">
+            <div class="gscard gscard-border w-100">
+              <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="GS STUDIO - Tecnologia para sites e comunicação" />
+              <h3>Tecnologia</h3>
+            </div>
+          </div>
+          <div class="mt-5"> 
+            <NuxtLink to="/sobre" class="btn btn-primary d-md-none">
+              Conheça mais sobre nós
+            </NuxtLink></div>
         </div>
+        
       </div>
-    </section>
-    <!-- Quem somos -->
+    </div>
+  </div>
+</section>
+<!-- Quem somos -->
+
 
     <!-- Conquistas -->
     <section class="text-center my-5 py-5 d-flex justify-content-center align-items-center" id="conquistas">

@@ -35,7 +35,7 @@ const sources = [
                 "loc": "/sobre"
             },
             {
-                "loc": "/solucoes/gscrm"
+                "loc": "/solucoes.bkop/gscrm"
             }
         ],
         "sourceType": "app"

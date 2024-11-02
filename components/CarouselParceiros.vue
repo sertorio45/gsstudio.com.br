@@ -84,7 +84,7 @@ const parceiros2 = ref(parceiros.value.slice(metade));
       }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros1" :key="index">
-        <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)"  loading="lazy" width="300px"/>
+        <NuxtImg :src="parceiro" class="d-block w-100 parceiro-img" alt="Parceiros GS STUDIO"  loading="lazy" width="300px" height="300px"/>
       </SwiperSlide>
     </Swiper>
     <div class="swiper-gradient-left"></div>
@@ -114,7 +114,7 @@ const parceiros2 = ref(parceiros.value.slice(metade));
       }"
     >
       <SwiperSlide v-for="(parceiro, index) in parceiros2" :key="index">
-        <img :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)" loading="eager"/>
+        <NuxtImg :src="parceiro" class="d-block w-100 parceiro-img" :alt="'Parceiro ' + (index + 1)" loading="lazy" width="300px" height="300px"/>
       </SwiperSlide>
     </Swiper>
     <div class="swiper-gradient-left"></div>

@@ -86,7 +86,7 @@ export default defineNuxtConfig({
   },
 
   // Habilita ferramentas de desenvolvimento
-  devtools: { enabled: false },
+  devtools: { enabled: true },
 
   // Módulos Nuxt utilizados
   modules: [

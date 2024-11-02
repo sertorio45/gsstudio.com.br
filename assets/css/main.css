@@ -544,7 +544,7 @@ em {
 @media (max-width: 576px) {
   :root {
     --text-size: calc(1rem - 15%);
-    --texto-grande: 1.8rem;
+    --texto-grande: 1.6rem;
     --texto-medio: 1.2rem;
     --texto-pequeno: 0.875rem;
   }
@@ -588,3 +588,72 @@ em {
 
 }
 
+/* Blog Card Styles */
+.card {
+  margin-bottom: 20px;
+  border: 0!important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: box-shadow 0.3s, margin-bottom 0.3s, transform 0.3s;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%!important;
+  background-color: var(--bs-dark)!important;
+  
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card:hover {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
+.card-body a {
+  text-decoration: none;
+  color: var(--color-text) !important;
+  transition: color 0.3s, text-decoration 0.3s;
+  color: var(--branco)!important;
+}
+
+.card-body a:hover {
+  text-decoration: underline;
+  color: var(--bs-primary) !important;
+}
+
+.skeleton {
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-category {
+  height: 15px;
+  width: 60%;
+  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
