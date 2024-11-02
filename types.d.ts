@@ -36,4 +36,25 @@ declare module '@nuxt/schema' {
   }
 }
 
-  
+interface Article {
+  id: number;
+  slug: string;
+  titulo: string;
+  seo_description: string;
+  seo_keywords: string;
+  thumb?: {
+    url?: string;
+  };
+  published_at: string;
+  category: {
+    id: number;
+    title: string;
+  };
+  content: string;
+}
+
+interface SocialNetwork {
+  name: string;
+  url: string;
+  icon: string;
+}

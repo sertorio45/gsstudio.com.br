@@ -73,7 +73,7 @@ const appConfig = defuFn(inlineAppConfig);
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "4d9f0862-0328-4d17-b5ce-7caed61e048f",
+    "buildId": "e831479e-ca69-4041-b006-8b9ab9521b74",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -92,7 +92,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-11-01T23:44:28.885Z"
+          "X-Sitemap-Prerendered": "2024-11-02T23:07:58.854Z"
         },
         "swr": 600,
         "cache": {
@@ -1641,7 +1641,7 @@ const _n98FBqtowz = defineNitroPlugin(async (nitroApp) => {
 });
 
 const script = "function eventListeners(){const c=new AbortController;const p=new Promise(resolve=>{const hydrateOnEvents=\"mousemove,scroll,keydown,click,touchstart,wheel\".split(\",\");function handler(e){hydrateOnEvents.forEach(e=>w.removeEventListener(e,handler));requestAnimationFrame(()=>resolve(e))}hydrateOnEvents.forEach(e=>{w.addEventListener(e,handler,{capture:true,once:true,passive:true,signal:c.signal})})});return{c:()=>c.abort(),p:p}}function idleListener(){let id;const p=new Promise(resolve=>{const isMobile=w.innerWidth<640;const timeout=isMobile?Number.parseInt(\"5000\"):Number.parseInt(\"4000\");const timeoutDelay=()=>setTimeout(()=>requestAnimationFrame(()=>resolve(\"timeout\")),timeout);id=w.requestIdleCallback(timeoutDelay,{timeout:Number.parseInt(\"7000\")})});return{c:()=>window.cancelIdleCallback(id),p:p}}const triggers=[idleListener(),eventListeners()];const hydrationPromise=Promise.race(triggers.map(t=>t.p)).finally(()=>{triggers.forEach(t=>t.c())});";
-const mode = "init";
+const mode = "manual";
 const include = [];
 const exclude = ["/_nuxt/**","/api/**"];
 
@@ -2185,14 +2185,14 @@ const assets = {
   "/robots.txt": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
-    "mtime": "2024-11-01T23:44:37.121Z",
+    "mtime": "2024-11-02T23:08:07.197Z",
     "size": 70,
     "path": "../../.output/public/robots.txt"
   },
   "/__sitemap__/style.xsl": {
     "type": "application/xml",
     "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2024-11-01T23:44:37.121Z",
+    "mtime": "2024-11-02T23:08:07.197Z",
     "size": 5967,
     "path": "../../.output/public/__sitemap__/style.xsl"
   }
@@ -3401,6 +3401,7 @@ const _rf0h91 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_LAIdRs = () => import('./articles/_slug_.mjs');
 const _lazy_3BeM2D = () => import('./parceiros.mjs');
 const _lazy_b4sKXn = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_3weOdp = () => import('../__og-image__/font/font.mjs');
@@ -3409,6 +3410,7 @@ const _lazy_9YkBiL = () => import('../../_/renderer.mjs').then(function (n) { re
 
 const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },
+  { route: '/api/articles/:slug', handler: _lazy_LAIdRs, lazy: true, middleware: false, method: undefined },
   { route: '/api/parceiros', handler: _lazy_3BeM2D, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_b4sKXn, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _VPBd3A, lazy: false, middleware: true, method: undefined },

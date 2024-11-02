@@ -19,6 +19,7 @@ import "@gtm-support/vue-gtm";
 import { SchemaOrgUnheadPlugin } from "@unhead/schema-org";
 import { definePerson, defineOrganization, defineWebSite, defineWebPage } from "@unhead/schema-org/vue";
 import IMask from "imask";
+import { createPinia } from "pinia";
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from "vue/server-renderer";
 if (!globalThis.$fetch) {
   globalThis.$fetch = $fetch$1.create({
@@ -631,42 +632,42 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import("./_nuxt/_slug_-vkgPwFCT.js")
+    component: () => import("./_nuxt/_slug_-_G01hbFK.js")
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import("./_nuxt/blog-kTsQ6DnJ.js")
+    component: () => import("./_nuxt/blog-B77Bk9TO.js")
   },
   {
     name: "contato",
     path: "/contato",
-    component: () => import("./_nuxt/contato-m0cvJy49.js")
+    component: () => import("./_nuxt/contato-Dbn_MvAB.js")
   },
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-CEPTe-p4.js")
+    component: () => import("./_nuxt/index-fwnzzzEB.js")
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import("./_nuxt/politica-de-privacidade-D6yxQccV.js")
+    component: () => import("./_nuxt/politica-de-privacidade-mRVGLyqi.js")
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import("./_nuxt/servicos-Qami3HR1.js")
+    component: () => import("./_nuxt/servicos-B8bi_bEo.js")
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import("./_nuxt/sobre-CiZmll58.js")
+    component: () => import("./_nuxt/sobre-CdmWotTl.js")
   },
   {
     name: "solucoes.bkop-gscrm",
     path: "/solucoes.bkop/gscrm",
-    component: () => import("./_nuxt/gscrm-C50irJ6b.js")
+    component: () => import("./_nuxt/gscrm-C6vaP-aR.js")
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -790,7 +791,9 @@ const globalMiddleware = [
   validate,
   manifest_45route_45rule
 ];
-const namedMiddleware = {};
+const namedMiddleware = {
+  "fetch-articles": () => import("./_nuxt/fetchArticles-DZtbp2vM.js")
+};
 const plugin = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:router",
   enforce: "pre",
@@ -1707,7 +1710,7 @@ const og_image_canonical_urls_server_YYKCE0iokV = /* @__PURE__ */ defineNuxtPlug
 const route_rule_og_image_server_xL1rf4QeLE = /* @__PURE__ */ defineNuxtPlugin({
   setup: routeRuleOgImage
 });
-const mode = "init";
+const mode = "manual";
 const nuxt_plugin_6wEQMY3tee = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
   var _a, _b, _c;
   const hydrationMode = useState("nuxt-delay-hydration-mode", () => mode);
@@ -2164,6 +2167,11 @@ const imask_nTmTWqzxUs = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
     }
   });
 });
+const pinia_Uphuq97G1L = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
+  const pinia = createPinia();
+  nuxtApp.vueApp.use(pinia);
+  nuxtApp.provide("pinia", pinia);
+});
 let routes;
 const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
   let __temp, __restore;
@@ -2216,6 +2224,7 @@ const plugins = [
   plugin_ucMK8VhJjR,
   plugin_nuxt3_gGdllsjxuZ,
   imask_nTmTWqzxUs,
+  pinia_Uphuq97G1L,
   prerender_server_LXx1wM9sKF
 ];
 const _export_sfc = (sfc, props) => {
@@ -2264,7 +2273,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import("./_nuxt/default-oEsaqyD9.js")
+  default: () => import("./_nuxt/default-BEQrCkvO.js")
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2556,8 +2565,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import("./_nuxt/error-404-0PLRYLB8.js"));
-    const _Error = defineAsyncComponent(() => import("./_nuxt/error-500-m7cGRzfq.js"));
+    const _Error404 = defineAsyncComponent(() => import("./_nuxt/error-404-BdiPG7OC.js"));
+    const _Error = defineAsyncComponent(() => import("./_nuxt/error-500-CFlSDs3v.js"));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));
@@ -2574,7 +2583,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import("./_nuxt/island-renderer-C57UeOZI.js").then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import("./_nuxt/island-renderer-CQjIOxZ8.js").then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2641,20 +2650,21 @@ export {
   N,
   _export_sfc as _,
   __nuxt_component_0$1 as a,
-  useRoute as b,
+  useSeoMeta as b,
   createError as c,
-  useRouter as d,
+  useRuntimeConfig as d,
   entry$1 as default,
-  useSeoMeta as e,
-  useRuntimeConfig as f,
-  useNuxtApp as g,
-  useOgImageRuntimeConfig as h,
+  useNuxtApp as e,
+  useRoute as f,
+  useOgImageRuntimeConfig as g,
+  createOgImageMeta as h,
   injectHead as i,
-  createOgImageMeta as j,
-  getOgImagePath as k,
-  useRequestEvent as l,
-  useSiteConfig as m,
+  getOgImagePath as j,
+  useRequestEvent as k,
+  defineNuxtRouteMiddleware as l,
+  executeAsync as m,
   normaliseOptions as n,
+  useSiteConfig as o,
   separateProps as s,
   useHead as u
 };

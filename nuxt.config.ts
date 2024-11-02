@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 
   // Configuração de delay na hidratação
   delayHydration: {
-    mode: 'init',
+    mode: 'manual',
   },
 
   // Configurações gerais de SSR

@@ -1,6 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import axios from 'axios';
+import { ref, onMounted, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useSeoMeta } from '#imports';
 
+defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
 interface Article {
   id: number;
@@ -25,195 +29,114 @@ interface SocialNetwork {
   icon: string;
 }
 
- 
+const article = ref<Article | null>(null);
+const loading = ref(true);
+const socialNetworks = ref<SocialNetwork[]>([]);
+const route = useRoute();
+const router = useRouter();
+const baseURL = import.meta.env.VITE_STRAPI_URL;
+const email = ref('');
+const isSubmitting = ref(false);
+const success = ref(false);
+const error = ref(false);
 
-export default defineComponent({
-  name: 'ArticleDetail',
-  setup() {
-    const article = ref<Article | null>(null);
-    const loading = ref(true);
-    const imageLoaded = ref(false);
-    const socialNetworks = ref<SocialNetwork[]>([]);
-    const route = useRoute();
-    const router = useRouter();
-    const baseURL = import.meta.env.VITE_STRAPI_URL;
-    const email = ref('');
-
-    const isSubmitting = ref(false);
-    const success = ref(false);
-    const error = ref(false);
-
-    const fetchArticleBySlug = async (slug: string) => {
-      try {
-        const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
-        if (response.data.length) {
-          article.value = response.data[0];
-        }
-      } catch (err) {
-        console.error('Erro ao buscar o artigo:', err);
-      } finally {
-        loading.value = false;
-      }
-    };
-
-    const getArticleImage = (article: Article) => {
-      if (article.thumb && article.thumb.url) {
-        return new URL(article.thumb.url, baseURL).href;
-      }
-      return 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp'; // Substitua por uma URL de imagem padrão
-    };
-
-    const formatDate = (date: string) => {
-      if (!date) return '';
-      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(date).toLocaleDateString('pt-BR', options);
-    };
-
-    const hasThumbnail = (article: Article) => {
-      return article && article.thumb && article.thumb.url;
-    };
-
-    const onImageLoad = () => {
-      imageLoaded.value = true;
-    };
-
-    const handleImageError = (event: Event) => {
-      const img = event.target as HTMLImageElement;
-      img.src = 'https://s3.gsstudio.com.br/gsstudio/site/img/thumb_blog_gsstudio.webp';
-    };
-
-    const goBack = () => {
-      router.go(-1);
-    };
-
-    const share = (network: SocialNetwork) => {
-      if (network.name === 'Link') {
-        navigator.clipboard.writeText(network.url);
-      } else {
-        window.open(network.url, '_blank', 'noopener,noreferrer');
-      }
-    };
-
-    const submitNewsletterForm = async () => {
-      isSubmitting.value = true;
-      success.value = false;
-      error.value = false;
-      const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/gsstudionewsletter';
-      try {
-        const response = await axios.post(webhookUrl, { email: email.value }, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.status >= 200 && response.status < 300) {
-          success.value = true;
-          setTimeout(() => {
-            email.value = '';
-            success.value = false;
-          }, 2000);
-        } else {
-          error.value = true;
-        }
-      } catch (err) {
-        error.value = true;
-      } finally {
-        isSubmitting.value = false;
-      }
-    };
-
-
-// Atualiza os metadados de SEO quando o artigo for carregado
-// Atualiza os metadados de SEO quando o artigo for carregado
-watch(article, (newArticle) => {
-  if (newArticle) {
-    const currentUrl = window.location.href; // Pega a URL atual da página
-    const ogImage = hasThumbnail(newArticle) ? getArticleImage(newArticle) : 'https://gsstudio.com.br/img/thumb_gsstudio.jpg'; // Define imagem dinâmica ou padrão
-
-    // Define os metadados Open Graph explicitamente
-    useSeoMeta({
-      title: newArticle.titulo,
-      description: newArticle.seo_description,
-      keywords: newArticle.seo_keywords,
-      ogTitle: newArticle.titulo,
-      ogDescription: newArticle.seo_description,
-      ogUrl: currentUrl, // Define automaticamente a URL atual
-      ogSiteName: 'GS STUDIO',
-      ogLocale: 'pt_BR',
-      ogType: 'article',
-    });
-
-    // Define a imagem OG explicitamente com base no artigo ou padrão
-    defineOgImage({
-      url: ogImage,
-      width: 1200,
-      height: 600,
-      alt: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web'
-    });
-
-    // Atualiza a tag <head> explicitamente
-    useHead({
-      meta: [
-        { name: 'robots', content: 'index, follow' },
-        { name: 'canonical', content: currentUrl }, // Define automaticamente a URL atual
-        { property: 'og:type', content: 'article' },
-        { property: 'og:title', content: newArticle.titulo },
-        { property: 'og:description', content: newArticle.seo_description },
-        { property: 'og:url', content: currentUrl },
-        { property: 'og:site_name', content: 'GS STUDIO' },
-        { property: 'og:image', content: ogImage },
-        { property: 'og:image:width', content: '1200' },
-        { property: 'og:image:height', content: '600' },
-        { property: 'og:image:alt', content: newArticle.titulo || 'GS STUDIO - Marketing, comunicação e desenvolvimento web' },
-      ],
-    });
+// Computed properties para SEO
+const title = computed(() => article.value?.titulo || 'Artigo');
+const description = computed(() => article.value?.seo_description || 'Artigos de marketing, design e desenvolvimento web.');
+const ogImage = computed(() => {
+  if (article.value?.thumb?.url) {
+    return new URL(article.value.thumb.url, baseURL).href;
   }
+  return 'https://gsstudio.com.br/img/thumb_gsstudio.jpg'; // URL padrão para imagem
 });
 
-console.log(route.params.slug)
+// Configuração SEO com useSeoMeta
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogImage,
+  twitterCard: 'summary_large_image',
+});
 
+const fetchArticleBySlug = async (slug: string) => {
+  try {
+    const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
+    if (response.data.length) {
+      article.value = response.data[0];
+    }
+  } catch (err) {
+    console.error('Erro ao buscar o artigo:', err);
+  } finally {
+    loading.value = false;
+  }
+};
 
-    onMounted(async () => {
-      const slug = route.params.slug as string;
-      await fetchArticleBySlug(slug);
+const formatDate = (date: string) => {
+  if (!date) return '';
+  const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(date).toLocaleDateString('pt-BR', options);
+};
 
-      if (process.client) {
-        socialNetworks.value = [
-          { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
-          { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
-          { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
-          { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
-          { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
-          { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
-        ];
-      }
+const goBack = () => {
+  router.go(-1);
+};
+
+const share = (network: SocialNetwork) => {
+  if (network.name === 'Link') {
+    navigator.clipboard.writeText(network.url);
+  } else {
+    window.open(network.url, '_blank', 'noopener,noreferrer');
+  }
+};
+
+const submitNewsletterForm = async () => {
+  isSubmitting.value = true;
+  success.value = false;
+  error.value = false;
+  const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/gsstudionewsletter';
+  try {
+    const response = await axios.post(webhookUrl, { email: email.value }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
-    return {
-      article,
-      loading,
-      imageLoaded,
-      email,
-      socialNetworks,
-      getArticleImage,
-      hasThumbnail,
-      formatDate,
-      onImageLoad,
-      goBack,
-      share,
-      submitNewsletterForm,
-      handleImageError,
-      isSubmitting,
-      success,
-      error,
-    };
-  },
+    if (response.status >= 200 && response.status < 300) {
+      success.value = true;
+      setTimeout(() => {
+        email.value = '';
+        success.value = false;
+      }, 2000);
+    } else {
+      error.value = true;
+    }
+  } catch (err) {
+    error.value = true;
+  } finally {
+    isSubmitting.value = false;
+  }
+};
+
+onMounted(async () => {
+  const slug = route.params.slug as string;
+  await fetchArticleBySlug(slug);
+
+  if (process.client) {
+    socialNetworks.value = [
+      { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
+      { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
+      { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
+      { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
+      { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
+      { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
+    ];
+  }
 });
 </script>
 
-
 <template>
-  <main>
     <section class="my-5" id="article-detail">
       <div class="container my-5">
         <div class="row">
@@ -292,7 +215,7 @@ console.log(route.params.slug)
         </div>
       </div>
     </section>
-  </main>
+
 </template>
 
 

@@ -1,6 +1,6 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import 'node:http';
 import 'node:https';
-export { a3 as default } from './chunks/routes/api/portifolio.mjs';
+export { a4 as default } from './chunks/routes/api/portifolio.mjs';
 import 'node:fs';
 import 'node:path';
 import 'vue';

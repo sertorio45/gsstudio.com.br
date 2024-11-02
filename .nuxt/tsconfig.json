@@ -120,7 +120,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/cache/lru"
       ],
       "#mail": [
-        "./nuxt-mail"
+        "file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/.nuxt/nuxt-mail"
       ],
       "#vue-router": [
         "../node_modules/vue-router"
@@ -129,7 +129,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/4d9f0862-0328-4d17-b5ce-7caed61e048f.json"
+        "./manifest/meta/dev.json"
       ],
       "#build": [
         "."

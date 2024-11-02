@@ -18,6 +18,7 @@ import { isEqual } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/
 import { SchemaOrgUnheadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/schema-org/dist/index.mjs';
 import { defineWebSite, defineWebPage, definePerson, defineOrganization } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/schema-org/dist/vue.mjs';
 import IMask from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/imask/esm/index.js';
+import { createPinia } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/pinia/dist/pinia.prod.cjs';
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue/server-renderer/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio2/node_modules/@unhead/ssr/dist/index.mjs';
@@ -648,42 +649,42 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-vkgPwFCT.mjs')
+    component: () => import('./_slug_-_G01hbFK.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-kTsQ6DnJ.mjs')
+    component: () => import('./blog-B77Bk9TO.mjs')
   },
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-m0cvJy49.mjs')
+    component: () => import('./contato-Dbn_MvAB.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-CEPTe-p4.mjs')
+    component: () => import('./index-fwnzzzEB.mjs')
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import('./politica-de-privacidade-D6yxQccV.mjs')
+    component: () => import('./politica-de-privacidade-mRVGLyqi.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./servicos-Qami3HR1.mjs')
+    component: () => import('./servicos-B8bi_bEo.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-CiZmll58.mjs')
+    component: () => import('./sobre-CdmWotTl.mjs')
   },
   {
     name: "solucoes.bkop-gscrm",
     path: "/solucoes.bkop/gscrm",
-    component: () => import('./gscrm-C50irJ6b.mjs')
+    component: () => import('./gscrm-C6vaP-aR.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -807,7 +808,9 @@ const globalMiddleware = [
   validate,
   manifest_45route_45rule
 ];
-const namedMiddleware = {};
+const namedMiddleware = {
+  "fetch-articles": () => import('./fetchArticles-DZtbp2vM.mjs')
+};
 const plugin = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:router",
   enforce: "pre",
@@ -1721,7 +1724,7 @@ const og_image_canonical_urls_server_YYKCE0iokV = /* @__PURE__ */ defineNuxtPlug
 const route_rule_og_image_server_xL1rf4QeLE = /* @__PURE__ */ defineNuxtPlugin({
   setup: routeRuleOgImage
 });
-const mode = "init";
+const mode = "manual";
 const nuxt_plugin_6wEQMY3tee = /* @__PURE__ */ defineNuxtPlugin(async (nuxtApp) => {
   var _a, _b, _c;
   const hydrationMode = useState("nuxt-delay-hydration-mode", () => mode);
@@ -2178,6 +2181,11 @@ const imask_nTmTWqzxUs = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
     }
   });
 });
+const pinia_Uphuq97G1L = /* @__PURE__ */ defineNuxtPlugin((nuxtApp) => {
+  const pinia = createPinia();
+  nuxtApp.vueApp.use(pinia);
+  nuxtApp.provide("pinia", pinia);
+});
 let routes;
 const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
   let __temp, __restore;
@@ -2230,6 +2238,7 @@ const plugins = [
   plugin_ucMK8VhJjR,
   plugin_nuxt3_gGdllsjxuZ,
   imask_nTmTWqzxUs,
+  pinia_Uphuq97G1L,
   prerender_server_LXx1wM9sKF
 ];
 const _export_sfc = (sfc, props) => {
@@ -2278,7 +2287,7 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 const layouts = {
-  default: () => import('./default-oEsaqyD9.mjs')
+  default: () => import('./default-BEQrCkvO.mjs')
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2570,8 +2579,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-0PLRYLB8.mjs'));
-    const _Error = defineAsyncComponent(() => import('./error-500-m7cGRzfq.mjs'));
+    const _Error404 = defineAsyncComponent(() => import('./error-404-BdiPG7OC.mjs'));
+    const _Error = defineAsyncComponent(() => import('./error-500-CFlSDs3v.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));
@@ -2588,7 +2597,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C57UeOZI.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-CQjIOxZ8.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2652,5 +2661,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRoute as b, createError as c, useRouter as d, entry$1 as default, useSeoMeta as e, useRuntimeConfig as f, useNuxtApp as g, useOgImageRuntimeConfig as h, injectHead as i, createOgImageMeta as j, getOgImagePath as k, useRequestEvent as l, useSiteConfig as m, normaliseOptions as n, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, createError as c, useRuntimeConfig as d, entry$1 as default, useNuxtApp as e, useRoute as f, useOgImageRuntimeConfig as g, createOgImageMeta as h, injectHead as i, getOgImagePath as j, useRequestEvent as k, defineNuxtRouteMiddleware as l, executeAsync as m, normaliseOptions as n, useSiteConfig as o, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map
