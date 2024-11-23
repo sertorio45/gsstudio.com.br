@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   // Configuração do Nitro para rodar em modo 'node-server'
   nitro: {
-    preset: 'node-server',
+    preset: 'digital-ocean',
     debug: true,
     prerender: {
       crawlLinks: true,
@@ -64,6 +64,7 @@ export default defineNuxtConfig({
 
   // Configurações de meta tags e cabeçalho
   app: {
+    baseURL: '/',
     head: {
       titleTemplate: 'GS STUDIO | %s',
       htmlAttrs: {
@@ -131,6 +132,7 @@ export default defineNuxtConfig({
   // Configurações em runtime (públicas)
   runtimeConfig: {
     public: {
+      VITE_STRAPI_URL: process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br',
       apiBase: '/api',
       gtm: {
         id: 'GTM-N3X2JT4',

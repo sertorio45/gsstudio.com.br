@@ -227,6 +227,16 @@ const resetForm = () => {
   success.value = false;
 };
 
+// Função para enviar o evento de lead
+const enviarEventoLeadForm = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'lead_form_contato', {
+      event_category: 'lead',
+      event_label: `Lead de ${form.value.name}`,
+    });
+  }
+};
+
 // Função de envio do formulário usando nuxt-mail
 const submitForm = async () => {
   isSubmitting.value = true;
@@ -272,6 +282,8 @@ const submitForm = async () => {
     });
 
     success.value = true;
+    enviarEventoLeadForm(); // Envia o evento de lead
+
     setTimeout(() => {
       resetForm();
     }, 2000);
@@ -282,6 +294,7 @@ const submitForm = async () => {
   }
 };
 </script>
+
 
 <style scoped>
 :root {

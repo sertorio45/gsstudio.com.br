@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { ref, onMounted, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useSeoMeta } from '#imports';
+import { computed, ref } from 'vue';
+import { useRoute, useRouter, useAsyncData } from '#app';
 
-defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
+defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Marketing, comunicação e desenvolvimento web' });
 
 interface Article {
   id: number;
@@ -29,60 +27,71 @@ interface SocialNetwork {
   icon: string;
 }
 
-const article = ref<Article | null>(null);
-const loading = ref(true);
-const socialNetworks = ref<SocialNetwork[]>([]);
 const route = useRoute();
 const router = useRouter();
 const baseURL = import.meta.env.VITE_STRAPI_URL;
-const email = ref('');
-const isSubmitting = ref(false);
-const success = ref(false);
-const error = ref(false);
+
+// Propriedades de estado
+const email = ref<string>('');
+const isSubmitting = ref<boolean>(false);
+const success = ref<boolean>(false);
+const error = ref<boolean>(false);
+
+// Captura o slug da URL
+const slug = ref<string | undefined>(route.params.slug as string);
+
+// Busca pelo slug na URL
+const { data: article, pending: loading, error: fetchError } = useAsyncData<Article>(
+  'fetchArticle',
+  async () => {
+    if (!slug.value) throw new Error('Slug não fornecido');
+    const response = await $fetch<Article[]>(`${baseURL}/articles?slug=${slug.value}`);
+    if (response.length > 0) {
+      return response[0]; // Retorna o artigo com base no slug
+    } else {
+      throw new Error('Artigo não encontrado');
+    }
+  }
+);
 
 // Computed properties para SEO
 const title = computed(() => article.value?.titulo || 'Artigo');
-const description = computed(() => article.value?.seo_description || 'Artigos de marketing, design e desenvolvimento web.');
-const ogImage = computed(() => {
-  if (article.value?.thumb?.url) {
-    return new URL(article.value.thumb.url, baseURL).href;
-  }
-  return 'https://gsstudio.com.br/img/thumb_gsstudio.jpg'; // URL padrão para imagem
-});
+const description = computed(() => article.value?.seo_description || 'Leia mais sobre marketing, design e desenvolvimento web.');
+const ogImage = computed(() => article.value?.thumb?.url || 'https://gsstudio.com.br/img/thumb_gsstudio.jpg');
 
-// Configuração SEO com useSeoMeta
-useSeoMeta({
-  title,
-  ogTitle: title,
-  description,
-  ogDescription: description,
-  ogImage,
-  twitterCard: 'summary_large_image',
-});
+// Verifica se o slug corresponde ao artigo
+const isSlugValid = computed(() => article.value?.slug === slug.value);
+if (process.client && !loading.value && !isSlugValid.value) {
+  router.push('/404'); // Redireciona para 404 se o slug for inválido
+}
 
-const fetchArticleBySlug = async (slug: string) => {
-  try {
-    const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
-    if (response.data.length) {
-      article.value = response.data[0];
-    }
-  } catch (err) {
-    console.error('Erro ao buscar o artigo:', err);
-  } finally {
-    loading.value = false;
-  }
-};
-
+// Formata a data de publicação
 const formatDate = (date: string) => {
   if (!date) return '';
   const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(date).toLocaleDateString('pt-BR', options);
 };
 
+// Navegar para a página anterior
 const goBack = () => {
   router.go(-1);
 };
 
+// Redes sociais dinâmicas
+const socialNetworks = computed<SocialNetwork[]>(() => {
+  if (!process.client) return [];
+  const url = window.location.href;
+  return [
+    { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: 'bx bxl-facebook' },
+    { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${url}`, icon: 'bx bxl-twitter' },
+    { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: 'bx bxl-linkedin' },
+    { name: 'WhatsApp', url: `https://wa.me/?text=${url}`, icon: 'bx bxl-whatsapp' },
+    { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${url}`, icon: 'bx bx-envelope' },
+    { name: 'Link', url: url, icon: 'bx bx-link' },
+  ];
+});
+
+// Compartilhar nas redes sociais
 const share = (network: SocialNetwork) => {
   if (network.name === 'Link') {
     navigator.clipboard.writeText(network.url);
@@ -91,19 +100,21 @@ const share = (network: SocialNetwork) => {
   }
 };
 
+// Método para enviar o formulário da newsletter
 const submitNewsletterForm = async () => {
   isSubmitting.value = true;
   success.value = false;
   error.value = false;
   const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/gsstudionewsletter';
+
   try {
-    const response = await axios.post(webhookUrl, { email: email.value }, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    const response = await $fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }, // Configuração segura do cabeçalho
+      body: JSON.stringify({ email: email.value }), // Garante que os dados sejam enviados corretamente
     });
 
-    if (response.status >= 200 && response.status < 300) {
+    if (response) {
       success.value = true;
       setTimeout(() => {
         email.value = '';
@@ -118,106 +129,96 @@ const submitNewsletterForm = async () => {
     isSubmitting.value = false;
   }
 };
-
-onMounted(async () => {
-  const slug = route.params.slug as string;
-  await fetchArticleBySlug(slug);
-
-  if (process.client) {
-    socialNetworks.value = [
-      { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${window.location.href}`, icon: 'bx bxl-facebook' },
-      { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${window.location.href}`, icon: 'bx bxl-twitter' },
-      { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`, icon: 'bx bxl-linkedin' },
-      { name: 'WhatsApp', url: `https://wa.me/?text=${window.location.href}`, icon: 'bx bxl-whatsapp' },
-      { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${window.location.href}`, icon: 'bx bx-envelope' },
-      { name: 'Link', url: window.location.href, icon: 'bx bx-link' },
-    ];
-  }
-});
 </script>
 
+
 <template>
-    <section class="my-5" id="article-detail">
-      <div class="container my-5">
-        <div class="row">
-          <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
-            <div class="back-fixed">
-              <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
-              <!-- Ícones de Compartilhamento Social -->
-              <div class="social-share d-flex">
-                <a
-                  v-for="(network, index) in socialNetworks"
-                  :key="index"
-                  :href="network.url"
-                  target="_blank"
-                  class="social-icon"
-                  :title="network.name"
-                  @click.prevent="share(network)"
-                >
-                  <i :class="network.icon"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-7 col-md-12 col-lg-7">
-            <div v-if="loading">
-              <div class="d-flex mb-3">
-                <div class="skeleton skeleton-category me-2"></div>
-                <div class="skeleton skeleton-date"></div>
-              </div>
-              <div class="skeleton skeleton-title mb-3"></div>
-              <div class="skeleton skeleton-content mb-3"></div>
-            </div>
-            <div v-else-if="article" class="content_blog">
-              <div class="mb-3 mx-0">
-                <span class="article-category">{{ article.category.title }}</span>
-                <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
-              </div>
-              <h1>{{ article.titulo }}</h1>
-              <div v-html="article.content" class="my-4"></div>
-            </div>
-            <div v-else>
-              <p>Artigo não encontrado.</p>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-12 col-lg-3">
-            <!-- Formulário de Newsletter -->
-            <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
-              <h3>Assine para novas atualizações.</h3>
-              <form @submit.prevent="submitNewsletterForm" class="form">
-                <div class="mb-3">
-                  <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-                </div>
-                <div class="">
-                  <button
-                    type="submit"
-                    :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
-                    :disabled="isSubmitting"
-                  >
-                    <span v-if="isSubmitting">
-                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                      Enviando...
-                    </span>
-                    <span v-else-if="success">
-                      <i class="bx bx-check-circle"></i> Sucesso!
-                    </span>
-                    <span v-else-if="error">
-                      <i class="bx bx-error"></i> Erro ao enviar!
-                    </span>
-                    <span v-else>
-                      <i class="bx bx-send"></i> Inscrever-se
-                    </span>
-                  </button>
-                </div>
-              </form>
+  <section class="my-5" id="article-detail">
+    <!-- SEO meta tags dinâmicas -->
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+      <Meta property="og:title" :content="title" />
+      <Meta property="og:description" :content="description" />
+      <Meta property="og:image" :content="ogImage" />
+    </Head>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
+          <div class="back-fixed">
+            <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+            <div class="social-share d-flex">
+              <a
+                v-for="(network, index) in socialNetworks"
+                :key="index"
+                :href="network.url"
+                target="_blank"
+                class="social-icon"
+                :title="network.name"
+                @click.prevent="share(network)"
+              >
+                <i :class="network.icon"></i>
+              </a>
             </div>
           </div>
         </div>
+        <div class="col-sm-7 col-md-12 col-lg-7">
+          <div v-if="loading">
+            <div class="d-flex mb-3">
+              <div class="skeleton skeleton-category me-2"></div>
+              <div class="skeleton skeleton-date"></div>
+            </div>
+            <div class="skeleton skeleton-title mb-3"></div>
+            <div class="skeleton skeleton-content mb-3"></div>
+          </div>
+          <div v-else-if="article" class="content_blog">
+            <div class="mb-3 mx-0">
+              <span class="article-category">{{ article.category.title }}</span>
+              <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
+            </div>
+            <h1>{{ article.titulo }}</h1>
+            <div v-html="article.content" class="my-4"></div>
+          </div>
+          <div v-else-if="fetchError">
+            <p>Erro: {{ fetchError.message }}</p>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-3">
+          <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
+            <h3>Assine para novas atualizações.</h3>
+            <form @submit.prevent="submitNewsletterForm" class="form">
+              <div class="mb-3">
+                <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="">
+                <button
+                  type="submit"
+                  :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
+                  :disabled="isSubmitting"
+                >
+                  <span v-if="isSubmitting">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Enviando...
+                  </span>
+                  <span v-else-if="success">
+                    <i class="bx bx-check-circle"></i> Sucesso!
+                  </span>
+                  <span v-else-if="error">
+                    <i class="bx bx-error"></i> Erro ao enviar!
+                  </span>
+                  <span v-else>
+                    <i class="bx bx-send"></i> Inscrever-se
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </section>
-
+    </div>
+  </section>
 </template>
-
 
 <style scoped>
 .content_blog h2 {
