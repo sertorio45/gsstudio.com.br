@@ -47,7 +47,6 @@ export default defineNuxtConfig({
 
   // Configuração do Nitro para rodar em modo 'node-server'
   nitro: {
-    preset: 'netlify_builder',
     debug: true,
     prerender: {
       crawlLinks: true,
