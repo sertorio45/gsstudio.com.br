@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   // Configuração do Nitro para rodar em modo 'node-server'
   nitro: {
-    preset: 'digital-ocean',
+    preset: 'netlify_edge',
     debug: true,
     prerender: {
       crawlLinks: true,
