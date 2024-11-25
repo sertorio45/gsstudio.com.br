@@ -427,30 +427,6 @@ declare module 'nuxt/schema' {
       },
    },
 
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: {
-         type: string,
-
-         name: string,
-
-         url: string,
-
-         description: string,
-
-         sameAs: Array<string>,
-      },
-
-      version: string,
-   },
-
    "nuxt-site-config": {
       stack: Array<{
 
@@ -578,6 +554,30 @@ declare module 'nuxt/schema' {
       trackOnNextTick: boolean,
    },
 
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: {
+         type: string,
+
+         name: string,
+
+         url: string,
+
+         description: string,
+
+         sameAs: Array<string>,
+      },
+
+      version: string,
+   },
+
    cookieControl: {
       barPosition: string,
 
@@ -654,7 +654,7 @@ declare module 'nuxt/schema' {
 
          sameSite: string,
 
-         secure: boolean,
+         secure: any,
       },
 
       isAcceptNecessaryButtonEnabled: boolean,

@@ -132,7 +132,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/cache/lru"
       ],
       "#mail": [
-        "./nuxt-mail"
+        "./file:/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
       "#vue-router": [
         "./vue-router"
@@ -159,7 +159,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/satori/renderer"
       ],
       "#nuxt-og-image/renderers/chromium": [
-        "./unenv/runtime/mock/empty"
+        "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/chromium/renderer"
       ],
       "#nuxt-og-image/bindings/css-inline": [
         "./unenv/runtime/mock/empty"
@@ -174,19 +174,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/bindings/satori/node"
       ],
       "#nuxt-og-image/bindings/chromium": [
-        "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/bindings/chromium/null"
-      ],
-      "electron": [
-        "./unenv/runtime/mock/proxy-cjs"
-      ],
-      "bufferutil": [
-        "./unenv/runtime/mock/proxy-cjs"
-      ],
-      "utf-8-validate": [
-        "./unenv/runtime/mock/proxy-cjs"
-      ],
-      "queue": [
-        "./unenv/runtime/mock/proxy-cjs"
+        "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/bindings/chromium/chrome-launcher"
       ]
     },
     "lib": [

@@ -120,7 +120,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/cache/lru"
       ],
       "#mail": [
-        "./nuxt-mail"
+        "file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
       "#vue-router": [
         "../node_modules/vue-router"
@@ -129,7 +129,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/83412fd5-5b92-4138-b283-c3cfeba69c5b.json"
+        "./manifest/meta/dev.json"
       ],
       "#build": [
         "."
@@ -262,6 +262,6 @@
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../node_modules/@nuxt/telemetry/dist/runtime/server",
-    "../.netlify/functions-internal"
+    "../.output"
   ]
 }

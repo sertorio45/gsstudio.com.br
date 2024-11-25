@@ -2,7 +2,8 @@
 import { computed, ref } from 'vue';
 import { useRoute, useRouter, useAsyncData } from '#app';
 
-defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Marketing, comunicação e desenvolvimento web' });
+defineOgImageComponent('NuxtSeo')
+
 
 interface Article {
   id: number;
@@ -133,16 +134,13 @@ const submitNewsletterForm = async () => {
 
 
 <template>
-  <section class="my-5" id="article-detail">
-    <!-- SEO meta tags dinâmicas -->
-    <Head>
+      <Head>
       <Title>{{ title }}</Title>
       <Meta name="description" :content="description" />
       <Meta property="og:title" :content="title" />
       <Meta property="og:description" :content="description" />
-      <Meta property="og:image" :content="ogImage" />
     </Head>
-
+  <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
         <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
