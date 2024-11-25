@@ -45,10 +45,6 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  // Configuração de delay na hidratação
-  delayHydration: {
-    mode: 'mount',
-  },
 
    routeRules: {
     // Generated at build time for SEO purpose
