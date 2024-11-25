@@ -5,6 +5,7 @@ import { useRoute, useRouter, useAsyncData } from '#app';
 defineOgImageComponent('NuxtSeo')
 
 
+
 interface Article {
   id: number;
   slug: string;
@@ -59,6 +60,17 @@ const { data: article, pending: loading, error: fetchError } = useAsyncData<Arti
 const title = computed(() => article.value?.titulo || 'Artigo');
 const description = computed(() => article.value?.seo_description || 'Leia mais sobre marketing, design e desenvolvimento web.');
 const ogImage = computed(() => article.value?.thumb?.url || 'https://gsstudio.com.br/img/thumb_gsstudio.jpg');
+
+useSeoMeta({
+  title: title,
+  ogTitle: title,
+  description: description,
+  ogDescription: description,
+  ogImage: ogImage,
+  twitterCard: 'summary_large_image',
+})
+
+
 
 // Verifica se o slug corresponde ao artigo
 const isSlugValid = computed(() => article.value?.slug === slug.value);
@@ -134,12 +146,12 @@ const submitNewsletterForm = async () => {
 
 
 <template>
-      <Head>
+      <!-- <Head>
       <Title>{{ title }}</Title>
       <Meta name="description" :content="description" />
       <Meta property="og:title" :content="title" />
       <Meta property="og:description" :content="description" />
-    </Head>
+    </Head> -->
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
