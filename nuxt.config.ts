@@ -15,6 +15,18 @@ export default defineNuxtConfig({
     },
   },
 
+  ogImage: {
+    defaults: {
+      extension: 'png',
+    },
+    fonts: [
+      // will load the Noto Sans font from Google fonts
+      'Unbounded:400',
+    ]
+  },  
+
+  
+
   schemaOrg: {
     identity: {
       type: 'Organization',

@@ -128,7 +128,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-11-25T01:27:02.599Z"
+          "X-Sitemap-Prerendered": "2024-11-25T02:58:23.221Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -397,18 +397,12 @@ const _inlineRuntimeConfig = {
     "baseCacheKey": "/cache/nuxt-og-image/3.0.4",
     "fonts": [
       {
-        "cacheKey": "Inter:400",
+        "cacheKey": "Unbounded:400",
         "style": "normal",
-        "weight": 400,
-        "name": "Inter",
-        "key": "nuxt-og-image:fonts:Inter-400.ttf.base64"
-      },
-      {
-        "cacheKey": "Inter:700",
-        "style": "normal",
-        "weight": 700,
-        "name": "Inter",
-        "key": "nuxt-og-image:fonts:Inter-700.ttf.base64"
+        "weight": "400",
+        "name": "Unbounded",
+        "path": "",
+        "key": "nuxt-og-image:fonts:Unbounded-400.ttf.base64"
       }
     ],
     "hasNuxtIcon": false,

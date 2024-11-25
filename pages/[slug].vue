@@ -2,9 +2,6 @@
 import { computed, ref } from 'vue';
 import { useRoute, useRouter, useAsyncData } from '#app';
 
-defineOgImageComponent('NuxtSeo')
-
-
 
 interface Article {
   id: number;
@@ -60,16 +57,25 @@ const { data: article, pending: loading, error: fetchError } = useAsyncData<Arti
 const title = computed(() => article.value?.titulo || 'Artigo');
 const description = computed(() => article.value?.seo_description || 'Leia mais sobre marketing, design e desenvolvimento web.');
 const ogImage = computed(() => article.value?.thumb?.url || 'https://gsstudio.com.br/img/thumb_gsstudio.jpg');
+const category = computed(() => 'Categoria: ' + article.value?.category.title );
+const keywords = computed(() => article.value?.seo_keywords );
 
 useSeoMeta({
   title: title,
   ogTitle: title,
   description: description,
   ogDescription: description,
-  ogImage: ogImage,
+  ogImageAlt: description,
   twitterCard: 'summary_large_image',
+  keywords: keywords,
 })
 
+defineOgImageComponent('NuxtSeo', {
+  // title: title,
+  description: category,
+  colorMode: 'dark',
+  theme: '#1e00ff',
+})
 
 
 // Verifica se o slug corresponde ao artigo

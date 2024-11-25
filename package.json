@@ -52,6 +52,7 @@
     "@types/vue-the-mask": "^0.11.5",
     "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "nuxt-site-config": "^2.2.18",
-    "nuxt-site-config-kit": "^2.2.18"
+    "nuxt-site-config-kit": "^2.2.18",
+    "sharp": "^0.33.5"
   }
 }
