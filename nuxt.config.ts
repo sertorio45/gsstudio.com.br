@@ -47,8 +47,7 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     // Cached for 1 hour
     '/api/*': { cache: { maxAge: 60 * 60 } },
-    }
-  },
+    },
 
   // Configurações gerais de SSR
   ssr: true,
