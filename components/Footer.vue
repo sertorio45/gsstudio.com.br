@@ -5,7 +5,7 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-12 d-flex flex-column align-items-center">
-            <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" />
+            <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/simbolo.svg" width="100px" class="rotate-image mb-3" alt="Agência GS STUDIO, branding, marketing e tecnologia." />
             <div class="copyright-wrapper text-center">
               &copy; 2016 - {{ currentYear }}. <br class="d-sm-none">Todos os direitos reservados.
             </div>

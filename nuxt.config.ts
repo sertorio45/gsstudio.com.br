@@ -22,9 +22,7 @@ export default defineNuxtConfig({
       'Unbounded:400',
     ]
   },  
-
   
-
   schemaOrg: {
     identity: {
       type: 'Organization',

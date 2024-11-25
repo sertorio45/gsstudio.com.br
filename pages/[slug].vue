@@ -202,7 +202,7 @@ const submitNewsletterForm = async () => {
         </div>
         <div class="col-sm-12 col-md-12 col-lg-3">
           <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
-            <h3>Assine para novas atualizações.</h3>
+            <span class="h3">Assine para novas atualizações.</span>
             <form @submit.prevent="submitNewsletterForm" class="form">
               <div class="mb-3">
                 <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
