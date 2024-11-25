@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <CookieConsent />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-    
-  </div>
+  <CookieConsent />
+   <NuxtLoadingIndicator color="#000" />
+      <NuxtLayout>
+    <NuxtPage />
+      </NuxtLayout>
 </template>
-

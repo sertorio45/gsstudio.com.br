@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   // Configuração de delay na hidratação
   delayHydration: {
-    mode: 'init',
+    mode: 'mount',
   },
 
    routeRules: {
