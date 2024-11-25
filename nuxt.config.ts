@@ -42,6 +42,14 @@ export default defineNuxtConfig({
     mode: 'manual',
   },
 
+   routeRules: {
+    // Generated at build time for SEO purpose
+    '/': { prerender: true },
+    // Cached for 1 hour
+    '/api/*': { cache: { maxAge: 60 * 60 } },
+    }
+  },
+
   // Configurações gerais de SSR
   ssr: true,
 
