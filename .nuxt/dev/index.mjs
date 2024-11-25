@@ -128,7 +128,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-11-25T04:38:19.519Z"
+          "X-Sitemap-Prerendered": "2024-11-25T04:48:45.775Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -1571,7 +1571,7 @@ const _dqHQI2jtgJ = defineNitroPlugin(async (nitroApp) => {
 });
 
 const script = "function eventListeners(){const c=new AbortController;const p=new Promise(resolve=>{const hydrateOnEvents=\"mousemove,scroll,keydown,click,touchstart,wheel\".split(\",\");function handler(e){hydrateOnEvents.forEach(e=>w.removeEventListener(e,handler));requestAnimationFrame(()=>resolve(e))}hydrateOnEvents.forEach(e=>{w.addEventListener(e,handler,{capture:true,once:true,passive:true,signal:c.signal})})});return{c:()=>c.abort(),p:p}}function idleListener(){let id;const p=new Promise(resolve=>{const isMobile=w.innerWidth<640;const timeout=isMobile?Number.parseInt(\"5000\"):Number.parseInt(\"4000\");const timeoutDelay=()=>setTimeout(()=>requestAnimationFrame(()=>resolve(\"timeout\")),timeout);id=w.requestIdleCallback(timeoutDelay,{timeout:Number.parseInt(\"7000\")})});return{c:()=>window.cancelIdleCallback(id),p:p}}const triggers=[idleListener(),eventListeners()];const hydrationPromise=Promise.race(triggers.map(t=>t.p)).finally(()=>{triggers.forEach(t=>t.c())});";
-const mode = "manual";
+const mode = "init";
 const include = [];
 const exclude = ["/_nuxt/**","/api/**"];
 
