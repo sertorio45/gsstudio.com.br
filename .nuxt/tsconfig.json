@@ -2,6 +2,9 @@
 {
   "compilerOptions": {
     "paths": {
+      "nitropack/types": [
+        "../node_modules/nitropack/types"
+      ],
       "nitropack": [
         "../node_modules/nitropack"
       ],
@@ -68,6 +71,9 @@
       "@@/*": [
         "../*"
       ],
+      "#shared": [
+        "../shared"
+      ],
       "assets": [
         "../assets"
       ],
@@ -79,6 +85,12 @@
       ],
       "public/*": [
         "../public/*"
+      ],
+      "#build": [
+        "."
+      ],
+      "#build/*": [
+        "./*"
       ],
       "#app": [
         "../node_modules/nuxt/dist/app"
@@ -95,8 +107,26 @@
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
       ],
+      "#robots": [
+        "../node_modules/@nuxtjs/robots/dist/runtime"
+      ],
+      "#robots/*": [
+        "../node_modules/@nuxtjs/robots/dist/runtime/*"
+      ],
+      "vee-validate": [
+        "../node_modules/vee-validate/dist/vee-validate"
+      ],
       "#sitemap": [
-        "../node_modules/@nuxtjs/sitemap/dist/runtime/types"
+        "../node_modules/@nuxtjs/sitemap/dist/runtime"
+      ],
+      "#sitemap/*": [
+        "../node_modules/@nuxtjs/sitemap/dist/runtime/*"
+      ],
+      "#schema-org": [
+        "../node_modules/nuxt-schema-org/dist/runtime"
+      ],
+      "#schema-org/*": [
+        "../node_modules/nuxt-schema-org/dist/runtime/*"
       ],
       "#cookie-control/set-vars": [
         "../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/set-vars/native"
@@ -113,11 +143,14 @@
       "#nuxt-delay-hydration/api": [
         "./delay-hydration.mjs"
       ],
-      "#nuxt-og-image-utils": [
-        "../node_modules/nuxt-og-image/dist/runtime/shared"
+      "#og-image": [
+        "../node_modules/nuxt-og-image/dist/runtime"
       ],
-      "#nuxt-og-image-cache": [
-        "../node_modules/nuxt-og-image/dist/runtime/nitro/og-image/cache/lru"
+      "#og-image/*": [
+        "../node_modules/nuxt-og-image/dist/runtime/*"
+      ],
+      "#og-image-cache": [
+        "../node_modules/nuxt-og-image/dist/runtime/server/og-image/cache/lru"
       ],
       "#mail": [
         "file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
@@ -130,12 +163,6 @@
       ],
       "#app-manifest": [
         "./manifest/meta/dev"
-      ],
-      "#build": [
-        "."
-      ],
-      "#build/*": [
-        "./*"
       ],
       "#components": [
         "./components"

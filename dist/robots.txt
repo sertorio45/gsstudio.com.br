@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: https://gsstudio.com.br/sitemap.xml

@@ -524,6 +524,10 @@ declare module 'nuxt/schema' {
 
       colorPreference: string,
 
+      hasNuxtContent: boolean,
+
+      strictNuxtContentPaths: any,
+
       isNuxtContentDocumentDriven: boolean,
    },
   }

@@ -4,7 +4,7 @@ declare module 'nitropack' {
   interface NitroApp {
     _robots: {
       ctx: import('../../node_modules/@nuxtjs/robots/dist/runtime/types').HookRobotsConfigContext
-      nuxtContentUrls: Set<string>
+      nuxtContentUrls?: Set<string>
     },
     _robotsRuleMactcher: (url: string) => string
   }
