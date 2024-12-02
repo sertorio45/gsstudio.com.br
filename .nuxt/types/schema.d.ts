@@ -554,28 +554,6 @@ declare module 'nuxt/schema' {
 
    apiBase: string,
 
-   gtm: {
-      devtools: boolean,
-
-      id: string,
-
-      defer: boolean,
-
-      compatibility: boolean,
-
-      nonce: string,
-
-      enabled: boolean,
-
-      debug: boolean,
-
-      loadScript: boolean,
-
-      enableRouterSync: boolean,
-
-      trackOnNextTick: boolean,
-   },
-
    "nuxt-schema-org": {
       reactive: boolean,
 
@@ -598,6 +576,28 @@ declare module 'nuxt/schema' {
       },
 
       version: string,
+   },
+
+   gtm: {
+      devtools: boolean,
+
+      id: string,
+
+      defer: boolean,
+
+      compatibility: boolean,
+
+      nonce: string,
+
+      enabled: boolean,
+
+      debug: boolean,
+
+      loadScript: boolean,
+
+      enableRouterSync: boolean,
+
+      trackOnNextTick: boolean,
    },
 
    cookieControl: {

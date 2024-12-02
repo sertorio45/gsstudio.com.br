@@ -1,3 +1,6 @@
+import { VitePWA } from 'vite-plugin-pwa'
+
+
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
   mail: {
@@ -139,18 +142,17 @@ export default defineNuxtConfig({
 
   webVitals: {
     debug: true, // Logs desabilitados para produção
-    provider: "ga",
-    disabled: false, // Ativar o Web Vitals
-    ga: { id: 'G-PCWNHC1PD1' }
+    provider: "gtm",
+    disabled: true, // Ativar o Web Vitals
   },
 
   runtimeConfig: {
     public: {
       VITE_STRAPI_URL: process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br',
       apiBase: '/api',
-      gtm: {
-        id: 'GTM-N3X2JT4',
-      },
+      // gtm: {
+      //   id: 'GTM-N3X2JT4',
+      // },
     },
   },
 
@@ -185,8 +187,16 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/main.client.ts',
     '@/plugins/bootstrap.client.ts',
-    '@/plugins/web-vitals.client.ts', // Novo plugin para capturar métricas
+    '@/plugins/web-vitals.client.ts',
   ],
+
+  pwa: {
+    registerType: 'autoUpdate',
+    workbox: {
+      clientsClaim: true,
+      skipWaiting: true,
+    }
+  },
 
   compatibilityDate: '2024-04-03',
 });
