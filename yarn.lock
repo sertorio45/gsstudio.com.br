@@ -3216,7 +3216,7 @@
     node-gyp-build "^4.2.2"
     resolve-from "^5.0.0"
 
-"@vite-pwa/nuxt@^0.10.5":
+"@vite-pwa/nuxt@0.10.6", "@vite-pwa/nuxt@^0.10.5":
   version "0.10.6"
   resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.10.6.tgz#ba8b61da1bed83034accfbbc52381d61fc04d122"
   integrity sha512-yQTrMNLz2KuroEaqstHYvylT258BgYryON1tC2MQGCG8VVyWXfmYZPeffid/zCE8pkKMQpp6e9owKUyVLgT5xg==

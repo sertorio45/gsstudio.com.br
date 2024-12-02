@@ -576,6 +576,8 @@ declare module 'nuxt/schema' {
       trackOnNextTick: boolean,
    },
 
+   analyticsId: string,
+
    "nuxt-schema-org": {
       reactive: boolean,
 

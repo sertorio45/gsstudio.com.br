@@ -116,7 +116,8 @@ export default defineNuxtConfig({
     'nuxt-delay-hydration',
     'nuxt-og-image',
     'nuxt-mail',
-    '@nuxtjs/web-vitals', // Adicionado o módulo Web Vitals
+    '@nuxtjs/web-vitals',
+    '@vite-pwa/nuxt',
   ],
 
   gtm: {
@@ -149,6 +150,7 @@ export default defineNuxtConfig({
       gtm: {
         id: 'GTM-N3X2JT4',
       },
+      analyticsId: 'G-PCWNHC1PD1', // ID público do Google Analytics
     },
   },
 

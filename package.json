@@ -21,7 +21,7 @@
     "@popperjs/core": "^2.11.8",
     "@types/axios": "^0.14.0",
     "@vee-validate/nuxt": "^4.13.2",
-    "@vite-pwa/nuxt": "^0.10.5",
+    "@vite-pwa/nuxt": "0.10.6",
     "@vueuse/head": "^2.0.0",
     "aws-sdk": "^2.1661.0",
     "axios": "^1.7.2",
