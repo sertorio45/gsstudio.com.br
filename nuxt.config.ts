@@ -114,9 +114,9 @@ export default defineNuxtConfig({
     '@nuxtjs/partytown',
     '@vite-pwa/nuxt',
     'nuxt-delay-hydration',
+    'nuxt-og-image',
     'nuxt-mail',
     '@nuxtjs/web-vitals', // Adicionado o módulo Web Vitals
-    'nuxt-og-image',
   ],
 
   gtm: {
@@ -137,9 +137,9 @@ export default defineNuxtConfig({
   },
 
   webVitals: {
-    provider: 'log',
-    debug: true,
-    disabled: false
+    debug: false, // Logs desabilitados para produção
+    disabled: false, // Ativar o Web Vitals
+    ga: { id: 'G-PCWNHC1PD1' }
   },
 
   runtimeConfig: {
@@ -149,7 +149,6 @@ export default defineNuxtConfig({
       gtm: {
         id: 'GTM-N3X2JT4',
       },
-      analyticsId: 'G-PCWNHC1PD1', // ID público do Google Analytics
     },
   },
 
