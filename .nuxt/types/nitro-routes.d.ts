@@ -39,6 +39,9 @@ declare module "nitropack/types" {
     '/__schema-org__/debug.json': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt-schema-org/dist/runtime/server/routes/__schema-org__/debug').default>>>>
     }
+    '/mail/send': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt-mail/dist/server-handler.post').default>>>>
+    }
     '/__og-image__/font/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt-og-image/dist/runtime/server/routes/font').default>>>>
     }
@@ -50,9 +53,6 @@ declare module "nitropack/types" {
     }
     '/__og-image__/static/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt-og-image/dist/runtime/server/routes/image').default>>>>
-    }
-    '/mail/send': {
-      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt-mail/dist/server-handler.post').default>>>>
     }
     '/_ipx/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/image/dist/runtime/ipx').default>>>>

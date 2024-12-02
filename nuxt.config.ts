@@ -16,28 +16,27 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    
     fonts: [
       // will load the Noto Sans font from Google fonts
       'Unbounded:400',
-    ]
-  },  
+    ],
+  },
 
   schemaOrg: {
     identity: {
       type: 'Organization',
       name: 'GS Studio - Marketing em Ribeirão Preto, Sertãozinho e São Paulo',
       url: 'https://gsstudio.com.br',
-      description: 'Agência full service especializada em design, marketing e tecnologia, localizada em Ribeirão Preto, oferecendo soluções completas com foco em resultados.',
+      description:
+        'Agência full service especializada em design, marketing e tecnologia, localizada em Ribeirão Preto, oferecendo soluções completas com foco em resultados.',
       sameAs: [
         'https://www.facebook.com/gsstudio',
         'https://www.instagram.com/gsstudio',
-        'https://www.linkedin.com/company/gsstudio'
-      ]
-    }
+        'https://www.linkedin.com/company/gsstudio',
+      ],
+    },
   },
 
-  // Configuração do módulo robots para gerar o arquivo robots.txt
   robots: {
     credits: false,
     mergeWithRobotsTxtPath: false,
@@ -45,46 +44,36 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-
-   routeRules: {
-    // Generated at build time for SEO purpose
+  routeRules: {
     '/': { prerender: true },
-    // Cached for 1 hour
     '/api/*': { cache: { maxAge: 60 * 60 } },
-    },
+  },
 
-  // Configurações gerais de SSR
   ssr: true,
 
-  // Configuração do Nitro para rodar em modo 'node-server'
   nitro: {
     preset: 'netlify',
     debug: true,
     prerender: {
       crawlLinks: true,
-      routes: ["/sitemap.xml", "/robots.txt"],
-    }
+      routes: ['/sitemap.xml', '/robots.txt'],
+    },
   },
 
   hooks: {
     'robots:config': (config) => {
-      // modify the config
-      config.sitemap = ['/sitemap.xml']
+      config.sitemap = ['/sitemap.xml'];
     },
     'build:manifest': (manifest) => {
-      // find the app entry, css list
-      const css = Object.values(manifest).find(options => options.isEntry)?.css
+      const css = Object.values(manifest).find((options) => options.isEntry)?.css;
       if (css) {
-        // start from the end of the array and go to the beginning
         for (let i = css.length - 1; i >= 0; i--) {
-          // if it starts with 'entry', remove it from the list
-          if (css[i].startsWith('entry')) css.splice(i, 1)
+          if (css[i].startsWith('entry')) css.splice(i, 1);
         }
       }
     },
   },
 
-  // Configurações de meta tags e cabeçalho
   app: {
     baseURL: '/',
     head: {
@@ -101,43 +90,40 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
-  
-  // Configuração do site
+
   site: {
     url: 'https://gsstudio.com.br',
     name: 'GS STUDIO',
   },
 
-  // Habilita ferramentas de desenvolvimento
   devtools: { enabled: true },
 
-  // Módulos Nuxt utilizados
   modules: [
-    '@nuxt/image', 
-    'nuxt-swiper', 
-    'nuxt-easy-lightbox', 
-    '@nuxtjs/google-fonts', 
-    '@nuxtjs/robots', 
-    '@vee-validate/nuxt', 
-    '@nuxtjs/sitemap', 
-    'nuxt-schema-org', 
-    'nuxt-vitalizer', 
-    '@zadigetvoltaire/nuxt-gtm', 
-    '@dargmuesli/nuxt-cookie-control', 
-    '@nuxtjs/html-validator', 
-    '@nuxtjs/partytown', 
-    '@vite-pwa/nuxt', 
-    'nuxt-delay-hydration', 
-    'nuxt-og-image', 
+    '@nuxt/image',
+    'nuxt-swiper',
+    'nuxt-easy-lightbox',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/robots',
+    '@vee-validate/nuxt',
+    '@nuxtjs/sitemap',
+    'nuxt-schema-org',
+    'nuxt-vitalizer',
+    '@zadigetvoltaire/nuxt-gtm',
+    '@dargmuesli/nuxt-cookie-control',
+    '@nuxtjs/html-validator',
+    '@nuxtjs/partytown',
+    '@vite-pwa/nuxt',
+    'nuxt-delay-hydration',
     'nuxt-mail',
+    '@nuxtjs/web-vitals', // Adicionado o módulo Web Vitals
+    'nuxt-og-image',
   ],
 
-  // Configurações do Google Tag Manager (GTM)
   gtm: {
     id: 'GTM-N3X2JT4',
-    defer: true, 
-    compatibility: false, 
-    nonce: '2726c7f26c', 
+    defer: true,
+    compatibility: false,
+    nonce: '2726c7f26c',
     enabled: true,
     debug: true,
     loadScript: true,
@@ -146,13 +132,16 @@ export default defineNuxtConfig({
   },
 
   vitalizer: {
-    // Remove the render-blocking entry CSS
     disableStylesheets: 'entry',
-    disablePrefetchLinks: true
+    disablePrefetchLinks: true,
   },
-  
-  
-  // Configurações em runtime (públicas)
+
+  webVitals: {
+    provider: 'log',
+    debug: true,
+    disabled: false
+  },
+
   runtimeConfig: {
     public: {
       VITE_STRAPI_URL: process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br',
@@ -160,11 +149,10 @@ export default defineNuxtConfig({
       gtm: {
         id: 'GTM-N3X2JT4',
       },
+      analyticsId: 'G-PCWNHC1PD1', // ID público do Google Analytics
     },
-
   },
-  
-  // Configurações do Google Fonts
+
   googleFonts: {
     families: {
       'DM Sans': [400, 700],
@@ -175,19 +163,16 @@ export default defineNuxtConfig({
     overwriting: false,
   },
 
-  // Configurações do Swiper
   swiper: {
     prefix: 'Swiper',
   },
 
-  // Configurações de otimização de imagens
   image: {
     quality: 75,
     domains: ['s3.gsstudio.com.br', 'gsstudio.com.br'],
     provider: 'ipx',
   },
 
-  // Arquivos CSS incluídos
   css: [
     'swiper/swiper-bundle.css',
     'swiper/css/effect-creative',
@@ -196,12 +181,11 @@ export default defineNuxtConfig({
     'boxicons/css/boxicons.min.css',
   ],
 
-  // Plugins incluídos
   plugins: [
     '@/plugins/main.client.ts',
     '@/plugins/bootstrap.client.ts',
+    '@/plugins/web-vitals.client.ts', // Novo plugin para capturar métricas
   ],
 
-  // Data de compatibilidade
   compatibilityDate: '2024-04-03',
 });

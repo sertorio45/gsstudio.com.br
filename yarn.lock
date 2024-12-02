@@ -2022,6 +2022,17 @@
     site-config-stack "^2.2.21"
     ufo "^1.5.4"
 
+"@nuxtjs/web-vitals@0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/web-vitals/-/web-vitals-0.2.7.tgz#bb576400ef5b5f2efee8dc0864a4c1fafa5cfa08"
+  integrity sha512-ztqk+PsdozVExk0IkzH64+5LnHhyUQboIBp/IdDHaOZEHybMZRtdMB53z6OqSg/DCK3638sHDXoza44DYvveaw==
+  dependencies:
+    "@nuxt/kit" "^3.11.2"
+    defu "^6.1.4"
+    pathe "^1.1.2"
+    ufo "^1.5.3"
+    web-vitals "^3.5.2"
+
 "@parcel/watcher-android-arm64@2.5.0":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@parcel/watcher-android-arm64/-/watcher-android-arm64-2.5.0.tgz#e32d3dda6647791ee930556aee206fcd5ea0fb7a"
@@ -11627,6 +11638,11 @@ web-namespaces@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-2.0.1.tgz#1010ff7c650eccb2592cebeeaf9a1b253fd40692"
   integrity sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==
+
+web-vitals@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.5.2.tgz#5bb58461bbc173c3f00c2ddff8bfe6e680999ca9"
+  integrity sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

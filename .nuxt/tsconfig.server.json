@@ -155,6 +155,12 @@
       "#nuxt-delay-hydration/api": [
         "./delay-hydration"
       ],
+      "#mail": [
+        "./file:/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
+      ],
+      "~web-vitals-provider": [
+        "../node_modules/@nuxtjs/web-vitals/dist/runtime/providers/log"
+      ],
       "#og-image": [
         "../node_modules/nuxt-og-image/dist/runtime"
       ],
@@ -163,9 +169,6 @@
       ],
       "#og-image-cache": [
         "../node_modules/nuxt-og-image/dist/runtime/server/og-image/cache/lru"
-      ],
-      "#mail": [
-        "./file:/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
       "#vue-router": [
         "./vue-router"
@@ -237,8 +240,9 @@
     "../node_modules/@nuxtjs/partytown/runtime/server",
     "../node_modules/@vite-pwa/nuxt/runtime/server",
     "../node_modules/nuxt-delay-hydration/runtime/server",
-    "../node_modules/nuxt-og-image/runtime/server",
     "../node_modules/nuxt-mail/runtime/server",
+    "../node_modules/@nuxtjs/web-vitals/runtime/server",
+    "../node_modules/nuxt-og-image/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./module/nuxt-site-config.d.ts",

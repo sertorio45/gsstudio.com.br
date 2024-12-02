@@ -20,6 +20,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js")> &
   InjectionType<typeof import("../../node_modules/nuxt-og-image/dist/runtime/app/plugins/og-image-canonical-urls.server.js")> &
   InjectionType<typeof import("../../node_modules/nuxt-og-image/dist/runtime/app/plugins/route-rule-og-image.server.js")> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/web-vitals/dist/runtime/plugin.client.js")> &
   InjectionType<typeof import("../../node_modules/nuxt-delay-hydration/dist/runtime/nuxt-plugin.js")> &
   InjectionType<typeof import("../pwa-icons-plugin")> &
   InjectionType<typeof import("../../node_modules/@vite-pwa/nuxt/dist/runtime/plugins/pwa.client.js")> &
@@ -34,6 +35,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt-mail/dist/plugin-nuxt3.js")> &
   InjectionType<typeof import("../../plugins/main.client")> &
   InjectionType<typeof import("../../plugins/bootstrap.client")> &
+  InjectionType<typeof import("../../plugins/web-vitals.client")> &
   InjectionType<typeof import("../../plugins/imask")> &
   InjectionType<typeof import("../../plugins/pinia.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js")>

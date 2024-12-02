@@ -364,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-12-02T21:16:15.684Z"
+          "X-Sitemap-Prerendered": "2024-12-02T21:41:23.470Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -394,6 +394,7 @@ const _inlineRuntimeConfig = {
       "enableRouterSync": true,
       "trackOnNextTick": false
     },
+    "analyticsId": "G-PCWNHC1PD1",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
@@ -3417,11 +3418,11 @@ const handlers = [
   { route: '/__sitemap__/style.xsl', handler: _F2QWG1, lazy: false, middleware: false, method: undefined },
   { route: '/sitemap.xml', handler: _qm5EM7, lazy: false, middleware: false, method: undefined },
   { route: '/__schema-org__/debug.json', handler: _jwjzdM, lazy: false, middleware: false, method: undefined },
+  { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/__og-image__/font/**', handler: _lazy_NbywPE, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/debug.json', handler: _lazy_o2E1lw, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/image/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
-  { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
   { route: '/api/*', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
