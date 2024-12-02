@@ -2,8 +2,6 @@
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
-
-
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
 useHead({
