@@ -138,7 +138,8 @@ export default defineNuxtConfig({
   },
 
   webVitals: {
-    debug: false, // Logs desabilitados para produção
+    debug: true, // Logs desabilitados para produção
+    provider: "ga",
     disabled: false, // Ativar o Web Vitals
     ga: { id: 'G-PCWNHC1PD1' }
   },
@@ -150,7 +151,6 @@ export default defineNuxtConfig({
       gtm: {
         id: 'GTM-N3X2JT4',
       },
-      analyticsId: 'G-PCWNHC1PD1', // ID público do Google Analytics
     },
   },
 

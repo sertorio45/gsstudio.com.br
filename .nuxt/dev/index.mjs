@@ -364,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-12-02T22:12:47.921Z"
+          "X-Sitemap-Prerendered": "2024-12-02T23:09:04.304Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -394,7 +394,6 @@ const _inlineRuntimeConfig = {
       "enableRouterSync": true,
       "trackOnNextTick": false
     },
-    "analyticsId": "G-PCWNHC1PD1",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
