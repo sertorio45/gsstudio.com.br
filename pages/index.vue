@@ -37,8 +37,8 @@ useCardAnimation();
 
 <template>
 <!-- Topo -->
-<section class="d-flex align-items-center min-vh-100" id="index">
-  <div class="container text-center">
+<section class="d-flex align-items-center mt-5 py-5" id="index">
+  <div class="container text-center my-5 py-5">
     <div class="row">
       <div class="col">
         <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
