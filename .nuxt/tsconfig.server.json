@@ -167,6 +167,9 @@
       "#mail": [
         "./file:/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
+      "~web-vitals-provider": [
+        "../node_modules/@nuxtjs/web-vitals/dist/runtime/providers/ga"
+      ],
       "#vue-router": [
         "./vue-router"
       ],

@@ -587,17 +587,9 @@ declare module 'nuxt/schema' {
 
       compatibility: boolean,
 
-      nonce: string,
-
       enabled: boolean,
 
       debug: boolean,
-
-      loadScript: boolean,
-
-      enableRouterSync: boolean,
-
-      trackOnNextTick: boolean,
    },
 
    cookieControl: {

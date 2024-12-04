@@ -364,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-12-04T00:27:41.909Z"
+          "X-Sitemap-Prerendered": "2024-12-04T01:43:48.437Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -404,14 +404,10 @@ const _inlineRuntimeConfig = {
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
-      "defer": true,
+      "defer": false,
       "compatibility": false,
-      "nonce": "2726c7f26c",
       "enabled": true,
-      "debug": true,
-      "loadScript": true,
-      "enableRouterSync": true,
-      "trackOnNextTick": false
+      "debug": true
     },
     "cookieControl": {
       "barPosition": "bottom-full",

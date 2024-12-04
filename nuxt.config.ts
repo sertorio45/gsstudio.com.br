@@ -125,14 +125,10 @@ export default defineNuxtConfig({
 
   gtm: {
     id: 'GTM-N3X2JT4',
-    defer: true,
+    defer: false,
     compatibility: false,
-    nonce: '2726c7f26c',
     enabled: true,
     debug: true,
-    loadScript: true,
-    enableRouterSync: true,
-    trackOnNextTick: false,
   },
 
   vitalizer: {
@@ -142,8 +138,9 @@ export default defineNuxtConfig({
 
   webVitals: {
     debug: true, // Logs desabilitados para produção
-    provider: "gtm",
-    disabled: true, // Ativar o Web Vitals
+    provider: "ga",
+    disabled: false, // Ativar o Web Vitals
+    ga: { id: 'G-PCWNHC1PD1' },
   },
 
   runtimeConfig: {
@@ -164,6 +161,7 @@ export default defineNuxtConfig({
     fontsDir: 'assets/fonts',
     base64: true,
     overwriting: false,
+    download: true,
   },
 
   swiper: {
