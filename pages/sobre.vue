@@ -20,7 +20,7 @@
   <div class="container">
     <div class="row align-items-center g-5 my-5">
       <div class="col-md-6 mb-4 order-2 order-md-1">
-        <NuxtImg src="/img/ceo.webp" alt="Foto de Giovanni Sertorio - GS STUDIO" class="img-fluid" :placeholder="[50, 25, 75, 5]" />
+        <NuxtImg src="/img/ceo.webp" alt="Foto de Giovanni Sertorio - GS STUDIO" class="img-fluid" :placeholder="[450, 450, 75, 5]" width="450" height="450" loading="lazy"  />
         <!-- Botão que aparece apenas no mobile -->
         <a href="#marcos" class="btn btn-primary d-sm-block d-md-none my-4">Continue...</a>
       </div>

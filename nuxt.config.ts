@@ -172,7 +172,10 @@ export default defineNuxtConfig({
 
   image: {
     quality: 75,
-    domains: ['s3.gsstudio.com.br', 'gsstudio.com.br'],
+    domains: [
+      's3.gsstudio.com.br', 
+      'gsstudio.com.br',
+    ],
     provider: 'ipx',
   },
 
