@@ -5,7 +5,7 @@
       <nav class="navbar navbar-expand-lg navbar-lightcontainer">
         <!-- Logo -->
         <NuxtLink to="/" class="navbar-brand">
-          <nuxt-img src="https://s3.gsstudio.com.br/gsstudio/branding/gsstudio-logotipo.svg" alt="Logo" loading="eager" width="180" placeholder />
+          <NuxtImg src="https://s3.gsstudio.com.br/gsstudio/branding/gsstudio-logotipo.svg" alt="Logo" loading="eager" width="180" placeholder />
         </NuxtLink>
 
         <!-- Botão do Menu Hamburguer para Mobile -->
