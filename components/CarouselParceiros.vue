@@ -5,7 +5,6 @@ import { ref } from 'vue';
 const parceiros = ref<string[]>([
   'img/parceiros/cliente-1.webp',
   'img/parceiros/cliente-2.webp',
-  'img/parceiros/cliente-3.webp',
   'img/parceiros/cliente-4.webp',
   'img/parceiros/cliente-5.webp',
   'img/parceiros/cliente-6.webp',
