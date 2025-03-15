@@ -1,142 +1,104 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { useRoute, useRouter, useAsyncData } from '#app';
+import { ref, computed, onMounted } from "vue";
+import { useRoute, useRouter } from "#app";
 
-
-interface Article {
-  id: number;
-  slug: string;
-  titulo: string;
-  seo_description: string;
-  seo_keywords: string;
-  thumb?: {
-    url?: string;
-  };
-  published_at: string;
-  category: {
-    id: number;
-    title: string;
-  };
-  content: string;
-}
-
-interface SocialNetwork {
-  name: string;
-  url: string;
-  icon: string;
-}
-
+// 🔹 Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
-const baseURL = import.meta.env.VITE_STRAPI_URL;
+const slug = ref<string | undefined>(route.params.slug as string);
 
-// Propriedades de estado
-const email = ref<string>('');
+// 🔹 Estado do artigo e categoria
+const article = ref<any>(null);
+const categoryTitle = ref<string>("Sem categoria");
+const isLoading = ref<boolean>(true);
+const fetchError = ref<boolean>(false);
+
+// 🔹 Estado do formulário de newsletter
+const email = ref<string>("");
 const isSubmitting = ref<boolean>(false);
 const success = ref<boolean>(false);
 const error = ref<boolean>(false);
 
-// Captura o slug da URL
-const slug = ref<string | undefined>(route.params.slug as string);
+// 🔹 Função para buscar o artigo via `/api/[slug]`
+const fetchArticle = async () => {
+  try {
+    isLoading.value = true;
+    const response = await $fetch(`/api/${slug.value}`);
 
-// Busca pelo slug na URL
-const { data: article, pending: loading, error: fetchError } = useAsyncData<Article>(
-  'fetchArticle',
-  async () => {
-    if (!slug.value) throw new Error('Slug não fornecido');
-    const response = await $fetch<Article[]>(`${baseURL}/articles?slug=${slug.value}`);
-    if (response.length > 0) {
-      return response[0]; // Retorna o artigo com base no slug
-    } else {
-      throw new Error('Artigo não encontrado');
+    if (!response) {
+      throw new Error("Artigo não encontrado.");
     }
+
+    article.value = response;
+
+    // 🔹 Define a categoria (se existir)
+    if (article.value.categorie) {
+      categoryTitle.value = article.value.categorie.title_categorie || "Sem categoria";
+    }
+  } catch (err) {
+    fetchError.value = true;
+  } finally {
+    isLoading.value = false;
   }
-);
-
-// Computed properties para SEO
-const title = computed(() => article.value?.titulo || 'Artigo');
-const description = computed(() => article.value?.seo_description || 'Leia mais sobre marketing, design e desenvolvimento web.');
-const ogImage = computed(() => article.value?.thumb?.url || 'https://gsstudio.com.br/img/thumb_gsstudio.jpg');
-const category = computed(() => 'Categoria: ' + article.value?.category.title );
-const keywords = computed(() => article.value?.seo_keywords );
-
-useSeoMeta({
-  title: title,
-  ogTitle: title,
-  description: description,
-  ogDescription: description,
-  ogImageAlt: description,
-  twitterCard: 'summary_large_image',
-  keywords: keywords,
-})
-
-defineOgImageComponent('NuxtSeo', {
-  // title: title,
-  description: category,
-  colorMode: 'dark',
-  theme: '#1e00ff',
-})
-
-
-// Verifica se o slug corresponde ao artigo
-const isSlugValid = computed(() => article.value?.slug === slug.value);
-if (process.client && !loading.value && !isSlugValid.value) {
-  router.push('/404'); // Redireciona para 404 se o slug for inválido
-}
-
-// Formata a data de publicação
-const formatDate = (date: string) => {
-  if (!date) return '';
-  const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(date).toLocaleDateString('pt-BR', options);
 };
 
-// Navegar para a página anterior
+// 🔹 Compartilhamento nas redes sociais
+const socialNetworks = computed(() => {
+  if (!process.client) return [];
+  const url = window.location.href;
+  return [
+    { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
+    { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
+    { name: "LinkedIn", url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: "bx bxl-linkedin" },
+    { name: "WhatsApp", url: `https://wa.me/?text=${url}`, icon: "bx bxl-whatsapp" },
+    { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
+    { name: "Link", url: url, icon: "bx bx-link" },
+  ];
+});
+
+// 🔹 Compartilhar nas redes sociais
+const share = (network: any) => {
+  if (network.name === "Link") {
+    navigator.clipboard.writeText(network.url);
+  } else {
+    window.open(network.url, "_blank", "noopener,noreferrer");
+  }
+};
+
+// 🔹 Formatar data
+const formatDate = (date: string) => {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("pt-BR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+// 🔹 Voltar para a página anterior
 const goBack = () => {
   router.go(-1);
 };
 
-// Redes sociais dinâmicas
-const socialNetworks = computed<SocialNetwork[]>(() => {
-  if (!process.client) return [];
-  const url = window.location.href;
-  return [
-    { name: 'Facebook', url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: 'bx bxl-facebook' },
-    { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${url}`, icon: 'bx bxl-twitter' },
-    { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: 'bx bxl-linkedin' },
-    { name: 'WhatsApp', url: `https://wa.me/?text=${url}`, icon: 'bx bxl-whatsapp' },
-    { name: 'Email', url: `mailto:?subject=Confira este artigo&body=${url}`, icon: 'bx bx-envelope' },
-    { name: 'Link', url: url, icon: 'bx bx-link' },
-  ];
-});
-
-// Compartilhar nas redes sociais
-const share = (network: SocialNetwork) => {
-  if (network.name === 'Link') {
-    navigator.clipboard.writeText(network.url);
-  } else {
-    window.open(network.url, '_blank', 'noopener,noreferrer');
-  }
-};
-
-// Método para enviar o formulário da newsletter
+// 🔹 Enviar formulário de newsletter
 const submitNewsletterForm = async () => {
   isSubmitting.value = true;
   success.value = false;
   error.value = false;
-  const webhookUrl = 'https://webhook.gsstudio.com.br/webhook/gsstudionewsletter';
+  const webhookUrl = "https://webhook.gsstudio.com.br/webhook/gsstudionewsletter";
 
   try {
     const response = await $fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }, // Configuração segura do cabeçalho
-      body: JSON.stringify({ email: email.value }), // Garante que os dados sejam enviados corretamente
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email.value }),
     });
 
     if (response) {
       success.value = true;
       setTimeout(() => {
-        email.value = '';
+        email.value = "";
         success.value = false;
       }, 2000);
     } else {
@@ -149,12 +111,10 @@ const submitNewsletterForm = async () => {
   }
 };
 
-const { progress, isLoading, start, finish, clear } = useLoadingIndicator({
-    duration: 2000,
-    throttle: 200,
-    // This is how progress is calculated by default
-    estimatedProgress: (duration, elapsed) => (2 / Math.PI * 100) * Math.atan(elapsed / duration * 100 / 50)
-  })
+// 🔹 Chama a API quando o componente for montado
+onMounted(() => {
+  fetchArticle();
+});
 </script>
 
 
@@ -197,7 +157,7 @@ const { progress, isLoading, start, finish, clear } = useLoadingIndicator({
           </div>
           <div v-else-if="article" class="content_blog">
             <div class="mb-3 mx-0">
-              <span class="article-category">{{ article.category.title }}</span>
+              <span class="article-category">{{ article.title }}</span>
               <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
             </div>
             <h1>{{ article.titulo }}</h1>

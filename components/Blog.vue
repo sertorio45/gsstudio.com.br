@@ -23,7 +23,7 @@
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <nuxt-link :to="`/blog/${article.slug}`">
+              <nuxt-link :to="`${article.slug}`">
                 {{ article.title }}
               </nuxt-link>
             </div>
@@ -46,7 +46,6 @@
 </template>
 
 <script setup lang="ts">
-import useArticles from "@/composables/useArticles";
 
 const { articles, fetchArticles, isLoading, error } = useArticles();
 

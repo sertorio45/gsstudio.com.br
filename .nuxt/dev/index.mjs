@@ -363,7 +363,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-15T22:53:22.036Z"
+          "X-Sitemap-Prerendered": "2025-03-15T23:20:08.445Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3388,6 +3388,7 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_a7j9Y6 = () => Promise.resolve().then(function () { return _slug_$1; });
 const _lazy_4Yw9xj = () => Promise.resolve().then(function () { return articles$1; });
 const _lazy_I0fk1i = () => Promise.resolve().then(function () { return categories$1; });
 const _lazy_jxahxp = () => Promise.resolve().then(function () { return parceiros$1; });
@@ -3398,6 +3399,7 @@ const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_jso
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
+  { route: '/api/:slug', handler: _lazy_a7j9Y6, lazy: true, middleware: false, method: undefined },
   { route: '/api/articles', handler: _lazy_4Yw9xj, lazy: true, middleware: false, method: undefined },
   { route: '/api/categories', handler: _lazy_I0fk1i, lazy: true, middleware: false, method: undefined },
   { route: '/api/parceiros', handler: _lazy_jxahxp, lazy: true, middleware: false, method: undefined },
@@ -7862,6 +7864,36 @@ const sources = {};
 const childSources = /*#__PURE__*/Object.freeze({
   __proto__: null,
   sources: sources
+});
+
+const _slug_ = defineEventHandler(async (event) => {
+  var _a;
+  const slug = (_a = event.context.params) == null ? void 0 : _a.slug;
+  const apiUrl = `https://painel.gsadmin.app/items/articles`;
+  try {
+    if (!slug) {
+      throw createError({ statusCode: 400, statusMessage: "Slug n\xE3o fornecido" });
+    }
+    const response = await $fetch(apiUrl, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      query: { "filter[slug][_eq]": slug }
+    });
+    if (!response.data || response.data.length === 0) {
+      throw createError({ statusCode: 404, statusMessage: "Artigo n\xE3o encontrado" });
+    }
+    return response.data[0];
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Erro ao buscar o artigo"
+    });
+  }
+});
+
+const _slug_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _slug_
 });
 
 const articles = defineEventHandler(async (event) => {

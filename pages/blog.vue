@@ -1,9 +1,23 @@
 <template>
-  <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
+  <section class="py-5 bg-dark d-flex my-5" id="topo">
+    <div class="container d-flex justify-content-center align-items-center my-5 py-5">
+      <div class="row">
+        <div class="col text-center text-light my-2">
+          <div class="my-2">
+            <NuxtLink to="/" class="text-light">Página inicial</NuxtLink> /
+            <span>Blog</span>
+          </div>
+          <h1 class="text-light">Blog</h1>
+          <a href="#blog"><Icon icon="bx bxs-chevrons-down my-3" fontSize="3em" color="#fff" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção do blog -->
+  <section class="my-5 py-5 justify-content-center align-content-center" id="blog">
     <div class="container my-5">
       <div class="row">
-        <h2 class="text-center">Blog</h2>
-        
         <!-- Skeleton Cards -->
         <div v-if="isLoading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
@@ -23,7 +37,7 @@
               <div class="mb-2">
                 <span class="article-category">Categoria: {{ article.category_title }}</span>
               </div>
-              <nuxt-link :to="`/blog/${article.slug}`">
+              <nuxt-link :to="`/${article.slug}`">
                 {{ article.title }}
               </nuxt-link>
             </div>
@@ -35,21 +49,44 @@
           <p class="text-muted">Nenhum artigo encontrado.</p>
         </div>
       </div>
-      
+
+      <!-- Exibir Erro -->
+      <div v-if="error" class="alert alert-danger text-center my-3">
+        {{ typeof error === "string" ? error : "Ocorreu um erro ao carregar os artigos." }}
+      </div>
+
+      <!-- Botão "Ver Mais" -->
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
+          <button @click="fetchArticles" :disabled="isLoading" class="btn btn-primary">
+            <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span v-else>Ver mais artigos</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
-import useArticles from "@/composables/useArticles";
+<script lang="ts">
+import { defineComponent } from 'vue';
+import useArticles from '~/composables/useArticles';
 
-const { articles, fetchArticles, isLoading, error } = useArticles();
+export default defineComponent({
+  name: 'Blog',
+  setup() {
+    const { articles, fetchArticles, isLoading, error } = useArticles();
 
-// 🔹 Busca os artigos e categorias ANTES da renderização SSR
-await fetchArticles();
+    onMounted(() => {
+      fetchArticles();
+    });
+
+    return {
+      articles,
+      fetchArticles,
+      isLoading,
+      error,
+    };
+  }
+});
 </script>

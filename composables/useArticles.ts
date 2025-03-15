@@ -1,4 +1,4 @@
-import { useAsyncData } from "#app";
+import { useFetch } from "#app";
 
 // 🔹 Interface para os artigos
 interface Article {
@@ -34,33 +34,39 @@ export default function useArticles() {
     try {
       isLoading.value = true;
 
-      // 🔹 Carrega os artigos no SSR e aplica tipagem explícita
-      const { data: articlesData } = await useAsyncData<ArticlesResponse>("articles", () =>
-        $fetch("/api/articles")
+      // 🔹 Busca os artigos usando useFetch()
+      const { data: articlesData, error: articlesError } = await useFetch<ArticlesResponse>(
+        "/api/articles"
       );
 
-      if (!articlesData.value || !articlesData.value.data) {
-        throw new Error("Nenhum artigo encontrado");
+      if (articlesError.value) throw new Error("Erro ao buscar artigos.");
+      if (!articlesData.value?.data || articlesData.value.data.length === 0) {
+        throw new Error("Nenhum artigo encontrado.");
       }
 
       articles.value = articlesData.value.data;
 
-      // 🔹 Carrega as categorias no SSR e aplica tipagem explícita
-      const { data: categoriesData } = await useAsyncData<CategoriesResponse>("categories", () =>
-        $fetch("/api/categories")
+      // 🔹 Busca as categorias usando useFetch()
+      const { data: categoriesData, error: categoriesError } = await useFetch<CategoriesResponse>(
+        "/api/categories"
       );
 
-      if (categoriesData.value && categoriesData.value.data) {
-        const categories: Category[] = categoriesData.value.data;
-
-        // 🔹 Associa o título da categoria a cada artigo
-        articles.value = articles.value.map((article) => {
-          const category = categories.find((cat: Category) => cat.id === article.categorie);
-          return { ...article, category_title: category ? category.title_categorie : "Sem categoria" };
-        });
+      if (categoriesError.value) throw new Error("Erro ao buscar categorias.");
+      if (!categoriesData.value?.data || categoriesData.value.data.length === 0) {
+        throw new Error("Nenhuma categoria encontrada.");
       }
+
+      const categories: Category[] = categoriesData.value.data;
+
+      // 🔹 Associa o título da categoria a cada artigo
+      articles.value = articles.value.map((article) => {
+        const category = categories.find((cat) => cat.id === article.categorie);
+        return { ...article, category_title: category ? category.title_categorie : "Sem categoria" };
+      });
+
     } catch (err) {
-      error.value = (err as Error).message || "Erro ao buscar artigos";
+      console.error("❌ Erro ao buscar artigos:", err);
+      error.value = (err as Error).message || "Erro ao buscar artigos.";
     } finally {
       isLoading.value = false;
     }
