@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-
 const parceiros = ref<string[]>([
   'img/parceiros/cliente-1.webp',
   'img/parceiros/cliente-2.webp',
