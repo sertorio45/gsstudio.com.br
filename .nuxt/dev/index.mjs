@@ -363,7 +363,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-15T23:20:08.445Z"
+          "X-Sitemap-Prerendered": "2025-03-15T23:41:44.249Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -380,6 +380,7 @@ const _inlineRuntimeConfig = {
   },
   "public": {
     "API_BASE_URL": "https://painel.gsadmin.app",
+    "apiBase": "/api",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,

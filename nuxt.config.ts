@@ -146,8 +146,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_BASE_URL: "https://painel.gsadmin.app",
+      apiBase: '/api',
+      // gtm: {
+      //   id: 'GTM-N3X2JT4',
+      // },
     },
   },
+  
 
   googleFonts: {
     families: {

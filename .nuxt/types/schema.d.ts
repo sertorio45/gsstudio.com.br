@@ -552,6 +552,8 @@ declare module 'nuxt/schema' {
   interface PublicRuntimeConfig {
    API_BASE_URL: string,
 
+   apiBase: string,
+
    "nuxt-schema-org": {
       reactive: boolean,
 
