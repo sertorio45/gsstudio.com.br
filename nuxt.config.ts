@@ -145,11 +145,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      VITE_STRAPI_URL: process.env.VITE_STRAPI_URL || 'https://str-gsstudio.gsstudio.com.br',
-      apiBase: '/api',
-      // gtm: {
-      //   id: 'GTM-N3X2JT4',
-      // },
+      API_BASE_URL: "https://painel.gsadmin.app",
     },
   },
 

@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getRequestHost, getRequestProtocol, getQuery as getQuery$1, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, sendError, getResponseStatusText, H3Error } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getRequestHost, getRequestProtocol, getQuery as getQuery$1, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getResponseStatusText, H3Error } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -13,7 +13,6 @@ import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_di
 import { consola, createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
-import axios from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/axios/index.js';
 import { readdirSync } from 'fs';
 import { join as join$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -364,7 +363,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2024-12-26T23:24:55.783Z"
+          "X-Sitemap-Prerendered": "2025-03-15T22:53:22.036Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -380,8 +379,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "VITE_STRAPI_URL": "https://str-gsstudio.gsstudio.com.br",
-    "apiBase": "/api",
+    "API_BASE_URL": "https://painel.gsadmin.app",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
@@ -3390,7 +3388,8 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_GOTSqJ = () => Promise.resolve().then(function () { return _slug_$1; });
+const _lazy_4Yw9xj = () => Promise.resolve().then(function () { return articles$1; });
+const _lazy_I0fk1i = () => Promise.resolve().then(function () { return categories$1; });
 const _lazy_jxahxp = () => Promise.resolve().then(function () { return parceiros$1; });
 const _lazy_yJaNKa = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
@@ -3399,7 +3398,8 @@ const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_jso
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
-  { route: '/api/articles/:slug', handler: _lazy_GOTSqJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/articles', handler: _lazy_4Yw9xj, lazy: true, middleware: false, method: undefined },
+  { route: '/api/categories', handler: _lazy_I0fk1i, lazy: true, middleware: false, method: undefined },
   { route: '/api/parceiros', handler: _lazy_jxahxp, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_yJaNKa, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
@@ -7864,24 +7864,52 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
-const _slug_ = defineEventHandler(async (event) => {
-  const { slug } = getQuery$1(event);
-  const baseURL = process.env.VITE_STRAPI_URL;
+const articles = defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+  const apiUrl = `${config.public.API_BASE_URL}/items/articles`;
   try {
-    const response = await axios.get(`${baseURL}/articles?slug=${slug}`);
-    if (response.data.length) {
-      return response.data[0];
-    } else {
-      return { message: "Artigo n\xE3o encontrado" };
-    }
+    const query = getQuery$1(event);
+    const response = await $fetch(apiUrl, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      query
+    });
+    return response;
   } catch (error) {
-    return sendError(event, new Error("Erro ao buscar o artigo."));
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Erro ao buscar artigos"
+    });
   }
 });
 
-const _slug_$1 = /*#__PURE__*/Object.freeze({
+const articles$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: _slug_
+  default: articles
+});
+
+const categories = defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+  const apiUrl = `${config.public.API_BASE_URL}/items/categorie_articles`;
+  try {
+    const query = getQuery$1(event);
+    const response = await $fetch(apiUrl, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      query
+    });
+    return response;
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Erro ao buscar categorias"
+    });
+  }
+});
+
+const categories$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: categories
 });
 
 const parceiros = defineEventHandler(() => {

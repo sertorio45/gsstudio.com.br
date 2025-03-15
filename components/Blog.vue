@@ -3,8 +3,9 @@
     <div class="container my-5">
       <div class="row">
         <h2 class="text-center">Blog</h2>
+        
         <!-- Skeleton Cards -->
-        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="isLoading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -14,20 +15,27 @@
             </div>
           </div>
         </div>
-        <!-- Actual Cards -->
-        <div v-else class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
+
+        <!-- Lista de Artigos -->
+        <div v-else-if="articles.length > 0" class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
-                <span class="article-category">{{ getCategoryTitle(article.category) }}</span>
+                <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <nuxt-link :to="`${article.slug}`">
-                {{ article.titulo }}
+              <nuxt-link :to="`/blog/${article.slug}`">
+                {{ article.title }}
               </nuxt-link>
             </div>
           </div>
         </div>
+
+        <!-- Nenhum Artigo Encontrado -->
+        <div v-else class="col text-center my-5">
+          <p class="text-muted">Nenhum artigo encontrado.</p>
+        </div>
       </div>
+      
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
           <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
@@ -37,20 +45,12 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import useArticles from "@/composables/useArticles";
 
-export default defineComponent({
-  name: 'Blog',
-  setup() {
-    const { articles, categories, loading, getCategoryTitle } = useBlogCards();
+const { articles, fetchArticles, isLoading, error } = useArticles();
 
-    return {
-      articles,
-      categories,
-      loading,
-      getCategoryTitle,
-    };
-  },
+onMounted(() => {
+  fetchArticles();
 });
 </script>

@@ -550,9 +550,7 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
-   VITE_STRAPI_URL: string,
-
-   apiBase: string,
+   API_BASE_URL: string,
 
    "nuxt-schema-org": {
       reactive: boolean,
