@@ -47,21 +47,15 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  routeRules: {
-    '/': { prerender: false },
-    '/blog': { prerender: false },
-  },
+  // routeRules: {
+  //   '/': { prerender: false },
+  //   '/blog': { prerender: false },
+  // },
 
   ssr: true,
 
   nitro: {
-    devProxy: {
-      "/api": {
-        target: "https://painel.gsadmin.app",
-        changeOrigin: true,
-        pathRewrite: { "^/api": "/items" },
-      },
-    },
+    
     preset: 'netlify',
     debug: true,
     prerender: {

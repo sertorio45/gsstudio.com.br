@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "#app";
+import { ref, computed } from "vue";
+import { useRoute, useRouter, useAsyncData } from "#app";
 
 // Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
-const slug = ref<string | undefined>(route.params.slug as string);
+const slug = route.params.slug as string;
 
-// Estado do artigo e categoria
-const article = ref<any>(null);
-const categoryTitle = ref<string>("Sem categoria");
-const isLoading = ref<boolean>(true);
-const fetchError = ref<boolean>(false);
-
-// Função para buscar o artigo por slug
-const fetchArticle = async () => {
-  try {
-    isLoading.value = true;
-    const response = await $fetch(`/api/articles`, {
+// Função para buscar o artigo diretamente da API com `useAsyncData`
+const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
+  `article-${slug}`, // Cache do Nuxt baseado no slug
+  async () => {
+    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
       params: {
         fields: "id,title,content,slug,date_created,categorie.id,categorie.title_categorie",
-        "filter[slug][_eq]": slug.value,
+        "filter[slug][_eq]": slug,
       },
     });
 
@@ -28,15 +24,12 @@ const fetchArticle = async () => {
       throw new Error("Artigo não encontrado.");
     }
 
-    article.value = response.data[0];
-    categoryTitle.value = article.value.categorie?.title_categorie || "Sem categoria";
-  } catch (err) {
-    fetchError.value = true;
-  } finally {
-    isLoading.value = false;
+    return response.data[0];
   }
-};
+);
 
+// Definir título da categoria dinamicamente
+const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
 
 // Compartilhamento nas redes sociais
 const socialNetworks = computed(() => {
@@ -76,11 +69,6 @@ const formatDate = (date: string) => {
 const goBack = () => {
   router.go(-1);
 };
-
-// Busca o artigo ao montar o componente
-onMounted(() => {
-  fetchArticle();
-});
 </script>
 
 <template>
