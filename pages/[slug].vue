@@ -44,6 +44,9 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
   ogType: "article",
+  ogUrl: `https://gsstudio.com.br/${slug.value}`,
+  ogAlt: title,
+  ogImageAlt: title,
   twitterTitle: title,
   twitterDescription: description,
 });
