@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: articles, pending, error, refresh } = useLazyFetch("https://painel.gsadmin.app/items/articles?fields=id,title,slug,categorie.title_categorie", {
+const { data: articles, pending, error, refresh } = useLazyFetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
   transform: (response) => response.data.map(article => ({
     ...article,
     category_title: article.categorie?.title_categorie || "Sem categoria",
