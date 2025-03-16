@@ -43,14 +43,23 @@ useSeoMeta({
   keywords,
   ogTitle: title,
   ogDescription: description,
+  ogType: "article",
   twitterTitle: title,
   twitterDescription: description,
 });
 
 // Configuração de imagem Open Graph
 defineOgImageComponent("NuxtSeo", {
-  title: title.value,
+  title: 'Blog',
   description: description.value,
+  ogTitle: description.value,
+  ogDescription: description.value,
+  ogUrl: `https://gsstudio.com.br/${slug.value}`,
+  ogType: "article",
+  ogAlt: title.value,
+  twitterTitle: title.value,
+  twitterDescription: description.value,
+  twitterAlt: title.value,
   colorMode: "dark",
   theme: "#1e00ff",
 });
