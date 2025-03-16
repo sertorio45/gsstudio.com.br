@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 // Captura o slug da URL
@@ -7,24 +7,19 @@ const route = useRoute();
 const router = useRouter();
 const slug = computed(() => route.params.slug as string);
 
-// Busca o artigo com useAsyncData
-const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
-  `article-${slug.value}`,
-  async () => {
-    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      params: {
-        fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
-        "filter[slug][_eq]": slug.value,
-      },
-    });
-
-    if (!response || !response.data.length) {
-      throw new Error("Artigo não encontrado.");
-    }
-
-    return response.data[0];
+// Busca o artigo com SSR habilitado
+const { data: article, pending: isLoading, error: fetchError } = useFetch(
+  () => `https://painel.gsadmin.app/items/articles`, 
+  {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    query: {
+      fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
+      "filter[slug][_eq]": slug.value,
+    },
+    transform: (response) => response.data?.length ? response.data[0] : null,
+    server: true, // Garante que os dados sejam renderizados no servidor
+    lazy: false,  // Garante que a requisição ocorra antes da renderização
   }
 );
 
@@ -37,15 +32,15 @@ const description = computed(() => article.value?.meta_description || "Leia mais
 const category = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
 const keywords = computed(() => article.value?.meta_keywords || "");
 
-// Configuração de SEO
+// Configuração de SEO com SSR
 useSeoMeta({
-  title: title.value,
-  description: description.value,
-  keywords: keywords.value,
-  ogTitle: title.value,
-  ogDescription: description.value,
-  twitterTitle: title.value,
-  twitterDescription: description.value,
+  title: title,
+  description: description,
+  keywords: keywords,
+  ogTitle: title,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
 });
 
 // Configuração de imagem Open Graph
@@ -62,10 +57,10 @@ const goBack = () => {
   setTimeout(() => refreshNuxtData("articles"), 200);
 };
 
-// Compartilhamento nas redes sociais
+// Compartilhamento nas redes sociais (evita acessar `window` diretamente no SSR)
 const socialNetworks = computed(() => {
-  if (!process.client) return [];
-  const url = window.location.href;
+  if (process.server) return []; // Evita erros no SSR
+  const url = process.client ? window.location.href : "";
   return [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
     { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
@@ -96,7 +91,6 @@ const formatDate = (date: string) => {
   });
 };
 </script>
-
 
 
 <template>
