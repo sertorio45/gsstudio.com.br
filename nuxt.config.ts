@@ -48,8 +48,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true },
-    '/blog': { prerender: true },
+    '/': { prerender: false },
+    '/blog': { prerender: false },
   },
 
   ssr: true,
