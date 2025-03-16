@@ -47,7 +47,11 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-
+  routeRules: {
+    '/': { prerender: true },
+    '/blog': { prerender: true },
+    '/:slug': { prerender: true },
+  },
 
   ssr: true,
 
