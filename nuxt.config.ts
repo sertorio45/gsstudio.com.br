@@ -176,6 +176,7 @@ export default defineNuxtConfig({
     domains: [
       's3.gsstudio.com.br', 
       'gsstudio.com.br',
+      'painel.gsadmin.app',
     ],
   },
 

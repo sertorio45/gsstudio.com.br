@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="gscard-border p-5">
+    <div class="gscard-border p-4 p-sm-3 p-md-4 p-lg-5">
       <form @submit.prevent="submitForm">
         <!-- Linha 1: Nome e Email -->
         <div class="row">

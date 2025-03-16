@@ -364,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-16T17:45:54.396Z"
+          "X-Sitemap-Prerendered": "2025-03-16T21:15:51.094Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -654,7 +654,8 @@ const _inlineRuntimeConfig = {
     "http": {
       "domains": [
         "s3.gsstudio.com.br",
-        "gsstudio.com.br"
+        "gsstudio.com.br",
+        "painel.gsadmin.app"
       ]
     }
   }

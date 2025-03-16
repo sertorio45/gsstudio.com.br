@@ -133,7 +133,7 @@ const formatDate = (date: string) => {
           </div>
         </div>
 
-        <div class="col-sm-7 col-md-12 col-lg-7">
+        <div class="col-sm-7 col-md-12 col-lg-9">
           <div v-if="isLoading">
             <div class="d-flex mb-3">
               <div class="skeleton skeleton-category me-2"></div>
@@ -159,6 +159,20 @@ const formatDate = (date: string) => {
       </div>
     </div>
   </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5">
+          <h1>Fale agora conosco</h1>
+          <p>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <Form />
+        </div>
+      </div>
+    </div>
+    
+  </section>
 </template>
 
 
@@ -177,6 +191,7 @@ const formatDate = (date: string) => {
   color: var(--bs-primary);
 }
 
+/* Skeleton Loading */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -197,7 +212,6 @@ const formatDate = (date: string) => {
 .skeleton-img {
   width: 100%;
   height: 400px;
-  background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
@@ -225,6 +239,7 @@ const formatDate = (date: string) => {
   animation: shimmer 1.5s infinite;
 }
 
+/* Blur Effect */
 .blur-effect {
   transition: filter 0.5s ease;
 }
@@ -232,6 +247,7 @@ const formatDate = (date: string) => {
   filter: blur(20px);
 }
 
+/* Social Icons */
 .social-icon {
   display: flex;
   align-items: center;
@@ -251,6 +267,9 @@ const formatDate = (date: string) => {
   color: #fff;
 }
 
+/* Breakpoints */
+
+/* Extra pequeno (até 575px) */
 @media (max-width: 575px) {
   .publish_date {
     font-size: 0.9rem !important;
@@ -262,18 +281,22 @@ const formatDate = (date: string) => {
     gap: 0.3em;
   }
   .back-fixed {
-    display: inline-flex;
+    display: flex;
     position: fixed !important;
     z-index: 9998 !important;
     width: 100%;
     background-color: #fff;
-    bottom: 694px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    gap: 10px;
+    top: 60px;
+    padding: 20px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
   }
 }
 
+/* Pequeno (576px - 767px) */
 @media (min-width: 576px) {
   .publish_date {
     font-size: 1.1rem !important;
@@ -282,22 +305,56 @@ const formatDate = (date: string) => {
     display: none;
   }
   .back-fixed {
-    display: inline-flex;
+    display: flex;
     position: fixed !important;
     z-index: 9998 !important;
     width: 100%;
     background-color: #fff;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: -60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
     gap: 10px;
   }
   .social-share {
-    display: inline-flex;
+    display: flex;
     gap: 0.3em;
   }
 }
 
+/* Médio (768px - 1199px) */
+@media (min-width: 768px) {
+  .back-fixed {
+    display: flex;
+    position: fixed !important;
+    z-index: 9998 !important;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    gap: 10px;
+    top: 67px;
+    justify-content: center;
+    align-items: center;
+    }
+  }
+
+  
+@media (min-width: 1024px) {
+  .back-fixed {
+    display: flex;
+    position: fixed !important;
+    z-index: 9998 !important;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    gap: 10px;
+    top: 86px;
+    justify-content: center;
+    align-items: center;
+    }
+  }
+
+/* Grande (1200px +) */
 @media (min-width: 1200px) {
   .back-fixed {
     display: block;
@@ -305,20 +362,54 @@ const formatDate = (date: string) => {
     z-index: 9998 !important;
     width: 100%;
     background-color: transparent;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
+    padding: 0;
+    top: 130px;
+    left: 68px;
   }
 
   .news-fixed {
     position: fixed;
     width: 20vw;
   }
+
   .social-share {
     display: flex;
     gap: 0.3em;
     margin-top: 0.5em;
   }
+
+  .social-icon {
+    width: 25px;
+    height: 25px;
+    padding: 0.18em;
+    margin-top: 10px;
+  }
+}
+
+/* 4k (2560px +) */
+@media (min-width: 1920px) {
+  .back-fixed {
+    display: block;
+    position: fixed !important;
+    z-index: 9998 !important;
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    top: 130px;
+    left: 250px;
+  }
+
+  .news-fixed {
+    position: fixed;
+    width: 20vw;
+  }
+
+  .social-share {
+    display: flex;
+    gap: 0.3em;
+    margin-top: 0.5em;
+  }
+
   .social-icon {
     width: 25px;
     height: 25px;
