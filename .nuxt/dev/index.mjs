@@ -361,7 +361,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-16T13:18:09.075Z"
+          "X-Sitemap-Prerendered": "2025-03-16T13:20:18.217Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3387,6 +3387,7 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_4Yw9xj = () => Promise.resolve().then(function () { return articles$1; });
 const _lazy_jxahxp = () => Promise.resolve().then(function () { return parceiros$1; });
 const _lazy_yJaNKa = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
@@ -3395,6 +3396,7 @@ const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_jso
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
+  { route: '/api/articles', handler: _lazy_4Yw9xj, lazy: true, middleware: false, method: undefined },
   { route: '/api/parceiros', handler: _lazy_jxahxp, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_yJaNKa, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
@@ -7857,6 +7859,32 @@ const sources = {};
 const childSources = /*#__PURE__*/Object.freeze({
   __proto__: null,
   sources: sources
+});
+
+const articles = defineEventHandler(async (event) => {
+  try {
+    const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data.map((article) => {
+      var _a;
+      return {
+        ...article,
+        category_title: ((_a = article.categorie) == null ? void 0 : _a.title_categorie) || "Sem categoria"
+      };
+    });
+  } catch (error) {
+    console.error("Erro ao buscar artigos:", error);
+    throw createError({ statusCode: 500, statusMessage: "Erro ao buscar artigos" });
+  }
+});
+
+const articles$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: articles
 });
 
 const parceiros = defineEventHandler(() => {
