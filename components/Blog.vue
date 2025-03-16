@@ -46,8 +46,8 @@
 </template>
 
 <script setup lang="ts">
-const { data: articles, pending, error } = await useAsyncData(
-  () => `articles-${Date.now()}`, // Gera uma chave única para cada request
+const { data: articles, pending, error, refresh } = await useAsyncData(
+  "articles",
   async () => {
     const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
       method: "GET",
@@ -61,8 +61,16 @@ const { data: articles, pending, error } = await useAsyncData(
     }));
   },
   { 
-    server: false // Garante que os dados sejam buscados no client side e não cacheados pelo SSR
+    default: () => [], 
+    watch: false, // Evita que ele reavalie automaticamente ao mudar estado
+    server: false // Desativa cache SSR
   }
 );
+
+// Chamar refresh quando a página for carregada
+onMounted(() => {
+  refresh();
+});
+
 
 </script>

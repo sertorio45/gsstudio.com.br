@@ -1,3 +1,5 @@
+import { VitePWA } from 'vite-plugin-pwa'
+
 
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
