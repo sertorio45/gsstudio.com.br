@@ -47,10 +47,6 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  routeRules: {
-    '/': { prerender: true },
-    '/api/*': { cache: { maxAge: 60 * 60 } },
-  },
 
   ssr: true,
 
@@ -199,6 +195,4 @@ export default defineNuxtConfig({
       skipWaiting: true,
     }
   },
-
-  compatibilityDate: '2024-04-03',
 });

@@ -346,14 +346,6 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
-      "/": {
-        "prerender": true
-      },
-      "/api/*": {
-        "cache": {
-          "maxAge": 3600
-        }
-      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
@@ -363,7 +355,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-16T11:07:46.643Z"
+          "X-Sitemap-Prerendered": "2025-03-16T12:44:42.225Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3416,7 +3408,6 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
-  { route: '/api/*', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -7831,19 +7822,6 @@ const sources$1 = [
             {
                 "loc": "/solucoes.bkop/gscrm"
             }
-        ],
-        "sourceType": "app"
-    },
-    {
-        "context": {
-            "name": "nuxt:route-rules",
-            "description": "Generated from your route rules config.",
-            "tips": [
-                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
-            ]
-        },
-        "urls": [
-            "/"
         ],
         "sourceType": "app"
     }
