@@ -347,13 +347,13 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/": {
-        "prerender": true
+        "prerender": false
       },
       "/blog": {
-        "prerender": true
+        "prerender": false
       },
       "/:slug": {
-        "prerender": true
+        "prerender": false
       },
       "/sitemap.xsl": {
         "headers": {
@@ -364,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-16T14:37:42.052Z"
+          "X-Sitemap-Prerendered": "2025-03-16T14:42:20.498Z"
         }
       },
       "/_nuxt/builds/meta/**": {

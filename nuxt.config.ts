@@ -48,9 +48,9 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true },
-    '/blog': { prerender: true },
-    '/:slug': { prerender: true },
+    '/': { prerender: false },
+    '/blog': { prerender: false },
+    '/:slug': { prerender: false },
   },
 
   ssr: true,
@@ -177,7 +177,6 @@ export default defineNuxtConfig({
       's3.gsstudio.com.br', 
       'gsstudio.com.br',
     ],
-    provider: 'ipx',
   },
 
   css: [
