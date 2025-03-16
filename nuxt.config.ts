@@ -47,9 +47,6 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  lazyHydration: {
-    enabled: true,
-  },
   routeRules: {
     '/': { prerender: false },
     '/blog': { prerender: false },
