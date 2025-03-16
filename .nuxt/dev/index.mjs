@@ -363,7 +363,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-15T23:41:44.249Z"
+          "X-Sitemap-Prerendered": "2025-03-16T01:46:03.794Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3391,7 +3391,6 @@ const _ssIfWH = lazyEventHandler(() => {
 
 const _lazy_a7j9Y6 = () => Promise.resolve().then(function () { return _slug_$1; });
 const _lazy_4Yw9xj = () => Promise.resolve().then(function () { return articles$1; });
-const _lazy_I0fk1i = () => Promise.resolve().then(function () { return categories$1; });
 const _lazy_jxahxp = () => Promise.resolve().then(function () { return parceiros$1; });
 const _lazy_yJaNKa = () => Promise.resolve().then(function () { return portifolio; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
@@ -3402,7 +3401,6 @@ const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; 
 const handlers = [
   { route: '/api/:slug', handler: _lazy_a7j9Y6, lazy: true, middleware: false, method: undefined },
   { route: '/api/articles', handler: _lazy_4Yw9xj, lazy: true, middleware: false, method: undefined },
-  { route: '/api/categories', handler: _lazy_I0fk1i, lazy: true, middleware: false, method: undefined },
   { route: '/api/parceiros', handler: _lazy_jxahxp, lazy: true, middleware: false, method: undefined },
   { route: '/api/portifolio', handler: _lazy_yJaNKa, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
@@ -7869,25 +7867,50 @@ const childSources = /*#__PURE__*/Object.freeze({
 
 const _slug_ = defineEventHandler(async (event) => {
   var _a;
+  const config = useRuntimeConfig();
+  const apiUrl = `${config.public.API_BASE_URL}/items/articles`;
+  const categoryApiUrl = `https://painel.gsadmin.app/items/categorie_articles`;
   const slug = (_a = event.context.params) == null ? void 0 : _a.slug;
-  const apiUrl = `https://painel.gsadmin.app/items/articles`;
   try {
     if (!slug) {
       throw createError({ statusCode: 400, statusMessage: "Slug n\xE3o fornecido" });
     }
-    const response = await $fetch(apiUrl, {
+    const { data: articles } = await $fetch(apiUrl, {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
       query: { "filter[slug][_eq]": slug }
     });
-    if (!response.data || response.data.length === 0) {
+    if (!articles || articles.length === 0) {
       throw createError({ statusCode: 404, statusMessage: "Artigo n\xE3o encontrado" });
     }
-    return response.data[0];
+    let article = articles[0];
+    let categoryTitle = "Sem categoria";
+    if (article.categorie) {
+      const { data: categories } = await $fetch(categoryApiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        query: {
+          "filter[tenant_id][_eq]": 1,
+          "filter[id][_eq]": article.categorie
+        }
+      });
+      if (categories && categories.length > 0) {
+        categoryTitle = categories[0].title_categorie;
+      }
+    }
+    article.categoryTitle = categoryTitle;
+    return article;
   } catch (error) {
+    console.error("Erro ao buscar o artigo:", error);
     throw createError({
-      statusCode: 500,
-      statusMessage: "Erro ao buscar o artigo"
+      statusCode: error.statusCode || 500,
+      statusMessage: error.statusMessage || "Erro interno no servidor"
     });
   }
 });
@@ -7902,12 +7925,22 @@ const articles = defineEventHandler(async (event) => {
   const apiUrl = `${config.public.API_BASE_URL}/items/articles`;
   try {
     const query = getQuery$1(event);
+    query.fields = "id,title,slug,categorie.id,categorie.title_categorie";
     const response = await $fetch(apiUrl, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       query
     });
-    return response;
+    return {
+      data: response.data.map((article) => {
+        var _a, _b;
+        return {
+          ...article,
+          category_id: ((_a = article.categorie) == null ? void 0 : _a.id) || null,
+          category_title: ((_b = article.categorie) == null ? void 0 : _b.title_categorie) || "Sem categoria"
+        };
+      })
+    };
   } catch (error) {
     throw createError({
       statusCode: 500,
@@ -7919,30 +7952,6 @@ const articles = defineEventHandler(async (event) => {
 const articles$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   default: articles
-});
-
-const categories = defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-  const apiUrl = `${config.public.API_BASE_URL}/items/categorie_articles`;
-  try {
-    const query = getQuery$1(event);
-    const response = await $fetch(apiUrl, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      query
-    });
-    return response;
-  } catch (error) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: "Erro ao buscar categorias"
-    });
-  }
-});
-
-const categories$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: categories
 });
 
 const parceiros = defineEventHandler(() => {

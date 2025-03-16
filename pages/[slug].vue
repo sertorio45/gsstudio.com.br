@@ -2,24 +2,24 @@
 import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "#app";
 
-// 🔹 Captura o slug da URL
+// Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
 const slug = ref<string | undefined>(route.params.slug as string);
 
-// 🔹 Estado do artigo e categoria
+// Estado do artigo e categoria
 const article = ref<any>(null);
 const categoryTitle = ref<string>("Sem categoria");
 const isLoading = ref<boolean>(true);
 const fetchError = ref<boolean>(false);
 
-// 🔹 Estado do formulário de newsletter
+// Estado do formulário de newsletter
 const email = ref<string>("");
 const isSubmitting = ref<boolean>(false);
 const success = ref<boolean>(false);
 const error = ref<boolean>(false);
 
-// 🔹 Função para buscar o artigo via `/api/[slug]`
+// Função para buscar o artigo via `/api/[slug]`
 const fetchArticle = async () => {
   try {
     isLoading.value = true;
@@ -31,10 +31,8 @@ const fetchArticle = async () => {
 
     article.value = response;
 
-    // 🔹 Define a categoria (se existir)
-    if (article.value.categorie) {
-      categoryTitle.value = article.value.categorie.title_categorie || "Sem categoria";
-    }
+    // Define a categoria corretamente
+    categoryTitle.value = article.value.category_title || "Sem categoria";
   } catch (err) {
     fetchError.value = true;
   } finally {
@@ -42,7 +40,7 @@ const fetchArticle = async () => {
   }
 };
 
-// 🔹 Compartilhamento nas redes sociais
+// Compartilhamento nas redes sociais
 const socialNetworks = computed(() => {
   if (!process.client) return [];
   const url = window.location.href;
@@ -56,7 +54,7 @@ const socialNetworks = computed(() => {
   ];
 });
 
-// 🔹 Compartilhar nas redes sociais
+// Compartilhar nas redes sociais
 const share = (network: any) => {
   if (network.name === "Link") {
     navigator.clipboard.writeText(network.url);
@@ -65,7 +63,7 @@ const share = (network: any) => {
   }
 };
 
-// 🔹 Formatar data
+// Formatar data
 const formatDate = (date: string) => {
   if (!date) return "";
   return new Date(date).toLocaleDateString("pt-BR", {
@@ -76,12 +74,12 @@ const formatDate = (date: string) => {
   });
 };
 
-// 🔹 Voltar para a página anterior
+// Voltar para a página anterior
 const goBack = () => {
   router.go(-1);
 };
 
-// 🔹 Enviar formulário de newsletter
+// Enviar formulário de newsletter
 const submitNewsletterForm = async () => {
   isSubmitting.value = true;
   success.value = false;
@@ -111,26 +109,19 @@ const submitNewsletterForm = async () => {
   }
 };
 
-// 🔹 Chama a API quando o componente for montado
+// Chama a API quando o componente for montado
 onMounted(() => {
   fetchArticle();
 });
 </script>
 
-
 <template>
-      <!-- <Head>
-      <Title>{{ title }}</Title>
-      <Meta name="description" :content="description" />
-      <Meta property="og:title" :content="title" />
-      <Meta property="og:description" :content="description" />
-    </Head> -->
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
         <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
           <div class="back-fixed">
-            <button @click="goBack" class="btn btn-primary-border">< Voltar</button>
+            <button @click="goBack" class="btn btn-primary-border">Voltar</button>
             <div class="social-share d-flex">
               <a
                 v-for="(network, index) in socialNetworks"
@@ -147,7 +138,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="col-sm-7 col-md-12 col-lg-7">
-          <div v-if="loading">
+          <div v-if="isLoading">
             <div class="d-flex mb-3">
               <div class="skeleton skeleton-category me-2"></div>
               <div class="skeleton skeleton-date"></div>
@@ -157,51 +148,22 @@ onMounted(() => {
           </div>
           <div v-else-if="article" class="content_blog">
             <div class="mb-3 mx-0">
-              <span class="article-category">{{ article.title }}</span>
-              <span v-html="formatDate(article.published_at)" class="mx-3 publish_date"></span>
+              <span class="article-category">{{ categoryTitle }}</span>
+              <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
             </div>
-            <h1>{{ article.titulo }}</h1>
+            <h1>{{ article.title }}</h1>
             <div v-html="article.content" class="my-4"></div>
           </div>
           <div v-else-if="fetchError">
-            <p>Erro: {{ fetchError.message }}</p>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-3">
-          <div class="newsletter-cta p-4 bg-light rounded news-fixed my-xl-0 my-4">
-            <span class="h3">Assine para novas atualizações.</span>
-            <form @submit.prevent="submitNewsletterForm" class="form">
-              <div class="mb-3">
-                <input v-model="email" type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
-              </div>
-              <div class="">
-                <button
-                  type="submit"
-                  :class="['btn', isSubmitting ? 'btn-secondary' : success ? 'btn-success' : error ? 'btn-danger' : 'btn-primary']"
-                  :disabled="isSubmitting"
-                >
-                  <span v-if="isSubmitting">
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Enviando...
-                  </span>
-                  <span v-else-if="success">
-                    <i class="bx bx-check-circle"></i> Sucesso!
-                  </span>
-                  <span v-else-if="error">
-                    <i class="bx bx-error"></i> Erro ao enviar!
-                  </span>
-                  <span v-else>
-                    <i class="bx bx-send"></i> Inscrever-se
-                  </span>
-                </button>
-              </div>
-            </form>
+            <p>Erro ao carregar o artigo.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+
 
 <style scoped>
 .content_blog h2 {

@@ -5,7 +5,7 @@
         <h2 class="text-center">Blog</h2>
         
         <!-- Skeleton Cards -->
-        <div v-if="isLoading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="pending" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -17,13 +17,13 @@
         </div>
 
         <!-- Lista de Artigos -->
-        <div v-else-if="articles.length > 0" class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
+        <div v-else-if="articles && articles.length > 0" class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <nuxt-link :to="`${article.slug}`">
+              <nuxt-link :to="article.slug">
                 {{ article.title }}
               </nuxt-link>
             </div>
@@ -46,10 +46,11 @@
 </template>
 
 <script setup lang="ts">
-
-const { articles, fetchArticles, isLoading, error } = useArticles();
-
-onMounted(() => {
-  fetchArticles();
+const { data: articles, pending, error } = await useAsyncData("articles", async () => {
+  const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,slug,categorie.title_categorie");
+  return response.data.map(article => ({
+    ...article,
+    category_title: article.categorie?.title_categorie || "Sem categoria",
+  }));
 });
 </script>

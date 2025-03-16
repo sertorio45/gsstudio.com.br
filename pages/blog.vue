@@ -19,7 +19,7 @@
     <div class="container my-5">
       <div class="row">
         <!-- Skeleton Cards -->
-        <div v-if="isLoading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="pending" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -31,11 +31,11 @@
         </div>
 
         <!-- Lista de Artigos -->
-        <div v-else-if="articles.length > 0" class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
+        <div v-else-if="articles && articles.length > 0" class="col-sm-3 my-2" v-for="article in articles" :key="article.id">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
-                <span class="article-category">Categoria: {{ article.category_title }}</span>
+                <span class="article-category">{{ article.category_title }}</span>
               </div>
               <nuxt-link :to="`/${article.slug}`">
                 {{ article.title }}
@@ -58,8 +58,8 @@
       <!-- Botão "Ver Mais" -->
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <button @click="fetchArticles" :disabled="isLoading" class="btn btn-primary">
-            <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <button @click="refresh" :disabled="pending" class="btn btn-primary">
+            <span v-if="pending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             <span v-else>Ver mais artigos</span>
           </button>
         </div>
@@ -68,25 +68,12 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import useArticles from '~/composables/useArticles';
-
-export default defineComponent({
-  name: 'Blog',
-  setup() {
-    const { articles, fetchArticles, isLoading, error } = useArticles();
-
-    onMounted(() => {
-      fetchArticles();
-    });
-
-    return {
-      articles,
-      fetchArticles,
-      isLoading,
-      error,
-    };
-  }
+<script setup lang="ts">
+const { data: articles, pending, error, refresh } = await useAsyncData("articles", async () => {
+  const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,slug,categorie.title_categorie");
+  return response.data.map(article => ({
+    ...article,
+    category_title: article.categorie?.title_categorie || "Sem categoria",
+  }));
 });
 </script>
