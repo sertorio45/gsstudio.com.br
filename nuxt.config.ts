@@ -47,10 +47,14 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  // routeRules: {
-  //   '/': { prerender: false },
-  //   '/blog': { prerender: false },
-  // },
+  lazyHydration: {
+    enabled: true,
+  },
+  routeRules: {
+    '/': { prerender: false },
+    '/blog': { prerender: false },
+    '/:slug': { prerender: false },
+  },
 
   ssr: true,
 

@@ -346,6 +346,15 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "prerender": false
+      },
+      "/blog": {
+        "prerender": false
+      },
+      "/:slug": {
+        "prerender": false
+      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
@@ -355,7 +364,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-16T14:16:41.080Z"
+          "X-Sitemap-Prerendered": "2025-03-16T14:24:28.926Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -7822,6 +7831,20 @@ const sources$1 = [
             {
                 "loc": "/solucoes.bkop/gscrm"
             }
+        ],
+        "sourceType": "app"
+    },
+    {
+        "context": {
+            "name": "nuxt:route-rules",
+            "description": "Generated from your route rules config.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
+            ]
+        },
+        "urls": [
+            "/",
+            "/blog"
         ],
         "sourceType": "app"
     }
