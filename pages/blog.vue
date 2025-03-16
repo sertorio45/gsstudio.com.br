@@ -69,11 +69,10 @@
 </template>
 
 <script setup lang="ts">
-const { data: articles, pending, error, refresh } = await useAsyncData("articles", async () => {
-  const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,slug,categorie.title_categorie");
-  return response.data.map(article => ({
+const { data: articles, pending, error, refresh } = useLazyFetch("https://painel.gsadmin.app/items/articles?fields=id,title,slug,categorie.title_categorie", {
+  transform: (response) => response.data.map(article => ({
     ...article,
     category_title: article.categorie?.title_categorie || "Sem categoria",
-  }));
+  }))
 });
 </script>
