@@ -1,25 +1,30 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, useAsyncData } from "#app";
 
 // Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
 const slug = computed(() => route.params.slug as string);
 
-// Busca o artigo com SSR habilitado
-const { data: article, pending: isLoading, error: fetchError } = useFetch(
-  () => `https://painel.gsadmin.app/items/articles`, 
+// Busca o artigo com SSR habilitado usando useAsyncData
+const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
+  `article-${slug.value}`, // Chave única para cache do Nuxt
+  async () => {
+    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      query: {
+        fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
+        "filter[slug][_eq]": slug.value,
+      },
+    });
+
+    return response?.data?.length ? response.data[0] : null;
+  },
   {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    query: {
-      fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
-      "filter[slug][_eq]": slug.value,
-    },
-    transform: (response) => response.data?.length ? response.data[0] : null,
-    server: true, // Garante que os dados sejam renderizados no servidor
-    lazy: false,  // Garante que a requisição ocorra antes da renderização
+    server: true, // Habilita SSR
+    lazy: false,  // Faz a requisição antes da renderização
   }
 );
 
@@ -33,9 +38,9 @@ const keywords = computed(() => article.value?.meta_keywords);
 
 // Configuração de SEO com SSR
 useSeoMeta({
-  title: title,
-  description: description,
-  keywords: keywords,
+  title,
+  description,
+  keywords,
   ogTitle: title,
   ogDescription: description,
   twitterTitle: title,
@@ -58,7 +63,7 @@ const goBack = () => {
 
 // Compartilhamento nas redes sociais (evita acessar `window` diretamente no SSR)
 const socialNetworks = computed(() => {
-  if (process.server) return []; // Evita erros no SSR
+  if (process.server) return [];
   const url = process.client ? window.location.href : "";
   return [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
@@ -90,6 +95,7 @@ const formatDate = (date: string) => {
   });
 };
 </script>
+
 
 
 <template>
