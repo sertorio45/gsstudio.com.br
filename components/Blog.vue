@@ -47,7 +47,12 @@
 
 <script setup lang="ts">
 const { data: articles, pending, error } = await useAsyncData("articles", async () => {
-  const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie");
+  const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
   return response.data.map(article => ({
     ...article,
     category_title: article.categorie?.title_categorie || "Sem categoria",
