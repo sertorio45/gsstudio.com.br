@@ -75,4 +75,9 @@ const { data: articles, pending, error, refresh } = useLazyFetch("https://painel
     category_title: article.categorie?.title_categorie || "Sem categoria",
   }))
 });
+
+// Chamar refresh quando a página for carregada
+onMounted(() => {
+  refresh();
+});
 </script>
