@@ -4,7 +4,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-lightcontainer">
         <!-- Logo -->
-        <NuxtLink to="/" class="navbar-brand">
+        <NuxtLink href="/" class="navbar-brand">
           <NuxtImg src="logotipo.svg" alt="Logo" loading="lazy" width="180px" :placeholder="15" densities="x1 x2" />
         </NuxtLink>
 
@@ -27,27 +27,28 @@
             <span></span>
           </div>
         </button>
+        
 
         <!-- Navegação Fullscreen -->
         <div :class="['navbar-collapse justify-content-center', { 'show-fullscreen': isOpen }]" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <NuxtLink to="/" class="nav-link" @click="toggleMenu">Início</NuxtLink>
+              <a href="/" class="nav-link" @click="toggleMenu">Início</a>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/sobre" class="nav-link" @click="toggleMenu">Sobre nós</NuxtLink>
+              <a href="/sobre" class="nav-link" @click="toggleMenu">Sobre nós</a>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/servicos" class="nav-link" @click="toggleMenu">Serviços</NuxtLink>
+              <a href="/servicos" class="nav-link" @click="toggleMenu">Serviços</a>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/#portifolio" class="nav-link" @click="toggleMenu">Portifolio</NuxtLink>
+              <a href="/#portifolio" class="nav-link" @click="toggleMenu">Portifolio</a>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/blog" class="nav-link" @click="toggleMenu">Blog</NuxtLink>
+              <a href="/blog" class="nav-link" @click="toggleMenu">Blog</a>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/contato" class="nav-link" @click="toggleMenu">Contato</NuxtLink>
+              <a href="/contato" class="nav-link" @click="toggleMenu">Contato</a>
             </li>
           </ul>
         </div>

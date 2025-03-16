@@ -38,7 +38,7 @@
       
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
+          <a href="/blog" class="btn btn-primary">Ver mais artigos</a>
         </div>
       </div>
     </div>
