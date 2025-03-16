@@ -4,9 +4,9 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-lightcontainer">
         <!-- Logo -->
-        <NuxtLink href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <NuxtImg src="logotipo.svg" alt="Logo" loading="lazy" width="180px" :placeholder="15" densities="x1 x2" />
-        </NuxtLink>
+        </a>
 
         <!-- Botão do Menu Hamburguer para Mobile -->
         <button

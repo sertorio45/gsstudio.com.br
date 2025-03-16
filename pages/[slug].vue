@@ -1,3 +1,102 @@
+<script setup lang="ts">
+import { ref, computed, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+// Captura o slug da URL
+const route = useRoute();
+const router = useRouter();
+const slug = computed(() => route.params.slug as string);
+
+// Busca o artigo com useAsyncData
+const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
+  `article-${slug.value}`,
+  async () => {
+    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      params: {
+        fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
+        "filter[slug][_eq]": slug.value,
+      },
+    });
+
+    if (!response || !response.data.length) {
+      throw new Error("Artigo não encontrado.");
+    }
+
+    return response.data[0];
+  }
+);
+
+// Definir título da categoria dinamicamente
+const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
+
+// Computed properties para SEO
+const title = computed(() => article.value?.title || "Artigo");
+const description = computed(() => article.value?.meta_description || "Leia mais sobre marketing, design e desenvolvimento web.");
+const category = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
+const keywords = computed(() => article.value?.meta_keywords || "");
+
+// Configuração de SEO
+useSeoMeta({
+  title: title.value,
+  description: description.value,
+  keywords: keywords.value,
+  ogTitle: title.value,
+  ogDescription: description.value,
+  twitterTitle: title.value,
+  twitterDescription: description.value,
+});
+
+// Configuração de imagem Open Graph
+defineOgImageComponent("NuxtSeo", {
+  title: title.value,
+  description: description.value,
+  colorMode: "dark",
+  theme: "#1e00ff",
+});
+
+// Função para voltar e forçar a atualização da página anterior
+const goBack = () => {
+  router.back();
+  setTimeout(() => refreshNuxtData("articles"), 200);
+};
+
+// Compartilhamento nas redes sociais
+const socialNetworks = computed(() => {
+  if (!process.client) return [];
+  const url = window.location.href;
+  return [
+    { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
+    { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
+    { name: "LinkedIn", url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: "bx bxl-linkedin" },
+    { name: "WhatsApp", url: `https://wa.me/?text=${url}`, icon: "bx bxl-whatsapp" },
+    { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
+    { name: "Link", url: url, icon: "bx bx-link" },
+  ];
+});
+
+// Compartilhar nas redes sociais
+const share = (network: any) => {
+  if (network.name === "Link") {
+    navigator.clipboard.writeText(network.url);
+  } else {
+    window.open(network.url, "_blank", "noopener,noreferrer");
+  }
+};
+
+// Formatar data
+const formatDate = (date: string) => {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("pt-BR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+</script>
+
 
 
 <template>
@@ -50,78 +149,7 @@
     </div>
   </section>
 </template>
-<script setup lang="ts">
-import { ref, computed } from "vue";
-import { useRoute, useRouter, useAsyncData } from "#app";
 
-// Captura o slug da URL
-const route = useRoute();
-const router = useRouter();
-const slug = route.params.slug as string;
-
-// Função para buscar o artigo diretamente da API com `useAsyncData`
-const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
-  `article-${slug}`, // Cache do Nuxt baseado no slug
-  async () => {
-    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      params: {
-        fields: "id,title,content,slug,date_created,categorie.id,categorie.title_categorie",
-        "filter[slug][_eq]": slug,
-      },
-    });
-
-    if (!response || !response.data.length) {
-      throw new Error("Artigo não encontrado.");
-    }
-
-    return response.data[0];
-  }
-);
-
-// Definir título da categoria dinamicamente
-const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
-
-// Compartilhamento nas redes sociais
-const socialNetworks = computed(() => {
-  if (!process.client) return [];
-  const url = window.location.href;
-  return [
-    { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
-    { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
-    { name: "LinkedIn", url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: "bx bxl-linkedin" },
-    { name: "WhatsApp", url: `https://wa.me/?text=${url}`, icon: "bx bxl-whatsapp" },
-    { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
-    { name: "Link", url: url, icon: "bx bx-link" },
-  ];
-});
-
-// Compartilhar nas redes sociais
-const share = (network: any) => {
-  if (network.name === "Link") {
-    navigator.clipboard.writeText(network.url);
-  } else {
-    window.open(network.url, "_blank", "noopener,noreferrer");
-  }
-};
-
-// Formatar data
-const formatDate = (date: string) => {
-  if (!date) return "";
-  return new Date(date).toLocaleDateString("pt-BR", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
-
-// Voltar para a página anterior
-const goBack = () => {
-  router.go(-1);
-};
-</script>
 
 <style scoped>
 .content_blog h2 {

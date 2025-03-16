@@ -37,9 +37,9 @@
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <nuxt-link :to="`/${article.slug}`">
+              <a :href="`/${article.slug}`">
                 {{ article.title }}
-              </nuxt-link>
+              </a>
             </div>
           </div>
         </div>
