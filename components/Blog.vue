@@ -60,11 +60,6 @@ const { data: articles, pending, error, refresh } = await useAsyncData(
       category_title: article.categorie?.title_categorie || "Sem categoria",
     }));
   },
-  { 
-    default: () => [], 
-    watch: false, // Evita que ele reavalie automaticamente ao mudar estado
-    server: false // Desativa cache SSR
-  }
 );
 
 // Chamar refresh quando a página for carregada
