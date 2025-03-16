@@ -27,10 +27,9 @@ const { data: article, pending: isLoading, error: fetchError } = useFetch(
 const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
 
 // Computed properties para SEO
-const title = computed(() => article.value?.title || "Artigo");
-const description = computed(() => article.value?.meta_description || "Leia mais sobre marketing, design e desenvolvimento web.");
-const category = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
-const keywords = computed(() => article.value?.meta_keywords || "");
+const title = computed(() => article.value?.title);
+const description = computed(() => article.value?.meta_description);
+const keywords = computed(() => article.value?.meta_keywords);
 
 // Configuração de SEO com SSR
 useSeoMeta({
