@@ -17,15 +17,18 @@ const fetchError = ref<boolean>(false);
 const fetchArticle = async () => {
   try {
     isLoading.value = true;
-    const response = await $fetch(`https://painel.gsadmin.app/items/articles?fields=id,title,content,slug,date_created,categorie.id,categorie.title_categorie&filter[slug][_eq]=${slug.value}`);
+    const response = await $fetch(`/api/articles`, {
+      params: {
+        fields: "id,title,content,slug,date_created,categorie.id,categorie.title_categorie",
+        "filter[slug][_eq]": slug.value,
+      },
+    });
 
     if (!response || !response.data.length) {
       throw new Error("Artigo não encontrado.");
     }
 
     article.value = response.data[0];
-
-    // Define a categoria corretamente
     categoryTitle.value = article.value.categorie?.title_categorie || "Sem categoria";
   } catch (err) {
     fetchError.value = true;
@@ -33,6 +36,7 @@ const fetchArticle = async () => {
     isLoading.value = false;
   }
 };
+
 
 // Compartilhamento nas redes sociais
 const socialNetworks = computed(() => {

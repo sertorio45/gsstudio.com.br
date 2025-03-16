@@ -55,6 +55,13 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
+    devProxy: {
+      "/api": {
+        target: "https://painel.gsadmin.app",
+        changeOrigin: true,
+        pathRewrite: { "^/api": "/items" },
+      },
+    },
     preset: 'netlify',
     debug: true,
     prerender: {
