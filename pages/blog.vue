@@ -50,11 +50,6 @@
         </div>
       </div>
 
-      <!-- Exibir Erro -->
-      <div v-if="error" class="alert alert-danger text-center my-3">
-        {{ typeof error === "string" ? error : "Ocorreu um erro ao carregar os artigos." }}
-      </div>
-
       <!-- Botão "Ver Mais" -->
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">

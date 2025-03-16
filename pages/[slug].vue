@@ -13,26 +13,20 @@ const categoryTitle = ref<string>("Sem categoria");
 const isLoading = ref<boolean>(true);
 const fetchError = ref<boolean>(false);
 
-// Estado do formulário de newsletter
-const email = ref<string>("");
-const isSubmitting = ref<boolean>(false);
-const success = ref<boolean>(false);
-const error = ref<boolean>(false);
-
-// Função para buscar o artigo via `/api/[slug]`
+// Função para buscar o artigo por slug
 const fetchArticle = async () => {
   try {
     isLoading.value = true;
-    const response = await $fetch(`/api/${slug.value}`);
+    const response = await $fetch(`https://painel.gsadmin.app/items/articles?fields=id,title,content,slug,date_created,categorie.id,categorie.title_categorie&filter[slug][_eq]=${slug.value}`);
 
-    if (!response) {
+    if (!response || !response.data.length) {
       throw new Error("Artigo não encontrado.");
     }
 
-    article.value = response;
+    article.value = response.data[0];
 
     // Define a categoria corretamente
-    categoryTitle.value = article.value.category_title || "Sem categoria";
+    categoryTitle.value = article.value.categorie?.title_categorie || "Sem categoria";
   } catch (err) {
     fetchError.value = true;
   } finally {
@@ -79,37 +73,7 @@ const goBack = () => {
   router.go(-1);
 };
 
-// Enviar formulário de newsletter
-const submitNewsletterForm = async () => {
-  isSubmitting.value = true;
-  success.value = false;
-  error.value = false;
-  const webhookUrl = "https://webhook.gsstudio.com.br/webhook/gsstudionewsletter";
-
-  try {
-    const response = await $fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email.value }),
-    });
-
-    if (response) {
-      success.value = true;
-      setTimeout(() => {
-        email.value = "";
-        success.value = false;
-      }, 2000);
-    } else {
-      error.value = true;
-    }
-  } catch (err) {
-    error.value = true;
-  } finally {
-    isSubmitting.value = false;
-  }
-};
-
-// Chama a API quando o componente for montado
+// Busca o artigo ao montar o componente
 onMounted(() => {
   fetchArticle();
 });
@@ -137,6 +101,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
+
         <div class="col-sm-7 col-md-12 col-lg-7">
           <div v-if="isLoading">
             <div class="d-flex mb-3">
@@ -146,6 +111,7 @@ onMounted(() => {
             <div class="skeleton skeleton-title mb-3"></div>
             <div class="skeleton skeleton-content mb-3"></div>
           </div>
+
           <div v-else-if="article" class="content_blog">
             <div class="mb-3 mx-0">
               <span class="article-category">{{ categoryTitle }}</span>
@@ -154,15 +120,15 @@ onMounted(() => {
             <h1>{{ article.title }}</h1>
             <div v-html="article.content" class="my-4"></div>
           </div>
+
           <div v-else-if="fetchError">
-            <p>Erro ao carregar o artigo.</p>
+            <p class="text-danger">Erro ao carregar o artigo.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
 
 
 <style scoped>
