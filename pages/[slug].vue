@@ -36,21 +36,6 @@ const title = computed(() => article.value?.title);
 const description = computed(() => article.value?.meta_description);
 const keywords = computed(() => article.value?.meta_keywords);
 
-// Configuração de SEO com SSR
-useSeoMeta({
-  title,
-  description,
-  keywords,
-  ogTitle: title,
-  ogType: "article",
-  ogUrl: `https://gsstudio.com.br/${slug.value}`,
-  ogDescription: description,
-  ogImageAlt: title,
-  twitterTitle: title,
-  twitterDescription: description,
-  twitterCard: 'summary'
-});
-
 // Configuração de imagem Open Graph
 defineOgImageComponent("NuxtSeo", {
   title: 'Blog',
@@ -58,6 +43,23 @@ defineOgImageComponent("NuxtSeo", {
   colorMode: "dark",
   theme: "#1e00ff",
 });
+
+// Configuração de SEO com SSR
+useSeoMeta({
+  title,
+  description: description,
+  keywords,
+  ogLocale: 'pt-br',
+  ogImageAlt: title,
+  ogTitle: title,
+  ogType: "article",
+  ogUrl: `https://gsstudio.com.br/${slug.value}`,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterCard: 'summary'
+});
+
 
 // Função para voltar e forçar a atualização da página anterior
 const goBack = () => {

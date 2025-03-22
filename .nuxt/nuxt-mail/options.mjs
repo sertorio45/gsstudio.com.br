@@ -7,7 +7,7 @@ export default {
   ],
   "smtp": {
     "host": "mail.gsstudio.com.br",
-    "port": 587,
+    "port": 465,
     "auth": {
       "user": "noreply@gsstudio.com.br",
       "pass": "Agenciagsstudio1993#@!"
