@@ -44,6 +44,16 @@ defineOgImageComponent("NuxtSeo", {
   theme: "#1e00ff",
 });
 
+useHead({
+  title,
+  meta: [
+    { name: "description", content: description },
+    { name: "robots", content: "index, follow" },
+    { name: "keywords", content: keywords },
+    { name: "canonical", content: `https://gsstudio.com.br/${slug.value}` },
+  ],
+});
+
 // Configuração de SEO com SSR
 useSeoMeta({
   title,
