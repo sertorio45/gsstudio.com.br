@@ -37,7 +37,7 @@
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <a :href="`/${article.slug}`">
+              <a :href="`/blog/${article.slug}`">
                 {{ article.title }}
               </a>
             </div>
