@@ -11,7 +11,7 @@ const slug = computed(() => route.params.slug as string);
 const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
   `article-${slug.value}`, // Chave única para cache do Nuxt
   async () => {
-    const response = await $fetch("https://painel.gsadmin.app/items/articles", {
+    const response: { data: { length: number; [key: string]: any }[] } = await $fetch("https://painel.gsadmin.app/items/articles", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       query: {
@@ -42,27 +42,19 @@ useSeoMeta({
   description,
   keywords,
   ogTitle: title,
-  ogDescription: description,
   ogType: "article",
   ogUrl: `https://gsstudio.com.br/${slug.value}`,
-  ogAlt: title,
+  ogDescription: description,
   ogImageAlt: title,
   twitterTitle: title,
   twitterDescription: description,
+  twitterCard: 'summary'
 });
 
 // Configuração de imagem Open Graph
 defineOgImageComponent("NuxtSeo", {
   title: 'Blog',
   description: description.value,
-  ogTitle: description.value,
-  ogDescription: description.value,
-  ogUrl: `https://gsstudio.com.br/${slug.value}`,
-  ogType: "article",
-  ogAlt: title.value,
-  twitterTitle: title.value,
-  twitterDescription: description.value,
-  twitterAlt: title.value,
   colorMode: "dark",
   theme: "#1e00ff",
 });
