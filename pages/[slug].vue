@@ -57,7 +57,8 @@ useSeoMeta({
   ogDescription: description,
   twitterTitle: title,
   twitterDescription: description,
-  twitterCard: 'summary'
+  twitterCard: 'summary',
+  fbAppId: '603230818880308',
 });
 
 
