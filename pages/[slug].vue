@@ -1,32 +1,30 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useRoute, useRouter, useAsyncData } from "#app";
+import { useRoute, useRouter, useFetch } from "#app";
 
 // Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
 const slug = computed(() => route.params.slug as string);
 
-// Busca o artigo com SSR habilitado usando useAsyncData
-const { data: article, pending: isLoading, error: fetchError } = useAsyncData(
-  `article-${slug.value}`, // Chave única para cache do Nuxt
-  async () => {
-    const response: { data: { length: number; [key: string]: any }[] } = await $fetch("https://painel.gsadmin.app/items/articles", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      query: {
-        fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
-        "filter[slug][_eq]": slug.value,
-      },
-    });
+// Verifica se o slug está pronto
+const isSlugReady = computed(() => !!slug.value);
 
+// Busca o artigo com SSR habilitado usando useFetch
+const { data: article, pending: isLoading, error: fetchError } = useFetch('https://painel.gsadmin.app/items/articles', {
+  key: `article-${slug.value}`,
+  params: {
+    fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
+    "filter[slug][_eq]": slug.value,
+  },
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+  server: true,
+  lazy: false,
+  transform: (response: any) => {
     return response?.data?.length ? response.data[0] : null;
   },
-  {
-    server: true, // Habilita SSR
-    lazy: false,  // Faz a requisição antes da renderização
-  }
-);
+});
 
 // Definir título da categoria dinamicamente
 const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
@@ -44,10 +42,19 @@ defineOgImageComponent("NuxtSeo", {
   theme: "#1e00ff",
 });
 
-// Configuração de SEO com SSR
+useHead({
+  title,
+  meta: [
+    { name: "description", content: description },
+    { name: "robots", content: "index, follow" },
+    { name: "keywords", content: keywords },
+    { name: "canonical", content: `https://gsstudio.com.br/${slug.value}` },
+  ],
+});
+
 useSeoMeta({
   title,
-  description: description,
+  description,
   keywords,
   ogLocale: 'pt-br',
   ogImageAlt: title,
@@ -61,14 +68,13 @@ useSeoMeta({
   fbAppId: '603230818880308',
 });
 
-
-// Função para voltar e forçar a atualização da página anterior
+// Voltar com refresh
 const goBack = () => {
   router.back();
   setTimeout(() => refreshNuxtData("articles"), 200);
 };
 
-// Compartilhamento nas redes sociais (evita acessar `window` diretamente no SSR)
+// Compartilhamento
 const socialNetworks = computed(() => {
   if (process.server) return [];
   const url = process.client ? window.location.href : "";
@@ -82,7 +88,6 @@ const socialNetworks = computed(() => {
   ];
 });
 
-// Compartilhar nas redes sociais
 const share = (network: any) => {
   if (network.name === "Link") {
     navigator.clipboard.writeText(network.url);
@@ -91,7 +96,6 @@ const share = (network: any) => {
   }
 };
 
-// Formatar data
 const formatDate = (date: string) => {
   if (!date) return "";
   return new Date(date).toLocaleDateString("pt-BR", {
@@ -102,8 +106,6 @@ const formatDate = (date: string) => {
   });
 };
 </script>
-
-
 
 <template>
   <section class="my-5" id="article-detail">

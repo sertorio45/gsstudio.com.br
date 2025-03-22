@@ -1,5 +1,3 @@
-import { VitePWA } from 'vite-plugin-pwa'
-
 
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
@@ -47,17 +45,11 @@ export default defineNuxtConfig({
     metaTag: true,
   },
 
-  routeRules: {
-    '/': { prerender: false },
-    '/blog': { prerender: false },
-    '/:slug': { prerender: false },
-  },
-
   ssr: true,
 
   nitro: {
     
-    preset: 'netlify',
+    preset: 'node-server',
     debug: true,
     prerender: {
       crawlLinks: true,

@@ -49,7 +49,7 @@
 const { data: articles, pending, error, refresh } = await useAsyncData(
   "articles",
   async () => {
-    const response = await $fetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
+    const response = await $fetch<{ data: Array<{ id: number, title: string, meta_keywords: string, meta_description: string, content: string, slug: string, categorie: { id: number, title_categorie: string } }> }>("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

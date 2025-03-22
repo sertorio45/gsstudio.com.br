@@ -1,6 +1,8 @@
-import { d as defineEventHandler } from './portifolio.mjs';
+import { d as defineEventHandler } from '../../nitro/nitro.mjs';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import 'lru-cache';
+import 'devalue';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

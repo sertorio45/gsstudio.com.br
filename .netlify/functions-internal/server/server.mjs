@@ -1,4 +1,6 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { a4 as handler } from './chunks/routes/api/portifolio.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};export { aa as handler } from './chunks/nitro/nitro.mjs';
+import 'lru-cache';
+import 'devalue';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

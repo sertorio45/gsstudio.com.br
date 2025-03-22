@@ -1,124 +1,158 @@
 const client_manifest = {
   "_!~{002}~.js": {
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "swiper-vue.CjPnLvTv.css",
+    "file": "swiper-vue.B1PiBUhT.css",
     "src": "_!~{002}~.js",
     "dynamicImports": []
   },
-  "_4Gm1qPTH.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
+  "_!~{00g}~.js": {
+    "resourceType": "style",
+    "prefetch": false,
     "preload": true,
-    "file": "4Gm1qPTH.js",
-    "name": "Icon",
-    "imports": [
-      "_DEIQAQ4v.js"
-    ],
-    "dynamicImports": [],
-    "css": []
+    "file": "Form.CAibOalk.css",
+    "src": "_!~{00g}~.js",
+    "dynamicImports": []
   },
-  "_BTjh6ETO.js": {
+  "_B3RS4oJd.js": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "BTjh6ETO.js",
-    "name": "vue.8fc199ce",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js",
-      "_DEIQAQ4v.js"
-    ],
-    "dynamicImports": [],
-    "css": []
-  },
-  "_CCb-kr4I.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CCb-kr4I.js",
-    "name": "axios",
-    "dynamicImports": [],
-    "css": []
-  },
-  "_CIoD8h9c.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CIoD8h9c.js",
-    "name": "NuxtImg.vue",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js",
-      "_DEIQAQ4v.js"
-    ],
-    "dynamicImports": [],
-    "css": []
-  },
-  "_CbucezZ6.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CbucezZ6.js",
+    "file": "B3RS4oJd.js",
     "name": "index",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_BTjh6ETO.js"
+      "_C0VUrdEY.js"
     ],
     "dynamicImports": [],
     "css": []
   },
-  "_D4VwJgpB.js": {
+  "_BkEYsD2A.js": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "D4VwJgpB.js",
-    "name": "useBlogCards",
+    "file": "BkEYsD2A.js",
+    "name": "fetch",
     "imports": [
-      "_CCb-kr4I.js",
-      "_DEIQAQ4v.js"
+      "node_modules/nuxt/dist/app/entry.js",
+      "_DF8lDsMj.js",
+      "_G1aQ-BMs.js"
     ],
     "dynamicImports": [],
     "css": []
   },
-  "_DEIQAQ4v.js": {
+  "_BrYMPoEt.js": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "DEIQAQ4v.js",
+    "file": "BrYMPoEt.js",
+    "name": "useCardAnimation",
+    "imports": [
+      "_G1aQ-BMs.js"
+    ],
+    "dynamicImports": [],
+    "css": []
+  },
+  "_C0VUrdEY.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": false,
+    "preload": true,
+    "file": "C0VUrdEY.js",
+    "name": "vue.8fc199ce",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js",
+      "_G1aQ-BMs.js"
+    ],
+    "dynamicImports": [],
+    "css": []
+  },
+  "_DF8lDsMj.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": false,
+    "preload": true,
+    "file": "DF8lDsMj.js",
+    "name": "asyncData",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js",
+      "_G1aQ-BMs.js"
+    ],
+    "dynamicImports": [],
+    "css": []
+  },
+  "_DRfrPRQU.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": false,
+    "preload": true,
+    "file": "DRfrPRQU.js",
+    "name": "NuxtImg.vue",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js",
+      "_G1aQ-BMs.js"
+    ],
+    "dynamicImports": [],
+    "css": []
+  },
+  "_G1aQ-BMs.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": false,
+    "preload": true,
+    "file": "G1aQ-BMs.js",
     "name": "swiper-vue",
     "css": [],
     "dynamicImports": []
   },
-  "swiper-vue.CjPnLvTv.css": {
-    "file": "swiper-vue.CjPnLvTv.css",
+  "swiper-vue.B1PiBUhT.css": {
+    "file": "swiper-vue.B1PiBUhT.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
-  "_ZoTxqdVl.js": {
+  "_ID1T4Hsc.js": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "ZoTxqdVl.js",
-    "name": "useCardAnimation",
+    "file": "ID1T4Hsc.js",
+    "name": "Form",
     "imports": [
-      "_DEIQAQ4v.js"
+      "node_modules/nuxt/dist/app/entry.js",
+      "_G1aQ-BMs.js"
+    ],
+    "css": [],
+    "dynamicImports": []
+  },
+  "Form.CAibOalk.css": {
+    "file": "Form.CAibOalk.css",
+    "resourceType": "style",
+    "prefetch": false,
+    "preload": true,
+    "dynamicImports": []
+  },
+  "_k7l1F1vU.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": false,
+    "preload": true,
+    "file": "k7l1F1vU.js",
+    "name": "Icon",
+    "imports": [
+      "_G1aQ-BMs.js"
     ],
     "dynamicImports": [],
     "css": []
   },
   "assets/img/portifolio/branding/carne-remington.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "carne-remington.C19oAcL8.webp",
     "src": "assets/img/portifolio/branding/carne-remington.webp",
@@ -126,7 +160,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/branding/dinadoces.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "dinadoces.CvrVYaCZ.webp",
     "src": "assets/img/portifolio/branding/dinadoces.webp",
@@ -134,7 +168,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/comunicacao-visual/cachcaria-folder-drinks.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "cachcaria-folder-drinks.DIQVUGxt.webp",
     "src": "assets/img/portifolio/comunicacao-visual/cachcaria-folder-drinks.webp",
@@ -142,7 +176,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/comunicacao-visual/compromisso-com-voce.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "compromisso-com-voce.M4V4rruw.webp",
     "src": "assets/img/portifolio/comunicacao-visual/compromisso-com-voce.webp",
@@ -150,7 +184,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/comunicacao-visual/happy-maluco.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "happy-maluco.B9g6Y72f.webp",
     "src": "assets/img/portifolio/comunicacao-visual/happy-maluco.webp",
@@ -158,7 +192,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/comunicacao-visual/revista-cachacaria.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "revista-cachacaria.D7BFKtk3.webp",
     "src": "assets/img/portifolio/comunicacao-visual/revista-cachacaria.webp",
@@ -166,7 +200,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/8_de_marco_-_Dia_Internacional_da_Mulher.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "8_de_marco_-_Dia_Internacional_da_Mulher.Dut5doyZ.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/8_de_marco_-_Dia_Internacional_da_Mulher.webp",
@@ -174,7 +208,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-1.Du5xEUqU.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-1.webp",
@@ -182,7 +216,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-10.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-10.BYOuTGvZ.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-10.webp",
@@ -190,7 +224,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-11.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-11.w-AUhOsi.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-11.webp",
@@ -198,7 +232,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-2.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-2.DtHthAzz.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-2.webp",
@@ -206,7 +240,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-3.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-3.C6AgIGER.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-3.webp",
@@ -214,7 +248,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-4-1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-4-1.C4CS0D5U.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-4-1.webp",
@@ -222,7 +256,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-4.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-4.C0WqfsZg.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-4.webp",
@@ -230,7 +264,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-5-1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-5-1.DbLmVlXE.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-5-1.webp",
@@ -238,7 +272,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-5.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-5.Nc2BSDwD.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-5.webp",
@@ -246,7 +280,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-6-1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-6-1.Bbr7uvRL.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-6-1.webp",
@@ -254,7 +288,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-6.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-6.XQNyDLoT.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-6.webp",
@@ -262,7 +296,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-7.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-7.B3n3issU.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-7.webp",
@@ -270,7 +304,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-8.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-8.B3yfeYP8.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-8.webp",
@@ -278,7 +312,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Euroanglo-9.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Euroanglo-9.D5RBqkpd.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Euroanglo-9.webp",
@@ -286,7 +320,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/HAPPY_CERVEJAS TRADICIONAIS.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "HAPPY_CERVEJAS TRADICIONAIS.BlqOxc26.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/HAPPY_CERVEJAS TRADICIONAIS.webp",
@@ -294,7 +328,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-14.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-14.Dbct8vST.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-14.webp",
@@ -302,7 +336,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-17.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-17.DSbsL8RH.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-17.webp",
@@ -310,7 +344,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-19.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-19.hW3JeSyz.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-19.webp",
@@ -318,7 +352,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-20.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-20.BoN47oyb.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-20.webp",
@@ -326,7 +360,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-21.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-21.C6kVPJ4V.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-21.webp",
@@ -334,7 +368,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-24.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "IDFEDERAL-24.D_0tUnkq.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/IDFEDERAL-24.webp",
@@ -342,7 +376,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Post-janeiro_02.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Post-janeiro_02.D9b9S6VZ.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Post-janeiro_02.webp",
@@ -350,7 +384,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Universo-Country-3.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Universo-Country-3.QnVxxdM5.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Universo-Country-3.webp",
@@ -358,7 +392,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Universo-Country-5.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Universo-Country-5.CLxddHcU.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Universo-Country-5.webp",
@@ -366,7 +400,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Universo-Country-6.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Universo-Country-6.BCs9Eq2i.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Universo-Country-6.webp",
@@ -374,7 +408,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/Universo-Country-7.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "Universo-Country-7.CFaGcVRS.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/Universo-Country-7.webp",
@@ -382,7 +416,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/bruno1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "bruno1.B6-Zjpb-.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/bruno1.webp",
@@ -390,7 +424,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/bruno2.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "bruno2.Cf_fISHy.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/bruno2.webp",
@@ -398,7 +432,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/bruno3.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "bruno3.Ctd13QCg.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/bruno3.jpg",
@@ -406,7 +440,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/bruno4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "bruno4.DovIEdfx.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/bruno4.jpg",
@@ -414,7 +448,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/dia-das-maes-nona-therezza.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "dia-das-maes-nona-therezza.DwU2nPUn.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/dia-das-maes-nona-therezza.webp",
@@ -422,7 +456,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/dune 4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "dune 4.CWtcjVyC.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/dune 4.jpg",
@@ -430,7 +464,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/dune1.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "dune1.0OfpV7Tg.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/dune1.jpg",
@@ -438,7 +472,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/dune3.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "dune3.DaeSCI8g.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/dune3.jpg",
@@ -446,7 +480,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/happydoidao-stories.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "happydoidao-stories.D5bZg4ce.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/happydoidao-stories.webp",
@@ -454,7 +488,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/md1.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "md1.D-8yed71.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/md1.jpg",
@@ -462,7 +496,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/md2.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "md2.DF_83QdK.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/md2.jpg",
@@ -470,7 +504,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/md3.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "md3.BylbN0CY.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/md3.jpg",
@@ -478,7 +512,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/md4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "md4.FsrjtB0c.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/md4.jpg",
@@ -486,7 +520,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "posto1.B6pLv5RE.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto1.webp",
@@ -494,7 +528,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto2.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "posto2.IMILjk-g.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto2.webp",
@@ -502,7 +536,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto3.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "posto3.DnuMZfR6.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto3.jpg",
@@ -510,7 +544,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "posto4.CZtcz6wt.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto4.jpg",
@@ -518,7 +552,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto5.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "posto5.CprGbXO8.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto5.jpg",
@@ -526,7 +560,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/posto6.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "posto6.Vt2p_jyM.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/posto6.jpg",
@@ -534,7 +568,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 1.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 1.BO5hQ4Re.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 1.webp",
@@ -542,7 +576,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 14.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 14.ilEAn_z-.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 14.webp",
@@ -550,7 +584,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 15.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 15.BI8GjZFT.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 15.webp",
@@ -558,7 +592,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 17.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 17.NLo-yUtg.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 17.webp",
@@ -566,7 +600,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 4.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 4.U7mM5dwA.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 4.webp",
@@ -574,7 +608,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 5.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 5.D5OVMKV5.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 5.webp",
@@ -582,7 +616,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 6.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 6.cXTJL4qE.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 6.webp",
@@ -590,7 +624,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/remington - 7.webp": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "file": "remington - 7.COCrYpFC.webp",
     "src": "assets/img/portifolio/gestao-de-conteudo/remington - 7.webp",
@@ -598,7 +632,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansix.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansix.Pr_TSoal.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansix.jpg",
@@ -606,7 +640,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansix1.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansix1.CkZ0lfew.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansix1.jpg",
@@ -614,7 +648,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansix2.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansix2.WYKmgUwt.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansix2.jpg",
@@ -622,7 +656,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansix4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansix4.xBPtjW_i.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansix4.jpg",
@@ -630,7 +664,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud1.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud1.PuFEqJyW.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud1.jpg",
@@ -638,7 +672,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud2.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud2.Bvdnfetu.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud2.jpg",
@@ -646,7 +680,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud3.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud3.B5h9rs0z.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud3.jpg",
@@ -654,7 +688,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud4.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud4.RcFIDWKb.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud4.jpg",
@@ -662,7 +696,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud5.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud5.e7WW7mtk.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud5.jpg",
@@ -670,7 +704,7 @@ const client_manifest = {
   },
   "assets/img/portifolio/gestao-de-conteudo/sansixcloud6.jpg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "file": "sansixcloud6.BxOb8SP3.jpg",
     "src": "assets/img/portifolio/gestao-de-conteudo/sansixcloud6.jpg",
@@ -679,54 +713,38 @@ const client_manifest = {
   "layouts/default.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "DHUl--lS.js",
+    "file": "DfZQNLwv.js",
     "name": "default",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
+      "_DRfrPRQU.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_DEIQAQ4v.js",
-      "_CIoD8h9c.js"
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "default.DF7rAAYm.css": {
-    "file": "default.DF7rAAYm.css",
+  "default.BB2QB_bm.css": {
+    "file": "default.BB2QB_bm.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
-  },
-  "middleware/fetchArticles.ts": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "B675T0PH.js",
-    "name": "fetchArticles",
-    "src": "middleware/fetchArticles.ts",
-    "isDynamicEntry": true,
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js",
-      "_CCb-kr4I.js",
-      "_DEIQAQ4v.js"
-    ],
-    "dynamicImports": [],
-    "css": []
   },
   "node_modules/boxicons/fonts/boxicons.eot": {
     "resourceType": "font",
     "mimeType": "font/eot",
     "file": "boxicons.CSrLvhY_.eot",
     "src": "node_modules/boxicons/fonts/boxicons.eot",
-    "dynamicImports": []
+    "dynamicImports": [],
+    "prefetch": false
   },
   "node_modules/boxicons/fonts/boxicons.svg": {
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/svg+xml",
     "file": "boxicons.Dp7W9qN3.svg",
     "src": "node_modules/boxicons/fonts/boxicons.svg",
@@ -737,99 +755,102 @@ const client_manifest = {
     "mimeType": "font/ttf",
     "file": "boxicons.EIQNrSje.ttf",
     "src": "node_modules/boxicons/fonts/boxicons.ttf",
-    "dynamicImports": []
+    "dynamicImports": [],
+    "prefetch": false
   },
   "node_modules/boxicons/fonts/boxicons.woff": {
     "resourceType": "font",
     "mimeType": "font/woff",
     "file": "boxicons.CTVby2V1.woff",
     "src": "node_modules/boxicons/fonts/boxicons.woff",
-    "dynamicImports": []
+    "dynamicImports": [],
+    "prefetch": false
   },
   "node_modules/boxicons/fonts/boxicons.woff2": {
     "resourceType": "font",
     "mimeType": "font/woff2",
     "file": "boxicons.CeGEncwm.woff2",
     "src": "node_modules/boxicons/fonts/boxicons.woff2",
-    "dynamicImports": []
+    "dynamicImports": [],
+    "prefetch": false
   },
   "node_modules/nuxt/dist/app/components/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "BKG-B0Nr.js",
+    "file": "Aq9Bmfc5.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js"
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "error-404.ygbHJO5Q.css": {
-    "file": "error-404.ygbHJO5Q.css",
+  "error-404.CoZKRZXM.css": {
+    "file": "error-404.CoZKRZXM.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "node_modules/nuxt/dist/app/components/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "JadRhR1l.js",
+    "file": "CIZQ7g6u.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js"
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "error-500.B11Ibp8J.css": {
-    "file": "error-500.B11Ibp8J.css",
+  "error-500.D6506J9O.css": {
+    "file": "error-500.D6506J9O.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "nFDv636E.js",
+    "file": "BT7FJPdD.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
     "imports": [
-      "_DEIQAQ4v.js"
+      "_G1aQ-BMs.js"
     ],
     "dynamicImports": [],
     "css": [],
     "_globalCSS": true
   },
-  "entry.CRAAULY4.css": {
-    "file": "entry.CRAAULY4.css",
+  "entry.CqGsCRjw.css": {
+    "file": "entry.CqGsCRjw.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "node_modules/workbox-window/build/workbox-window.prod.es5.mjs": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "D5gOYdM7.js",
+    "file": "B9K5rw8f.js",
     "name": "workbox-window.prod.es5",
     "src": "node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
     "isDynamicEntry": true,
@@ -839,42 +860,48 @@ const client_manifest = {
   "pages/[slug].vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "DJ6L_CeP.js",
+    "file": "rYC2Ok4Z.js",
     "name": "_slug_",
     "src": "pages/[slug].vue",
     "isDynamicEntry": true,
     "imports": [
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js",
-      "node_modules/nuxt/dist/app/entry.js"
+      "_ID1T4Hsc.js",
+      "_G1aQ-BMs.js",
+      "node_modules/nuxt/dist/app/entry.js",
+      "_B3RS4oJd.js",
+      "_DF8lDsMj.js",
+      "_BkEYsD2A.js",
+      "_C0VUrdEY.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "_slug_.DKJ6gt5p.css": {
-    "file": "_slug_.DKJ6gt5p.css",
+  "_slug_.DokwWPUA.css": {
+    "file": "_slug_.DokwWPUA.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "pages/blog.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "PJCywc55.js",
+    "file": "DT0q2EOj.js",
     "name": "blog",
     "src": "pages/blog.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_4Gm1qPTH.js",
-      "_D4VwJgpB.js",
-      "_DEIQAQ4v.js",
-      "_CCb-kr4I.js"
+      "_k7l1F1vU.js",
+      "_B3RS4oJd.js",
+      "_BkEYsD2A.js",
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js",
+      "_DF8lDsMj.js"
     ],
     "dynamicImports": [],
     "css": []
@@ -882,48 +909,48 @@ const client_manifest = {
   "pages/contato.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "DnCLP6E-.js",
+    "file": "COuC-xvv.js",
     "name": "contato",
     "src": "pages/contato.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_4Gm1qPTH.js",
-      "_ZoTxqdVl.js",
-      "_DEIQAQ4v.js",
-      "_CbucezZ6.js",
-      "_BTjh6ETO.js"
+      "_k7l1F1vU.js",
+      "_BrYMPoEt.js",
+      "_ID1T4Hsc.js",
+      "_B3RS4oJd.js",
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "contato.D7DjpVwm.css": {
-    "file": "contato.D7DjpVwm.css",
+  "contato.2-8YDIui.css": {
+    "file": "contato.2-8YDIui.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "Ue4taSRy.js",
+    "file": "9cqwnS6W.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_CIoD8h9c.js",
-      "_ZoTxqdVl.js",
-      "_DEIQAQ4v.js",
-      "_D4VwJgpB.js",
-      "_CbucezZ6.js",
-      "_BTjh6ETO.js",
-      "_CCb-kr4I.js"
+      "_DRfrPRQU.js",
+      "_BrYMPoEt.js",
+      "_G1aQ-BMs.js",
+      "_DF8lDsMj.js",
+      "_B3RS4oJd.js",
+      "_C0VUrdEY.js"
     ],
     "css": [],
     "assets": [
@@ -1000,606 +1027,607 @@ const client_manifest = {
     ],
     "dynamicImports": []
   },
-  "index.w95FWosa.css": {
-    "file": "index.w95FWosa.css",
+  "index.CVi_Cnku.css": {
+    "file": "index.CVi_Cnku.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "carne-remington.C19oAcL8.webp": {
     "file": "carne-remington.C19oAcL8.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "dinadoces.CvrVYaCZ.webp": {
     "file": "dinadoces.CvrVYaCZ.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "cachcaria-folder-drinks.DIQVUGxt.webp": {
     "file": "cachcaria-folder-drinks.DIQVUGxt.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "compromisso-com-voce.M4V4rruw.webp": {
     "file": "compromisso-com-voce.M4V4rruw.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "happy-maluco.B9g6Y72f.webp": {
     "file": "happy-maluco.B9g6Y72f.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "revista-cachacaria.D7BFKtk3.webp": {
     "file": "revista-cachacaria.D7BFKtk3.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "8_de_marco_-_Dia_Internacional_da_Mulher.Dut5doyZ.webp": {
     "file": "8_de_marco_-_Dia_Internacional_da_Mulher.Dut5doyZ.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-1.Du5xEUqU.webp": {
     "file": "Euroanglo-1.Du5xEUqU.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-10.BYOuTGvZ.webp": {
     "file": "Euroanglo-10.BYOuTGvZ.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-11.w-AUhOsi.webp": {
     "file": "Euroanglo-11.w-AUhOsi.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-2.DtHthAzz.webp": {
     "file": "Euroanglo-2.DtHthAzz.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-3.C6AgIGER.webp": {
     "file": "Euroanglo-3.C6AgIGER.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-4-1.C4CS0D5U.webp": {
     "file": "Euroanglo-4-1.C4CS0D5U.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-4.C0WqfsZg.webp": {
     "file": "Euroanglo-4.C0WqfsZg.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-5-1.DbLmVlXE.webp": {
     "file": "Euroanglo-5-1.DbLmVlXE.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-5.Nc2BSDwD.webp": {
     "file": "Euroanglo-5.Nc2BSDwD.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-6-1.Bbr7uvRL.webp": {
     "file": "Euroanglo-6-1.Bbr7uvRL.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-6.XQNyDLoT.webp": {
     "file": "Euroanglo-6.XQNyDLoT.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-7.B3n3issU.webp": {
     "file": "Euroanglo-7.B3n3issU.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-8.B3yfeYP8.webp": {
     "file": "Euroanglo-8.B3yfeYP8.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Euroanglo-9.D5RBqkpd.webp": {
     "file": "Euroanglo-9.D5RBqkpd.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "HAPPY_CERVEJAS TRADICIONAIS.BlqOxc26.webp": {
     "file": "HAPPY_CERVEJAS TRADICIONAIS.BlqOxc26.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-14.Dbct8vST.webp": {
     "file": "IDFEDERAL-14.Dbct8vST.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-17.DSbsL8RH.webp": {
     "file": "IDFEDERAL-17.DSbsL8RH.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-19.hW3JeSyz.webp": {
     "file": "IDFEDERAL-19.hW3JeSyz.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-20.BoN47oyb.webp": {
     "file": "IDFEDERAL-20.BoN47oyb.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-21.C6kVPJ4V.webp": {
     "file": "IDFEDERAL-21.C6kVPJ4V.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "IDFEDERAL-24.D_0tUnkq.webp": {
     "file": "IDFEDERAL-24.D_0tUnkq.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Post-janeiro_02.D9b9S6VZ.webp": {
     "file": "Post-janeiro_02.D9b9S6VZ.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Universo-Country-3.QnVxxdM5.webp": {
     "file": "Universo-Country-3.QnVxxdM5.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Universo-Country-5.CLxddHcU.webp": {
     "file": "Universo-Country-5.CLxddHcU.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Universo-Country-6.BCs9Eq2i.webp": {
     "file": "Universo-Country-6.BCs9Eq2i.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "Universo-Country-7.CFaGcVRS.webp": {
     "file": "Universo-Country-7.CFaGcVRS.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "bruno1.B6-Zjpb-.webp": {
     "file": "bruno1.B6-Zjpb-.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "bruno2.Cf_fISHy.webp": {
     "file": "bruno2.Cf_fISHy.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "bruno3.Ctd13QCg.jpg": {
     "file": "bruno3.Ctd13QCg.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "bruno4.DovIEdfx.jpg": {
     "file": "bruno4.DovIEdfx.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "dia-das-maes-nona-therezza.DwU2nPUn.webp": {
     "file": "dia-das-maes-nona-therezza.DwU2nPUn.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "dune 4.CWtcjVyC.jpg": {
     "file": "dune 4.CWtcjVyC.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "dune1.0OfpV7Tg.jpg": {
     "file": "dune1.0OfpV7Tg.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "dune3.DaeSCI8g.jpg": {
     "file": "dune3.DaeSCI8g.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "happydoidao-stories.D5bZg4ce.webp": {
     "file": "happydoidao-stories.D5bZg4ce.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "md1.D-8yed71.jpg": {
     "file": "md1.D-8yed71.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "md2.DF_83QdK.jpg": {
     "file": "md2.DF_83QdK.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "md3.BylbN0CY.jpg": {
     "file": "md3.BylbN0CY.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "md4.FsrjtB0c.jpg": {
     "file": "md4.FsrjtB0c.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "posto1.B6pLv5RE.webp": {
     "file": "posto1.B6pLv5RE.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "posto2.IMILjk-g.webp": {
     "file": "posto2.IMILjk-g.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "posto3.DnuMZfR6.jpg": {
     "file": "posto3.DnuMZfR6.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "posto4.CZtcz6wt.jpg": {
     "file": "posto4.CZtcz6wt.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "posto5.CprGbXO8.jpg": {
     "file": "posto5.CprGbXO8.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "posto6.Vt2p_jyM.jpg": {
     "file": "posto6.Vt2p_jyM.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "remington - 1.BO5hQ4Re.webp": {
     "file": "remington - 1.BO5hQ4Re.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 14.ilEAn_z-.webp": {
     "file": "remington - 14.ilEAn_z-.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 15.BI8GjZFT.webp": {
     "file": "remington - 15.BI8GjZFT.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 17.NLo-yUtg.webp": {
     "file": "remington - 17.NLo-yUtg.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 4.U7mM5dwA.webp": {
     "file": "remington - 4.U7mM5dwA.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 5.D5OVMKV5.webp": {
     "file": "remington - 5.D5OVMKV5.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 6.cXTJL4qE.webp": {
     "file": "remington - 6.cXTJL4qE.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "remington - 7.COCrYpFC.webp": {
     "file": "remington - 7.COCrYpFC.webp",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/webp",
     "dynamicImports": []
   },
   "sansix.Pr_TSoal.jpg": {
     "file": "sansix.Pr_TSoal.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansix1.CkZ0lfew.jpg": {
     "file": "sansix1.CkZ0lfew.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansix2.WYKmgUwt.jpg": {
     "file": "sansix2.WYKmgUwt.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansix4.xBPtjW_i.jpg": {
     "file": "sansix4.xBPtjW_i.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud1.PuFEqJyW.jpg": {
     "file": "sansixcloud1.PuFEqJyW.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud2.Bvdnfetu.jpg": {
     "file": "sansixcloud2.Bvdnfetu.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud3.B5h9rs0z.jpg": {
     "file": "sansixcloud3.B5h9rs0z.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud4.RcFIDWKb.jpg": {
     "file": "sansixcloud4.RcFIDWKb.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud5.e7WW7mtk.jpg": {
     "file": "sansixcloud5.e7WW7mtk.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "sansixcloud6.BxOb8SP3.jpg": {
     "file": "sansixcloud6.BxOb8SP3.jpg",
     "resourceType": "image",
-    "prefetch": true,
+    "prefetch": false,
     "mimeType": "image/jpeg",
     "dynamicImports": []
   },
   "pages/politica-de-privacidade.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "D6Ft_y3x.js",
+    "file": "DvxQC9Wi.js",
     "name": "politica-de-privacidade",
     "src": "pages/politica-de-privacidade.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_CbucezZ6.js",
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js"
+      "_B3RS4oJd.js",
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "politica-de-privacidade.C_4yPGWQ.css": {
-    "file": "politica-de-privacidade.C_4yPGWQ.css",
+  "politica-de-privacidade.DRKwWT8q.css": {
+    "file": "politica-de-privacidade.DRKwWT8q.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "pages/servicos.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "CkwSzgkj.js",
+    "file": "BEIUIXmH.js",
     "name": "servicos",
     "src": "pages/servicos.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_4Gm1qPTH.js",
-      "_CIoD8h9c.js",
-      "_ZoTxqdVl.js",
-      "_CbucezZ6.js",
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js"
+      "_k7l1F1vU.js",
+      "_DRfrPRQU.js",
+      "_BrYMPoEt.js",
+      "_B3RS4oJd.js",
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "servicos.DRcFt-yV.css": {
-    "file": "servicos.DRcFt-yV.css",
+  "servicos.CbOZJVDo.css": {
+    "file": "servicos.CbOZJVDo.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "pages/sobre.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "DH1fi-Ie.js",
+    "file": "DuaplfxP.js",
     "name": "sobre",
     "src": "pages/sobre.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_4Gm1qPTH.js",
-      "_ZoTxqdVl.js",
-      "_CbucezZ6.js",
-      "_BTjh6ETO.js",
-      "_DEIQAQ4v.js"
+      "_k7l1F1vU.js",
+      "_DRfrPRQU.js",
+      "_BrYMPoEt.js",
+      "_B3RS4oJd.js",
+      "_C0VUrdEY.js",
+      "_G1aQ-BMs.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "sobre.Dxdn3TPT.css": {
-    "file": "sobre.Dxdn3TPT.css",
+  "sobre.B9iWIZ6K.css": {
+    "file": "sobre.B9iWIZ6K.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   },
   "pages/solucoes.bkop/gscrm.vue": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
-    "file": "BqwvWuZh.js",
+    "file": "B2Y9DoA8.js",
     "name": "gscrm",
     "src": "pages/solucoes.bkop/gscrm.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_ZoTxqdVl.js",
-      "_CbucezZ6.js",
-      "_DEIQAQ4v.js",
-      "_BTjh6ETO.js"
+      "_BrYMPoEt.js",
+      "_B3RS4oJd.js",
+      "_G1aQ-BMs.js",
+      "_C0VUrdEY.js"
     ],
     "css": [],
     "dynamicImports": []
   },
-  "gscrm.Offn94TE.css": {
-    "file": "gscrm.Offn94TE.css",
+  "gscrm.BoQIt_v0.css": {
+    "file": "gscrm.BoQIt_v0.css",
     "resourceType": "style",
-    "prefetch": true,
+    "prefetch": false,
     "preload": true,
     "dynamicImports": []
   }

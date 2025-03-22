@@ -1,13 +1,11 @@
-import { d as decodeHtml, t as toBase64Image, a as theme, b as fetchIsland, h as htmlDecodeQuotes, c as applyEmojis, u as useOgImageRuntimeConfig, n as normaliseFontInput, e as fontCache, l as loadFont } from './eventHandlers.mjs';
-import { Q as createConsola, R as useNitroOrigin, D as withBase, a as defu } from '../routes/api/portifolio.mjs';
+import { a4 as decodeHtml, a5 as logger, S as useNitroOrigin, a6 as toBase64Image, C as withBase, a7 as createConsola, V as fetchIsland, a8 as htmlDecodeQuotes, U as useOgImageRuntimeConfig, a as defu, W as normaliseFontInput, a9 as fontCache } from '../nitro/nitro.mjs';
+import { t as theme, a as applyEmojis, l as loadFont } from './eventHandlers.mjs';
 import { html } from 'satori-html';
 import sizeOf from 'image-size';
 import { createGenerator } from '@unocss/core';
 import presetWind from '@unocss/preset-wind';
 import 'lru-cache';
 import 'devalue';
-import '@unhead/ssr';
-import 'unhead';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
@@ -19,6 +17,8 @@ import 'nodemailer';
 import '@dword-design/functions';
 import 'node:url';
 import 'ipx';
+import '@unhead/ssr';
+import 'unhead';
 
 const cssInlineInstance = { instance: void 0 };
 const sharpInstance = { instance: void 0 };
@@ -35,11 +35,11 @@ async function useSatori() {
   return satoriInstance.instance.satori;
 }
 async function useSharp() {
-  sharpInstance.instance = sharpInstance.instance || await import('./empty.mjs').then((m) => m.default);
+  sharpInstance.instance = sharpInstance.instance || await import('../nitro/nitro.mjs').then(function (n) { return n.ab; }).then((m) => m.default);
   return sharpInstance.instance;
 }
 async function useCssInline() {
-  cssInlineInstance.instance = cssInlineInstance.instance || await import('./empty.mjs').then((m) => m.default);
+  cssInlineInstance.instance = cssInlineInstance.instance || await import('../nitro/nitro.mjs').then(function (n) { return n.ab; }).then((m) => m.default);
   await cssInlineInstance.instance.initWasmPromise;
   return cssInlineInstance.instance.cssInline;
 }
@@ -187,12 +187,6 @@ const flex = defineSatoriTransformer({
     if (flexWrap && !node.props?.class?.includes("gap")) {
       node.props.style.gap = "0.2em";
     }
-  }
-});
-
-const logger = createConsola({
-  defaults: {
-    tag: "Nuxt OG Image"
   }
 });
 
@@ -382,19 +376,21 @@ async function resolveFonts(event) {
   const normalisedFonts = normaliseFontInput([...event.options.fonts || [], ...fonts]);
   const localFontPromises = [];
   const preloadedFonts = [];
-  for (const font of normalisedFonts) {
-    if (await fontCache.hasItem(font.cacheKey)) {
-      font.data = await fontCache.getItemRaw(font.cacheKey);
-      preloadedFonts.push(font);
-    } else {
-      if (!fontPromises[font.cacheKey]) {
-        fontPromises[font.cacheKey] = loadFont(event, font).then(async (_font) => {
-          if (_font?.data)
-            await fontCache.setItemRaw(_font.cacheKey, _font.data);
-          return _font;
-        });
+  if (fontCache) {
+    for (const font of normalisedFonts) {
+      if (await fontCache.hasItem(font.cacheKey)) {
+        font.data = await fontCache.getItemRaw(font.cacheKey);
+        preloadedFonts.push(font);
+      } else {
+        if (!fontPromises[font.cacheKey]) {
+          fontPromises[font.cacheKey] = loadFont(event, font).then(async (_font) => {
+            if (_font?.data)
+              await fontCache?.setItemRaw(_font.cacheKey, _font.data);
+            return _font;
+          });
+        }
+        localFontPromises.push(fontPromises[font.cacheKey]);
       }
-      localFontPromises.push(fontPromises[font.cacheKey]);
     }
   }
   const awaitedFonts = await Promise.all(localFontPromises);
