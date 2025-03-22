@@ -53,7 +53,7 @@
       <!-- Botão "Ver Mais" -->
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <button @click="refresh" :disabled="pending" class="btn btn-primary">
+          <button @click="() => refresh()" :disabled="pending" class="btn btn-primary">
             <span v-if="pending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             <span v-else>Ver mais artigos</span>
           </button>
@@ -88,7 +88,7 @@ useHead ({
       ogLocale: 'pt_BR',
     });
 const { data: articles, pending, error, refresh } = useLazyFetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
-  transform: (response) => response.data.map(article => ({
+  transform: (response: any) => response.data.map((article: any) => ({
     ...article,
     category_title: article.categorie?.title_categorie || "Sem categoria",
   }))
