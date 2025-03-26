@@ -14,6 +14,7 @@ declare module 'nitropack' {
   }
   interface NitroRuntimeHooks {
     'sitemap:index-resolved': (ctx: import('../../node_modules/@nuxtjs/sitemap/runtime/types').SitemapIndexRenderCtx) => void | Promise<void>
+    'sitemap:input': (ctx: import('../../node_modules/@nuxtjs/sitemap/runtime/types').SitemapInputCtx) => void | Promise<void>
     'sitemap:resolved': (ctx: import('../../node_modules/@nuxtjs/sitemap/runtime/types').SitemapRenderCtx) => void | Promise<void>
     'sitemap:output': (ctx: import('../../node_modules/@nuxtjs/sitemap/runtime/types').SitemapOutputHookCtx) => void | Promise<void>
   }

@@ -445,6 +445,30 @@ declare module 'nuxt/schema' {
       },
    },
 
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: {
+         type: string,
+
+         name: string,
+
+         url: string,
+
+         description: string,
+
+         sameAs: Array<string>,
+      },
+
+      version: string,
+   },
+
    "nuxt-site-config": {
       stack: Array<{
 
@@ -453,36 +477,14 @@ declare module 'nuxt/schema' {
       version: string,
 
       debug: boolean,
+
+      multiTenancy: Array<any>,
    },
 
    "nuxt-robots": {
       version: string,
 
-      usingNuxtContent: boolean,
-
-      debug: boolean,
-
-      credits: boolean,
-
-      groups: Array<{
-
-      }>,
-
-      sitemap: Array<string>,
-
-      header: boolean,
-
-      robotsEnabledValue: string,
-
-      robotsDisabledValue: string,
-
-      cacheControl: string,
-   },
-
-   "nuxt-simple-robots": {
-      version: string,
-
-      usingNuxtContent: boolean,
+      isNuxtContentV2: boolean,
 
       debug: boolean,
 
@@ -542,8 +544,6 @@ declare module 'nuxt/schema' {
 
       colorPreference: string,
 
-      hasNuxtContent: boolean,
-
       strictNuxtContentPaths: any,
 
       isNuxtContentDocumentDriven: boolean,
@@ -553,30 +553,6 @@ declare module 'nuxt/schema' {
    API_BASE_URL: string,
 
    apiBase: string,
-
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: {
-         type: string,
-
-         name: string,
-
-         url: string,
-
-         description: string,
-
-         sameAs: Array<string>,
-      },
-
-      version: string,
-   },
 
    gtm: {
       devtools: boolean,
@@ -593,6 +569,8 @@ declare module 'nuxt/schema' {
    },
 
    cookieControl: {
+      _isPrerendered: boolean,
+
       barPosition: string,
 
       closeModalOnClickOutside: boolean,
@@ -668,7 +646,7 @@ declare module 'nuxt/schema' {
 
          sameSite: string,
 
-         secure: any,
+         secure: boolean,
       },
 
       isAcceptNecessaryButtonEnabled: boolean,

@@ -1,11 +1,13 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { createError, getQuery, handleCacheHeaders, setHeaders, setHeader, setResponseHeader, proxyRequest, sendRedirect, H3Error } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
 import { withTrailingSlash, parseURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
-import { u as useOgImageRuntimeConfig, f as fetchIsland, n as normaliseFontInput, a as useStorage, r as resolveContext } from '../nitro/nitro.mjs';
-import { a as applyEmojis, t as theme, b as assets } from './emojis.mjs';
-import { renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/ssr/dist/index.mjs';
-import { createHeadCore } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/index.mjs';
+import { a as useOgImageRuntimeConfig, f as fetchIsland, n as normaliseFontInput, t as theme, u as useStorage, r as resolveContext } from '../nitro/nitro.mjs';
+import { a as applyEmojis, b as assets } from './emojis.mjs';
+import { createUnhead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/index.mjs';
+import { renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/server.mjs';
 import { hash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ohash/dist/index.mjs';
 import { prefixStorage } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
+
+const createHeadCore = createUnhead;
 
 async function html(ctx) {
   const { options } = ctx;
@@ -23,14 +25,14 @@ async function html(ctx) {
   const normalisedFonts = normaliseFontInput([...options.fonts || [], ...fonts]);
   const firstFont = normalisedFonts[0];
   if (firstFont)
-    defaultFontFamily = firstFont.name;
+    defaultFontFamily = firstFont.name.replaceAll("+", " ");
   await applyEmojis(ctx, island);
   let html2 = island.html;
   head.push({
     style: [
       {
         // default font is the first font family
-        innerHTML: `body { font-family: '${defaultFontFamily.replace("+", " ")}', sans-serif;  }`
+        innerHTML: `body { font-family: '${defaultFontFamily}', sans-serif;  }`
       },
       {
         innerHTML: `body {
@@ -64,7 +66,7 @@ svg[data-emoji] {
       ...fonts.map((font) => {
         return `
           @font-face {
-            font-family: '${font.name}';
+            font-family: '${font.name.replaceAll("+", " ")}';
             font-style: normal;
             font-weight: ${font.weight};
             src: url('/__og-image__/font/${font.key}') format('truetype');
@@ -277,7 +279,7 @@ async function imageEventHandler(e) {
       setHeader(e, "Content-Type", `text/html`);
       return html(ctx);
     case "svg":
-      if (!debug && !false) {
+      if (!debug && true) {
         return createError({
           statusCode: 404
         });

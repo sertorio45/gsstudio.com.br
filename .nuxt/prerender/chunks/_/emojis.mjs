@@ -1,7 +1,5 @@
-import { a as useStorage, e as emojiCache } from '../nitro/nitro.mjs';
+import { u as useStorage, e as emojiCache } from '../nitro/nitro.mjs';
 import { prefixStorage } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
-
-const theme = {};
 
 const assets = prefixStorage(useStorage(), "/assets");
 async function loadFont({ e, publicStoragePath }, font) {
@@ -3609,7 +3607,9 @@ async function applyEmojis(ctx, island) {
         svg = await emojiCache.getItem(key);
       if (!svg) {
         svg = await $fetch(`https://api.iconify.design/${ctx.options.emojis}/${emoji}.svg`, {
-          responseType: "text"
+          responseType: "text",
+          retry: 3,
+          retryDelay: 1e3
         });
         if (svg === "404")
           svg = void 0;
@@ -3629,5 +3629,5 @@ ${svg.replace("<svg ", '<svg data-emoji style="margin: 0 .05em 0 .15em; vertical
   return modified;
 }
 
-export { applyEmojis as a, assets as b, loadFont as l, theme as t };
+export { applyEmojis as a, assets as b, loadFont as l };
 //# sourceMappingURL=emojis.mjs.map

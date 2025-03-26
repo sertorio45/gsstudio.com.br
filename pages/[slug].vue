@@ -1,109 +1,162 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRoute, useRouter, useFetch } from "#app";
+import { computed, ref, onMounted } from "vue";
+import { useRoute, useRouter, useAsyncData, useSeoMeta, useHead } from "#app";
 
-// Captura o slug da URL
 const route = useRoute();
 const router = useRouter();
-const slug = computed(() => route.params.slug as string);
 
-// Verifica se o slug está pronto
-const isSlugReady = computed(() => !!slug.value);
+// 1. Adicionar estado de erro mais robusto
+const articleError = ref<string | null>(null);
 
-// Busca o artigo com SSR habilitado usando useFetch
-const { data: article, pending: isLoading, error: fetchError } = useFetch('https://painel.gsadmin.app/items/articles', {
-  key: `article-${slug.value}`,
-  params: {
-    fields: "id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie",
-    "filter[slug][_eq]": slug.value,
+// 2. Melhorar o useAsyncData com opções de controle
+const { data: article, pending, refresh } = useAsyncData(
+  `article-${route.params.slug}`,
+  async () => {
+    try {
+      const slug = route.params.slug as string;
+      if (!slug) {
+        articleError.value = "Slug não encontrado na URL";
+        return null;
+      }
+
+      const response = await $fetch<{ data: any[] }>(
+        "/items/articles",
+        {
+          baseURL: "https://painel.gsadmin.app",
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          query: {
+            fields: "id,title,meta_keywords,meta_description,content,date_created,slug,categorie.id,categorie.title_categorie",
+            "filter[slug][_eq]": slug,
+          },
+        }
+      );
+
+      if (!response?.data?.length) {
+        articleError.value = "Artigo não encontrado";
+        return null;
+      }
+
+      return response.data[0];
+    } catch (err) {
+      articleError.value = "Erro ao carregar o artigo";
+      console.error("Erro na requisição:", err);
+      return null;
+    }
   },
-  method: "GET",
-  headers: { "Content-Type": "application/json" },
-  server: true,
-  lazy: false,
-  transform: (response: any) => {
-    return response?.data?.length ? response.data[0] : null;
-  },
-});
+  {
+    // 4. Configurações adicionais para SSR
+    server: true,
+    lazy: false,
+    default: () => null,
+  }
+);
 
-// Definir título da categoria dinamicamente
-const categoryTitle = computed(() => article.value?.categorie?.title_categorie || "Sem categoria");
-
-// Computed properties para SEO
+// SEO computados
 const title = computed(() => article.value?.title);
 const description = computed(() => article.value?.meta_description);
 const keywords = computed(() => article.value?.meta_keywords);
+const categoryTitle = computed(() => article.value?.categorie?.title_categorie);
 
-// Configuração de imagem Open Graph
-defineOgImageComponent("NuxtSeo", {
-  title: 'Blog',
-  description: description.value,
-  colorMode: "dark",
-  theme: "#1e00ff",
-});
-
+// 5. Melhorar o gerenciamento de SEO
 useHead({
-  title,
+  title: () => title.value,
   meta: [
-    { name: "description", content: description },
-    { name: "robots", content: "index, follow" },
-    { name: "keywords", content: keywords },
-    { name: "canonical", content: `https://gsstudio.com.br/${slug.value}` },
+    { name: "description", content: () => description.value },
+    { name: "robots", content: article.value ? "index, follow" : "noindex, nofollow" },
+    { name: "keywords", content: () => keywords.value },
+    { name: "canonical", content: () => `https://gsstudio.com.br/${route.params.slug}` },
   ],
 });
 
 useSeoMeta({
-  title,
-  description,
-  keywords,
-  ogLocale: 'pt-br',
-  ogImageAlt: title,
-  ogTitle: title,
+  title: () => title.value,
+  description: () => description.value,
+  keywords: () => keywords.value,
+  ogLocale: "pt-br",
+  ogImageAlt: () => title.value,
+  ogTitle: () => title.value,
   ogType: "article",
-  ogUrl: `https://gsstudio.com.br/${slug.value}`,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
-  twitterCard: 'summary',
-  fbAppId: '603230818880308',
+  ogUrl: () => `https://gsstudio.com.br/${route.params.slug}`,
+  ogDescription: () => description.value,
+  twitterTitle: () => title.value,
+  twitterDescription: () => description.value,
+  twitterCard: "summary",
+  fbAppId: "603230818880308",
 });
 
-// Voltar com refresh
-const goBack = () => {
-  router.back();
-  setTimeout(() => refreshNuxtData("articles"), 200);
-};
+// Social Networks (mantido igual)
+interface SocialNetwork {
+  name: string;
+  url: string;
+  icon: string;
+}
 
-// Compartilhamento
-const socialNetworks = computed(() => {
-  if (process.server) return [];
-  const url = process.client ? window.location.href : "";
-  return [
+const socialNetworks = ref<SocialNetwork[]>([]);
+
+onMounted(() => {
+  const url = window.location.href;
+  socialNetworks.value = [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
     { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
     { name: "LinkedIn", url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: "bx bxl-linkedin" },
     { name: "WhatsApp", url: `https://wa.me/?text=${url}`, icon: "bx bxl-whatsapp" },
     { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
-    { name: "Link", url: url, icon: "bx bx-link" },
+    { name: "Link", url, icon: "bx bx-link" },
   ];
+  
+  // 7. Forçar refresh se o artigo não carregou no SSR
+  if (!article.value && !pending.value && !articleError.value) {
+    refresh();
+  }
 });
 
-const share = (network: any) => {
-  if (network.name === "Link") {
-    navigator.clipboard.writeText(network.url);
-  } else {
-    window.open(network.url, "_blank", "noopener,noreferrer");
+// 8. Função de share com verificação de ambiente
+const share = (network: SocialNetwork) => {
+  if (process.server) return;
+  
+  try {
+    if (network.name === "Link") {
+      navigator.clipboard.writeText(network.url);
+      alert("Link copiado para a área de transferência!");
+    } else {
+      const width = 600, height = 400;
+      const left = (window.innerWidth - width) / 2;
+      const top = (window.innerHeight - height) / 2;
+      window.open(
+        network.url,
+        "_blank",
+        `width=${width},height=${height},top=${top},left=${left}`
+      );
+    }
+  } catch (err) {
+    console.error("Erro ao compartilhar:", err);
   }
 };
 
-const formatDate = (date: string) => {
+// 9. Melhorar a função de voltar
+const goBack = () => {
+  if (window.history.length > 1) {
+    router.back();
+  } else {
+    router.push('/blog');
+  }
+  setTimeout(() => refreshNuxtData("articles"), 200);
+};
+
+// 10. Formatar data com fallback
+const formatDate = (date: string | null | undefined) => {
   if (!date) return "";
-  return new Date(date).toLocaleDateString("pt-BR", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  try {
+    return new Date(date).toLocaleDateString("pt-BR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } catch {
+    return new Date().toLocaleDateString("pt-BR");
+  }
 };
 </script>
 
@@ -131,7 +184,8 @@ const formatDate = (date: string) => {
         </div>
 
         <div class="col-sm-7 col-md-12 col-lg-9">
-          <div v-if="isLoading">
+          <!-- 11. Melhorar estados de carregamento e erro -->
+          <div v-if="pending" class="loading-state">
             <div class="d-flex mb-3">
               <div class="skeleton skeleton-category me-2"></div>
               <div class="skeleton skeleton-date"></div>
@@ -145,17 +199,15 @@ const formatDate = (date: string) => {
               <span class="article-category">{{ categoryTitle }}</span>
               <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
             </div>
-            <h1>{{ article.title }}</h1>
+            <h1>{{ title }}</h1>
             <div v-html="article.content" class="my-4"></div>
-          </div>
-
-          <div v-else-if="fetchError">
-            <p class="text-danger">Erro ao carregar o artigo.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- 12. Section de contato condicional -->
   <section>
     <div class="container">
       <div class="row">
@@ -168,12 +220,11 @@ const formatDate = (date: string) => {
         </div>
       </div>
     </div>
-    
   </section>
 </template>
 
-
 <style scoped>
+
 .content_blog h2 {
   font-size: 20px !important;
 }

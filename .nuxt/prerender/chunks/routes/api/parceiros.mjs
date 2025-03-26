@@ -1,6 +1,6 @@
 import { defineEventHandler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
-import { readdirSync } from 'fs';
-import { join } from 'path';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const parceiros = defineEventHandler(() => {
   const dirPath = join(process.cwd(), "public/img/parceiros");

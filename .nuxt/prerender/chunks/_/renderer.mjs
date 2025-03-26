@@ -1,28 +1,28 @@
-import { k as decodeHtml, l as logger, t as toBase64Image, c as useNitroOrigin, a as useStorage, f as fetchIsland, m as htmlDecodeQuotes, u as useOgImageRuntimeConfig, n as normaliseFontInput, o as fontCache } from '../nitro/nitro.mjs';
-import { t as theme, a as applyEmojis, l as loadFont } from './emojis.mjs';
+import { j as decodeHtml, l as logger, k as toBase64Image, b as useNitroOrigin, u as useStorage, f as fetchIsland, m as htmlDecodeQuotes, a as useOgImageRuntimeConfig, t as theme, n as normaliseFontInput, o as fontCache } from '../nitro/nitro.mjs';
 import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/defu/dist/defu.mjs';
+import { sendError } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
+import { a as applyEmojis, l as loadFont } from './emojis.mjs';
 import { html } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/satori-html/dist/index.js';
-import { withBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
-import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/image-size/dist/index.js';
-import { createGenerator } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unocss/core/dist/index.mjs';
-import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unocss/preset-wind/dist/index.mjs';
-import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/npm/consola.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
+import { withBase, withoutLeadingSlash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
+import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/image-size/dist/index.mjs';
+import { createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ofetch/dist/node.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/klona/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/scule/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/node-mock-http/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/fs.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/fs-lite.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/lru-cache.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/radix3/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ohash/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/klona/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/scule/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unctx/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/radix3/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/packrup/dist/index.mjs';
-import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ohash/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unocss/core/dist/index.mjs';
+import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unocss/preset-wind3/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/devalue/index.js';
 import 'node:fs';
 import 'node:url';
@@ -46,11 +46,11 @@ async function useSatori() {
   return satoriInstance.instance.satori;
 }
 async function useSharp() {
-  sharpInstance.instance = sharpInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
+  sharpInstance.instance = sharpInstance.instance || await import('./empty.mjs').then((m) => m.default);
   return sharpInstance.instance;
 }
 async function useCssInline() {
-  cssInlineInstance.instance = cssInlineInstance.instance || await import('file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/mock/empty.mjs').then((m) => m.default);
+  cssInlineInstance.instance = cssInlineInstance.instance || await import('./empty.mjs').then((m) => m.default);
   await cssInlineInstance.instance.initWasmPromise;
   return cssInlineInstance.instance.cssInline;
 }
@@ -202,7 +202,10 @@ const flex = defineSatoriTransformer({
 });
 
 async function resolveLocalFilePathImage(publicStoragePath, src) {
-  const key = `${publicStoragePath}${src.replace("./", ":").replace("/", ":")}`;
+  const normalizedSrc = withoutLeadingSlash(
+    src.replace("_nuxt/@fs/", "").replace("_nuxt/", "").replace("./", "")
+  );
+  const key = `${publicStoragePath}:${normalizedSrc}`;
   if (await useStorage().hasItem(key))
     return await useStorage().getItemRaw(key);
 }
@@ -210,8 +213,8 @@ const imageSrc = defineSatoriTransformer([
   // fix <img src="">
   {
     filter: (node) => node.type === "img" && node.props?.src,
-    transform: async (node, { e, publicStoragePath }) => {
-      const src = node.props.src;
+    transform: async (node, { e, publicStoragePath, runtimeConfig }) => {
+      let src = node.props.src;
       const isRelative = src.startsWith("/");
       let dimensions;
       let imageBuffer;
@@ -220,11 +223,18 @@ const imageSrc = defineSatoriTransformer([
       }
       if (isRelative) {
         {
-          imageBuffer = await resolveLocalFilePathImage(publicStoragePath, src);
+          const srcWithoutBase = src.replace(runtimeConfig.app.baseURL, "");
+          imageBuffer = await resolveLocalFilePathImage(publicStoragePath, srcWithoutBase);
+        }
+        if (!imageBuffer) {
+          imageBuffer = await e.$fetch(src, { responseType: "arrayBuffer" }).catch(() => {
+          });
         }
         if (imageBuffer)
           node.props.src = toBase64Image(imageBuffer);
       } else if (!src.startsWith("data:")) {
+        src = decodeHtml(src);
+        node.props.src = src;
         imageBuffer = await $fetch(src, {
           responseType: "arrayBuffer"
         }).catch(() => {
@@ -260,13 +270,14 @@ const imageSrc = defineSatoriTransformer([
   // fix style="background-image: url('')"
   {
     filter: (node) => node.props?.style?.backgroundImage?.includes("url("),
-    transform: async (node, { e, publicStoragePath }) => {
+    transform: async (node, { e, publicStoragePath, runtimeConfig }) => {
       const backgroundImage = node.props.style.backgroundImage;
       const src = backgroundImage.replace(/^url\(['"]?/, "").replace(/['"]?\)$/, "");
       const isRelative = src?.startsWith("/");
       if (isRelative) {
         {
-          const imageBuffer = await resolveLocalFilePathImage(publicStoragePath, src);
+          const srcWithoutBase = src.replace(runtimeConfig.app.baseURL, "/");
+          const imageBuffer = await resolveLocalFilePathImage(publicStoragePath, srcWithoutBase);
           if (imageBuffer) {
             const base64 = toBase64Image(Buffer.from(imageBuffer));
             node.props.style.backgroundImage = `url(${base64})`;
@@ -277,19 +288,14 @@ const imageSrc = defineSatoriTransformer([
   }
 ]);
 
-const uno = createGenerator({ theme }, {
-  presets: [
-    presetWind()
-  ]
-});
 const unocss = defineSatoriTransformer({
   filter: (node) => !!node.props?.class,
-  transform: async (node) => {
+  transform: async (node, ctx) => {
     const classes = node.props.class || "";
     const styles = node.props.style || {};
     const replacedClasses = /* @__PURE__ */ new Set();
     for (const token of classes.split(" ").filter((c) => c.trim())) {
-      const parsedToken = await uno.parseToken(token);
+      const parsedToken = await ctx.unocss.parseToken(token);
       if (parsedToken) {
         const inlineStyles = parsedToken[0][2].split(";").filter((s) => !!s?.trim());
         const vars = {
@@ -332,6 +338,7 @@ const unocss = defineSatoriTransformer({
 });
 
 async function applyInlineCss(ctx, island) {
+  const { e } = ctx;
   let html = island.html;
   let css = island.head.style.map((s) => s.innerHTML).filter(Boolean).join("\n");
   const componentInlineStyles = island.head.link.filter((l) => l.href.startsWith("/_nuxt/components") && l.href.replaceAll("/", "").includes(ctx.options.component));
@@ -427,7 +434,9 @@ async function createSvg(event) {
     width: options.width,
     height: options.height
   });
-  return satori(vnodes, satoriOptions);
+  return satori(vnodes, satoriOptions).catch((err) => {
+    return sendError(event.e, err, false);
+  });
 }
 async function createPng(event) {
   const { resvgOptions } = useOgImageRuntimeConfig();
@@ -459,9 +468,13 @@ const SatoriRenderer = {
     }
   },
   async debug(e) {
+    const [vnodes, svg] = await Promise.all([
+      createVNodes(e),
+      createSvg(e)
+    ]);
     return {
-      vnodes: await createVNodes(e),
-      svg: await createSvg(e)
+      vnodes,
+      svg
     };
   }
 };

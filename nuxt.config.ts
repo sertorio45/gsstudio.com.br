@@ -1,4 +1,3 @@
-
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
   mail: {
@@ -146,7 +145,6 @@ export default defineNuxtConfig({
       // },
     },
   },
-  
 
   googleFonts: {
     families: {
@@ -193,4 +191,6 @@ export default defineNuxtConfig({
       skipWaiting: true,
     }
   },
+
+  compatibilityDate: '2025-03-26',
 });
