@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderSlot } from 'file:///Users/giovannisertorio/De
 import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/defu/dist/defu.mjs';
 import { withLeadingSlash, hasProtocol, joinURL, parseURL, encodePath, encodeParam } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import { appendHeader } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
-import { p as useRequestEvent, e as useNuxtApp, k as useRuntimeConfig, u as useHead } from './server.mjs';
+import { m as useRequestEvent, c as useNuxtApp, h as useRuntimeConfig, u as useHead } from './server.mjs';
 
 async function imageMeta(_ctx, url) {
   const meta = await _imageMeta(url).catch((err) => {

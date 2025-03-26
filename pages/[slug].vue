@@ -5,87 +5,62 @@ import { useRoute, useRouter, useAsyncData, useSeoMeta, useHead } from "#app";
 const route = useRoute();
 const router = useRouter();
 
-// 1. Adicionar estado de erro mais robusto
-const articleError = ref<string | null>(null);
-
-// 2. Melhorar o useAsyncData com opções de controle
 const { data: article, pending, refresh } = useAsyncData(
   `article-${route.params.slug}`,
   async () => {
-    try {
-      const slug = route.params.slug as string;
-      if (!slug) {
-        articleError.value = "Slug não encontrado na URL";
-        return null;
+    const slug = route.params.slug as string;
+    if (!slug) return null;
+
+    const response = await $fetch<{ data: any[] }>(
+      "/items/articles",
+      {
+        baseURL: "https://painel.gsadmin.app",
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        query: {
+          fields: "id,title,meta_keywords,meta_description,content,date_created,slug,categorie.id,categorie.title_categorie",
+          "filter[slug][_eq]": slug,
+        },
       }
+    );
 
-      const response = await $fetch<{ data: any[] }>(
-        "/items/articles",
-        {
-          baseURL: "https://painel.gsadmin.app",
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          query: {
-            fields: "id,title,meta_keywords,meta_description,content,date_created,slug,categorie.id,categorie.title_categorie",
-            "filter[slug][_eq]": slug,
-          },
-        }
-      );
-
-      if (!response?.data?.length) {
-        articleError.value = "Artigo não encontrado";
-        return null;
-      }
-
-      return response.data[0];
-    } catch (err) {
-      articleError.value = "Erro ao carregar o artigo";
-      console.error("Erro na requisição:", err);
-      return null;
-    }
+    return response?.data?.[0] || null;
   },
   {
-    // 4. Configurações adicionais para SSR
     server: true,
     lazy: false,
     default: () => null,
   }
 );
 
-// SEO computados
-const title = computed(() => article.value?.title);
-const description = computed(() => article.value?.meta_description);
-const keywords = computed(() => article.value?.meta_keywords);
-const categoryTitle = computed(() => article.value?.categorie?.title_categorie);
+const title = computed(() => article.value?.title ?? "");
+const description = computed(() => article.value?.meta_description ?? "");
+const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
 
-// 5. Melhorar o gerenciamento de SEO
 useHead({
-  title: () => title.value,
   meta: [
-    { name: "description", content: () => description.value },
-    { name: "robots", content: article.value ? "index, follow" : "noindex, nofollow" },
-    { name: "keywords", content: () => keywords.value },
-    { name: "canonical", content: () => `https://gsstudio.com.br/${route.params.slug}` },
+    {
+      name: "canonical",
+      content: `https://gsstudio.com.br/${route.params.slug}`,
+    },
   ],
 });
 
 useSeoMeta({
-  title: () => title.value,
-  description: () => description.value,
-  keywords: () => keywords.value,
+  title,
+  description,
   ogLocale: "pt-br",
-  ogImageAlt: () => title.value,
-  ogTitle: () => title.value,
+  ogImageAlt: title,
+  ogTitle: title,
   ogType: "article",
-  ogUrl: () => `https://gsstudio.com.br/${route.params.slug}`,
-  ogDescription: () => description.value,
-  twitterTitle: () => title.value,
-  twitterDescription: () => description.value,
+  ogUrl: `https://gsstudio.com.br/${route.params.slug}`,
+  ogDescription: description,
+  twitterTitle: title,
+  twitterDescription: description,
   twitterCard: "summary",
   fbAppId: "603230818880308",
 });
 
-// Social Networks (mantido igual)
 interface SocialNetwork {
   name: string;
   url: string;
@@ -104,17 +79,15 @@ onMounted(() => {
     { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
     { name: "Link", url, icon: "bx bx-link" },
   ];
-  
-  // 7. Forçar refresh se o artigo não carregou no SSR
-  if (!article.value && !pending.value && !articleError.value) {
+
+  if (!article.value && !pending.value) {
     refresh();
   }
 });
 
-// 8. Função de share com verificação de ambiente
 const share = (network: SocialNetwork) => {
   if (process.server) return;
-  
+
   try {
     if (network.name === "Link") {
       navigator.clipboard.writeText(network.url);
@@ -134,7 +107,6 @@ const share = (network: SocialNetwork) => {
   }
 };
 
-// 9. Melhorar a função de voltar
 const goBack = () => {
   if (window.history.length > 1) {
     router.back();
@@ -144,7 +116,6 @@ const goBack = () => {
   setTimeout(() => refreshNuxtData("articles"), 200);
 };
 
-// 10. Formatar data com fallback
 const formatDate = (date: string | null | undefined) => {
   if (!date) return "";
   try {
@@ -159,6 +130,7 @@ const formatDate = (date: string | null | undefined) => {
   }
 };
 </script>
+
 
 <template>
   <section class="my-5" id="article-detail">
@@ -199,7 +171,7 @@ const formatDate = (date: string | null | undefined) => {
               <span class="article-category">{{ categoryTitle }}</span>
               <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
             </div>
-            <h1>{{ title }}</h1>
+            <h1>{{ article.title }}</h1>
             <div v-html="article.content" class="my-4"></div>
           </div>
         </div>

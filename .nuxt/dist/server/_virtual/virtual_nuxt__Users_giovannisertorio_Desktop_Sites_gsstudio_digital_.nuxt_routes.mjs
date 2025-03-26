@@ -7,11 +7,6 @@ const _routes = [
     component: () => import("../pages/blog.vue.mjs")
   },
   {
-    name: "test",
-    path: "/test",
-    component: () => import("../pages/test.vue.mjs")
-  },
-  {
     name: "index",
     path: "/",
     component: () => import("../pages/index.vue.mjs")
@@ -35,11 +30,6 @@ const _routes = [
     name: "servicos",
     path: "/servicos",
     component: () => import("../pages/servicos.vue.mjs")
-  },
-  {
-    name: "solucoes.bkop-gscrm",
-    path: "/solucoes.bkop/gscrm",
-    component: () => import("../pages/solucoes.bkop/gscrm.vue.mjs")
   },
   {
     name: "politica-de-privacidade",

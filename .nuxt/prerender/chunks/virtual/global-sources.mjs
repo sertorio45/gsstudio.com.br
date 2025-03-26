@@ -20,9 +20,6 @@ const sources = [
                 "loc": "/blog"
             },
             {
-                "loc": "/test"
-            },
-            {
                 "loc": "/"
             },
             {
@@ -33,9 +30,6 @@ const sources = [
             },
             {
                 "loc": "/servicos"
-            },
-            {
-                "loc": "/solucoes.bkop/gscrm"
             },
             {
                 "loc": "/politica-de-privacidade"

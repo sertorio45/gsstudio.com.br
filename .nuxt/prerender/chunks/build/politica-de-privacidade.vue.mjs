@@ -1,4 +1,4 @@
-import { _ as _export_sfc, u as useHead, d as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
+import { _ as _export_sfc, u as useHead, b as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
 import { withCtx, createTextVNode, useSSRContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { ssrRenderComponent } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';

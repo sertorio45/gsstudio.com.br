@@ -1,4 +1,4 @@
-import { _ as _export_sfc, N, u as useHead, d as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
+import { _ as _export_sfc, N, u as useHead, b as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
 import { defineComponent, ref, unref, withCtx, createVNode, createBlock, openBlock, Fragment, renderList, useSSRContext, computed, mergeProps, withAsyncContext, createTextVNode } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { ssrRenderComponent, ssrRenderList, ssrRenderAttr, ssrRenderAttrs, ssrRenderClass, ssrInterpolate, ssrIncludeBooleanAttr } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';
 import { Swiper, SwiperSlide } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/swiper/swiper-vue.mjs';

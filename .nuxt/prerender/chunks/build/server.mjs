@@ -414,11 +414,6 @@ const _routes = [
     component: () => import('./blog.vue.mjs')
   },
   {
-    name: "test",
-    path: "/test",
-    component: () => import('./test.vue.mjs')
-  },
-  {
     name: "index",
     path: "/",
     component: () => import('./index.vue.mjs')
@@ -442,11 +437,6 @@ const _routes = [
     name: "servicos",
     path: "/servicos",
     component: () => import('./servicos.vue.mjs')
-  },
-  {
-    name: "solucoes.bkop-gscrm",
-    path: "/solucoes.bkop/gscrm",
-    component: () => import('./gscrm.vue.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -2131,6 +2121,129 @@ _sfc_main$3.setup = (props, ctx) => {
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
 
+function defaultEstimatedProgress(duration, elapsed) {
+  const completionPercentage = elapsed / duration * 100;
+  return 2 / Math.PI * 100 * Math.atan(completionPercentage / 50);
+}
+function createLoadingIndicator(opts = {}) {
+  const { duration = 2e3, throttle = 200, hideDelay = 500, resetDelay = 400 } = opts;
+  opts.estimatedProgress || defaultEstimatedProgress;
+  const nuxtApp = useNuxtApp();
+  const progress = ref(0);
+  const isLoading = ref(false);
+  const error = ref(false);
+  const start = (opts2 = {}) => {
+    error.value = false;
+    set(0, opts2);
+  };
+  function set(at = 0, opts2 = {}) {
+    if (nuxtApp.isHydrating) {
+      return;
+    }
+    if (at >= 100) {
+      return finish({ force: opts2.force });
+    }
+    progress.value = at < 0 ? 0 : at;
+    opts2.force ? 0 : throttle;
+    {
+      isLoading.value = true;
+    }
+  }
+  function finish(opts2 = {}) {
+    progress.value = 100;
+    if (opts2.error) {
+      error.value = true;
+    }
+    if (opts2.force) {
+      progress.value = 0;
+      isLoading.value = false;
+    }
+  }
+  function clear() {
+  }
+  let _cleanup = () => {
+  };
+  return {
+    _cleanup,
+    progress: computed(() => progress.value),
+    isLoading: computed(() => isLoading.value),
+    error: computed(() => error.value),
+    start,
+    set,
+    finish,
+    clear
+  };
+}
+function useLoadingIndicator(opts = {}) {
+  const nuxtApp = useNuxtApp();
+  const indicator = nuxtApp._loadingIndicator || (nuxtApp._loadingIndicator = createLoadingIndicator(opts));
+  return indicator;
+}
+
+const __nuxt_component_1 = defineComponent({
+  name: "NuxtLoadingIndicator",
+  props: {
+    throttle: {
+      type: Number,
+      default: 200
+    },
+    duration: {
+      type: Number,
+      default: 2e3
+    },
+    height: {
+      type: Number,
+      default: 3
+    },
+    color: {
+      type: [String, Boolean],
+      default: "repeating-linear-gradient(to right,#00dc82 0%,#34cdfe 50%,#0047e1 100%)"
+    },
+    errorColor: {
+      type: String,
+      default: "repeating-linear-gradient(to right,#f87171 0%,#ef4444 100%)"
+    },
+    estimatedProgress: {
+      type: Function,
+      required: false
+    }
+  },
+  setup(props, { slots, expose }) {
+    const { progress, isLoading, error, start, finish, clear } = useLoadingIndicator({
+      duration: props.duration,
+      throttle: props.throttle,
+      estimatedProgress: props.estimatedProgress
+    });
+    expose({
+      progress,
+      isLoading,
+      error,
+      start,
+      finish,
+      clear
+    });
+    return () => h("div", {
+      class: "nuxt-loading-indicator",
+      style: {
+        position: "fixed",
+        top: 0,
+        right: 0,
+        left: 0,
+        pointerEvents: "none",
+        width: "auto",
+        height: `${props.height}px`,
+        opacity: isLoading.value ? 1 : 0,
+        background: error.value ? props.errorColor : props.color || void 0,
+        backgroundSize: `${100 / progress.value * 100}% auto`,
+        transform: `scaleX(${progress.value}%)`,
+        transformOrigin: "left",
+        transition: "transform 0.1s, height 0.4s, opacity 0.4s",
+        zIndex: 999999
+      }
+    }, slots);
+  }
+});
+
 const layouts = {
   default: defineAsyncComponent(() => import('./default.vue.mjs').then((m) => m.default || m))
 };
@@ -2156,7 +2269,7 @@ const nuxtLayoutProps = {
     default: null
   }
 };
-const __nuxt_component_1 = defineComponent({
+const __nuxt_component_2 = defineComponent({
   name: "NuxtLayout",
   inheritAttrs: false,
   props: nuxtLayoutProps,
@@ -2270,7 +2383,7 @@ const defineRouteProvider = (name = "RouteProvider") => defineComponent({
 });
 const RouteProvider = defineRouteProvider();
 
-const __nuxt_component_2 = defineComponent({
+const __nuxt_component_3 = defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -2361,10 +2474,12 @@ function normalizeSlot(slot, data) {
 const _sfc_main$2 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_CookieConsent = __nuxt_component_0;
-  const _component_NuxtLayout = __nuxt_component_1;
-  const _component_NuxtPage = __nuxt_component_2;
-  _push(`<div${ssrRenderAttrs(_attrs)}>`);
+  const _component_NuxtLoadingIndicator = __nuxt_component_1;
+  const _component_NuxtLayout = __nuxt_component_2;
+  const _component_NuxtPage = __nuxt_component_3;
+  _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_CookieConsent, null, null, _parent));
+  _push(ssrRenderComponent(_component_NuxtLoadingIndicator, null, null, _parent));
   _push(ssrRenderComponent(_component_NuxtLayout, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -2377,7 +2492,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
     }),
     _: 1
   }, _parent));
-  _push(`</div>`);
+  _push(`<!--]-->`);
 }
 const _sfc_setup$2 = _sfc_main$2.setup;
 _sfc_main$2.setup = (props, ctx) => {
@@ -2498,5 +2613,5 @@ const server = /*#__PURE__*/Object.freeze({
   default: entry$1
 });
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRoute as b, useRequestFetch as c, useSeoMeta as d, useNuxtApp as e, fetchDefaults as f, asyncDataDefaults as g, createError as h, injectHead as i, useRouter as j, useRuntimeConfig as k, useOgImageRuntimeConfig as l, createOgImageMeta as m, normaliseOptions as n, getOgImagePath as o, useRequestEvent as p, useSiteConfig as q, server as r, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, useNuxtApp as c, asyncDataDefaults as d, createError as e, useRoute as f, useRouter as g, useRuntimeConfig as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, useSiteConfig as o, fetchDefaults as p, useRequestFetch as q, server as r, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map

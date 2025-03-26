@@ -1,16 +1,19 @@
 import __nuxt_component_0 from "./components/CookieConsent.vue.mjs";
-import __nuxt_component_1 from "./node_modules/nuxt/dist/app/components/nuxt-layout.mjs";
-import __nuxt_component_2 from "./node_modules/nuxt/dist/pages/runtime/page.mjs";
+import __nuxt_component_1 from "./node_modules/nuxt/dist/app/components/nuxt-loading-indicator.mjs";
+import __nuxt_component_2 from "./node_modules/nuxt/dist/app/components/nuxt-layout.mjs";
+import __nuxt_component_3 from "./node_modules/nuxt/dist/pages/runtime/page.mjs";
 import { withCtx, createVNode, useSSRContext } from "vue";
-import { ssrRenderAttrs, ssrRenderComponent } from "vue/server-renderer";
+import { ssrRenderComponent } from "vue/server-renderer";
 import _export_sfc from "./_virtual/_plugin-vue_export-helper.mjs";
 const _sfc_main = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_CookieConsent = __nuxt_component_0;
-  const _component_NuxtLayout = __nuxt_component_1;
-  const _component_NuxtPage = __nuxt_component_2;
-  _push(`<div${ssrRenderAttrs(_attrs)}>`);
+  const _component_NuxtLoadingIndicator = __nuxt_component_1;
+  const _component_NuxtLayout = __nuxt_component_2;
+  const _component_NuxtPage = __nuxt_component_3;
+  _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_CookieConsent, null, null, _parent));
+  _push(ssrRenderComponent(_component_NuxtLoadingIndicator, null, null, _parent));
   _push(ssrRenderComponent(_component_NuxtLayout, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -23,7 +26,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
     }),
     _: 1
   }, _parent));
-  _push(`</div>`);
+  _push(`<!--]-->`);
 }
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {

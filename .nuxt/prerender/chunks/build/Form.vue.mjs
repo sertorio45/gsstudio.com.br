@@ -1,4 +1,4 @@
-import { e as useNuxtApp, a as __nuxt_component_0, _ as _export_sfc } from './server.mjs';
+import { c as useNuxtApp, a as __nuxt_component_0, _ as _export_sfc } from './server.mjs';
 import { defineComponent, ref, resolveDirective, mergeProps, withCtx, createTextVNode, useSSRContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { ssrRenderAttrs, ssrRenderAttr, ssrRenderList, ssrInterpolate, ssrIncludeBooleanAttr, ssrLooseContain, ssrLooseEqual, ssrGetDirectiveProps, ssrGetDynamicModelProps, ssrRenderComponent, ssrRenderClass } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';
 

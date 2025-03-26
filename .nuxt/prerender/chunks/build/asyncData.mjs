@@ -1,5 +1,5 @@
 import { ref, shallowRef, toRef, getCurrentInstance, onServerPrefetch, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
-import { e as useNuxtApp, g as asyncDataDefaults, h as createError } from './server.mjs';
+import { c as useNuxtApp, d as asyncDataDefaults, e as createError } from './server.mjs';
 
 const isDefer = (dedupe) => dedupe === "defer" || dedupe === false;
 function useAsyncData(...args) {
