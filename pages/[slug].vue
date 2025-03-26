@@ -33,9 +33,9 @@ const { data: article, pending, refresh } = useAsyncData(
   }
 );
 
-const title = computed(() => article.value?.title ?? "");
-const description = computed(() => article.value?.meta_description ?? "");
-const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
+// const title = computed(() => article.value?.title ?? "");
+// const description = computed(() => article.value?.meta_description ?? "");
+// const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
 
 useHead({
   meta: [
@@ -47,16 +47,17 @@ useHead({
 });
 
 useSeoMeta({
-  title,
-  description,
+  title: article.value?.title ?? "",
+  description: article.value?.meta_description ?? "",
+  robots: "index, follow",
   ogLocale: "pt-br",
-  ogImageAlt: title,
-  ogTitle: title,
+  ogImageAlt: article.value?.title ?? "",
+  ogTitle: article.value?.title ?? "",
   ogType: "article",
   ogUrl: `https://gsstudio.com.br/${route.params.slug}`,
-  ogDescription: description,
-  twitterTitle: title,
-  twitterDescription: description,
+  ogDescription: article.value?.meta_description ?? "",
+  twitterTitle: article.value?.title ?? "",
+  twitterDescription: article.value?.meta_description ?? "",
   twitterCard: "summary",
   fbAppId: "603230818880308",
 });
@@ -168,7 +169,7 @@ const formatDate = (date: string | null | undefined) => {
 
           <div v-else-if="article" class="content_blog">
             <div class="mb-3 mx-0">
-              <span class="article-category">{{ categoryTitle }}</span>
+              <span class="article-category">{{ article.value?.categorie?.title_categorie }}</span>
               <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
             </div>
             <h1>{{ article.title }}</h1>
