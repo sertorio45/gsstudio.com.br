@@ -162,7 +162,7 @@
         "../node_modules/nuxt-og-image/dist/runtime/shared"
       ],
       "#mail": [
-        "./nuxt-mail"
+        "file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
       "~web-vitals-provider": [
         "../node_modules/@nuxtjs/web-vitals/dist/runtime/providers/ga"
@@ -177,7 +177,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/14129fdf-7529-4d5f-b831-597db775c79d.json"
+        "./manifest/meta/dev.json"
       ],
       "#components": [
         "./components"

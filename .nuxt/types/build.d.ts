@@ -15,6 +15,8 @@ declare module "#build/image-options.mjs";
 declare module "#build/delay-hydration.mjs";
 declare module "#build/nuxt-og-image/components.mjs";
 declare module "#build/web-vitals-config.mjs";
+declare module "#build/devtools/settings.mjs";
+declare module "#build/runtime.vue-devtools-client.p3YU0-A173H2KvjUOvpATzLPu7jFYbhZribHG7XIDrc.js";
 declare module "#build/routes.mjs";
 declare module "#build/pages.mjs";
 declare module "#build/router.options.mjs";

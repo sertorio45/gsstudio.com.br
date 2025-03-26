@@ -1,6 +1,71 @@
+<template>
+  <Head>
+    <Title>{{ article?.title }}</Title>
+    <Meta name="description" :content="article?.meta_description" />
+  </Head>
+  <section class="my-5" id="article-detail">
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
+          <div class="back-fixed">
+            <button @click="goBack" class="btn btn-primary-border">Voltar</button>
+            <div class="social-share d-flex">
+              <a
+                v-for="(network, index) in socialNetworks"
+                :key="index"
+                :href="network.url"
+                target="_blank"
+                class="social-icon"
+                :title="network.name"
+                @click.prevent="share(network)"
+              >
+                <i :class="network.icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-7 col-md-12 col-lg-9">
+          <!-- 11. Melhorar estados de carregamento e erro -->
+          <div v-if="pending" class="loading-state">
+            <div class="d-flex mb-3">
+              <div class="skeleton skeleton-category me-2"></div>
+              <div class="skeleton skeleton-date"></div>
+            </div>
+            <div class="skeleton skeleton-title mb-3"></div>
+            <div class="skeleton skeleton-content mb-3"></div>
+          </div>
+
+          <div v-else-if="article" class="content_blog">
+            <div class="mb-3 mx-0">
+              <span class="article-category">{{ categoryTitle }}</span>
+              <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
+            </div>
+            <h1>{{ article.title }}</h1>
+            <div v-html="article.content" class="my-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Section de contato condicional -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5">
+          <h1>Fale agora conosco</h1>
+          <p>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <Form />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
-import { useRoute, useRouter, useAsyncData, useSeoMeta, useHead } from "#app";
 
 const route = useRoute();
 const router = useRouter();
@@ -35,7 +100,7 @@ const { data: article, pending, refresh } = useAsyncData(
 
 // const title = computed(() => article.value?.title ?? "");
 // const description = computed(() => article.value?.meta_description ?? "");
-// const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
+const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
 
 useHead({
   meta: [
@@ -131,70 +196,6 @@ const formatDate = (date: string | null | undefined) => {
   }
 };
 </script>
-
-
-<template>
-  <section class="my-5" id="article-detail">
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
-          <div class="back-fixed">
-            <button @click="goBack" class="btn btn-primary-border">Voltar</button>
-            <div class="social-share d-flex">
-              <a
-                v-for="(network, index) in socialNetworks"
-                :key="index"
-                :href="network.url"
-                target="_blank"
-                class="social-icon"
-                :title="network.name"
-                @click.prevent="share(network)"
-              >
-                <i :class="network.icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-7 col-md-12 col-lg-9">
-          <!-- 11. Melhorar estados de carregamento e erro -->
-          <div v-if="pending" class="loading-state">
-            <div class="d-flex mb-3">
-              <div class="skeleton skeleton-category me-2"></div>
-              <div class="skeleton skeleton-date"></div>
-            </div>
-            <div class="skeleton skeleton-title mb-3"></div>
-            <div class="skeleton skeleton-content mb-3"></div>
-          </div>
-
-          <div v-else-if="article" class="content_blog">
-            <div class="mb-3 mx-0">
-              <span class="article-category">{{ article.value?.categorie?.title_categorie }}</span>
-              <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
-            </div>
-            <h1>{{ article.title }}</h1>
-            <div v-html="article.content" class="my-4"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12. Section de contato condicional -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5">
-          <h1>Fale agora conosco</h1>
-          <p>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <Form />
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style scoped>
 

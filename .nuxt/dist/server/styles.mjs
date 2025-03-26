@@ -14,6 +14,6 @@ export default {
   "components/Form.vue": () => import('./_nuxt/Form-styles.DgrS8xO4.mjs').then(interopDefault),
   "components/Header.vue": () => import('./_nuxt/Header-styles.DbbiTRda.mjs').then(interopDefault),
   "components/Footer.vue": () => import('./_nuxt/Footer-styles.CaWuhLip.mjs').then(interopDefault),
-  "components/CarouselParceiros.vue": () => import('./_nuxt/CarouselParceiros-styles.CzcUzBSC.mjs').then(interopDefault),
-  "components/Portifolio.vue": () => import('./_nuxt/Portifolio-styles.CNjlnkRz.mjs').then(interopDefault)
+  "components/Portifolio.vue": () => import('./_nuxt/Portifolio-styles.CNjlnkRz.mjs').then(interopDefault),
+  "components/CarouselParceiros.vue": () => import('./_nuxt/CarouselParceiros-styles.CzcUzBSC.mjs').then(interopDefault)
 }

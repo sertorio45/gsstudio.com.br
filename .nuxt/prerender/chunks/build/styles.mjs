@@ -14,8 +14,8 @@ const styles = {
   "components/Form.vue": () => import('./Form-styles.DgrS8xO4.mjs').then(interopDefault),
   "components/Header.vue": () => import('./Header-styles.DbbiTRda.mjs').then(interopDefault),
   "components/Footer.vue": () => import('./Footer-styles.CaWuhLip.mjs').then(interopDefault),
-  "components/CarouselParceiros.vue": () => import('./CarouselParceiros-styles.CzcUzBSC.mjs').then(interopDefault),
-  "components/Portifolio.vue": () => import('./Portifolio-styles.CNjlnkRz.mjs').then(interopDefault)
+  "components/Portifolio.vue": () => import('./Portifolio-styles.CNjlnkRz.mjs').then(interopDefault),
+  "components/CarouselParceiros.vue": () => import('./CarouselParceiros-styles.CzcUzBSC.mjs').then(interopDefault)
 };
 
 export { styles as default };

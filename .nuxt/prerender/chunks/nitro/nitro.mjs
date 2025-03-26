@@ -649,7 +649,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "14129fdf-7529-4d5f-b831-597db775c79d",
+    "buildId": "39274ff9-2c92-447f-8acf-2fa330cf56ee",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -668,7 +668,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-26T23:46:23.813Z"
+          "X-Sitemap-Prerendered": "2025-03-26T23:48:56.281Z"
         },
         "swr": 600,
         "cache": {
@@ -2568,14 +2568,14 @@ const assets = {
   "/robots.txt": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
-    "mtime": "2025-03-26T23:46:32.777Z",
+    "mtime": "2025-03-26T23:49:04.390Z",
     "size": 70,
     "path": "../../.output/public/robots.txt"
   },
   "/__sitemap__/style.xsl": {
     "type": "application/xml",
     "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2025-03-26T23:46:32.777Z",
+    "mtime": "2025-03-26T23:49:04.390Z",
     "size": 5967,
     "path": "../../.output/public/__sitemap__/style.xsl"
   }

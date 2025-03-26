@@ -1,5 +1,5 @@
 import Form from "../components/Form.vue.mjs";
-import { defineComponent, computed, ref, unref } from "vue";
+import { defineComponent, ref, unref } from "vue";
 import { ssrRenderList, ssrRenderAttr, ssrRenderClass, ssrInterpolate, ssrRenderComponent } from "vue/server-renderer";
 import "/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs";
 import { useHead, useSeoMeta } from "../node_modules/nuxt/dist/head/runtime/composables/v3.mjs";
@@ -13,12 +13,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "[slug]",
   __ssrInlineRender: true,
   setup(__props) {
+    var _a, _b, _c, _d, _e, _f, _g;
     const route = useRoute();
     useRouter();
     const { data: article, pending, refresh } = useAsyncData(
       `article-${route.params.slug}`,
       async () => {
-        var _a;
+        var _a2;
         const slug = route.params.slug;
         if (!slug) return null;
         const response = await $fetch(
@@ -33,7 +34,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }
           }
         );
-        return ((_a = response == null ? void 0 : response.data) == null ? void 0 : _a[0]) || null;
+        return ((_a2 = response == null ? void 0 : response.data) == null ? void 0 : _a2[0]) || null;
       },
       {
         server: true,
@@ -41,18 +42,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         default: () => null
       }
     );
-    const title = computed(() => {
-      var _a;
-      return ((_a = article.value) == null ? void 0 : _a.title) ?? "";
-    });
-    const description = computed(() => {
-      var _a;
-      return ((_a = article.value) == null ? void 0 : _a.meta_description) ?? "";
-    });
-    const categoryTitle = computed(() => {
-      var _a, _b;
-      return ((_b = (_a = article.value) == null ? void 0 : _a.categorie) == null ? void 0 : _b.title_categorie) ?? "";
-    });
     useHead({
       meta: [
         {
@@ -62,17 +51,17 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       ]
     });
     useSeoMeta({
-      title,
-      description,
+      title: ((_a = article.value) == null ? void 0 : _a.title) ?? "",
+      description: ((_b = article.value) == null ? void 0 : _b.meta_description) ?? "",
       robots: "index, follow",
       ogLocale: "pt-br",
-      ogImageAlt: title,
-      ogTitle: title,
+      ogImageAlt: ((_c = article.value) == null ? void 0 : _c.title) ?? "",
+      ogTitle: ((_d = article.value) == null ? void 0 : _d.title) ?? "",
       ogType: "article",
       ogUrl: `https://gsstudio.com.br/${route.params.slug}`,
-      ogDescription: description,
-      twitterTitle: title,
-      twitterDescription: description,
+      ogDescription: ((_e = article.value) == null ? void 0 : _e.meta_description) ?? "",
+      twitterTitle: ((_f = article.value) == null ? void 0 : _f.title) ?? "",
+      twitterDescription: ((_g = article.value) == null ? void 0 : _g.meta_description) ?? "",
       twitterCard: "summary",
       fbAppId: "603230818880308"
     });
@@ -91,20 +80,21 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
+      var _a2, _b2;
       const _component_Form = Form;
-      _push(`<!--[--><section class="my-5" id="article-detail" data-v-fddc78ab><div class="container my-5" data-v-fddc78ab><div class="row" data-v-fddc78ab><div class="col-lg-2 col-sm-12 col-md-12 mb-4" data-v-fddc78ab><div class="back-fixed" data-v-fddc78ab><button class="btn btn-primary-border" data-v-fddc78ab>Voltar</button><div class="social-share d-flex" data-v-fddc78ab><!--[-->`);
+      _push(`<!--[--><section class="my-5" id="article-detail" data-v-5a14f090><div class="container my-5" data-v-5a14f090><div class="row" data-v-5a14f090><div class="col-lg-2 col-sm-12 col-md-12 mb-4" data-v-5a14f090><div class="back-fixed" data-v-5a14f090><button class="btn btn-primary-border" data-v-5a14f090>Voltar</button><div class="social-share d-flex" data-v-5a14f090><!--[-->`);
       ssrRenderList(socialNetworks.value, (network, index) => {
-        _push(`<a${ssrRenderAttr("href", network.url)} target="_blank" class="social-icon"${ssrRenderAttr("title", network.name)} data-v-fddc78ab><i class="${ssrRenderClass(network.icon)}" data-v-fddc78ab></i></a>`);
+        _push(`<a${ssrRenderAttr("href", network.url)} target="_blank" class="social-icon"${ssrRenderAttr("title", network.name)} data-v-5a14f090><i class="${ssrRenderClass(network.icon)}" data-v-5a14f090></i></a>`);
       });
-      _push(`<!--]--></div></div></div><div class="col-sm-7 col-md-12 col-lg-9" data-v-fddc78ab>`);
+      _push(`<!--]--></div></div></div><div class="col-sm-7 col-md-12 col-lg-9" data-v-5a14f090>`);
       if (unref(pending)) {
-        _push(`<div class="loading-state" data-v-fddc78ab><div class="d-flex mb-3" data-v-fddc78ab><div class="skeleton skeleton-category me-2" data-v-fddc78ab></div><div class="skeleton skeleton-date" data-v-fddc78ab></div></div><div class="skeleton skeleton-title mb-3" data-v-fddc78ab></div><div class="skeleton skeleton-content mb-3" data-v-fddc78ab></div></div>`);
+        _push(`<div class="loading-state" data-v-5a14f090><div class="d-flex mb-3" data-v-5a14f090><div class="skeleton skeleton-category me-2" data-v-5a14f090></div><div class="skeleton skeleton-date" data-v-5a14f090></div></div><div class="skeleton skeleton-title mb-3" data-v-5a14f090></div><div class="skeleton skeleton-content mb-3" data-v-5a14f090></div></div>`);
       } else if (unref(article)) {
-        _push(`<div class="content_blog" data-v-fddc78ab><div class="mb-3 mx-0" data-v-fddc78ab><span class="article-category" data-v-fddc78ab>${ssrInterpolate(categoryTitle.value)}</span><span class="mx-3 publish_date" data-v-fddc78ab>${formatDate(unref(article).date_created) ?? ""}</span></div><h1 data-v-fddc78ab>${ssrInterpolate(unref(article).title)}</h1><div class="my-4" data-v-fddc78ab>${unref(article).content ?? ""}</div></div>`);
+        _push(`<div class="content_blog" data-v-5a14f090><div class="mb-3 mx-0" data-v-5a14f090><span class="article-category" data-v-5a14f090>${ssrInterpolate((_b2 = (_a2 = unref(article).value) == null ? void 0 : _a2.categorie) == null ? void 0 : _b2.title_categorie)}</span><span class="mx-3 publish_date" data-v-5a14f090>${formatDate(unref(article).date_created) ?? ""}</span></div><h1 data-v-5a14f090>${ssrInterpolate(unref(article).title)}</h1><div class="my-4" data-v-5a14f090>${unref(article).content ?? ""}</div></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div></div></div></section><section data-v-fddc78ab><div class="container" data-v-fddc78ab><div class="row" data-v-fddc78ab><div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5" data-v-fddc78ab><h1 data-v-fddc78ab>Fale agora conosco</h1><p data-v-fddc78ab>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p></div><div class="col-md-6 col-sm-12" data-v-fddc78ab>`);
+      _push(`</div></div></div></section><section data-v-5a14f090><div class="container" data-v-5a14f090><div class="row" data-v-5a14f090><div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5" data-v-5a14f090><h1 data-v-5a14f090>Fale agora conosco</h1><p data-v-5a14f090>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p></div><div class="col-md-6 col-sm-12" data-v-5a14f090>`);
       _push(ssrRenderComponent(_component_Form, null, null, _parent));
       _push(`</div></div></div></section><!--]-->`);
     };
