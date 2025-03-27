@@ -1,7 +1,7 @@
 import { TemplateParamsPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/plugins.mjs';
 import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/defu/dist/defu.mjs';
 import { appendHeader } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
-import { h as useRuntimeConfig, c as useNuxtApp, f as useRoute, i as injectHead, j as useOgImageRuntimeConfig, n as normaliseOptions, s as separateProps, k as createOgImageMeta, l as getOgImagePath, m as useRequestEvent } from './server.mjs';
+import { f as useRuntimeConfig, c as useNuxtApp, g as useRoute, i as injectHead, h as useOgImageRuntimeConfig, n as normaliseOptions, s as separateProps, j as createOgImageMeta, k as getOgImagePath, l as useRequestEvent } from './server.mjs';
 import { ref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/radix3/dist/index.mjs';
 import { withoutTrailingSlash, withoutBase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';

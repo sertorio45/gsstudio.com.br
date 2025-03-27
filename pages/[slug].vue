@@ -67,6 +67,11 @@
 
 <script setup lang="ts">
 
+definePageMeta({
+  // ajuda a garantir geração estática se possível
+  prerender: true,
+});
+
 const route = useRoute();
 const router = useRouter();
 

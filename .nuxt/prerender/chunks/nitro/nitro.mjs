@@ -1,7 +1,7 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send as send$1, getRequestHeaders, setResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, appendResponseHeader, removeResponseHeader, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, hasProtocol, withHttps, withoutTrailingSlash, joinRelativeURL, withoutProtocol, withTrailingSlash, withLeadingSlash, withBase, withoutLeadingSlash, decodePath, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
-import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
+import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
 import { createFetch, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ofetch/dist/node.mjs';
 import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/node-mock-http/dist/index.mjs';
 import { createStorage, defineDriver, prefixStorage, normalizeKey } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
@@ -649,7 +649,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "39274ff9-2c92-447f-8acf-2fa330cf56ee",
+    "buildId": "0138592b-bdc1-4093-b928-232d532ad78b",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -665,11 +665,6 @@ const _inlineRuntimeConfig = {
         }
       },
       "/sitemap.xml": {
-        "headers": {
-          "Content-Type": "text/xml; charset=UTF-8",
-          "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-03-26T23:48:56.281Z"
-        },
         "swr": 600,
         "cache": {
           "swr": true,
@@ -2552,32 +2547,356 @@ const _FFrZpW5jf8Y8ka4BFQBUYJkiroiD_ny9cAkOQeZW3xQ = defineNitroPlugin(async (ni
   });
 });
 
-const _B5wLkG0OAWzqqxM4sPa2MI8Q80a9uDL9bhGZthJa37M = defineNitroPlugin((nitro) => {
-  createDebugger(nitro.hooks, { tag: "nitro-runtime" });
-});
-
 const plugins = [
   _vju769aFXGim609QQenAxKhCRXyKl7NmVegVDS8kh08,
 _7lk8txkXM6EHp1qM9XX22iAhJbMrSiopRAGpqzm_bQ,
 _ZGMTFHeoKCSLkQdsopWniSND6Us1aZrLDxhY9gUupk,
-_FFrZpW5jf8Y8ka4BFQBUYJkiroiD_ny9cAkOQeZW3xQ,
-_B5wLkG0OAWzqqxM4sPa2MI8Q80a9uDL9bhGZthJa37M
+_FFrZpW5jf8Y8ka4BFQBUYJkiroiD_ny9cAkOQeZW3xQ
 ];
 
 const assets = {
-  "/robots.txt": {
-    "type": "text/plain; charset=utf-8",
-    "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
-    "mtime": "2025-03-26T23:49:04.390Z",
-    "size": 70,
-    "path": "../../.output/public/robots.txt"
+  "/_payload.json": {
+    "type": "application/json",
+    "etag": "\"686f-ymw6sBTRZyxTveCslLGAyGQkGDs\"",
+    "mtime": "2025-03-27T00:50:11.421Z",
+    "size": 26735,
+    "path": "../../.output/public/_payload.json"
   },
-  "/__sitemap__/style.xsl": {
-    "type": "application/xml",
-    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2025-03-26T23:49:04.390Z",
-    "size": 5967,
-    "path": "../../.output/public/__sitemap__/style.xsl"
+  "/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"148241-PoSlQoTTL7busomFtLFMmeUdgJs\"",
+    "mtime": "2025-03-27T00:50:11.170Z",
+    "size": 1344065,
+    "path": "../../.output/public/index.html"
+  },
+  "/:slug/_payload.json": {
+    "type": "application/json",
+    "etag": "\"5b-t7GYbkA4w35PS+kXLB2aAzFoA2M\"",
+    "mtime": "2025-03-27T00:50:10.801Z",
+    "size": 91,
+    "path": "../../.output/public/:slug/_payload.json"
+  },
+  "/:slug/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"14347a-bsq0jDIxYP7JE2ns+QHn3IAv6ZQ\"",
+    "mtime": "2025-03-27T00:50:10.587Z",
+    "size": 1324154,
+    "path": "../../.output/public/:slug/index.html"
+  },
+  "/blog/_payload.json": {
+    "type": "application/json",
+    "etag": "\"6892-ut2wQrF8mjjlg9T+pIfSfHx42p0\"",
+    "mtime": "2025-03-27T00:50:11.503Z",
+    "size": 26770,
+    "path": "../../.output/public/blog/_payload.json"
+  },
+  "/blog/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"1421b6-i6Qkkcvesdktvayd7sVI1bXtYZg\"",
+    "mtime": "2025-03-27T00:50:11.420Z",
+    "size": 1319350,
+    "path": "../../.output/public/blog/index.html"
+  },
+  "/branding-nao-e-so-logo/_payload.json": {
+    "type": "application/json",
+    "etag": "\"199d-uMoPipuxrqcxbQSyCj68VwcwIDk\"",
+    "mtime": "2025-03-27T00:50:10.805Z",
+    "size": 6557,
+    "path": "../../.output/public/branding-nao-e-so-logo/_payload.json"
+  },
+  "/branding-nao-e-so-logo/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"144b60-WZitbX71jaa7Ael4Ep0tZdV4z0s\"",
+    "mtime": "2025-03-27T00:50:10.587Z",
+    "size": 1330016,
+    "path": "../../.output/public/branding-nao-e-so-logo/index.html"
+  },
+  "/contato/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-NHalEUP1b6kaLvntOEGvuy0g/w8\"",
+    "mtime": "2025-03-27T00:50:11.452Z",
+    "size": 69,
+    "path": "../../.output/public/contato/_payload.json"
+  },
+  "/contato/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"143ac8-bNZjjZgJQD5Oo4gEesmubHqXf6c\"",
+    "mtime": "2025-03-27T00:50:11.336Z",
+    "size": 1325768,
+    "path": "../../.output/public/contato/index.html"
+  },
+  "/politica-de-privacidade/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-NHalEUP1b6kaLvntOEGvuy0g/w8\"",
+    "mtime": "2025-03-27T00:50:11.336Z",
+    "size": 69,
+    "path": "../../.output/public/politica-de-privacidade/_payload.json"
+  },
+  "/politica-de-privacidade/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"142714-siKFNN3NprH2y501aakoxBtWIds\"",
+    "mtime": "2025-03-27T00:50:11.170Z",
+    "size": 1320724,
+    "path": "../../.output/public/politica-de-privacidade/index.html"
+  },
+  "/porque-seu-site-precisa-de-seo/_payload.json": {
+    "type": "application/json",
+    "etag": "\"1a21-pYyCEbb6gTCw4IolC39yKdgOGVg\"",
+    "mtime": "2025-03-27T00:50:11.000Z",
+    "size": 6689,
+    "path": "../../.output/public/porque-seu-site-precisa-de-seo/_payload.json"
+  },
+  "/porque-seu-site-precisa-de-seo/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"144c4e-1w8JRusuvQMtyIcHKwZJXkWthHI\"",
+    "mtime": "2025-03-27T00:50:10.811Z",
+    "size": 1330254,
+    "path": "../../.output/public/porque-seu-site-precisa-de-seo/index.html"
+  },
+  "/servicos/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-NHalEUP1b6kaLvntOEGvuy0g/w8\"",
+    "mtime": "2025-03-27T00:50:11.421Z",
+    "size": 69,
+    "path": "../../.output/public/servicos/_payload.json"
+  },
+  "/servicos/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"1440f6-xLcWTTnUJTIJPz9tTnEpXFHIvlY\"",
+    "mtime": "2025-03-27T00:50:11.306Z",
+    "size": 1327350,
+    "path": "../../.output/public/servicos/index.html"
+  },
+  "/sobre/_payload.json": {
+    "type": "application/json",
+    "etag": "\"45-NHalEUP1b6kaLvntOEGvuy0g/w8\"",
+    "mtime": "2025-03-27T00:50:11.421Z",
+    "size": 69,
+    "path": "../../.output/public/sobre/_payload.json"
+  },
+  "/sobre/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"1442ad-XITpUY1oE5aLgxuUx7oDDS/fxSE\"",
+    "mtime": "2025-03-27T00:50:11.306Z",
+    "size": 1327789,
+    "path": "../../.output/public/sobre/index.html"
+  },
+  "/trafego-pago-o-segredo-para-crescer-rapido-no-digital/_payload.json": {
+    "type": "application/json",
+    "etag": "\"35f2-CbmomDiB4jiZdmMGSeo9jjIJ3lY\"",
+    "mtime": "2025-03-27T00:50:11.103Z",
+    "size": 13810,
+    "path": "../../.output/public/trafego-pago-o-segredo-para-crescer-rapido-no-digital/_payload.json"
+  },
+  "/trafego-pago-o-segredo-para-crescer-rapido-no-digital/index.html": {
+    "type": "text/html; charset=utf-8",
+    "etag": "\"146469-jFLseeq9PoU/0m9HEaTdtxNmbn8\"",
+    "mtime": "2025-03-27T00:50:10.824Z",
+    "size": 1336425,
+    "path": "../../.output/public/trafego-pago-o-segredo-para-crescer-rapido-no-digital/index.html"
+  },
+  "/_ipx/q_50&blur_3&s_15x15/logotipo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"19ae-42gYdEdMaj2StKOD6zad/BQL1tw\"",
+    "mtime": "2025-03-27T00:50:10.846Z",
+    "size": 6574,
+    "path": "../../.output/public/_ipx/q_50&blur_3&s_15x15/logotipo.svg"
+  },
+  "/_ipx/w_180&q_75/logotipo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"19ae-42gYdEdMaj2StKOD6zad/BQL1tw\"",
+    "mtime": "2025-03-27T00:50:10.846Z",
+    "size": 6574,
+    "path": "../../.output/public/_ipx/w_180&q_75/logotipo.svg"
+  },
+  "/_ipx/w_360&q_75/logotipo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"19ae-42gYdEdMaj2StKOD6zad/BQL1tw\"",
+    "mtime": "2025-03-27T00:50:10.871Z",
+    "size": 6574,
+    "path": "../../.output/public/_ipx/w_360&q_75/logotipo.svg"
+  },
+  "/_ipx/q_75/icons/icon-design.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"619-dtaEyLbKMEFS3Gf2bzPL3k6eyNU\"",
+    "mtime": "2025-03-27T00:50:11.504Z",
+    "size": 1561,
+    "path": "../../.output/public/_ipx/q_75/icons/icon-design.svg"
+  },
+  "/_ipx/q_75/icons/icon-marketing.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"799-77gNobb592PAK/F67DmtGvI2kio\"",
+    "mtime": "2025-03-27T00:50:11.504Z",
+    "size": 1945,
+    "path": "../../.output/public/_ipx/q_75/icons/icon-marketing.svg"
+  },
+  "/_ipx/q_75/icons/icon-tecnologia.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"68d-K+VthVckouIRhrsjceMd0gp7TFs\"",
+    "mtime": "2025-03-27T00:50:11.504Z",
+    "size": 1677,
+    "path": "../../.output/public/_ipx/q_75/icons/icon-tecnologia.svg"
+  },
+  "/_ipx/q_75&blur_5&s_500x500/img/ceo.webp": {
+    "type": "image/webp",
+    "etag": "\"c38-NGTXXHSMY1bSa9bz8xG3q1lehSM\"",
+    "mtime": "2025-03-27T00:50:11.549Z",
+    "size": 3128,
+    "path": "../../.output/public/_ipx/q_75&blur_5&s_500x500/img/ceo.webp"
+  },
+  "/_ipx/q_80&s_1000x1000/img/ceo.webp": {
+    "type": "image/webp",
+    "etag": "\"7808-tj7fdX2AvTCwxy27INiHrs/93VU\"",
+    "mtime": "2025-03-27T00:50:11.593Z",
+    "size": 30728,
+    "path": "../../.output/public/_ipx/q_80&s_1000x1000/img/ceo.webp"
+  },
+  "/_ipx/q_80&s_500x500/img/ceo.webp": {
+    "type": "image/webp",
+    "etag": "\"289c-XRqdNhzLdey7bzse+zPHshQp7MA\"",
+    "mtime": "2025-03-27T00:50:11.551Z",
+    "size": 10396,
+    "path": "../../.output/public/_ipx/q_80&s_500x500/img/ceo.webp"
+  },
+  "/_ipx/q_75/icons/servicos/branding.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
+    "mtime": "2025-03-27T00:50:11.504Z",
+    "size": 1220,
+    "path": "../../.output/public/_ipx/q_75/icons/servicos/branding.svg"
+  },
+  "/_ipx/q_75/icons/servicos/gestao_de_conteudo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
+    "mtime": "2025-03-27T00:50:11.503Z",
+    "size": 1174,
+    "path": "../../.output/public/_ipx/q_75/icons/servicos/gestao_de_conteudo.svg"
+  },
+  "/_ipx/q_75/icons/servicos/lojas_virtuais.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
+    "mtime": "2025-03-27T00:50:11.504Z",
+    "size": 1159,
+    "path": "../../.output/public/_ipx/q_75/icons/servicos/lojas_virtuais.svg"
+  },
+  "/_ipx/q_75/icons/servicos/sites.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
+    "mtime": "2025-03-27T00:50:11.508Z",
+    "size": 2086,
+    "path": "../../.output/public/_ipx/q_75/icons/servicos/sites.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/branding.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
+    "mtime": "2025-03-27T00:50:11.505Z",
+    "size": 1220,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/branding.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/comunicacao_visual.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"445-4rDWmznFE0BLoeMruf2JQtERhjw\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1093,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/comunicacao_visual.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/gestao_de_conteudo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1174,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/gestao_de_conteudo.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/lojas_virtuais.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1159,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/lojas_virtuais.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/otimizacao_seo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3f8-WENYWStYyCBlz2CD574qS8sdIXo\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1016,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/otimizacao_seo.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/producao_de_video.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3d7-5uaqyY4KzAXMbKpwslCwjyo/Fk8\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 983,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/producao_de_video.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/sites.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
+    "mtime": "2025-03-27T00:50:11.508Z",
+    "size": 2086,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/sites.svg"
+  },
+  "/_ipx/w_100&q_75/icons/servicos/trafego_pago.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"42a-bHBYzFG5ucHp3k6L44JCWOL2pvI\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1066,
+    "path": "../../.output/public/_ipx/w_100&q_75/icons/servicos/trafego_pago.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/branding.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"4c4-k9UaxLDDFbAh9YH6Oh2+YjQifCs\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1220,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/branding.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/comunicacao_visual.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"445-4rDWmznFE0BLoeMruf2JQtERhjw\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1093,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/comunicacao_visual.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/gestao_de_conteudo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"496-6CNyzE0kVFYWhj3wAWNL8ZZzJW8\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1174,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/gestao_de_conteudo.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/lojas_virtuais.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"487-QsJeVjJqw6p4bDxYBZLziRAx0A4\"",
+    "mtime": "2025-03-27T00:50:11.505Z",
+    "size": 1159,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/lojas_virtuais.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/otimizacao_seo.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3f8-WENYWStYyCBlz2CD574qS8sdIXo\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1016,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/otimizacao_seo.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/producao_de_video.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"3d7-5uaqyY4KzAXMbKpwslCwjyo/Fk8\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 983,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/producao_de_video.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/sites.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"826-H86Sd5KGZZZLbRbZNlNrz1l5EtQ\"",
+    "mtime": "2025-03-27T00:50:11.508Z",
+    "size": 2086,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/sites.svg"
+  },
+  "/_ipx/w_200&q_75/icons/servicos/trafego_pago.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"42a-bHBYzFG5ucHp3k6L44JCWOL2pvI\"",
+    "mtime": "2025-03-27T00:50:11.507Z",
+    "size": 1066,
+    "path": "../../.output/public/_ipx/w_200&q_75/icons/servicos/trafego_pago.svg"
   }
 };
 

@@ -47,12 +47,12 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
-    
-    preset: 'node-server',
-    debug: true,
     prerender: {
       crawlLinks: true,
-      routes: ['/sitemap.xml', '/robots.txt'],
+      routes: [
+        '/',
+        '/:slug',
+      ],
     },
   },
 
@@ -68,6 +68,14 @@ export default defineNuxtConfig({
         }
       }
     },
+    'nitro:config': async (nitroConfig) => {
+    const res = await fetch('https://painel.gsadmin.app/items/articles?fields=slug');
+    const json = await res.json();
+    const routes = json?.data?.map((item: any) => `/${item.slug}`) ?? [];
+
+    nitroConfig.prerender = nitroConfig.prerender || {};
+    nitroConfig.prerender.routes = [...(nitroConfig.prerender.routes || []), ...routes];
+  },
   },
 
   app: {

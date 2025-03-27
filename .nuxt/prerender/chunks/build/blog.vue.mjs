@@ -1,4 +1,4 @@
-import { p as fetchDefaults, q as useRequestFetch, u as useHead, b as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
+import { o as fetchDefaults, p as useRequestFetch, u as useHead, b as useSeoMeta, a as __nuxt_component_0 } from './server.mjs';
 import { _ as _sfc_main$1 } from './Icon.vue.mjs';
 import { computed, toValue, reactive, defineComponent, withCtx, createTextVNode, unref, useSSRContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { ssrRenderComponent, ssrRenderList, ssrInterpolate, ssrRenderAttr, ssrIncludeBooleanAttr } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';

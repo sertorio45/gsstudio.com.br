@@ -1,3 +1,4 @@
+import __nuxt_page_meta from "../pages/_slug_.vue2.mjs";
 function handleHotUpdate(_router, _generateRoutes) {
 }
 const _routes = [
@@ -19,6 +20,7 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
+    meta: __nuxt_page_meta || {},
     component: () => import("../pages/_slug_.vue.mjs")
   },
   {

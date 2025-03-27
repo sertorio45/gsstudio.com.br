@@ -405,6 +405,11 @@ function encodeURL(location2, isExternalHost = false) {
   return url.toString();
 }
 
+const __nuxt_page_meta = {
+  // ajuda a garantir geração estática se possível
+  prerender: true
+};
+
 function handleHotUpdate(_router, _generateRoutes) {
 }
 const _routes = [
@@ -426,6 +431,7 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
+    meta: __nuxt_page_meta || {},
     component: () => import('./_slug_.vue.mjs')
   },
   {
@@ -2613,5 +2619,5 @@ const server = /*#__PURE__*/Object.freeze({
   default: entry$1
 });
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, useNuxtApp as c, asyncDataDefaults as d, createError as e, useRoute as f, useRouter as g, useRuntimeConfig as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, useSiteConfig as o, fetchDefaults as p, useRequestFetch as q, server as r, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, useNuxtApp as c, asyncDataDefaults as d, createError as e, useRuntimeConfig as f, useRoute as g, useOgImageRuntimeConfig as h, injectHead as i, createOgImageMeta as j, getOgImagePath as k, useRequestEvent as l, useSiteConfig as m, normaliseOptions as n, fetchDefaults as o, useRequestFetch as p, useRouter as q, server as r, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map
