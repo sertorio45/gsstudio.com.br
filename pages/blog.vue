@@ -87,12 +87,15 @@ useHead ({
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
     });
-const { data: articles, pending, error, refresh } = useLazyFetch("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
+const { data: articlesData, pending, error, refresh } = useLazyFetch("/api/public/articles", {
   transform: (response: any) => response.data.map((article: any) => ({
     ...article,
-    category_title: article.categorie?.title_categorie || "Sem categoria",
+    category_title: article.categories || "Sem categoria",
   }))
 });
+
+// Computed para garantir que temos um array mesmo se a API retornar null
+const articles = computed(() => articlesData.value || []);
 
 // Chamar refresh quando a página for carregada
 onMounted(() => {

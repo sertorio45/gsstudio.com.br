@@ -39,7 +39,7 @@
           <div v-else-if="article" class="content_blog">
             <div class="mb-3 mx-0">
               <span class="article-category">{{ categoryTitle }}</span>
-              <span v-html="formatDate(article.date_created)" class="mx-3 publish_date"></span>
+              <span v-html="formatDate(article.created_at)" class="mx-3 publish_date"></span>
             </div>
             <h1>{{ article.title }}</h1>
             <div v-html="article.content" class="my-4"></div>
@@ -67,10 +67,6 @@
 
 <script setup lang="ts">
 
-definePageMeta({
-  // ajuda a garantir geração estática se possível
-  prerender: true,
-});
 
 const route = useRoute();
 const router = useRouter();
@@ -81,56 +77,28 @@ const { data: article, pending, refresh } = useAsyncData(
     const slug = route.params.slug as string;
     if (!slug) return null;
 
-    const response = await $fetch<{ data: any[] }>(
-      "/items/articles",
+    const response = await $fetch<{ success: boolean, data: any[] }>(
+      "/api/public/articles",
       {
-        baseURL: "https://painel.gsadmin.app",
         method: "GET",
-        headers: { "Content-Type": "application/json" },
-        query: {
-          fields: "id,title,meta_keywords,meta_description,content,date_created,slug,categorie.id,categorie.title_categorie",
-          "filter[slug][_eq]": slug,
-        },
+        headers: { "Content-Type": "application/json" }
       }
     );
 
-    return response?.data?.[0] || null;
+    // Encontrar o artigo pelo slug
+    return response?.data?.find(article => article.slug === slug) || null;
   },
   {
     server: true,
-    lazy: false,
     default: () => null,
   }
 );
 
-// const title = computed(() => article.value?.title ?? "");
-// const description = computed(() => article.value?.meta_description ?? "");
-const categoryTitle = computed(() => article.value?.categorie?.title_categorie ?? "");
+// Usamos categories em vez de categorie.title_categorie
+const categoryTitle = computed(() => article.value?.categories || "Sem categoria");
 
-useHead({
-  meta: [
-    {
-      name: "canonical",
-      content: `https://gsstudio.com.br/${route.params.slug}`,
-    },
-  ],
-});
+useSeo(article, route);
 
-useSeoMeta({
-  title: article.value?.title ?? "",
-  description: article.value?.meta_description ?? "",
-  robots: "index, follow",
-  ogLocale: "pt-br",
-  ogImageAlt: article.value?.title ?? "",
-  ogTitle: article.value?.title ?? "",
-  ogType: "article",
-  ogUrl: `https://gsstudio.com.br/${route.params.slug}`,
-  ogDescription: article.value?.meta_description ?? "",
-  twitterTitle: article.value?.title ?? "",
-  twitterDescription: article.value?.meta_description ?? "",
-  twitterCard: "summary",
-  fbAppId: "603230818880308",
-});
 
 interface SocialNetwork {
   name: string;
@@ -190,6 +158,7 @@ const goBack = () => {
 const formatDate = (date: string | null | undefined) => {
   if (!date) return "";
   try {
+    // Usamos created_at em vez de date_created
     return new Date(date).toLocaleDateString("pt-BR", {
       weekday: "long",
       year: "numeric",

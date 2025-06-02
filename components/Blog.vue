@@ -1,3 +1,23 @@
+<script setup lang="ts">
+const { data: articlesData, pending, error, refresh } = await useAsyncData(
+  "articles",
+  async () => {
+    const response = await $fetch<{ success: boolean, data: Array<any> }>("/api/public/articles", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data.map(article => ({
+      ...article,
+      category_title: article.categories || "Sem categoria",
+    }));
+  },
+);
+
+// Computed para garantir que temos um array mesmo se a API retornar null
+const articles = computed(() => articlesData.value || []);
+</script>
 <template>
   <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
     <div class="container my-5">
@@ -45,22 +65,3 @@
   </section>
 </template>
 
-<script setup lang="ts">
-const { data: articles, pending, error, refresh } = await useAsyncData(
-  "articles",
-  async () => {
-    const response = await $fetch<{ data: Array<{ id: number, title: string, meta_keywords: string, meta_description: string, content: string, slug: string, categorie: { id: number, title_categorie: string } }> }>("https://painel.gsadmin.app/items/articles?fields=id,title,meta_keywords,meta_description,content,slug,categorie.id,categorie.title_categorie", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    return response.data.map(article => ({
-      ...article,
-      category_title: article.categorie?.title_categorie || "Sem categoria",
-    }));
-  },
-);
-
-
-</script>

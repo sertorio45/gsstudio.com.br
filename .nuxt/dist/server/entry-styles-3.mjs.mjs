@@ -1,5 +1,0 @@
-const zoom = ".swiper-zoom-container{align-items:center;display:flex;height:100%;justify-content:center;text-align:center;width:100%}.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg{max-height:100%;max-width:100%;-o-object-fit:contain;object-fit:contain}.swiper-slide-zoomed{cursor:move;touch-action:none}";
-export {
-  zoom as default
-};
-//# sourceMappingURL=entry-styles-3.mjs.mjs.map

@@ -1,6 +1,10 @@
-
 <script setup>
 import { useCardAnimation } from '~/composables/useCardAnimation';
+import HeroAnimated from '~/components/HeroAnimated.vue';
+import CarouselParceiros from '~/components/CarouselParceiros.vue';
+import Portifolio from '~/components/Portifolio.vue';
+import Blog from '~/components/Blog.vue';
+import { onMounted } from 'vue';
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
@@ -29,29 +33,100 @@ useSeoMeta({
   ogLocale: 'pt-br',
 });
 
-
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
+
+// Funções e métodos do componente padrão
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+function initCardAnimation() {
+  const cards = document.querySelectorAll('.gscard');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const randomDelay = Math.random() * 1000;
+        setTimeout(() => {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }, randomDelay);
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+  cards.forEach(card => {
+    observer.observe(card);
+  });
+}
+
+function startCounting(counters, speed) {
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-count');
+      const count = +counter.innerText;
+      const increment = target / (speed / 100);
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+}
+
+function initCounters() {
+  const counters = document.querySelectorAll('.count');
+  const speed = 9000;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounting(counters, speed);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 1
+  });
+  const target = document.getElementById('conquistas');
+  if (target) {
+    observer.observe(target);
+  }
+}
+
+function scrollToElement(element) {
+  const headerOffset = 50;
+  const elementPosition = document.querySelector(element).offsetTop;
+  const offsetPosition = elementPosition - headerOffset;
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+}
+
+onMounted(() => {
+  initCardAnimation();
+  initCounters();
+  if (typeof useRouter === 'function') {
+    const router = useRouter();
+    router.afterEach((to, from) => {
+      if (to.name === 'index') {
+        setTimeout(() => {
+          initCardAnimation();
+        }, 100);
+      }
+    });
+  }
+});
 </script>
 
 
 <template>
 <!-- Topo -->
-<section class="d-flex align-items-center mt-5 py-5" id="index">
-  <div class="container text-center my-5 py-5">
-    <div class="row">
-      <div class="col">
-        <h1><em>Posicionamento, resultados e performance para sua empresa.</em></h1>
-        <p class="my-4">Fazemos sua empresa crescer usando branding, tecnologia e marketing.</p>
-        <div class="d-flex justify-content-center flex-column flex-md-row align-items-center px-2">
-          <NuxtLink to="/contato" class="btn btn-primary-border my-2 ms-md-2">Faça agora seu orçamento</NuxtLink>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Topo -->
-
+<HomeTopo />
 
 <!-- Quem somos -->
 <section class="d-flex align-items-center bg-light py-5" id="sobre">
@@ -219,114 +294,12 @@ useCardAnimation();
 
 </template>
 
-<script>
-import CarouselParceiros from '~/components/CarouselParceiros.vue';
-import Portifolio from '~/components/Portifolio.vue';
-import Blog from '~/components/Blog.vue';
-
-export default defineComponent({
-  name: 'IndexPage',
-  components: {
-    CarouselParceiros,
-    Portifolio,
-    Blog
-  },
- 
-  methods: {
-    importAll(r) {
-      return r.keys().map(r);
-    },
-    initCardAnimation() {
-      const cards = document.querySelectorAll('.gscard');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const randomDelay = Math.random() * 1000; // Random delay between 0 and 1000ms
-            setTimeout(() => {
-              entry.target.classList.add('animate');
-              observer.unobserve(entry.target); // Stop observing once animated
-            }, randomDelay);
-          }
-        });
-      }, {
-        threshold: 0.5 // Adjust this value as needed
-      });
-
-      cards.forEach(card => {
-        observer.observe(card);
-      });
-    },
-    initCounters() {
-      const counters = document.querySelectorAll('.count');
-      const speed = 9000; // Tempo de execução em milissegundos
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.startCounting(counters, speed);
-            observer.unobserve(entry.target); // Desobservar após a contagem iniciar
-          }
-        });
-      }, {
-        threshold: 1 // Iniciar a contagem quando 100% da seção estiver visível
-      });
-
-      const target = document.getElementById('conquistas');
-      if (target) {
-        observer.observe(target);
-      }
-    },
-    startCounting(counters, speed) {
-      counters.forEach(counter => {
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-count');
-          const count = +counter.innerText;
-
-          const increment = target / (speed / 100); // Incremento para o tempo total
-
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 10); // Atualizar a cada 10ms
-          } else {
-            counter.innerText = target;
-          }
-        };
-
-        updateCount();
-      });
-    },
-    scrollToElement(element) {
-      const headerOffset = 50; // Ajuste este valor conforme necessário
-      const elementPosition = document.querySelector(element).offsetTop;
-      const offsetPosition = elementPosition - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  },
-  mounted() {
-    this.initCardAnimation();
-    this.initCounters();
-    this.$router.afterEach((to, from) => {
-      if (to.name === 'index') {
-        setTimeout(() => {
-          this.initCardAnimation();
-        }, 100);
-      }
-    });
-  }
-});
-</script>
-
 <style scoped>
 #index h1 {
   font-size: var(--texto-grande) !important;
 }
 #index p {
-  font-size: var(--texto-medio) !important;
+  font-size: var(--texto-medio);
 }
 
 #sobre img, #servicos img {

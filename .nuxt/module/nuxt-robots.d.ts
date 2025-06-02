@@ -9,12 +9,20 @@ declare module 'nitropack' {
     _robotsRuleMactcher: (url: string) => string
   }
   interface NitroRouteRules {
+    /**
+     * @deprecated Use `robots: <boolean>` instead.
+     */
+    index?: boolean
     robots?: boolean | string | {
       indexable: boolean
       rule: string
     }
   }
   interface NitroRouteConfig {
+    /**
+     * @deprecated Use `robots: <boolean>` instead.
+     */
+    index?: boolean
     robots?: boolean | string | {
       indexable: boolean
       rule: string
@@ -26,9 +34,11 @@ declare module 'nitropack' {
   }
 }
 declare module 'h3' {
-  import type { RobotsContext } from '#robots/types'
   interface H3EventContext {
-    robots: RobotsContext
+    robots: {
+      rule: string
+      indexable: boolean
+    }
   }
 }
 
