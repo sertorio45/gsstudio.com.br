@@ -132,7 +132,7 @@ onMounted(() => {
 <section class="d-flex align-items-center bg-light py-5" id="sobre">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-5">
+      <div class="col-12 col-md-12 col-lg-6">
         <h2>Somos especialistas</h2>
         <p class="my-3">
           A GS Studio é uma agência que combina marketing, design e tecnologia para criar soluções criativas que impulsionam o sucesso de negócios. 
@@ -144,7 +144,7 @@ onMounted(() => {
         </NuxtLink>
        
       </div>
-      <div class="col-12 col-md-7 text-center d-flex align-items-sm-center justify-content-sm-end">
+      <div class="col-12 col-md-12 col-lg-6 text-center d-flex align-items-sm-center justify-content-sm-end py-lg-0 py-md-5">
         <div class="row w-100">
           <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
             <div class="gscard gscard-border w-100">
@@ -178,31 +178,31 @@ onMounted(() => {
 
 
     <!-- Conquistas -->
-    <section class="text-center my-5 py-5 d-flex justify-content-center align-items-center" id="conquistas">
+    <section class="text-center py-5 d-flex justify-content-center align-items-center" id="conquistas">
       <div class="container">
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
-            <div class="gscard gscard-border">
-              <h3><em>+ de <em class="count" data-count="65">0</em></em></h3>
-              <span>Sites produzidos</span>
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <div class="gscard gscard-border d-flex flex-column justify-content-center align-items-center">
+              <h3 class="mb-2"><em>+ de <em class="count" data-count="65">0</em></em></h3>
+              <span class="text-muted">Sites produzidos</span>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
-            <div class="gscard gscard-border">
-              <h3><em>+ de <em class="count" data-count="400">0</em></em></h3>
-              <span>Clientes ativos</span>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <div class="gscard gscard-border d-flex flex-column justify-content-center align-items-center">
+              <h3 class="mb-2"><em>+ de <em class="count" data-count="400">0</em></em></h3>
+              <span class="text-muted">Clientes ativos</span>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3 mb-md-0">
-            <div class="gscard gscard-border">
-              <h3><em>+ de <em class="count" data-count="80">0</em></em></h3>
-              <span>Marcas desenvolvidas</span>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <div class="gscard gscard-border d-flex flex-column justify-content-center align-items-center p-4">
+              <h3 class="mb-2"><em>+ de <em class="count" data-count="80">0</em></em></h3>
+              <span class="text-muted">Marcas desenvolvidas</span>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="gscard gscard-border">
-              <h3><em>+ de <em class="count" data-count="7">0</em></em></h3>
-              <span>Anos de mercado</span>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <div class="gscard gscard-border d-flex flex-column justify-content-center align-items-center">
+              <h3 class="mb-2"><em>+ de <em class="count" data-count="7">0</em></em></h3>
+              <span class="text-muted">Anos de mercado</span>
             </div>
           </div>
         </div>
@@ -236,19 +236,19 @@ onMounted(() => {
           </p>
           <div class="row p-3">
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
-              <div class="gscard gscard-border">
+              <div class="gscard gscard-border h-100">
                 <NuxtImg src="icons/servicos/sites.svg" class="p-2 my-1" alt="GS STUDIO - Criação de sites e comunicação" />
-                <h3>Sites</h3>
+                <h3>Criação de sites</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
-              <div class="gscard gscard-border">
+              <div class="gscard gscard-border h-100">
                 <NuxtImg src="icons/servicos/gestao_de_conteudo.svg" class="p-2 my-1" alt="GS STUDIO - Gestão de conteúdo e redes sociais" />
                 <h3>Redes sociais</h3>
               </div>
             </div>
             <div class="col-6 col-sm-6 col-md-3 mb-3 mb-md-0">
-              <div class="gscard gscard-border">
+              <div class="gscard gscard-border h-100">
                 <NuxtImg src="icons/servicos/lojas_virtuais.svg" class="p-2 my-1" alt="GS STUDIO - Lojas virtuais e marketing digital" />
                 <h3 class="h1">Lojas virtuais</h3>
               </div>
@@ -256,7 +256,7 @@ onMounted(() => {
             <div class="col-6 col-sm-6 col-md-3">
               <div class="gscard gscard-border">
                 <NuxtImg src="icons/servicos/branding.svg" class="p-2 my-1" alt="GS STUDIO - Criação de marcas e branding" />
-                <h3>Marcas</h3>
+                <h3>Produção de marcas</h3>
               </div>
             </div>
           </div>
@@ -274,21 +274,7 @@ onMounted(() => {
     <Portifolio />
     <!-- Portifolio -->
 
-    <!-- CTA -->
-    <section class="text-center gscard my-5" id="cta">
-      <div class="container d-flex align-items-center justify-content-center bg-cta my-5">
-        <div class="row">
-          <div class="col text-light">
-            <h2 class="text-light">Transforme Resultados com Design, Marketing e Tecnologia!</h2>
-            <div class="subheadline d-flex justify-content-center py-2">
-              <p>Potencialize seu negócio com soluções criativas e inovadoras. Nós entregamos resultados excepcionais através de estratégias personalizadas e tecnologia de ponta.</p>
-            </div>
-            <NuxtLink to="/contato" class="btn btn-white"><em>Entrar agora em contato</em></NuxtLink>  
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- CTA -->
+    <CtaContact />
 
     <Blog />
 
@@ -327,4 +313,5 @@ onMounted(() => {
   opacity: 0;
   transform: translateY(30px);
 }
+
 </style>

@@ -4,17 +4,17 @@
 <section class="d-flex align-items-center mt-5 py-5 background-topo" id="index">
   <div class="container text-center py-5 my-5">
     <HeroAnimated />
-    <p class="my-4">Design, tecnologia e marketing para negócios que querem crescer com inteligência.</p>
+    <p class="my-4 lead">Design, tecnologia e marketing para negócios que querem crescer com inteligência.</p>
     <div class="d-flex justify-content-center flex-column flex-md-row align-items-center px-2">
-      <NuxtLink to="#sobre" class="my-2 ms-md-2">
-        <ButtonPrimary>
+      <NuxtLink to="#sobre" class="my-2 ms-md-2 btn btn-primary">
+        
           Saiba mais sobre nós
-        </ButtonPrimary>
+       
       </NuxtLink>
-      <NuxtLink to="/contato" class="my-2 ms-md-2">
-        <ButtonPrimary>
+      <NuxtLink to="/contato" class="my-2 ms-md-2 btn btn-primary z-2">
+        
           Fale com nosso time
-        </ButtonPrimary>
+       
       </NuxtLink>
     </div>
   </div>
@@ -38,5 +38,27 @@
 #index {
   height: 100vh;
   min-height: 100%;
+}
+
+@media (max-width: 1440px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 575.98px) {
+  #index {
+    font-size: 0.6rem!important;
+  }
 }
 </style>

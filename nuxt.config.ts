@@ -122,6 +122,7 @@ export default defineNuxtConfig({
     '@nuxtjs/web-vitals',
     '@vite-pwa/nuxt',
     '@nuxtjs/color-mode',
+    // '@nuxtjs/supabase',
   ],
 
   gtm: {

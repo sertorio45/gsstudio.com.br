@@ -2,20 +2,16 @@
 const { data: articlesData, pending, error, refresh } = await useAsyncData(
   "articles",
   async () => {
-    const response = await $fetch<{ success: boolean, data: Array<any> }>("/api/public/articles", {
+    const response = await $fetch<{ success: boolean, data: Array<any> }>("/api/articles", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     });
-    return response.data.map(article => ({
-      ...article,
-      category_title: article.categories || "Sem categoria",
-    }));
+    return response.data;
   },
 );
 
-// Computed para garantir que temos um array mesmo se a API retornar null
 const articles = computed(() => articlesData.value || []);
 </script>
 <template>

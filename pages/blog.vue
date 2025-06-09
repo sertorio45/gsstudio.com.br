@@ -87,17 +87,12 @@ useHead ({
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
     });
-const { data: articlesData, pending, error, refresh } = useLazyFetch("/api/public/articles", {
-  transform: (response: any) => response.data.map((article: any) => ({
-    ...article,
-    category_title: article.categories || "Sem categoria",
-  }))
+const { data: articlesData, pending, error, refresh } = useLazyFetch("/api/articles", {
+  transform: (response: any) => response.data
 });
 
-// Computed para garantir que temos um array mesmo se a API retornar null
 const articles = computed(() => articlesData.value || []);
 
-// Chamar refresh quando a página for carregada
 onMounted(() => {
   refresh();
 });

@@ -1,8 +1,14 @@
 <template>
   <section class="hero-animated d-flex align-items-center justify-content-center flex-column text-center">
+    <svg width="0" height="0">
+      <filter id="liquid">
+        <feTurbulence id="turb" type="turbulence" baseFrequency="0.02 0.03" numOctaves="2" result="turb" seed="2"/>
+        <feDisplacementMap in2="turb" in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="G" id="disp"/>
+      </filter>
+    </svg>
     <h1 class="hero-title mb-3">Mentes criativas que criam</h1>
     <div class="hero-animated-phrase-wrapper">
-      <h2 ref="animatedPhrase" class="hero-animated-phrase"><em>{{ phrases[currentPhrase] }}</em></h2>
+      <h2 ref="animatedPhrase" class="hero-animated-phrase" style="filter: url(#liquid)"><em>{{ phrases[currentPhrase] }}</em></h2>
     </div>
   </section>
 </template>
@@ -33,17 +39,47 @@ let intervalId = null
 function animateOutIn(nextIndex) {
   const el = animatedPhrase.value
   if (!el) return
-  gsap.to(el, { y: 30, opacity: 0, duration: 0.5, ease: 'power2.in', onComplete: () => {
-    currentPhrase.value = nextIndex
-    gsap.fromTo(el, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' })
-  }})
+
+  // Direções possíveis: cima, baixo, direita, esquerda
+  const directions = [
+    { out: { y: -30, x: 0 }, in: { y: 30, x: 0 } },    // sobe
+    { out: { y: 30, x: 0 }, in: { y: -30, x: 0 } },    // desce
+    { out: { x: 30, y: 0 }, in: { x: -30, y: 0 } },    // direita
+    { out: { x: -30, y: 0 }, in: { x: 30, y: 0 } }     // esquerda
+  ]
+  const random = Math.floor(Math.random() * directions.length)
+  const dir = directions[random]
+
+  // Anima o efeito liquid (distorção)
+  const disp = document.getElementById('disp')
+  if (disp) {
+    gsap.fromTo(disp, { attr: { scale: 0 } }, { attr: { scale: 60 }, duration: 0.5, ease: 'power2.in' })
+  }
+
+  gsap.to(el, {
+    ...dir.out,
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power2.in',
+    onComplete: () => {
+      currentPhrase.value = nextIndex
+      if (disp) {
+        gsap.fromTo(disp, { attr: { scale: 60 } }, { attr: { scale: 0 }, duration: 0.5, ease: 'power2.out' })
+      }
+      gsap.fromTo(
+        el,
+        { ...dir.in, opacity: 0 },
+        { x: 0, y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+      )
+    }
+  })
 }
 
 onMounted(() => {
   intervalId = setInterval(() => {
     const next = (currentPhrase.value + 1) % phrases.length
     animateOutIn(next)
-  }, 2200)
+  }, 1500)
 })
 
 onBeforeUnmount(() => {
@@ -54,7 +90,7 @@ onBeforeUnmount(() => {
 <style scoped>
 
 .hero-title {
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: 400;
 }
 .hero-animated-phrase-wrapper {
@@ -66,36 +102,34 @@ onBeforeUnmount(() => {
 }
 
 .hero-animated-phrase {
-  font-size: 4rem;
+  font-size: 7rem!important;
   font-weight: 600;
 }
-
-@media (min-width: 1024px) {
+@media (max-width: 575.98px) {
   .hero-title {
-    font-size: 2.5rem!important;
+    font-size: 2rem!important;
   }
   .hero-animated-phrase {
-    font-size: 5rem!important;
+    font-size: 10vw!important;
   }
 }
-
-@media (min-width: 768px) {
+@media (max-width: 767.98px) {
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 1.5rem!important;
   }
   .hero-animated-phrase {
-    font-size: 4.8rem!important;
+    font-size: 2vw!important;
   }
 }
-
-@media (min-width: 320px) {
-  .hero-title {
-    font-size: 1.5rem;
-  }
+@media (max-width: 991.98px) {
   .hero-animated-phrase {
-    font-size: 2.1rem;
+    font-size:11vw!important;
   }
 }
-
+@media (max-width: 1199.98px) {
+  .hero-animated-phrase {
+    font-size:8vw!important;
+  }
+}
 
 </style> 

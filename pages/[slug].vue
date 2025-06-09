@@ -78,7 +78,7 @@ const { data: article, pending, refresh } = useAsyncData(
     if (!slug) return null;
 
     const response = await $fetch<{ success: boolean, data: any[] }>(
-      "/api/public/articles",
+      "/api/articles",
       {
         method: "GET",
         headers: { "Content-Type": "application/json" }
@@ -94,8 +94,8 @@ const { data: article, pending, refresh } = useAsyncData(
   }
 );
 
-// Usamos categories em vez de categorie.title_categorie
-const categoryTitle = computed(() => article.value?.categories || "Sem categoria");
+// Usar category_title já retornado do backend
+const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
 
 useSeo(article, route);
 

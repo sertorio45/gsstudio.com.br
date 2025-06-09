@@ -1,6 +1,6 @@
 <template>
   <button
-    class="primary-btn"
+    class="btn btn-primary"
     v-bind="$attrs"
   >
     <slot />
@@ -12,7 +12,7 @@
 </script>
 
 <style scoped>
-.primary-btn {
+/* .primary-btn {
   background-color: #000;
   color: #fff;
   padding: 0.5rem 2rem;
@@ -29,5 +29,5 @@
   background-color: #000;
   animation: gradientMove 2s linear infinite;
   background-size: 100% 100%;
-}
+} */
 </style>

@@ -18,6 +18,7 @@
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/robots": "^4.1.7",
     "@nuxtjs/sitemap": "^6.1.1",
+    "@nuxtjs/supabase": "1.5.1",
     "@nuxtjs/web-vitals": "0.2.7",
     "@popperjs/core": "^2.11.8",
     "@types/axios": "^0.14.0",

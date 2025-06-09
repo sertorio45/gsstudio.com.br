@@ -79,18 +79,7 @@ useCardAnimation();
             <p><a href="https://maps.app.goo.gl/8h4Ee8B4VMYssSNM8" class="text-dark" target="_blank">Av. Maria de Jesus Condeixa, 600, Jardim Palma Travassos, CEP: 14091-240, Condomínio NEO, Ribeirão Preto - SP</a></p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="contact-option gscard gscard-border p-4 h-100">
-            <div class="icon-circle bg-white mb-3 mx-auto">
-              <i class="bx bx-chat"></i>
-            </div>
-            <h4>Atendimento</h4>
-            <p>Fale com nossa atendente Zoe</p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#botModal">
-              Abrir Chat
-            </button>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>

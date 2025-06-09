@@ -13,8 +13,6 @@ import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_di
 import { consola, createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
-import { readdirSync } from 'fs';
-import { join as join$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, parse, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/devalue/index.js';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
@@ -3380,18 +3378,14 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_jxahxp = () => Promise.resolve().then(function () { return parceiros$1; });
-const _lazy_yJaNKa = () => Promise.resolve().then(function () { return portifolio; });
-const _lazy_5tcmVq = () => Promise.resolve().then(function () { return articles$1; });
+const _lazy_4Yw9xj = () => Promise.resolve().then(function () { return articles$1; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_NbywPE = () => Promise.resolve().then(function () { return font$1; });
 const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_json$1; });
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
-  { route: '/api/parceiros', handler: _lazy_jxahxp, lazy: true, middleware: false, method: undefined },
-  { route: '/api/portifolio', handler: _lazy_yJaNKa, lazy: true, middleware: false, method: undefined },
-  { route: '/api/public/articles', handler: _lazy_5tcmVq, lazy: true, middleware: false, method: undefined },
+  { route: '/api/articles', handler: _lazy_4Yw9xj, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _A26pTt, lazy: false, middleware: false, method: undefined },
@@ -7818,6 +7812,9 @@ const sources$1 = [
                 "loc": "/politica-de-privacidade"
             },
             {
+                "loc": "/servicos/criacao-de-sites"
+            },
+            {
                 "loc": "/servicos"
             },
             {
@@ -7840,38 +7837,40 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
-const parceiros = defineEventHandler(() => {
-  const dirPath = join$1(process.cwd(), "public/img/parceiros");
-  const files = readdirSync(dirPath).filter((file) => file.endsWith(".webp"));
-  return files.map((file) => `/img/parceiros/${file}`);
-});
-
-const parceiros$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: parceiros
-});
-
-const portifolio = /*#__PURE__*/Object.freeze({
-  __proto__: null
-});
-
 const articles = defineEventHandler(async (event) => {
-  return {
-    success: true,
-    data: [
-      {
-        id: 1,
-        title: "Teste",
-        content: "Conte\xFAdo de teste",
-        meta_description: null,
-        slug: "teste-1744738112",
-        categories: null,
-        tags: null,
-        created_at: "2025-04-15T17:28:33.028Z",
-        updated_at: "2025-04-15T17:34:19.014Z"
-      }
-    ]
-  };
+  try {
+    const articlesRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/articles?tenant_id=eq.${process.env.SUPABASE_TENANT_ID}&publish_status=eq.published`, {
+      headers: new Headers({
+        "apikey": process.env.SUPABASE_KEY || "",
+        "Authorization": `Bearer ${process.env.SUPABASE_KEY || ""}`,
+        "Content-Type": "application/json"
+      })
+    });
+    if (!articlesRes.ok) throw new Error("Erro ao buscar artigos");
+    const articles = await articlesRes.json();
+    const categoriesRes = await fetch(`${process.env.SUPABASE_URL}/rest/v1/articles_category`, {
+      headers: new Headers({
+        "apikey": process.env.SUPABASE_KEY || "",
+        "Authorization": `Bearer ${process.env.SUPABASE_KEY || ""}`,
+        "Content-Type": "application/json"
+      })
+    });
+    if (!categoriesRes.ok) throw new Error("Erro ao buscar categorias");
+    const categories = await categoriesRes.json();
+    const articlesWithCategory = articles.map((article) => {
+      const category = categories.find((cat) => cat.id === article.category_id);
+      return {
+        ...article,
+        category_title: category ? category.title : "Sem categoria"
+      };
+    });
+    return { success: true, data: articlesWithCategory };
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: "Erro ao buscar artigos"
+    });
+  }
 });
 
 const articles$1 = /*#__PURE__*/Object.freeze({

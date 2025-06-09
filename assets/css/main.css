@@ -41,7 +41,7 @@ body {
   background-color: var(--color-bg) !important;
   color: var(--color-text) !important;
   font-family: var(--font-family) !important;
-  font-size: var(--text-size) !important;
+  font-size: 17px !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2 {
-  font-size: 2.2rem;
+  font-size: 3rem!important;
 }
 
 
@@ -79,7 +79,7 @@ img {
 
 .btn {
   color: var(--branco) !important;
-  border-radius: 100px !important;
+  border-radius: 10px !important;
   padding-left: 40px !important;
   padding-right: 40px !important;
   font-size: var(--text-size) !important;
@@ -88,9 +88,9 @@ img {
 }
 
 .btn-primary {
-  background-color: var(--color-secondary) !important;
+  background-color: var(--bs-black) !important;
   color: var(--branco) !important;
-  border: 2px solid var(--color-secondary) !important;
+  border: 2px solid var(--bs-black) !important;
   position: relative;
   overflow: hidden;
   transition: all 0.7s linear;
@@ -494,8 +494,8 @@ em {
 
   .btn {
     font-size: 14px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
   }
 
   #sobre {
@@ -510,8 +510,6 @@ em {
   #conquistas .gscard {
     padding: 2rem !important;
     align-content: center !important;
-    margin-left: 50px;
-    margin-right: 50px;
   }
 
   #servicos .gscard {
