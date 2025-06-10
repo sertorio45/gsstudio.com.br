@@ -5,7 +5,7 @@ import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital
 import { joinURL, withoutTrailingSlash } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';
 import { propsToString, renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/ssr/dist/index.mjs';
-import { d as defineRenderHandler, b as buildAssetsURL, p as publicAssetsURL, a as useStorage, g as getRouteRules, c as useRuntimeConfig, e as useNitroApp } from '../nitro/nitro.mjs';
+import { d as defineRenderHandler, c as buildAssetsURL, p as publicAssetsURL, b as useStorage, g as getRouteRules, u as useRuntimeConfig, e as useNitroApp } from '../nitro/nitro.mjs';
 import { createServerHead as createServerHead$1, CapoPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/index.mjs';
 import { version, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { defineHeadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/shared/dist/index.mjs';

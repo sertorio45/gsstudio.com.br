@@ -55,55 +55,6 @@ const sources = [
             "/"
         ],
         "sourceType": "app"
-    },
-    {
-        "context": {
-            "name": "nuxt:prerender",
-            "description": "Generated at build time when prerendering.",
-            "tips": [
-                "Can be disabled with `{ excludeAppSources: ['nuxt:prerender'] }`."
-            ]
-        },
-        "urls": [
-            "/[:slug]",
-            {
-                "loc": "/[:slug]"
-            },
-            {
-                "loc": "/"
-            },
-            {
-                "loc": "/cases/mdmoveis"
-            },
-            {
-                "loc": "/blog"
-            },
-            {
-                "loc": "/politica-de-privacidade"
-            },
-            {
-                "loc": "/sobre"
-            },
-            {
-                "loc": "/servicos"
-            },
-            {
-                "loc": "/contato"
-            },
-            {
-                "loc": "/servicos/criacao-de-sites"
-            },
-            {
-                "loc": "/branding-nao-e-so-logo"
-            },
-            {
-                "loc": "/trafego-pago-o-segredo-para-crescer-rapido-no-digital"
-            },
-            {
-                "loc": "/por-que-seu-site-precisa-de-seo-descubra-como-aparecer-no-google"
-            }
-        ],
-        "sourceType": "app"
     }
 ];
 

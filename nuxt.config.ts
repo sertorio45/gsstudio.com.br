@@ -47,18 +47,21 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
+    preset: 'node-server',
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/[:slug]',
-      ],
+      // routes: [
+      //   '/[:slug]',
+      // ],
     },
   },
   routeRules: {
-    // Generated at build time for SEO purpose
-    '/': { prerender: true },
-    // Cached for 1 hour
-    '/api/*': { cache: { maxAge: 60 * 60 } },
+    '/': { prerender: false },
+    '/api/**': { cache: { maxAge: 60 * 60 } },
+    '/:slug': {
+      swr: true,
+      cache: { maxAge: 60 * 10 }, // 10 minutos de cache
+  },
   },
 
   hooks: {
@@ -136,13 +139,14 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
+    SUPABASE_TENANT_ID: process.env.SUPABASE_TENANT_ID,
     public: {
-      API_BASE_URL: "https://painel.gsadmin.app",
-      apiBase: '/api',
-      // gtm: {
-      //   id: 'GTM-N3X2JT4',
-      // },
-    },
+      SUPABASE_URL: process.env.SUPABASE_URL,
+      SUPABASE_KEY: process.env.SUPABASE_KEY,
+      SUPABASE_TENANT_ID: process.env.SUPABASE_TENANT_ID,
+    }
   },
 
   googleFonts: {

@@ -401,6 +401,12 @@ declare module 'nuxt/schema' {
       cdnURL: string,
    },
 
+   SUPABASE_URL: string,
+
+   SUPABASE_KEY: string,
+
+   SUPABASE_TENANT_ID: string,
+
    nitro: {
       envPrefix: string,
    },
@@ -592,9 +598,11 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
-   API_BASE_URL: string,
+   SUPABASE_URL: string,
 
-   apiBase: string,
+   SUPABASE_KEY: string,
+
+   SUPABASE_TENANT_ID: string,
 
    gtm: {
       devtools: boolean,

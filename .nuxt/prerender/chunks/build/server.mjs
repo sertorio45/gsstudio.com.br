@@ -672,7 +672,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-ByutsXOS.mjs')
+    component: () => import('./index-BhszvkOF.mjs')
   },
   {
     name: "politica-de-privacidade",

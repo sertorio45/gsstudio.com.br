@@ -1,4 +1,4 @@
-import { h as decodeHtml, l as logger, t as toBase64Image, i as useNitroOrigin, a as useStorage, f as fetchIsland, j as htmlDecodeQuotes, u as useOgImageRuntimeConfig, n as normaliseFontInput, k as fontCache } from '../nitro/nitro.mjs';
+import { h as decodeHtml, l as logger, t as toBase64Image, i as useNitroOrigin, b as useStorage, f as fetchIsland, j as htmlDecodeQuotes, a as useOgImageRuntimeConfig, n as normaliseFontInput, k as fontCache } from '../nitro/nitro.mjs';
 import { t as theme, a as applyEmojis, l as loadFont } from './emojis.mjs';
 import { defu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/defu/dist/defu.mjs';
 import { html } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/satori-html/dist/index.js';

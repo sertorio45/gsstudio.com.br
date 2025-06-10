@@ -659,7 +659,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-ByutsXOS.js")
+    component: () => import("./_nuxt/index-BhszvkOF.js")
   },
   {
     name: "politica-de-privacidade",

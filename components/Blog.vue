@@ -1,20 +1,15 @@
 <script setup lang="ts">
-const { data: articlesData, pending, error, refresh } = await useAsyncData(
-  "articles",
-  async () => {
-    const response = await $fetch<{ success: boolean, data: Array<any> }>("/api/articles", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    
-    });
-    server: false
-    return response.data;
+const route = useRoute()
+const { data: articlesData, pending, error, refresh } = await useFetch<{ success: boolean, data: Array<any> }>("/api/articles", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
   },
-);
+  server: false, // executa só no client
+  watch: [() => route.params.slug],
+});
 
-const articles = computed(() => articlesData.value || []);
+const articles = computed(() => articlesData.value?.data || []);
 </script>
 <template>
   <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">

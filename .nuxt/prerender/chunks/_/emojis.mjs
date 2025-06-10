@@ -1,4 +1,4 @@
-import { a as useStorage, m as emojiCache } from '../nitro/nitro.mjs';
+import { b as useStorage, m as emojiCache } from '../nitro/nitro.mjs';
 import { prefixStorage } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
 
 const theme = {};

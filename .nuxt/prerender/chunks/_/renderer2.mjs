@@ -1,7 +1,7 @@
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
 import { createError } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
-import { u as useOgImageRuntimeConfig, i as useNitroOrigin } from '../nitro/nitro.mjs';
+import { a as useOgImageRuntimeConfig, i as useNitroOrigin } from '../nitro/nitro.mjs';
 import { joinURL, withQuery } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
 import 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
