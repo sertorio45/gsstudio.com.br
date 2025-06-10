@@ -49,9 +49,9 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      // routes: [
-      //   '/:slug',
-      // ],
+      routes: [
+        '/:slug',
+      ],
     },
   },
 
@@ -59,22 +59,6 @@ export default defineNuxtConfig({
     'robots:config': (config) => {
       config.sitemap = ['/sitemap.xml'];
     },
-    'build:manifest': (manifest) => {
-      const css = Object.values(manifest).find((options) => options.isEntry)?.css;
-      if (css) {
-        for (let i = css.length - 1; i >= 0; i--) {
-          if (css[i].startsWith('entry')) css.splice(i, 1);
-        }
-      }
-    },
-  //   'nitro:config': async (nitroConfig) => {
-  //   const res = await fetch('https://painel.gsadmin.app/items/articles?fields=slug');
-  //   const json = await res.json();
-  //   const routes = json?.data?.map((item: any) => `/${item.slug}`) ?? [];
-
-  //   nitroConfig.prerender = nitroConfig.prerender || {};
-  //   nitroConfig.prerender.routes = [...(nitroConfig.prerender.routes || []), ...routes];
-  // },
   },
 
   app: {

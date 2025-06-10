@@ -7822,6 +7822,19 @@ const sources$1 = [
             }
         ],
         "sourceType": "app"
+    },
+    {
+        "context": {
+            "name": "nuxt:prerender",
+            "description": "Generated at build time when prerendering.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:prerender'] }`."
+            ]
+        },
+        "urls": [
+            "/:slug"
+        ],
+        "sourceType": "app"
     }
 ];
 
