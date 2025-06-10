@@ -6,8 +6,10 @@ const { data: articlesData, pending, error, refresh } = await useAsyncData(
       method: "GET",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+    
     });
+    server: false
     return response.data;
   },
 );

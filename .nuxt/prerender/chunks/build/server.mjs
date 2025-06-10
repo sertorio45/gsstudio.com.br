@@ -657,7 +657,7 @@ const _routes = [
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-lSNd5TAO.mjs')
+    component: () => import('./blog-CUHLjsq-.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -667,12 +667,12 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-mWzeGwFN.mjs')
+    component: () => import('./contato-DdJ8_Kwe.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Ckf3iZmD.mjs')
+    component: () => import('./index-ByutsXOS.mjs')
   },
   {
     name: "politica-de-privacidade",
@@ -682,17 +682,17 @@ const _routes = [
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import('./criacao-de-sites-DbQpdIFr.mjs')
+    component: () => import('./criacao-de-sites-CIK3vWYd.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./index-CLs4TQ6I.mjs')
+    component: () => import('./index-DJpnbwy0.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-BU2Htaqx.mjs')
+    component: () => import('./sobre-ZPCkRJqZ.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2469,7 +2469,7 @@ const __nuxt_component_1 = defineComponent({
   }
 });
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-BU_mM8aw.mjs'))
+  default: defineAsyncComponent(() => import('./default-BMSNFEZ9.mjs'))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2780,7 +2780,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-pe0re5QU.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-DuxsR-TP.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2844,5 +2844,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, createError as c, useRoute as d, entry$1 as default, useRouter as e, useNuxtApp as f, asyncDataDefaults as g, fetchDefaults as h, injectHead as i, useRequestFetch as j, useRuntimeConfig as k, useOgImageRuntimeConfig as l, createOgImageMeta as m, normaliseOptions as n, getOgImagePath as o, useRequestEvent as p, useSiteConfig as q, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, createError as c, useRoute as d, entry$1 as default, useRouter as e, useNuxtApp as f, asyncDataDefaults as g, useRuntimeConfig as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, fetchDefaults as o, useRequestFetch as p, useSiteConfig as q, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map
