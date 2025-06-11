@@ -4409,7 +4409,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "b9288a37-ea43-4ad6-aa2d-8ca275265ffa",
+    "buildId": "8eae45a6-79ba-4317-8849-b6ed05c8feed",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -5349,7 +5349,7 @@ async function dispose(driver) {
 const _assets = {
   ["nuxt-og-image:fonts:Unbounded-400.ttf.base64"]: {
     import: () => import('../raw/Unbounded-400.ttf.mjs').then(r => r.default || r),
-    meta: {"type":"text/plain; charset=utf-8","etag":"\"70be8-mi9uHPl5g2xmdttz4SrrNCAAtt4\"","mtime":"2025-06-10T22:07:48.025Z"}
+    meta: {"type":"text/plain; charset=utf-8","etag":"\"70be8-mi9uHPl5g2xmdttz4SrrNCAAtt4\"","mtime":"2025-06-11T02:30:29.129Z"}
   }
 };
 
