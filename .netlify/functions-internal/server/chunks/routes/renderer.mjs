@@ -9,7 +9,6 @@ import { defineHeadPlugin } from '@unhead/shared';
 import 'lru-cache';
 import 'node:http';
 import 'node:https';
-import 'ioredis';
 import 'node:fs';
 import 'node:path';
 import 'consola/core';

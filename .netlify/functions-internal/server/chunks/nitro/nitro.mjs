@@ -2,7 +2,6 @@ import process from 'node:process';globalThis._importMeta_=globalThis._importMet
 import { parse as parse$1 } from 'devalue';
 import http from 'node:http';
 import https from 'node:https';
-import Redis from 'ioredis';
 import { promises, existsSync } from 'node:fs';
 import { dirname, resolve as resolve$1, join } from 'node:path';
 import { toValue } from 'vue';
@@ -4410,7 +4409,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "ef49006b-5112-4456-9f63-5a8f86fe4a17",
+    "buildId": "b9288a37-ea43-4ad6-aa2d-8ca275265ffa",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4421,46 +4420,17 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/": {
-        "isr": 3600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=3600, stale-while-revalidate=86400, durable"
-        }
+        "prerender": false
       },
-      "/blog/**": {
-        "isr": 300,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=300, stale-while-revalidate=86400, durable"
+      "/api/**": {
+        "cache": {
+          "maxAge": 3600
         }
       },
       "/**": {
-        "isr": 600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=600, stale-while-revalidate=86400, durable"
-        }
-      },
-      "/sobre": {
-        "prerender": true
-      },
-      "/contato": {
-        "prerender": true
-      },
-      "/servicos": {
-        "prerender": true
-      },
-      "/servicos/**": {
-        "prerender": true
-      },
-      "/api/**": {
-        "cors": true,
-        "headers": {
-          "access-control-allow-origin": "*",
-          "access-control-allow-methods": "*",
-          "access-control-allow-headers": "*",
-          "access-control-max-age": "0",
-          "Cache-Control": "no-cache, no-store, must-revalidate"
+        "ssr": true,
+        "cache": {
+          "maxAge": 600
         }
       },
       "/sitemap.xsl": {
@@ -4926,17 +4896,17 @@ function prefixStorage(storage, base) {
   nsStorage.getKeys = (key = "", ...arguments_) => storage.getKeys(base + key, ...arguments_).then((keys) => keys.map((key2) => key2.slice(base.length)));
   return nsStorage;
 }
-function normalizeKey$2(key) {
+function normalizeKey$1(key) {
   if (!key) {
     return "";
   }
   return key.split("?")[0].replace(/[/\\]/g, ":").replace(/:+/g, ":").replace(/^:|:$/g, "");
 }
-function joinKeys$1(...keys) {
-  return normalizeKey$2(keys.join(":"));
+function joinKeys(...keys) {
+  return normalizeKey$1(keys.join(":"));
 }
 function normalizeBaseKey(base) {
-  base = normalizeKey$2(base);
+  base = normalizeKey$1(base);
   return base ? base + ":" : "";
 }
 
@@ -4944,11 +4914,11 @@ function defineDriver$1(factory) {
   return factory;
 }
 
-const DRIVER_NAME$3 = "memory";
+const DRIVER_NAME$2 = "memory";
 const memory = defineDriver$1(() => {
   const data = /* @__PURE__ */ new Map();
   return {
-    name: DRIVER_NAME$3,
+    name: DRIVER_NAME$2,
     getInstance: () => data,
     hasItem(key) {
       return data.has(key);
@@ -5017,7 +4987,7 @@ function createStorage(options = {}) {
     if (!context.watching) {
       return;
     }
-    key = normalizeKey$2(key);
+    key = normalizeKey$1(key);
     for (const listener of context.watchListeners) {
       listener(event, key);
     }
@@ -5061,7 +5031,7 @@ function createStorage(options = {}) {
     };
     for (const item of items) {
       const isStringItem = typeof item === "string";
-      const key = normalizeKey$2(isStringItem ? item : item.key);
+      const key = normalizeKey$1(isStringItem ? item : item.key);
       const value = isStringItem ? void 0 : item.value;
       const options2 = isStringItem || !item.options ? commonOptions : { ...commonOptions, ...item.options };
       const mount = getMount(key);
@@ -5079,12 +5049,12 @@ function createStorage(options = {}) {
   const storage = {
     // Item
     hasItem(key, opts = {}) {
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       return asyncCall(driver.hasItem, relativeKey, opts);
     },
     getItem(key, opts = {}) {
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       return asyncCall(driver.getItem, relativeKey, opts).then(
         (value) => destr(value)
@@ -5102,7 +5072,7 @@ function createStorage(options = {}) {
             commonOptions
           ).then(
             (r) => r.map((item) => ({
-              key: joinKeys$1(batch.base, item.key),
+              key: joinKeys(batch.base, item.key),
               value: destr(item.value)
             }))
           );
@@ -5122,7 +5092,7 @@ function createStorage(options = {}) {
       });
     },
     getItemRaw(key, opts = {}) {
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       if (driver.getItemRaw) {
         return asyncCall(driver.getItemRaw, relativeKey, opts);
@@ -5135,7 +5105,7 @@ function createStorage(options = {}) {
       if (value === void 0) {
         return storage.removeItem(key);
       }
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       if (!driver.setItem) {
         return;
@@ -5177,7 +5147,7 @@ function createStorage(options = {}) {
       if (value === void 0) {
         return storage.removeItem(key, opts);
       }
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       if (driver.setItemRaw) {
         await asyncCall(driver.setItemRaw, relativeKey, value, opts);
@@ -5194,7 +5164,7 @@ function createStorage(options = {}) {
       if (typeof opts === "boolean") {
         opts = { removeMeta: opts };
       }
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       if (!driver.removeItem) {
         return;
@@ -5212,7 +5182,7 @@ function createStorage(options = {}) {
       if (typeof opts === "boolean") {
         opts = { nativeOnly: opts };
       }
-      key = normalizeKey$2(key);
+      key = normalizeKey$1(key);
       const { relativeKey, driver } = getMount(key);
       const meta = /* @__PURE__ */ Object.create(null);
       if (driver.getMeta) {
@@ -5255,7 +5225,7 @@ function createStorage(options = {}) {
           opts
         );
         for (const key of rawKeys) {
-          const fullKey = mount.mountpoint + normalizeKey$2(key);
+          const fullKey = mount.mountpoint + normalizeKey$1(key);
           if (!maskedMounts.some((p) => fullKey.startsWith(p))) {
             allKeys.push(fullKey);
           }
@@ -5341,7 +5311,7 @@ function createStorage(options = {}) {
       delete context.mounts[base];
     },
     getMount(key = "") {
-      key = normalizeKey$2(key) + ":";
+      key = normalizeKey$1(key) + ":";
       const m = getMount(key);
       return {
         driver: m.driver,
@@ -5349,7 +5319,7 @@ function createStorage(options = {}) {
       };
     },
     getMounts(base = "", opts = {}) {
-      base = normalizeKey$2(base);
+      base = normalizeKey$1(base);
       const mounts = getMounts(base, opts.parents);
       return mounts.map((m) => ({
         driver: m.driver,
@@ -5383,7 +5353,7 @@ const _assets = {
   }
 };
 
-const normalizeKey$1 = function normalizeKey(key) {
+const normalizeKey = function normalizeKey(key) {
   if (!key) {
     return "";
   }
@@ -5395,30 +5365,21 @@ const assets = {
     return Promise.resolve(Object.keys(_assets))
   },
   hasItem (id) {
-    id = normalizeKey$1(id);
+    id = normalizeKey(id);
     return Promise.resolve(id in _assets)
   },
   getItem (id) {
-    id = normalizeKey$1(id);
+    id = normalizeKey(id);
     return Promise.resolve(_assets[id] ? _assets[id].import() : null)
   },
   getMeta (id) {
-    id = normalizeKey$1(id);
+    id = normalizeKey(id);
     return Promise.resolve(_assets[id] ? _assets[id].meta : {})
   }
 };
 
 function defineDriver(factory) {
   return factory;
-}
-function normalizeKey(key) {
-  if (!key) {
-    return "";
-  }
-  return key.replace(/[/\\]/g, ":").replace(/^:|:$/g, "");
-}
-function joinKeys(...keys) {
-  return keys.map((key) => normalizeKey(key)).filter(Boolean).join(":");
 }
 function createError(driver, message, opts) {
   const err = new Error(`[unstorage] [${driver}] ${message}`, opts);
@@ -5433,65 +5394,6 @@ function createRequiredError(driver, name) {
   }
   return createError(driver, `Missing required option \`${name}\`.`);
 }
-
-const DRIVER_NAME$2 = "redis";
-const unstorage_47drivers_47redis = defineDriver((opts) => {
-  let redisClient;
-  const getRedisClient = () => {
-    if (redisClient) {
-      return redisClient;
-    }
-    if (opts.cluster) {
-      redisClient = new Redis.Cluster(opts.cluster, opts.clusterOptions);
-    } else if (opts.url) {
-      redisClient = new Redis(opts.url, opts);
-    } else {
-      redisClient = new Redis(opts);
-    }
-    return redisClient;
-  };
-  const base = (opts.base || "").replace(/:$/, "");
-  const p = (...keys) => joinKeys(base, ...keys);
-  const d = (key) => base ? key.replace(base, "") : key;
-  return {
-    name: DRIVER_NAME$2,
-    options: opts,
-    getInstance: getRedisClient,
-    async hasItem(key) {
-      return Boolean(await getRedisClient().exists(p(key)));
-    },
-    async getItem(key) {
-      const value = await getRedisClient().get(p(key));
-      return value ?? null;
-    },
-    async setItem(key, value, tOptions) {
-      const ttl = tOptions?.ttl ?? opts.ttl;
-      if (ttl) {
-        await getRedisClient().set(p(key), value, "EX", ttl);
-      } else {
-        await getRedisClient().set(p(key), value);
-      }
-    },
-    async removeItem(key) {
-      await getRedisClient().del(p(key));
-    },
-    async getKeys(base2) {
-      const keys = await getRedisClient().keys(p(base2, "*"));
-      return keys.map((key) => d(key));
-    },
-    async clear(base2) {
-      const keys = await getRedisClient().keys(p(base2, "*"));
-      if (keys.length === 0) {
-        return;
-      }
-      return getRedisClient().del(keys).then(() => {
-      });
-    },
-    dispose() {
-      return getRedisClient().disconnect();
-    }
-  };
-});
 
 function ignoreNotfound(err) {
   return err.code === "ENOENT" || err.code === "EISDIR" ? null : err;
@@ -5621,7 +5523,6 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('redis', unstorage_47drivers_47redis({"driver":"redis"}));
 storage.mount('data', unstorage_47drivers_47fs_45lite({"driver":"fsLite","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.data/kv"}));
 
 function useStorage(base = "") {
@@ -7184,7 +7085,7 @@ const logger = createConsola({
 
 function resolvePathCacheKey(e, path) {
   const siteConfig = e.context.siteConfig.get();
-  const basePath = withoutTrailingSlash(withoutLeadingSlash(normalizeKey$2(path || e.path)));
+  const basePath = withoutTrailingSlash(withoutLeadingSlash(normalizeKey$1(path || e.path)));
   return [
     !basePath || basePath === "/" ? "index" : basePath,
     hash([
@@ -8536,6 +8437,12 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 

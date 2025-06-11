@@ -52,46 +52,7 @@ const sources = [
             ]
         },
         "urls": [
-            "/",
-            "/sobre",
-            "/contato",
-            "/servicos"
-        ],
-        "sourceType": "app"
-    },
-    {
-        "context": {
-            "name": "nuxt:prerender",
-            "description": "Generated at build time when prerendering.",
-            "tips": [
-                "Can be disabled with `{ excludeAppSources: ['nuxt:prerender'] }`."
-            ]
-        },
-        "urls": [
-            {
-                "loc": "/sobre"
-            },
-            {
-                "loc": "/servicos"
-            },
-            {
-                "loc": "/contato"
-            },
-            {
-                "loc": "/cases/mdmoveis"
-            },
-            {
-                "loc": "/blog"
-            },
-            {
-                "loc": "/politica-de-privacidade"
-            },
-            {
-                "loc": "/servicos/criacao-de-sites"
-            },
-            {
-                "loc": "/"
-            }
+            "/"
         ],
         "sourceType": "app"
     }

@@ -4,7 +4,6 @@ import 'lru-cache';
 import 'devalue';
 import 'node:http';
 import 'node:https';
-import 'ioredis';
 import 'node:fs';
 import 'node:path';
 import 'vue';

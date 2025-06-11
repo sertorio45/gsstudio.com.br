@@ -11,7 +11,6 @@ import { createStorage, defineDriver, prefixStorage, normalizeKey } from 'file:/
 import unstorage_47drivers_47fs from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/fs.mjs';
 import fsDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/fs-lite.mjs';
 import lruCacheDriver from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/lru-cache.mjs';
-import unstorage_47drivers_47redis from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/redis.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/radix3/dist/index.mjs';
 import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unctx/dist/index.mjs';
 import { toValue } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
@@ -205,7 +204,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "ef49006b-5112-4456-9f63-5a8f86fe4a17",
+    "buildId": "b9288a37-ea43-4ad6-aa2d-8ca275265ffa",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -216,46 +215,17 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/": {
-        "isr": 3600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=3600, stale-while-revalidate=86400, durable"
-        }
+        "prerender": false
       },
-      "/blog/**": {
-        "isr": 300,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=300, stale-while-revalidate=86400, durable"
+      "/api/**": {
+        "cache": {
+          "maxAge": 3600
         }
       },
       "/**": {
-        "isr": 600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=600, stale-while-revalidate=86400, durable"
-        }
-      },
-      "/sobre": {
-        "prerender": true
-      },
-      "/contato": {
-        "prerender": true
-      },
-      "/servicos": {
-        "prerender": true
-      },
-      "/servicos/**": {
-        "prerender": true
-      },
-      "/api/**": {
-        "cors": true,
-        "headers": {
-          "access-control-allow-origin": "*",
-          "access-control-allow-methods": "*",
-          "access-control-allow-headers": "*",
-          "access-control-max-age": "0",
-          "Cache-Control": "no-cache, no-store, must-revalidate"
+        "ssr": true,
+        "cache": {
+          "maxAge": 600
         }
       },
       "/sitemap.xsl": {
@@ -680,7 +650,6 @@ const storage = createStorage({});
 storage.mount('/assets', assets$1);
 
 storage.mount('internal:nuxt:prerender', _47Users_47giovannisertorio_47Desktop_47Sites_47gsstudio_digital_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js({"driver":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt/dist/core/runtime/nitro/cache-driver.js","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/cache/nitro/prerender"}));
-storage.mount('redis', unstorage_47drivers_47redis({"driver":"redis"}));
 storage.mount('data', fsDriver({"driver":"fsLite","base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.data/kv"}));
 storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital","ignore":["**/node_modules/**","**/.git/**"]}));
 storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/server","ignore":["**/node_modules/**","**/.git/**"]}));
@@ -3584,6 +3553,13 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
