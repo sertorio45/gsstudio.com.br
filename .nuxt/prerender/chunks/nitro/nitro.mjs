@@ -1,7 +1,7 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send as send$1, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, getRequestHost, getRequestProtocol, getQuery as getQuery$1, createError, appendResponseHeader, removeResponseHeader, getResponseHeader, setHeader, getHeader, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/h3/dist/index.mjs';
 import { withQuery, joinURL, parseURL, withoutBase, getQuery, joinRelativeURL, hasProtocol, withHttps, withoutProtocol, withTrailingSlash, withLeadingSlash, withoutTrailingSlash, withBase, withoutLeadingSlash, decodePath, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
+import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/fetch/index.mjs';
 import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/klona/dist/index.mjs';
@@ -204,7 +204,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "8eae45a6-79ba-4317-8849-b6ed05c8feed",
+    "buildId": "214d8879-b27c-4702-a5ae-cfe4b0fc1c52",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -234,6 +234,11 @@ const _inlineRuntimeConfig = {
         }
       },
       "/sitemap.xml": {
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8",
+          "Cache-Control": "public, max-age=600, must-revalidate",
+          "X-Sitemap-Prerendered": "2025-06-11T02:50:30.976Z"
+        },
         "swr": 600,
         "cache": {
           "swr": true,
@@ -2314,15 +2319,35 @@ const _vCktFThY2s = (function(nitro) {
   });
 });
 
+const _OlUIUuj8Rd = defineNitroPlugin((nitro) => {
+  createDebugger(nitro.hooks, { tag: "nitro-runtime" });
+});
+
 const plugins = [
   _gH1rOW1cW1,
 _dqHQI2jtgJ,
 _NnDvhXlnLk,
 _CH5S84B7nR,
-_vCktFThY2s
+_vCktFThY2s,
+_OlUIUuj8Rd
 ];
 
-const assets = {};
+const assets = {
+  "/robots.txt": {
+    "type": "text/plain; charset=utf-8",
+    "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
+    "mtime": "2025-06-11T02:50:42.933Z",
+    "size": 70,
+    "path": "../../.output/public/robots.txt"
+  },
+  "/__sitemap__/style.xsl": {
+    "type": "application/xml",
+    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
+    "mtime": "2025-06-11T02:50:42.933Z",
+    "size": 5967,
+    "path": "../../.output/public/__sitemap__/style.xsl"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));

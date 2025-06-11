@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {    
-    preset: 'netlify',
+    // preset: 'netlify',
     debug: true,
     prerender: {
       crawlLinks: true,
