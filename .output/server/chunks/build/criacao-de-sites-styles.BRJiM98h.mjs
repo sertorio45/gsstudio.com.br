@@ -1,7 +1,9 @@
 import { c as criacaoDeSites_vue_vue_type_style_index_0_scoped_7821b13a_lang } from './criacao-de-sites-styles-1.mjs-DzCv8kBP.mjs';
-import '../nitro/nitro.mjs';
+import '../../index.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

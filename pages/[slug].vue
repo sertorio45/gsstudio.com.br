@@ -1,104 +1,95 @@
-<template>
-  <Head>
-    <Title>{{ article?.title }}</Title>
-    <Meta name="description" :content="article?.meta_description" />
-  </Head>
-  <section class="my-5" id="article-detail">
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
-          <div class="back-fixed">
-            <button @click="goBack" class="btn btn-primary-border">Voltar</button>
-            <div class="social-share d-flex">
-              <a
-                v-for="(network, index) in socialNetworks"
-                :key="index"
-                :href="network.url"
-                target="_blank"
-                class="social-icon"
-                :title="network.name"
-                @click.prevent="share(network)"
-              >
-                <i :class="network.icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-7 col-md-12 col-lg-9">
-          <!-- 11. Melhorar estados de carregamento e erro -->
-          <div v-if="pending" class="loading-state">
-            <div class="d-flex mb-3">
-              <div class="skeleton skeleton-category me-2"></div>
-              <div class="skeleton skeleton-date"></div>
-            </div>
-            <div class="skeleton skeleton-title mb-3"></div>
-            <div class="skeleton skeleton-content mb-3"></div>
-          </div>
-
-          <div v-else-if="article" class="content_blog">
-            <div class="mb-3 mx-0">
-              <span class="article-category">{{ categoryTitle }}</span>
-              <span v-html="formatDate(article.created_at)" class="mx-3 publish_date"></span>
-            </div>
-            <h1>{{ article.title }}</h1>
-            <div v-html="article.content" class="my-4"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12. Section de contato condicional -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5">
-          <h1>Fale agora conosco</h1>
-          <p>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <Form />
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
-
+import { useArticles, type Article } from '@/composables/useArticles'
+import { onMounted, computed, ref, watch } from 'vue'
 
 const route = useRoute();
 const router = useRouter();
 
-const { data: article, pending, refresh } = useAsyncData(
-  `article-${route.params.slug}`,
+// Server-Side Rendering otimizado: busca apenas o artigo específico
+const { data: article, pending: loading, error } = await useLazyAsyncData(
+  `article-${route.params.slug}`, 
   async () => {
-    const slug = route.params.slug as string;
-    if (!slug) return null;
-
-    const response = await $fetch<{ success: boolean, data: any[] }>(
-      "/api/articles",
-      {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-      }
-    );
-
-    // Encontrar o artigo pelo slug
-    return response?.data?.find(article => article.slug === slug) || null;
+    const { fetchArticleBySlug } = useArticles()
+    return await fetchArticleBySlug(route.params.slug as string)
   },
   {
+    // Reativa quando o slug muda
+    watch: [() => route.params.slug],
+    // Cache por 10 minutos
     server: true,
-    default: () => null,
+    default: () => null
   }
-);
+)
 
-// Usar category_title já retornado do backend
+// Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
 
-useSeo(article, route);
+// SEO Meta Tags - renderizadas no servidor
+const canonicalUrl = `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`;
+const getTitle = computed(() => article.value?.title || 'Artigo');
+const getDescription = computed(() => article.value?.description || '');
 
+// Meta tags renderizadas no servidor
+useHead({
+  title: getTitle,
+  meta: [
+    {
+      name: 'canonical',
+      content: canonicalUrl,
+    },
+    {
+      name: 'description',
+      content: getDescription,
+    },
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+    // Open Graph
+    {
+      property: 'og:title',
+      content: getTitle,
+    },
+    {
+      property: 'og:description',
+      content: getDescription,
+    },
+    {
+      property: 'og:type',
+      content: 'article',
+    },
+    {
+      property: 'og:url',
+      content: canonicalUrl,
+    },
+    {
+      property: 'og:locale',
+      content: 'pt_BR',
+    },
+    {
+      property: 'og:image:alt',
+      content: getTitle,
+    },
+    // Twitter
+    {
+      name: 'twitter:card',
+      content: 'summary',
+    },
+    {
+      name: 'twitter:title',
+      content: getTitle,
+    },
+    {
+      name: 'twitter:description',
+      content: getDescription,
+    },
+    // Facebook
+    {
+      property: 'fb:app_id',
+      content: '603230818880308',
+    },
+  ],
+});
 
 interface SocialNetwork {
   name: string;
@@ -106,11 +97,10 @@ interface SocialNetwork {
   icon: string;
 }
 
-const socialNetworks = ref<SocialNetwork[]>([]);
-
-onMounted(() => {
-  const url = window.location.href;
-  socialNetworks.value = [
+// Computed para redes sociais (renderizado no servidor)
+const socialNetworks = computed<SocialNetwork[]>(() => {
+  const url = canonicalUrl;
+  return [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
     { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
     { name: "LinkedIn", url: `https://www.linkedin.com/shareArticle?mini=true&url=${url}`, icon: "bx bxl-linkedin" },
@@ -118,10 +108,6 @@ onMounted(() => {
     { name: "Email", url: `mailto:?subject=Confira este artigo&body=${url}`, icon: "bx bx-envelope" },
     { name: "Link", url, icon: "bx bx-link" },
   ];
-
-  if (!article.value && !pending.value) {
-    refresh();
-  }
 });
 
 const share = (network: SocialNetwork) => {
@@ -147,18 +133,16 @@ const share = (network: SocialNetwork) => {
 };
 
 const goBack = () => {
-  if (window.history.length > 1) {
+  if (process.client && window.history.length > 1) {
     router.back();
   } else {
     router.push('/blog');
   }
-  setTimeout(() => refreshNuxtData("articles"), 200);
 };
 
 const formatDate = (date: string | null | undefined) => {
   if (!date) return "";
   try {
-    // Usamos created_at em vez de date_created
     return new Date(date).toLocaleDateString("pt-BR", {
       weekday: "long",
       year: "numeric",
@@ -169,7 +153,100 @@ const formatDate = (date: string | null | undefined) => {
     return new Date().toLocaleDateString("pt-BR");
   }
 };
+
+// Middleware para verificar se o artigo existe (renderizado no servidor)
+if (process.server && !article.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Artigo não encontrado'
+  })
+}
 </script>
+<template>
+  <Head>
+    <Title>
+      {{ article?.title || 'Artigo' }}
+    </Title>
+  </Head>
+  <section class="my-5" id="article-detail">
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12 col-md-12 mb-4">
+          <div class="back-fixed">
+            <button @click="goBack" class="btn btn-primary-border">Voltar</button>
+            <div class="social-share d-flex">
+              <a
+                v-for="(network, index) in socialNetworks"
+                :key="index"
+                :href="network.url"
+                target="_blank"
+                class="social-icon"
+                :title="network.name"
+                @click.prevent="share(network)"
+              >
+                <i :class="network.icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-7 col-md-12 col-lg-9">
+          <!-- Estados de carregamento e erro -->
+          <div v-if="loading" class="loading-state">
+            <div class="d-flex mb-3">
+              <div class="skeleton skeleton-category me-2"></div>
+              <div class="skeleton skeleton-date"></div>
+            </div>
+            <div class="skeleton skeleton-title mb-3"></div>
+            <div class="skeleton skeleton-content mb-3"></div>
+          </div>
+
+          <div v-else-if="error" class="error-state">
+            <div class="alert alert-danger">
+              <h4>Erro ao carregar o artigo</h4>
+              <p>{{ error }}</p>
+              <button @click="goBack" class="btn btn-primary">Voltar</button>
+            </div>
+          </div>
+
+          <div v-else-if="article" class="content_blog">
+            <div class="mb-3 mx-0">
+              <span class="article-category">{{ categoryTitle }}</span>
+              <span v-html="formatDate(article.created_at)" class="mx-3 publish_date"></span>
+            </div>
+            <h1>{{ article.title }}</h1>
+            <div v-html="article.content" class="my-4"></div>
+          </div>
+
+          <div v-else class="not-found-state">
+            <div class="alert alert-warning">
+              <h4>Artigo não encontrado</h4>
+              <p>O artigo que você está procurando não existe ou foi removido.</p>
+              <button @click="goBack" class="btn btn-primary">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section de contato condicional -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 align-content-center mb-5 sm-mb-5">
+          <h1>Fale agora conosco</h1>
+          <p>Entre em contato conosco para tirar suas dúvidas ou solicitar um orçamento.</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <Form />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+
 
 <style scoped>
 

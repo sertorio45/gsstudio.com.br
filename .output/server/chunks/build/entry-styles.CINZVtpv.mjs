@@ -1,7 +1,9 @@
-import { b as buildAssetsURL } from '../nitro/nitro.mjs';
+import { b as buildAssetsURL } from '../../index.mjs';
 import { C as CookieConsent_vue_vue_type_style_index_0_scoped_f5594720_lang } from './entry-styles-22.mjs-CWZp-gOO.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

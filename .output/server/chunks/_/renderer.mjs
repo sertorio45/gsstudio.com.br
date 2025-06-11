@@ -1,4 +1,4 @@
-import { a2 as decodeHtml, a3 as logger, m as useNitroOrigin, a4 as toBase64Image, a1 as withBase, a5 as createConsola, q as fetchIsland, a6 as htmlDecodeQuotes, o as useOgImageRuntimeConfig, F as defu, s as normaliseFontInput, a7 as fontCache } from '../nitro/nitro.mjs';
+import { a2 as decodeHtml, a3 as logger, m as useNitroOrigin, a4 as toBase64Image, a1 as withBase, a5 as createConsola, q as fetchIsland, a6 as htmlDecodeQuotes, o as useOgImageRuntimeConfig, F as defu, s as normaliseFontInput, a7 as fontCache } from '../../index.mjs';
 import { t as theme, a as applyEmojis, l as loadFont } from './eventHandlers.mjs';
 import { html } from 'satori-html';
 import sizeOf from 'image-size';
@@ -6,6 +6,8 @@ import { createGenerator } from '@unocss/core';
 import presetWind from '@unocss/preset-wind';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
@@ -35,11 +37,11 @@ async function useSatori() {
   return satoriInstance.instance.satori;
 }
 async function useSharp() {
-  sharpInstance.instance = sharpInstance.instance || await import('../nitro/nitro.mjs').then(function (n) { return n.ab; }).then((m) => m.default);
+  sharpInstance.instance = sharpInstance.instance || await import('../../index.mjs').then(function (n) { return n.aa; }).then((m) => m.default);
   return sharpInstance.instance;
 }
 async function useCssInline() {
-  cssInlineInstance.instance = cssInlineInstance.instance || await import('../nitro/nitro.mjs').then(function (n) { return n.ab; }).then((m) => m.default);
+  cssInlineInstance.instance = cssInlineInstance.instance || await import('../../index.mjs').then(function (n) { return n.aa; }).then((m) => m.default);
   await cssInlineInstance.instance.initWasmPromise;
   return cssInlineInstance.instance.cssInline;
 }

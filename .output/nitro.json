@@ -1,6 +1,6 @@
 {
-  "date": "2025-06-10T18:09:42.933Z",
-  "preset": "node-server",
+  "date": "2025-06-11T00:36:11.092Z",
+  "preset": "node-cluster",
   "framework": {
     "name": "nuxt",
     "version": "3.14.1592"

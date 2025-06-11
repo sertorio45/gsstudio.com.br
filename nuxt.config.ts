@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
-    preset: 'node-server',
+    preset: 'node_cluster',
     prerender: {
       crawlLinks: true,
       // routes: [
@@ -55,13 +55,16 @@ export default defineNuxtConfig({
       // ],
     },
   },
+  
+  // Configurações de cache e otimização para SSR
   routeRules: {
     '/': { prerender: false },
-    '/api/**': { cache: { maxAge: 60 * 60 } },
-    '/:slug': {
-      swr: true,
+    '/api/**': { cache: { maxAge: 60 * 60 } }, // Cache API por 1 hora
+    '/**': {
+      // SSR com cache para todas as páginas de artigos
+      ssr: true,
       cache: { maxAge: 60 * 10 }, // 10 minutos de cache
-  },
+    },
   },
 
   hooks: {
@@ -143,9 +146,8 @@ export default defineNuxtConfig({
     SUPABASE_KEY: process.env.SUPABASE_KEY,
     SUPABASE_TENANT_ID: process.env.SUPABASE_TENANT_ID,
     public: {
-      SUPABASE_URL: process.env.SUPABASE_URL,
-      SUPABASE_KEY: process.env.SUPABASE_KEY,
-      SUPABASE_TENANT_ID: process.env.SUPABASE_TENANT_ID,
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'https://gsstudio.com.br',
     }
   },
 
@@ -182,7 +184,7 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '@/plugins/main.client.ts',
+    // '@/plugins/main.client.ts',
     '@/plugins/bootstrap.client.ts',
     '@/plugins/web-vitals.client.ts',
   ],

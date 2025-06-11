@@ -32,7 +32,6 @@ const appPageTransition = false;
 const appKeepalive = false;
 const nuxtLinkDefaults = { "componentName": "NuxtLink", "prefetch": true, "prefetchOn": { "visibility": true } };
 const asyncDataDefaults = { "value": null, "errorValue": null, "deep": true };
-const fetchDefaults = {};
 const appId = "nuxt-app";
 function getNuxtAppCtx(id = appId) {
   return getContext(id, {
@@ -639,12 +638,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import("./_nuxt/_slug_-CaaJlye4.js")
+    component: () => import("./_nuxt/_slug_-BUdZXUfc.js")
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import("./_nuxt/blog-CUHLjsq-.js")
+    component: () => import("./_nuxt/blog-BtQl8PfJ.js")
   },
   {
     name: "cases-mdmoveis",
@@ -654,32 +653,32 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import("./_nuxt/contato-DdJ8_Kwe.js")
+    component: () => import("./_nuxt/contato-BtgTHoI6.js")
   },
   {
     name: "index",
     path: "/",
-    component: () => import("./_nuxt/index-BhszvkOF.js")
+    component: () => import("./_nuxt/index-DhkamJf8.js")
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import("./_nuxt/politica-de-privacidade-CLUspR7d.js")
+    component: () => import("./_nuxt/politica-de-privacidade-8i6m86mk.js")
   },
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import("./_nuxt/criacao-de-sites-CIK3vWYd.js")
+    component: () => import("./_nuxt/criacao-de-sites-CTDXcEru.js")
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import("./_nuxt/index-DJpnbwy0.js")
+    component: () => import("./_nuxt/index-D6eyjGZX.js")
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import("./_nuxt/sobre-ZPCkRJqZ.js")
+    component: () => import("./_nuxt/sobre-BFy-y789.js")
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1027,10 +1026,6 @@ function useState(...args) {
 function useRequestEvent(nuxtApp = useNuxtApp()) {
   var _a;
   return (_a = nuxtApp.ssrContext) == null ? void 0 : _a.event;
-}
-function useRequestFetch() {
-  var _a;
-  return ((_a = useRequestEvent()) == null ? void 0 : _a.$fetch) || globalThis.$fetch;
 }
 function prerenderRoutes(path) {
   if (!import.meta.prerender) {
@@ -2459,7 +2454,7 @@ const __nuxt_component_1 = defineComponent({
   }
 });
 const layouts = {
-  default: defineAsyncComponent(() => import("./_nuxt/default-BMSNFEZ9.js"))
+  default: defineAsyncComponent(() => import("./_nuxt/default-CJ55fIPi.js"))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2770,7 +2765,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import("./_nuxt/island-renderer-DuxsR-TP.js").then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import("./_nuxt/island-renderer-C4-vHvTm.js").then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2837,23 +2832,21 @@ export {
   N,
   _export_sfc as _,
   __nuxt_component_0$1 as a,
-  useSeoMeta as b,
+  useNuxtApp as b,
   createError as c,
-  useRoute as d,
+  asyncDataDefaults as d,
   entry$1 as default,
-  useRouter as e,
-  useNuxtApp as f,
-  asyncDataDefaults as g,
-  useRuntimeConfig as h,
+  useRoute as e,
+  useRouter as f,
+  useRuntimeConfig as g,
+  useSeoMeta as h,
   injectHead as i,
   useOgImageRuntimeConfig as j,
   createOgImageMeta as k,
   getOgImagePath as l,
   useRequestEvent as m,
   normaliseOptions as n,
-  fetchDefaults as o,
-  useRequestFetch as p,
-  useSiteConfig as q,
+  useSiteConfig as o,
   separateProps as s,
   useHead as u
 };

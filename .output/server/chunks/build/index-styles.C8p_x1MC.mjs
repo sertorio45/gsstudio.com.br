@@ -1,7 +1,9 @@
 import { i as index_vue_vue_type_style_index_0_scoped_acfe11c8_lang } from './index-styles-1.mjs-A55rp8Yn.mjs';
-import '../nitro/nitro.mjs';
+import '../../index.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

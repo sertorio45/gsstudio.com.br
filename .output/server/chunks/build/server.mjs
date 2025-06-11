@@ -1,5 +1,5 @@
 import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, unref, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, h, defineAsyncComponent, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'vue';
-import { $ as $fetch$1, E as baseURL, c as createError$1, F as defu, G as joinURL, I as withQuery, J as parseQuery, K as getContext, L as createHooks, M as hasProtocol, N as isScriptProtocol, O as sanitizeStatusCode, w as withTrailingSlash, P as withoutTrailingSlash, Q as toRouteMatcher, R as createRouter$1, S as klona, T as parse, U as getRequestHeader, z as parseURL, V as withoutBase, W as camelCase, i as destr, X as isEqual, Y as setCookie, Z as getCookie, _ as deleteCookie, a0 as withLeadingSlash, a1 as withBase } from '../nitro/nitro.mjs';
+import { $ as $fetch$1, E as baseURL, c as createError$1, F as defu, G as joinURL, I as withQuery, J as parseQuery, K as getContext, L as createHooks, M as hasProtocol, N as isScriptProtocol, O as sanitizeStatusCode, w as withTrailingSlash, P as withoutTrailingSlash, Q as toRouteMatcher, R as createRouter$1, S as klona, T as parse, U as getRequestHeader, z as parseURL, V as withoutBase, W as camelCase, i as destr, X as isEqual, Y as setCookie, Z as getCookie, _ as deleteCookie, a0 as withLeadingSlash, a1 as withBase } from '../../index.mjs';
 import { getActiveHead, CapoPlugin } from 'unhead';
 import { defineHeadPlugin, composableNames, unpackMeta } from '@unhead/shared';
 import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
@@ -10,6 +10,8 @@ import IMask from 'imask';
 import { createPinia } from 'pinia';
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'vue/server-renderer';
 import 'lru-cache';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';
@@ -31,7 +33,6 @@ const appPageTransition = false;
 const appKeepalive = false;
 const nuxtLinkDefaults = { "componentName": "NuxtLink", "prefetch": true, "prefetchOn": { "visibility": true } };
 const asyncDataDefaults = { "value": null, "errorValue": null, "deep": true };
-const fetchDefaults = {};
 const appId = "nuxt-app";
 function getNuxtAppCtx(id = appId) {
   return getContext(id, {
@@ -638,12 +639,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-CaaJlye4.mjs')
+    component: () => import('./_slug_-BUdZXUfc.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-CUHLjsq-.mjs')
+    component: () => import('./blog-BtQl8PfJ.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -653,32 +654,32 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-DdJ8_Kwe.mjs')
+    component: () => import('./contato-BtgTHoI6.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-BhszvkOF.mjs')
+    component: () => import('./index-DhkamJf8.mjs')
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import('./politica-de-privacidade-CLUspR7d.mjs')
+    component: () => import('./politica-de-privacidade-8i6m86mk.mjs')
   },
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import('./criacao-de-sites-CIK3vWYd.mjs')
+    component: () => import('./criacao-de-sites-CTDXcEru.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./index-DJpnbwy0.mjs')
+    component: () => import('./index-D6eyjGZX.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-ZPCkRJqZ.mjs')
+    component: () => import('./sobre-BFy-y789.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1023,10 +1024,6 @@ function useState(...args) {
 function useRequestEvent(nuxtApp = useNuxtApp()) {
   var _a;
   return (_a = nuxtApp.ssrContext) == null ? void 0 : _a.event;
-}
-function useRequestFetch() {
-  var _a;
-  return ((_a = useRequestEvent()) == null ? void 0 : _a.$fetch) || globalThis.$fetch;
 }
 const CookieDefaults = {
   path: "/",
@@ -2412,7 +2409,7 @@ const __nuxt_component_1 = defineComponent({
   }
 });
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-BMSNFEZ9.mjs'))
+  default: defineAsyncComponent(() => import('./default-CJ55fIPi.mjs'))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2723,7 +2720,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-DuxsR-TP.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C4-vHvTm.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2787,5 +2784,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useSeoMeta as b, createError as c, useRoute as d, entry$1 as default, useRouter as e, useNuxtApp as f, asyncDataDefaults as g, useRuntimeConfig as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, fetchDefaults as o, useRequestFetch as p, useSiteConfig as q, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useNuxtApp as b, createError as c, asyncDataDefaults as d, entry$1 as default, useRoute as e, useRouter as f, useRuntimeConfig as g, useSeoMeta as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, useSiteConfig as o, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map

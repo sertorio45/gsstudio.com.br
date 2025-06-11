@@ -1,5 +1,5 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'vue-bundle-renderer/runtime';
-import { a as defineRenderHandler, b as buildAssetsURL, p as publicAssetsURL, g as getQuery, c as createError, e as getRouteRules, u as useRuntimeConfig, f as getResponseStatus, h as getResponseStatusText, r as readBody, i as destr, j as useNitroApp } from '../nitro/nitro.mjs';
+import { a as defineRenderHandler, b as buildAssetsURL, p as publicAssetsURL, g as getQuery, c as createError, e as getRouteRules, u as useRuntimeConfig, f as getResponseStatus, h as getResponseStatusText, r as readBody, i as destr, j as useNitroApp } from '../../index.mjs';
 import { stringify, uneval } from 'devalue';
 import { renderToString } from 'vue/server-renderer';
 import { propsToString, renderSSRHead } from '@unhead/ssr';
@@ -7,6 +7,8 @@ import { createServerHead as createServerHead$1, CapoPlugin } from 'unhead';
 import { version, unref } from 'vue';
 import { defineHeadPlugin } from '@unhead/shared';
 import 'lru-cache';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

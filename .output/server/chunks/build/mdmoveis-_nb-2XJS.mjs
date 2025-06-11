@@ -1,9 +1,11 @@
 import { ssrRenderAttrs } from 'vue/server-renderer';
 import { useSSRContext } from 'vue';
 import { _ as _export_sfc } from './server.mjs';
-import '../nitro/nitro.mjs';
+import '../../index.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

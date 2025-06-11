@@ -21,6 +21,7 @@
     "@nuxtjs/supabase": "1.5.1",
     "@nuxtjs/web-vitals": "0.2.7",
     "@popperjs/core": "^2.11.8",
+    "@supabase/supabase-js": "^2.50.0",
     "@types/axios": "^0.14.0",
     "@vee-validate/nuxt": "^4.13.2",
     "@vite-pwa/nuxt": "0.10.6",

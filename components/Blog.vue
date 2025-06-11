@@ -1,15 +1,12 @@
 <script setup lang="ts">
-const route = useRoute()
-const { data: articlesData, pending, error, refresh } = await useFetch<{ success: boolean, data: Array<any> }>("/api/articles", {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  server: false, // executa só no client
-  watch: [() => route.params.slug],
-});
+import { onMounted } from 'vue'
+import { useArticles } from '@/composables/useArticles'
 
-const articles = computed(() => articlesData.value?.data || []);
+const { articles, loading, error, fetchArticles } = useArticles()
+
+onMounted(() => {
+  fetchArticles()
+})
 </script>
 <template>
   <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
@@ -18,7 +15,7 @@ const articles = computed(() => articlesData.value?.data || []);
         <h2 class="text-center">Blog</h2>
         
         <!-- Skeleton Cards -->
-        <div v-if="pending" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">

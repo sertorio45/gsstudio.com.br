@@ -1,7 +1,9 @@
 import { T as Topo_vue_vue_type_style_index_0_lang } from './Topo-styles-1.mjs-BkN6EqjN.mjs';
-import '../nitro/nitro.mjs';
+import '../../index.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

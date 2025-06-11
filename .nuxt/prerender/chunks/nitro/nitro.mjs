@@ -204,7 +204,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "5b9e4394-2ba1-430f-9d74-d538904ef024",
+    "buildId": "8c5884c2-64b6-49ac-9985-1eb7335ff181",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -222,11 +222,10 @@ const _inlineRuntimeConfig = {
           "maxAge": 3600
         }
       },
-      "/:slug": {
-        "swr": true,
+      "/**": {
+        "ssr": true,
         "cache": {
-          "maxAge": 600,
-          "swr": true
+          "maxAge": 600
         }
       },
       "/sitemap.xsl": {
@@ -264,9 +263,8 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
-    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyem9obnV1bHdnb25kdW91ZGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
-    "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
+    "apiBase": "https://srzohnuulwgonduoudfp.supabase.co",
+    "baseUrl": "https://gsstudio.com.br",
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
@@ -3533,16 +3531,16 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_B3Jbg0 = () => import('../routes/api/index.get.mjs');
-const _lazy_n238UD = () => import('../routes/api/test/teste.mjs');
+const _lazy_cCoyrN = () => import('../routes/api/articles/index copy.mjs');
+const _lazy_ea6NbK = () => import('../routes/api/index.mjs');
 const _lazy_NbywPE = () => import('../routes/__og-image__/font/font.mjs');
 const _lazy_JVuIDH = () => import('../routes/__og-image__/image/image.mjs');
 const _lazy_rzruMJ = () => import('../_/renderer3.mjs');
 
 const handlers = [
   { route: '', handler: _sQ89mj, lazy: false, middleware: true, method: undefined },
-  { route: '/api/articles', handler: _lazy_B3Jbg0, lazy: true, middleware: false, method: "get" },
-  { route: '/api/test/teste', handler: _lazy_n238UD, lazy: true, middleware: false, method: undefined },
+  { route: '/api/articles/index copy', handler: _lazy_cCoyrN, lazy: true, middleware: false, method: undefined },
+  { route: '/api/articles', handler: _lazy_ea6NbK, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/robots.txt', handler: _Ylj0Ft, lazy: false, middleware: false, method: undefined },
   { route: '', handler: _RsAwYj, lazy: false, middleware: false, method: undefined },
@@ -3555,8 +3553,13 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/:slug', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 

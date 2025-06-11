@@ -1,7 +1,9 @@
-import { d as defineEventHandler } from '../../../nitro/nitro.mjs';
+import { d as defineEventHandler } from '../../../../index.mjs';
 import { i as imageEventHandler } from '../../../_/eventHandlers.mjs';
 import 'lru-cache';
 import 'devalue';
+import 'node:cluster';
+import 'node:os';
 import 'node:http';
 import 'node:https';
 import 'node:fs';

@@ -19,7 +19,7 @@
     <div class="container my-5">
       <div class="row">
         <!-- Skeleton Cards -->
-        <div v-if="pending" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -53,8 +53,8 @@
       <!-- Botão "Ver Mais" -->
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <button @click="() => refresh()" :disabled="pending" class="btn btn-primary">
-            <span v-if="pending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <button @click="fetchArticles" :disabled="loading" class="btn btn-primary">
+            <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             <span v-else>Ver mais artigos</span>
           </button>
         </div>
@@ -87,13 +87,12 @@ useHead ({
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
     });
-const { data: articlesData, pending, error, refresh } = useLazyFetch("/api/articles", {
-  transform: (response: any) => response.data
-});
+    import { onMounted } from 'vue'
+import { useArticles } from '@/composables/useArticles'
 
-const articles = computed(() => articlesData.value || []);
+const { articles, loading, error, fetchArticles } = useArticles()
 
 onMounted(() => {
-  refresh();
-});
+  fetchArticles()
+})
 </script>
