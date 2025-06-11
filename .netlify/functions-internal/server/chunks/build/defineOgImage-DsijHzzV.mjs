@@ -1,4 +1,4 @@
-import { a as defu, t as toRouteMatcher, l as createRouter, k as withoutTrailingSlash, r as withoutBase } from '../nitro/nitro.mjs';
+import { F as defu, Q as toRouteMatcher, R as createRouter, P as withoutTrailingSlash, V as withoutBase } from '../nitro/nitro.mjs';
 import { b as useNuxtApp, e as useRoute, j as useOgImageRuntimeConfig, n as normaliseOptions, s as separateProps, k as createOgImageMeta, l as getOgImagePath, g as useRuntimeConfig } from './server.mjs';
 
 function withoutQuery(path) {

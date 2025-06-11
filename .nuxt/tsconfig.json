@@ -155,9 +155,6 @@
       "#mail": [
         "file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
-      "~web-vitals-provider": [
-        "../node_modules/@nuxtjs/web-vitals/dist/runtime/providers/ga"
-      ],
       "#color-mode-options": [
         "./color-mode-options.mjs"
       ],
@@ -186,7 +183,7 @@
     "noUncheckedIndexedAccess": false,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
-    "module": "preserve",
+    "module": "ESNext",
     "noEmit": true,
     "lib": [
       "ESNext",
@@ -244,8 +241,6 @@
     "../node_modules/nuxt-og-image/dist/runtime",
     "../node_modules/nuxt-mail/runtime",
     "../node_modules/nuxt-mail/dist/runtime",
-    "../node_modules/@nuxtjs/web-vitals/runtime",
-    "../node_modules/@nuxtjs/web-vitals/dist/runtime",
     "../node_modules/@nuxtjs/color-mode/runtime",
     "../node_modules/@nuxtjs/color-mode/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
@@ -295,8 +290,6 @@
     "../node_modules/nuxt-og-image/dist/runtime/server",
     "../node_modules/nuxt-mail/runtime/server",
     "../node_modules/nuxt-mail/dist/runtime/server",
-    "../node_modules/@nuxtjs/web-vitals/runtime/server",
-    "../node_modules/@nuxtjs/web-vitals/dist/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",
     "../node_modules/@nuxtjs/color-mode/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",

@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {    
-    // preset: 'netlify',
+    preset: 'netlify',
     debug: true,
     prerender: {
       crawlLinks: true,
@@ -116,10 +116,7 @@ export default defineNuxtConfig({
     'nuxt-delay-hydration',
     'nuxt-og-image',
     'nuxt-mail',
-    '@nuxtjs/web-vitals',
-    '@vite-pwa/nuxt',
     '@nuxtjs/color-mode',
-    // '@nuxtjs/supabase',
   ],
 
   gtm: {
@@ -135,12 +132,7 @@ export default defineNuxtConfig({
     disablePrefetchLinks: true,
   },
 
-  webVitals: {
-    debug: true, // Logs desabilitados para produção
-    provider: "ga",
-    disabled: false, // Ativar o Web Vitals
-    ga: { id: 'G-PCWNHC1PD1' },
-  },
+
 
   runtimeConfig: {
     SUPABASE_URL: process.env.SUPABASE_URL,
@@ -177,6 +169,7 @@ export default defineNuxtConfig({
   },
 
   css: [
+    'bootstrap/dist/css/bootstrap.css',
     'swiper/swiper-bundle.css',
     'swiper/css/effect-creative',
     'swiper/css/zoom',
@@ -184,17 +177,21 @@ export default defineNuxtConfig({
     'boxicons/css/boxicons.min.css',
   ],
 
-  plugins: [
-    // '@/plugins/main.client.ts',
-    '@/plugins/bootstrap.client.ts',
-    '@/plugins/web-vitals.client.ts',
-  ],
+  plugins: [],
 
   pwa: {
     registerType: 'autoUpdate',
     workbox: {
       clientsClaim: true,
       skipWaiting: true,
+      navigateFallback: null,
+    },
+    manifest: {
+      name: 'GS Studio',
+      short_name: 'GS Studio',
+      description: 'Agência full service especializada em design, marketing e tecnologia',
+      theme_color: '#000000',
+      background_color: '#ffffff',
     }
   },
 

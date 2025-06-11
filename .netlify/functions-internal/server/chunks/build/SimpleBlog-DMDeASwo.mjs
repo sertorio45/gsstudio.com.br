@@ -1,6 +1,6 @@
 import { defineComponent, computed, mergeProps, unref, useSSRContext } from 'vue';
 import { ssrRenderAttrs, ssrInterpolate } from 'vue/server-renderer';
-import { q as parseURL } from '../nitro/nitro.mjs';
+import { z as parseURL } from '../nitro/nitro.mjs';
 import { o as useSiteConfig } from './server.mjs';
 import 'lru-cache';
 import 'devalue';

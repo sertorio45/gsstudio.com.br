@@ -204,7 +204,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "214d8879-b27c-4702-a5ae-cfe4b0fc1c52",
+    "buildId": "2b5e17d4-8a57-46b7-a65d-821ba8435c7b",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -237,7 +237,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-11T02:50:30.976Z"
+          "X-Sitemap-Prerendered": "2025-06-11T03:01:56.678Z"
         },
         "swr": 600,
         "cache": {
@@ -2332,22 +2332,7 @@ _vCktFThY2s,
 _OlUIUuj8Rd
 ];
 
-const assets = {
-  "/robots.txt": {
-    "type": "text/plain; charset=utf-8",
-    "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
-    "mtime": "2025-06-11T02:50:42.933Z",
-    "size": 70,
-    "path": "../../.output/public/robots.txt"
-  },
-  "/__sitemap__/style.xsl": {
-    "type": "application/xml",
-    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
-    "mtime": "2025-06-11T02:50:42.933Z",
-    "size": 5967,
-    "path": "../../.output/public/__sitemap__/style.xsl"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));

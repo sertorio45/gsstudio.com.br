@@ -170,9 +170,6 @@
       "#mail/*": [
         "./nuxt-mail/*"
       ],
-      "~web-vitals-provider": [
-        "../node_modules/@nuxtjs/web-vitals/dist/runtime/providers/ga"
-      ],
       "#color-mode-options": [
         "./color-mode-options"
       ],
@@ -260,7 +257,6 @@
     "../node_modules/nuxt-delay-hydration/runtime/server",
     "../node_modules/nuxt-og-image/runtime/server",
     "../node_modules/nuxt-mail/runtime/server",
-    "../node_modules/@nuxtjs/web-vitals/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
