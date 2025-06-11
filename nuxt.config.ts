@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
-    preset: 'node_cluster',
+    preset: 'netlify',
     prerender: {
       crawlLinks: true,
       // routes: [
