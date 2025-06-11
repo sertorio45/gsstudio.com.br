@@ -3,29 +3,9 @@
   command = "npm run build"
   # Diretório de publicação
   publish = "dist"
-  # Variáveis de ambiente para o build
-  environment = { NODE_VERSION = "18" }
 
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-# Configurações para Functions
-[functions]
-  # Diretório das functions (se houver)
-  directory = "netlify/functions"
-  # Timeout das functions (máximo 10 segundos no plano gratuito)
-  timeout = 10
+[build.environment]
+  NODE_VERSION = "18"
 
 # Headers globais para segurança e performance
 [[headers]]
@@ -37,9 +17,6 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    
-    # Performance
-    X-DNS-Prefetch-Control = "on"
 
 # Headers específicos para assets estáticos
 [[headers]]
@@ -53,12 +30,6 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# Headers para fontes
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
 # Redirects para URLs antigas ou específicas
 [[redirects]]
   from = "/blog"
@@ -71,28 +42,17 @@
   to = "/:splat"
   status = 301
 
-# SPA fallback para rotas dinâmicas (se necessário)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
 # Configurações de contexto para diferentes ambientes
 [context.production]
-  environment = { NODE_ENV = "production" }
+  [context.production.environment]
+    NODE_ENV = "production"
 
 [context.deploy-preview]
-  environment = { NODE_ENV = "preview" }
+  [context.deploy-preview.environment]
+    NODE_ENV = "preview"
 
 [context.branch-deploy]
-  environment = { NODE_ENV = "development" }
+  [context.branch-deploy.environment]
+    NODE_ENV = "development"
 
-# Configurações para Edge Functions (se necessário)
-[[edge_functions]]
-  function = "geo-location"
-  path = "/api/location"
-
-# Configurações de Forms (se usar Netlify Forms)
-[forms]
-  settings = { spam_protection = true } 
+ 
