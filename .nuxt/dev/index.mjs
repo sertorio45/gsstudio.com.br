@@ -29,7 +29,6 @@ import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_dig
 import { snakeCase } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/scule/dist/index.mjs';
 import { createStorage, prefixStorage, normalizeKey } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/fs.mjs';
-import unstorage_47drivers_47redis from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unstorage/drivers/redis.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/radix3/dist/index.mjs';
 import { getContext } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unctx/dist/index.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
@@ -347,46 +346,17 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/": {
-        "isr": 3600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=3600, stale-while-revalidate=86400, durable"
-        }
+        "prerender": false
       },
-      "/blog/**": {
-        "isr": 300,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=300, stale-while-revalidate=86400, durable"
+      "/api/**": {
+        "cache": {
+          "maxAge": 3600
         }
       },
       "/**": {
-        "isr": 600,
-        "headers": {
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Netlify-CDN-Cache-Control": "public, max-age=600, stale-while-revalidate=86400, durable"
-        }
-      },
-      "/sobre": {
-        "prerender": true
-      },
-      "/contato": {
-        "prerender": true
-      },
-      "/servicos": {
-        "prerender": true
-      },
-      "/servicos/**": {
-        "prerender": true
-      },
-      "/api/**": {
-        "cors": true,
-        "headers": {
-          "access-control-allow-origin": "*",
-          "access-control-allow-methods": "*",
-          "access-control-allow-headers": "*",
-          "access-control-max-age": "0",
-          "Cache-Control": "no-cache, no-store, must-revalidate"
+        "ssr": true,
+        "cache": {
+          "maxAge": 600
         }
       },
       "/sitemap.xsl": {
@@ -762,7 +732,6 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('redis', unstorage_47drivers_47redis({"driver":"redis"}));
 storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital","ignore":["**/node_modules/**","**/.git/**"]}));
 storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/server","ignore":["**/node_modules/**","**/.git/**"]}));
 storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
@@ -3454,6 +3423,11 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -7883,10 +7857,7 @@ const sources$1 = [
             ]
         },
         "urls": [
-            "/",
-            "/sobre",
-            "/contato",
-            "/servicos"
+            "/"
         ],
         "sourceType": "app"
     }

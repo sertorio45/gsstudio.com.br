@@ -54,47 +54,17 @@ export default defineNuxtConfig({
       //   '/[:slug]',
       // ],
     },
-    storage: {
-      redis: {
-        driver: 'redis',
-        // Configurações do Redis se necessário
-      }
-    }
   },
   
   // Configurações de cache e otimização para SSR
   routeRules: {
-    '/': { 
-      isr: 3600,
-      headers: {
-        'Cache-Control': 'public, max-age=0, must-revalidate',
-        'Netlify-CDN-Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400, durable'
-      }
+    '/': { prerender: false },
+    '/api/**': { cache: { maxAge: 60 * 60 } }, // Cache API por 1 hora
+    '/**': {
+      // SSR com cache para todas as páginas de artigos
+      ssr: true,
+      cache: { maxAge: 60 * 10 }, // 10 minutos de cache
     },
-    '/blog/**': { 
-      isr: 300,
-      headers: {
-        'Cache-Control': 'public, max-age=0, must-revalidate',
-        'Netlify-CDN-Cache-Control': 'public, max-age=300, stale-while-revalidate=86400, durable'
-      }
-    },
-    '/**': { 
-      isr: 600,
-      headers: {
-        'Cache-Control': 'public, max-age=0, must-revalidate',
-        'Netlify-CDN-Cache-Control': 'public, max-age=600, stale-while-revalidate=86400, durable'
-      }
-    },
-    '/sobre': { prerender: true },
-    '/contato': { prerender: true },
-    '/servicos': { prerender: true },
-    '/servicos/**': { prerender: true },
-    '/api/**': { 
-      cors: true,
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate'
-      }
-    }
   },
 
   hooks: {
@@ -227,9 +197,5 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-11-13',
-
-  build: {
-    analyze: false
-  },
+  compatibilityDate: '2025-03-26',
 });
