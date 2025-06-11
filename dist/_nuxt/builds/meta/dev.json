@@ -1,0 +1,1 @@
+{"id":"dev","timestamp":1749603111873,"matcher":{"static":{"/sobre":{"prerender":true},"/contato":{"prerender":true},"/servicos":{"prerender":true}},"wildcard":{"/servicos":{"prerender":true}},"dynamic":{}},"prerendered":[]}

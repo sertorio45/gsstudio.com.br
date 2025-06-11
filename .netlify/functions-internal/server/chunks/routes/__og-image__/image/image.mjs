@@ -1,0 +1,23 @@
+import { d as defineEventHandler } from '../../../nitro/nitro.mjs';
+import { i as imageEventHandler } from '../../../_/eventHandlers.mjs';
+import 'lru-cache';
+import 'devalue';
+import 'node:http';
+import 'node:https';
+import 'ioredis';
+import 'node:fs';
+import 'node:path';
+import 'vue';
+import 'consola/core';
+import 'packrup';
+import 'nodemailer';
+import '@dword-design/functions';
+import 'node:url';
+import 'ipx';
+import '@unhead/ssr';
+import 'unhead';
+
+const image = defineEventHandler(imageEventHandler);
+
+export { image as default };
+//# sourceMappingURL=image.mjs.map
