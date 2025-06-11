@@ -30,66 +30,21 @@ const getTitle = computed(() => article.value?.title || 'Artigo');
 const getDescription = computed(() => article.value?.description || '');
 
 // Meta tags renderizadas no servidor
-useHead({
+useServerSeoMeta({
   title: getTitle,
-  meta: [
-    {
-      name: 'canonical',
-      content: canonicalUrl,
-    },
-    {
-      name: 'description',
-      content: getDescription,
-    },
-    {
-      name: 'robots',
-      content: 'index, follow',
-    },
-    // Open Graph
-    {
-      property: 'og:title',
-      content: getTitle,
-    },
-    {
-      property: 'og:description',
-      content: getDescription,
-    },
-    {
-      property: 'og:type',
-      content: 'article',
-    },
-    {
-      property: 'og:url',
-      content: canonicalUrl,
-    },
-    {
-      property: 'og:locale',
-      content: 'pt_BR',
-    },
-    {
-      property: 'og:image:alt',
-      content: getTitle,
-    },
-    // Twitter
-    {
-      name: 'twitter:card',
-      content: 'summary',
-    },
-    {
-      name: 'twitter:title',
-      content: getTitle,
-    },
-    {
-      name: 'twitter:description',
-      content: getDescription,
-    },
-    // Facebook
-    {
-      property: 'fb:app_id',
-      content: '603230818880308',
-    },
-  ],
-});
+  description: getDescription,
+  robots: 'index, follow',
+  ogTitle: getTitle,
+  ogDescription: getDescription,
+  ogType: 'article',
+  ogUrl: canonicalUrl,
+  ogLocale: 'pt_BR',
+  ogImageAlt: getTitle,
+  twitterCard: 'summary',
+  twitterTitle: getTitle,
+  twitterDescription: getDescription,
+  fbAppId: '603230818880308'
+})
 
 interface SocialNetwork {
   name: string;

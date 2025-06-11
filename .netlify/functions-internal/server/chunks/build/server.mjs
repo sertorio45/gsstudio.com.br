@@ -472,6 +472,9 @@ function useServerHead(input, options = {}) {
   if (head)
     return head.push(input, { ...options, mode: "server" });
 }
+function useServerSeoMeta(input, options) {
+  return useSeoMeta(input, { ...options, mode: "server" });
+}
 [CapoPlugin({ track: true })];
 const unhead_KgADcZ0jPj = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:head",
@@ -637,12 +640,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-BUdZXUfc.mjs')
+    component: () => import('./_slug_-AaHyF-2v.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-BtQl8PfJ.mjs')
+    component: () => import('./blog-DOIRhTwd.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -652,32 +655,32 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-BtgTHoI6.mjs')
+    component: () => import('./contato-B2EJw7-s.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-DhkamJf8.mjs')
+    component: () => import('./index-Ce9AjabY.mjs')
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import('./politica-de-privacidade-8i6m86mk.mjs')
+    component: () => import('./politica-de-privacidade-T4BwB4w0.mjs')
   },
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import('./criacao-de-sites-CTDXcEru.mjs')
+    component: () => import('./criacao-de-sites-CGVsqWhw.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./index-D6eyjGZX.mjs')
+    component: () => import('./index-642VYhUl.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-BFy-y789.mjs')
+    component: () => import('./sobre-BpAWYRkG.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2407,7 +2410,7 @@ const __nuxt_component_1 = defineComponent({
   }
 });
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-CJ55fIPi.mjs'))
+  default: defineAsyncComponent(() => import('./default-CKLp_IXd.mjs'))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2718,7 +2721,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C4-vHvTm.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C5IVTjWC.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2782,5 +2785,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useNuxtApp as b, createError as c, asyncDataDefaults as d, entry$1 as default, useRoute as e, useRouter as f, useRuntimeConfig as g, useSeoMeta as h, injectHead as i, useOgImageRuntimeConfig as j, createOgImageMeta as k, getOgImagePath as l, useRequestEvent as m, normaliseOptions as n, useSiteConfig as o, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useNuxtApp as b, createError as c, asyncDataDefaults as d, entry$1 as default, useRoute as e, useRouter as f, useRuntimeConfig as g, useServerSeoMeta as h, injectHead as i, useSeoMeta as j, useOgImageRuntimeConfig as k, createOgImageMeta as l, getOgImagePath as m, normaliseOptions as n, useRequestEvent as o, useSiteConfig as p, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map
