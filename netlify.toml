@@ -1,58 +1,14 @@
 [build]
-  # Comando de build para Nuxt 3
-  command = "npm run build"
-  # Diretório de publicação
+  command = "yarn build"
   publish = "dist"
 
-[build.environment]
-  NODE_VERSION = "18"
-
-# Headers globais para segurança e performance
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Segurança
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-
-# Headers específicos para assets estáticos
-[[headers]]
-  for = "/_nuxt/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Headers para imagens
-[[headers]]
-  for = "/img/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-# Redirects para URLs antigas ou específicas
 [[redirects]]
-  from = "/blog"
-  to = "/"
-  status = 301
+  from = "/api/*"
+  to = "/.netlify/functions/server"
+  status = 200
+  force = true
 
-# Redirect para trailing slash
 [[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
-
-# Configurações de contexto para diferentes ambientes
-[context.production]
-  [context.production.environment]
-    NODE_ENV = "production"
-
-[context.deploy-preview]
-  [context.deploy-preview.environment]
-    NODE_ENV = "preview"
-
-[context.branch-deploy]
-  [context.branch-deploy.environment]
-    NODE_ENV = "development"
-
- 
+  from = "/*"
+  to = "/index.html"
+  status = 200

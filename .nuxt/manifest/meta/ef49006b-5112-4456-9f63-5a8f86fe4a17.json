@@ -1,0 +1,1 @@
+{"id":"ef49006b-5112-4456-9f63-5a8f86fe4a17","timestamp":1749604140856,"matcher":{"static":{"/sobre":{"prerender":true},"/contato":{"prerender":true},"/servicos":{"prerender":true}},"wildcard":{"/servicos":{"prerender":true}},"dynamic":{}},"prerendered":["/cases/mdmoveis","/blog","/politica-de-privacidade","/"]}
