@@ -46,15 +46,16 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  nitro: {
+  nitro: {    
     preset: 'netlify',
+    debug: true,
     prerender: {
       crawlLinks: true,
-      // routes: [
-      //   '/[:slug]',
-      // ],
+      routes: ['/sitemap.xml', '/robots.txt'],
     },
   },
+
+  
   
   // Configurações de cache e otimização para SSR
   routeRules: {

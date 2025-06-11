@@ -22,7 +22,7 @@ import { propsToString, renderSSRHead } from 'file:///Users/giovannisertorio/Des
 import { createServerHead as createServerHead$1, CapoPlugin, createHeadCore } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/index.mjs';
 import { isVNode, toValue, version, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { defineHeadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/shared/dist/index.mjs';
-import { createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
+import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unenv/runtime/fetch/index.mjs';
 import { klona } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/klona/dist/index.mjs';
@@ -364,7 +364,13 @@ const _inlineRuntimeConfig = {
           "Content-Type": "application/xslt+xml"
         }
       },
-      "/sitemap.xml": {},
+      "/sitemap.xml": {
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8",
+          "Cache-Control": "public, max-age=600, must-revalidate",
+          "X-Sitemap-Prerendered": "2025-06-11T02:42:04.020Z"
+        }
+      },
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
@@ -2243,6 +2249,10 @@ const _vCktFThY2s = (function(nitro) {
   });
 });
 
+const _OlUIUuj8Rd = defineNitroPlugin((nitro) => {
+  createDebugger(nitro.hooks, { tag: "nitro-runtime" });
+});
+
 const plugins = [
   _iJvGXEj3y9,
 _B4VnFU3bj5,
@@ -2251,7 +2261,8 @@ _dqHQI2jtgJ,
 _NnDvhXlnLk,
 _CH5S84B7nR,
 _3Fx9wpw1wf,
-_vCktFThY2s
+_vCktFThY2s,
+_OlUIUuj8Rd
 ];
 
 const _q1s6iD = defineEventHandler(async (e) => {

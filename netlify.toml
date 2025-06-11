@@ -2,11 +2,6 @@
   command = "yarn build"
   publish = "dist"
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/server"
-  status = 200
-  force = true
 
 [[redirects]]
   from = "/*"
