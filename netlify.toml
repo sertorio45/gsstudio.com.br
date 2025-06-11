@@ -1,6 +1,9 @@
 [build]
   command = "yarn build"
-  publish = "dist"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "18.18.0"
 
 [[redirects]]
   from = "/api/*"
@@ -10,5 +13,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions/server"
   status = 200

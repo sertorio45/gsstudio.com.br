@@ -169,7 +169,7 @@ export default defineNuxtConfig({
   image: {
     quality: 75,
     domains: [
-      's3.gsstudio.com.br', 
+      's3.gsstudio.com.br',
       'gsstudio.com.br',
       'painel.gsadmin.app',
     ],
