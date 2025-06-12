@@ -62,11 +62,10 @@ export default defineNuxtConfig({
   // Configurações de cache e otimização para SSR
   routeRules: {
     '/': { prerender: false, ssr: true },
-    '/api/**': {prerender: false, ssr: true}, // Cache API por 1 hora
+    '/api/**': {prerender: false, ssr: true},
     '/**': {
       // SSR com cache para todas as páginas de artigos
       ssr: true,
-      cache: { maxAge: 60 * 10 }, // 10 minutos de cache
     },
   },
 

@@ -354,10 +354,7 @@ const _inlineRuntimeConfig = {
         "ssr": true
       },
       "/**": {
-        "ssr": true,
-        "cache": {
-          "maxAge": 600
-        }
+        "ssr": true
       },
       "/sitemap.xsl": {
         "headers": {
@@ -368,7 +365,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T18:36:12.204Z"
+          "X-Sitemap-Prerendered": "2025-06-12T19:24:54.714Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3430,11 +3427,6 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
-  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
