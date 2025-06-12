@@ -20,7 +20,7 @@ import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital
 import { renderToString } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/server-renderer/index.mjs';
 import { propsToString, renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/ssr/dist/index.mjs';
 import { createServerHead as createServerHead$1, CapoPlugin, createHeadCore } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/unhead/dist/index.mjs';
-import { isVNode, toValue, version, unref } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
+import { isVNode, toValue, unref, version } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue/index.mjs';
 import { defineHeadPlugin } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/shared/dist/index.mjs';
 import { createDebugger, createHooks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/hookable/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ofetch/dist/node.mjs';
@@ -345,6 +345,37 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "prerender": true
+      },
+      "/blog": {
+        "prerender": true
+      },
+      "/sobre": {
+        "prerender": true
+      },
+      "/contato": {
+        "prerender": true
+      },
+      "/politica-de-privacidade": {
+        "prerender": true
+      },
+      "/servicos/**": {
+        "prerender": true
+      },
+      "/cases/**": {
+        "prerender": true
+      },
+      "/api/**": {
+        "prerender": false,
+        "ssr": true
+      },
+      "/**": {
+        "isr": 300,
+        "headers": {
+          "Cache-Control": "public, max-age=300, stale-while-revalidate=600"
+        }
+      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
@@ -354,7 +385,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T15:32:43.700Z"
+          "X-Sitemap-Prerendered": "2025-06-12T16:26:27.976Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -1169,7 +1200,7 @@ getContext("nitro-app", {
   AsyncLocalStorage: void 0
 });
 
-const r=Object.create(null),i=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),s=new Proxy(r,{get(e,o){return i()[o]??r[o]},has(e,o){const E=i();return o in E||o in r},set(e,o,E){const b=i(!0);return b[o]=E,!0},deleteProperty(e,o){if(!o)return !1;const E=i(!0);return delete E[o],!0},ownKeys(){const e=i(!0);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",B=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:!0}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:!0}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:!1}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:!1}],["VERCEL","VERCEL_ENV",{ci:!1}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:!1}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:!0}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"],["DENO-DEPLOY","DENO_DEPLOYMENT_ID"],["FIREBASE_APP_HOSTING","FIREBASE_APP_HOSTING",{ci:!0}]];function p(){if(globalThis.process?.env)for(const e of B){const o=e[1]||e[0];if(globalThis.process?.env[o])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:!1}:{name:"",ci:!1}}const l=p(),d=l.name;function n(e){return e?e!=="false":!1}const I=globalThis.process?.platform||"",T=n(s.CI)||l.ci!==!1,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(s.DEBUG);const A=t==="test"||n(s.TEST);n(s.MINIMAL)||T||A||!R;const _=/^win/i.test(I);!n(s.NO_COLOR)&&(n(s.FORCE_COLOR)||(R||_)&&s.TERM!=="dumb"||T);const C=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(C?.split(".")[0])||null;const y=globalThis.process||Object.create(null),c={versions:{}};new Proxy(y,{get(e,o){if(o==="env")return s;if(o in e)return e[o];if(o in c)return c[o]}});const L=globalThis.process?.release?.name==="node",a=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,O=!!globalThis.fastly,S=!!globalThis.Netlify,N=!!globalThis.EdgeRuntime,P=globalThis.navigator?.userAgent==="Cloudflare-Workers",F=[[S,"netlify"],[N,"edge-light"],[P,"workerd"],[O,"fastly"],[D,"deno"],[a,"bun"],[L,"node"]];function G(){const e=F.find(o=>o[0]);if(e)return {name:e[1]}}const u=G();u?.name||"";
+const r=Object.create(null),i=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),o=new Proxy(r,{get(e,s){return i()[s]??r[s]},has(e,s){const E=i();return s in E||s in r},set(e,s,E){const B=i(true);return B[s]=E,true},deleteProperty(e,s){if(!s)return  false;const E=i(true);return delete E[s],true},ownKeys(){const e=i(true);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",f=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:true}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:true}],["CLOUDFLARE_WORKERS","WORKERS_CI",{ci:true}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:false}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:false}],["VERCEL","VERCEL_ENV",{ci:false}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:false}],["CODESANDBOX","CODESANDBOX_HOST",{ci:false}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:true}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"],["DENO-DEPLOY","DENO_DEPLOYMENT_ID"],["FIREBASE_APP_HOSTING","FIREBASE_APP_HOSTING",{ci:true}]];function b(){if(globalThis.process?.env)for(const e of f){const s=e[1]||e[0];if(globalThis.process?.env[s])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:false}:{name:"",ci:false}}const l=b(),p=l.name;function n(e){return e?e!=="false":false}const I=globalThis.process?.platform||"",T=n(o.CI)||l.ci!==false,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(o.DEBUG);const a=t==="test"||n(o.TEST);n(o.MINIMAL)||T||a||!R;const A=/^win/i.test(I);!n(o.NO_COLOR)&&(n(o.FORCE_COLOR)||(R||A)&&o.TERM!=="dumb"||T);const C=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(C?.split(".")[0])||null;const W=globalThis.process||Object.create(null),_={versions:{}};new Proxy(W,{get(e,s){if(s==="env")return o;if(s in e)return e[s];if(s in _)return _[s]}});const O=globalThis.process?.release?.name==="node",c=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,L=!!globalThis.fastly,S=!!globalThis.Netlify,u=!!globalThis.EdgeRuntime,N=globalThis.navigator?.userAgent==="Cloudflare-Workers",F=[[S,"netlify"],[u,"edge-light"],[N,"workerd"],[L,"fastly"],[D,"deno"],[c,"bun"],[O,"node"]];function G(){const e=F.find(s=>s[0]);if(e)return {name:e[1]}}const P=G();P?.name||"";
 
 const scheduledTasks = false;
 
@@ -1298,7 +1329,7 @@ function useNitroOrigin(e) {
   let host = process.env.NITRO_HOST || process.env.HOST || false;
   let port = false;
   port = process.env.NITRO_PORT || process.env.PORT || "3000";
-  let protocol = cert && key || !true ? "https" : "http";
+  let protocol = cert && key || false ? "https" : "http";
   if (process.env.__NUXT_DEV__) {
     const origin = JSON.parse(process.env.__NUXT_DEV__).proxy.url;
     host = withoutProtocol(origin);
@@ -1510,7 +1541,7 @@ function getSiteRobotConfig(e) {
   const { groups, debug } = useRuntimeConfig(e)["nuxt-robots"];
   let indexable = getSiteIndexable(e);
   const queryIndexableEnabled = String(query.mockProductionEnv) === "true" || query.mockProductionEnv === "";
-  if (debug || true) {
+  {
     const { _context } = useSiteConfig(e, { debug: debug || true });
     if (queryIndexableEnabled) {
       indexable = true;
@@ -2191,7 +2222,6 @@ function isIgnored(path, ignore = []) {
 
 const config = {
   usePrettier: false,
-  failOnError: false,
   options: {
   "extends": [
     "html-validate:document",
@@ -2209,7 +2239,6 @@ const config = {
     "no-inline-style": "off"
   }
 },
-  hookable: false,
   ignore: [
   /\.(xml|rss|json)$/
 ],
@@ -2317,7 +2346,6 @@ const _Ylj0Ft = defineEventHandler(async (e) => {
   const { indexable, hints } = getSiteRobotConfig(e);
   const { credits, usingNuxtContent, cacheControl } = useRuntimeConfig(e)["nuxt-robots"];
   let robotsTxtCtx = {
-    errors: [],
     sitemaps: [],
     groups: [
       {
@@ -2331,7 +2359,7 @@ const _Ylj0Ft = defineEventHandler(async (e) => {
   if (indexable) {
     robotsTxtCtx = await resolveRobotsTxtContext(e);
     robotsTxtCtx.sitemaps = [...new Set(
-      asArray(robotsTxtCtx.sitemaps).map((s) => !s.startsWith("http") ? withSiteUrl(e, s, { withBase: true, absolute: true }) : s)
+      asArray(robotsTxtCtx.sitemaps).map((s) => !s.startsWith("http") ? withSiteUrl(e, s, { withBase: true}) : s)
     )];
     if (usingNuxtContent) {
       const contentWithRobotRules = await e.$fetch("/__robots__/nuxt-content.json", {
@@ -3282,7 +3310,7 @@ function useNitroUrlResolvers(e) {
     fixSlashes: (path) => fixSlashes(siteConfig.trailingSlash, path),
     // we need these as they depend on the nitro event
     canonicalUrlResolver: createSitePathResolver(e, {
-      canonical: isShowingCanonical || !true,
+      canonical: isShowingCanonical || false,
       absolute: true,
       withBase: true
     }),
@@ -3552,11 +3580,11 @@ runNitroPlugins(nitroApp$1);
 const nitroApp = useNitroApp();
 const server = new Server(toNodeListener(nitroApp.h3App));
 function getAddress() {
-  if (d === "stackblitz" || process.env.NITRO_NO_UNIX_SOCKET || process.versions.bun) {
+  if (p === "stackblitz" || process.env.NITRO_NO_UNIX_SOCKET || process.versions.bun) {
     return 0;
   }
   const socketName = `worker-${process.pid}-${threadId}.sock`;
-  if (_) {
+  if (A) {
     return join(String.raw`\\.\pipe\nitro`, socketName);
   }
   const socketDir = join(tmpdir(), "nitro");
@@ -7838,6 +7866,23 @@ const sources$1 = [
             }
         ],
         "sourceType": "app"
+    },
+    {
+        "context": {
+            "name": "nuxt:route-rules",
+            "description": "Generated from your route rules config.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
+            ]
+        },
+        "urls": [
+            "/",
+            "/blog",
+            "/sobre",
+            "/contato",
+            "/politica-de-privacidade"
+        ],
+        "sourceType": "app"
     }
 ];
 
@@ -8147,7 +8192,7 @@ const renderer = defineRenderHandler(async (event) => {
   if (inlinedStyles.length) {
     head.push({ style: inlinedStyles });
   }
-  if (!isRenderingIsland || true) {
+  {
     const link = [];
     for (const resource of Object.values(styles)) {
       if ("inline" in getQuery(resource.file)) {
@@ -8518,7 +8563,7 @@ svg[data-emoji] {
 }
 
 async function useOgImageBufferCache(ctx, options) {
-  let enabled = !true;
+  let enabled = false;
   prefixStorage(useStorage(), withTrailingSlash(options.baseCacheKey || "/"));
   ctx.key;
   let cachedItem = false;
@@ -8631,11 +8676,6 @@ async function imageEventHandler(e) {
       setHeader(e, "Content-Type", `text/html`);
       return html(ctx);
     case "svg":
-      if (!debug && !true) {
-        return createError({
-          statusCode: 404
-        });
-      }
       if (ctx.renderer.name !== "satori") {
         return createError({
           statusCode: 400,

@@ -54,21 +54,36 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/sitemap.xml', '/robots.txt'],
+      ignore: ['/api/**'], // Ignora API routes no prerender
     },
   },
 
-  
-  
-  // // Configurações de cache e otimização para SSR
-  // routeRules: {
-  //   '/': { prerender: false, ssr: true },
-  //   '/api/**': {prerender: false, ssr: true}, // Cache API por 1 hora
-  //   '/**': {
-  //     // SSR com cache para todas as páginas de artigos
-  //     ssr: true,
-  //     cache: { maxAge: 60 * 10 }, // 10 minutos de cache
-  //   },
-  // },
+  // Configurações de cache e otimização para SSR/SSG híbrido
+  routeRules: {
+    // Página inicial - prerender estático
+    '/': { prerender: true },
+    
+    // Páginas estáticas - prerender
+    '/blog': { prerender: true },
+    '/sobre': { prerender: true },
+    '/contato': { prerender: true },
+    '/politica-de-privacidade': { prerender: true },
+    '/servicos/**': { prerender: true },
+    
+    // Cases específicos - prerender
+    '/cases/**': { prerender: true },
+    
+    // API routes - sempre SSR
+    '/api/**': { prerender: false, ssr: true },
+    
+    // Páginas dinâmicas (artigos) - ISR para melhor SEO
+    '/**': {
+      isr: 300, // Regenera a cada 5 minutos se houver tráfego
+      headers: {
+        'Cache-Control': 'public, max-age=300, stale-while-revalidate=600'
+      }
+    },
+  },
 
   hooks: {
     'robots:config': (config) => {
