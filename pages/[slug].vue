@@ -1,21 +1,35 @@
 <script setup lang="ts">
-import { useArticles, type Article } from '@/composables/useArticles'
-import { onMounted, computed, ref, watch } from 'vue'
+import { computed } from 'vue'
+
+interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  description?: string;
+  content: string;
+  category_id: string;
+  category_title?: string;
+  created_at: string;
+  updated_at: string;
+  publish_status: string;
+  tenant_id: string;
+}
 
 const route = useRoute();
 const router = useRouter();
 
-// Server-Side Rendering otimizado: busca apenas o artigo específico
-const { data: article, pending: loading, error } = await useLazyAsyncData(
-  `article-${route.params.slug}`, 
+// Busca otimizada: busca apenas o artigo específico da API
+const { data: article, pending: loading, error } = await useAsyncData<Article | null>(
+  `article-${route.params.slug}`,
   async () => {
-    const { fetchArticleBySlug } = useArticles()
-    return await fetchArticleBySlug(route.params.slug as string)
+    try {
+      return await $fetch<Article>(`/api/articles/${route.params.slug}`)
+    } catch (err) {
+      return null
+    }
   },
   {
-    // Reativa quando o slug muda
     watch: [() => route.params.slug],
-    // Cache por 10 minutos
     server: true,
     default: () => null
   }
@@ -29,7 +43,6 @@ const canonicalUrl = `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.c
 const getTitle = computed(() => article.value?.title || 'Artigo');
 const getDescription = computed(() => article.value?.description || '');
 
-// Meta tags renderizadas no servidor
 useServerSeoMeta({
   title: getTitle,
   description: getDescription,
@@ -52,7 +65,6 @@ interface SocialNetwork {
   icon: string;
 }
 
-// Computed para redes sociais (renderizado no servidor)
 const socialNetworks = computed<SocialNetwork[]>(() => {
   const url = canonicalUrl;
   return [
