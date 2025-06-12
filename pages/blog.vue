@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5 bg-dark d-flex my-5" id="topo">
+  <section class="py-5 d-flex my-5" id="topo">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">
@@ -49,16 +49,6 @@
           <p class="text-muted">Nenhum artigo encontrado.</p>
         </div>
       </div>
-
-      <!-- Botão "Ver Mais" -->
-      <div class="row my-3">
-        <div class="col d-flex align-content-center justify-content-center">
-          <button @click="fetchArticles" :disabled="loading" class="btn btn-primary">
-            <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            <span v-else>Ver mais artigos</span>
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -66,7 +56,6 @@
 <script setup lang="ts">
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.webp', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
-
 
 useHead ({
       meta: [
@@ -87,12 +76,15 @@ useHead ({
       ogSiteName: 'GS STUDIO',
       ogLocale: 'pt_BR',
     });
-    import { onMounted } from 'vue'
-import { useArticles } from '@/composables/useArticles'
 
-const { articles, loading, error, fetchArticles } = useArticles()
+const { data: articles, pending: loading, error } = await useFetch('/api/articles')
 
-onMounted(() => {
-  fetchArticles()
-})
+console.log(articles.value)
 </script>
+
+<style>
+#topo{
+  background-color: #000!important;
+}
+</style>
+

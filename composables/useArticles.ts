@@ -29,14 +29,14 @@ export function useArticles() {
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  const config = useRuntimeConfig()
+  // const config = useRuntimeConfig()
   
   const supabase = createClient(
-    config.public.SUPABASE_URL,
-    config.public.SUPABASE_KEY
+    process.env.SUPABASE_URL as string,
+    process.env.SUPABASE_KEY as string
   )
 
-  const TENANT_ID = config.public.SUPABASE_TENANT_ID
+  const TENANT_ID = process.env.SUPABASE_TENANT_ID as string
 
   async function fetchArticles(): Promise<Article[]> {
     loading.value = true

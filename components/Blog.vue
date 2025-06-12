@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useArticles } from '@/composables/useArticles'
+import { ref } from 'vue'
 
-const { articles, loading, error, fetchArticles } = useArticles()
-
-onMounted(() => {
-  fetchArticles()
-})
+const { data: articles, pending: loading, error } = await useAsyncData(
+  'articles',
+  async () => {
+    const response = await $fetch('/api/articles')
+    return response
+  },
+  {
+    server: true,
+    default: () => []
+  }
+)
 </script>
 <template>
   <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">

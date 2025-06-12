@@ -13,6 +13,7 @@ import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_di
 import { consola, createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
+import { createClient } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@supabase/supabase-js/dist/main/index.js';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, parse, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/devalue/index.js';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
@@ -3405,12 +3406,14 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_knOz1W = () => Promise.resolve().then(function () { return articles_get$1; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_NbywPE = () => Promise.resolve().then(function () { return font$1; });
 const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_json$1; });
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
+  { route: '/api/articles', handler: _lazy_knOz1W, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _A26pTt, lazy: false, middleware: false, method: undefined },
@@ -7878,6 +7881,58 @@ const sources = {};
 const childSources = /*#__PURE__*/Object.freeze({
   __proto__: null,
   sources: sources
+});
+
+const tenantId = process.env.SUPABASE_TENANT_ID;
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
+const articles_get = defineEventHandler(async (event) => {
+  try {
+    const { data: articles, error: articlesError } = await supabase.from("articles").select("*").eq("tenant_id", process.env.SUPABASE_TENANT_ID).eq("publish_status", "published");
+    if (articlesError) throw articlesError;
+    const { data: categories, error: categoriesError } = await supabase.from("articles_category").select("*").eq("tenant_id", process.env.SUPABASE_TENANT_ID);
+    if (categoriesError) throw categoriesError;
+    const articlesWithCategories = articles.map((article) => {
+      const category = categories.find((cat) => cat.id === article.category_id);
+      return {
+        ...article,
+        category_title: category ? category.title : "Sem categoria"
+      };
+    });
+    return articlesWithCategories;
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: error.message || "Erro ao buscar artigos"
+    });
+  }
+});
+const getArticleBySlug = defineEventHandler(async (event) => {
+  const slug = getRouterParam(event, "slug");
+  try {
+    const { data: article, error: articleError } = await supabase.from("articles").select("*").eq("slug", slug).eq("tenant_id", tenantId).single();
+    if (articleError) throw articleError;
+    if (!article) return null;
+    const { data: category, error: categoryError } = await supabase.from("articles_category").select("*").eq("id", article.category_id).eq("tenant_id", tenantId).single();
+    if (categoryError) throw categoryError;
+    return {
+      ...article,
+      category_title: category ? category.title : "Sem categoria"
+    };
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: error.message || "Erro ao buscar artigo"
+    });
+  }
+});
+
+const articles_get$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: articles_get,
+  getArticleBySlug: getArticleBySlug
 });
 
 const Vue3 = version[0] === "3";
