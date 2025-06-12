@@ -78,7 +78,7 @@ export default defineNuxtConfig({
     
     // Páginas dinâmicas (artigos) - ISR para melhor SEO
     '/**': {
-      isr: 300, // Regenera a cada 5 minutos se houver tráfego
+      isr: 10, // Regenera a cada 5 minutos se houver tráfego
       headers: {
         'Cache-Control': 'public, max-age=300, stale-while-revalidate=600'
       }
