@@ -1,5 +1,3 @@
-
-
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
   mail: {
@@ -16,6 +14,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
 
   ogImage: {
     fonts: [

@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5 d-flex my-5" id="topo">
+  <section class="py-5 d-flex my-5 bg-black" id="topo">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">
@@ -74,6 +74,7 @@ interface Article {
   publish_status: string;
   tenant_id: string;
 }
+
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.webp', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 

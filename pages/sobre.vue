@@ -1,6 +1,6 @@
 <template>
   <!-- Topo da página -->
-  <section class="py-5 bg-dark d-flex mt-5 text-ligth">
+  <section class="py-5 bg-black d-flex mt-5 text-light">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">
@@ -16,7 +16,7 @@
   </section>
 
   <!-- Seção 1: Nossa História -->
-<section class="py-5 min-vh-100 d-flex align-items-center justify-items-center bg-dark text-light section" id="topo">
+<section class="py-5 min-vh-100 d-flex align-items-center justify-items-center bg-black text-light section" id="topo">
   <div class="container">
     <div class="row align-items-center g-5 my-5">
       <div class="col-md-6 mb-4 order-2 order-md-1">
@@ -134,11 +134,11 @@
 
 
   <!-- Chamada para Ação -->
-  <section class="py-5 bg-dark text-light text-center">
+  <section class="py-5 bg-black text-light text-center">
     <div class="container">
       <h2 class="mb-4  text-light ">Vamos Transformar Seu Negócio?</h2>
       <p class="lead">Se você deseja destacar sua marca e conectar-se de forma genuína com seus clientes, a GS STUDIO é o parceiro ideal.</p>
-      <NuxtLink to="/contato" class="btn btn-primary btn-lg">Entre em Contato</NuxtLink>
+      <NuxtLink to="/contato" class="btn btn-white btn-lg">Entre em Contato</NuxtLink>
     </div>
   </section>
 </template>

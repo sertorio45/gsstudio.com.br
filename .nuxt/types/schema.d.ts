@@ -453,36 +453,14 @@ declare module 'nuxt/schema' {
       version: string,
 
       debug: boolean,
+
+      multiTenancy: Array<any>,
    },
 
    "nuxt-robots": {
       version: string,
 
-      usingNuxtContent: boolean,
-
-      debug: boolean,
-
-      credits: boolean,
-
-      groups: Array<{
-
-      }>,
-
-      sitemap: Array<string>,
-
-      header: boolean,
-
-      robotsEnabledValue: string,
-
-      robotsDisabledValue: string,
-
-      cacheControl: string,
-   },
-
-   "nuxt-simple-robots": {
-      version: string,
-
-      usingNuxtContent: boolean,
+      isNuxtContentV2: boolean,
 
       debug: boolean,
 
@@ -542,11 +520,11 @@ declare module 'nuxt/schema' {
 
       colorPreference: string,
 
-      hasNuxtContent: boolean,
-
       strictNuxtContentPaths: any,
 
       isNuxtContentDocumentDriven: boolean,
+
+      componentDirs: Array<string>,
    },
   }
   interface PublicRuntimeConfig {
@@ -597,6 +575,8 @@ declare module 'nuxt/schema' {
    },
 
    cookieControl: {
+      _isPrerendered: boolean,
+
       barPosition: string,
 
       closeModalOnClickOutside: boolean,

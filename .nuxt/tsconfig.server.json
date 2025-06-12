@@ -17,23 +17,22 @@
         "./types/nitro-imports"
       ],
       "~/*": [
-        "../*",
         "../*"
       ],
       "@/*": [
-        "../*",
         "../*"
       ],
       "~~/*": [
-        "../*",
         "../*"
       ],
       "@@/*": [
-        "../*",
         "../*"
       ],
       "nitropack/types": [
         "../node_modules/nitropack/types"
+      ],
+      "nitropack/runtime": [
+        "../node_modules/nitropack/runtime"
       ],
       "nitropack": [
         "../node_modules/nitropack"
@@ -49,9 +48,6 @@
       ],
       "ofetch": [
         "../node_modules/ofetch"
-      ],
-      "@unhead/vue": [
-        "../node_modules/@unhead/vue"
       ],
       "@nuxt/devtools": [
         "../node_modules/@nuxt/devtools"
@@ -71,17 +67,8 @@
       "nuxt": [
         "../node_modules/nuxt"
       ],
-      "~": [
-        "./.."
-      ],
-      "@": [
-        "./.."
-      ],
-      "~~": [
-        "./.."
-      ],
-      "@@": [
-        "./.."
+      "vite/client": [
+        "../node_modules/vite/client"
       ],
       "#shared": [
         "../shared"
@@ -105,13 +92,19 @@
         "./*"
       ],
       "#internal/nuxt/paths": [
-        "../node_modules/nuxt/dist/core/runtime/nitro/paths"
+        "../node_modules/nuxt/dist/core/runtime/nitro/utils/paths"
       ],
       "#image": [
         "../node_modules/@nuxt/image/dist/runtime"
       ],
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
+      ],
+      "#site-config": [
+        "../node_modules/nuxt-site-config/dist/runtime"
+      ],
+      "#site-config/*": [
+        "../node_modules/nuxt-site-config/dist/runtime/*"
       ],
       "#robots": [
         "../node_modules/@nuxtjs/robots/dist/runtime"
@@ -147,7 +140,7 @@
         "../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index"
       ],
       "#nuxt-delay-hydration/api": [
-        "./delay-hydration"
+        "./delay-hydration.mjs"
       ],
       "#og-image": [
         "../node_modules/nuxt-og-image/dist/runtime"
@@ -158,35 +151,32 @@
       "#og-image-cache": [
         "../node_modules/nuxt-og-image/dist/runtime/server/og-image/cache/lru"
       ],
+      "#nuxt-og-image-utils": [
+        "../node_modules/nuxt-og-image/dist/runtime/shared"
+      ],
       "#mail": [
         "./file:/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
       ],
       "#color-mode-options": [
-        "./color-mode-options"
+        "./color-mode-options.mjs"
       ],
-      "#vue-router": [
-        "./vue-router"
-      ],
-      "#site-config": [
-        "../node_modules/nuxt-site-config/dist/runtime"
-      ],
-      "#site-config/*": [
-        "../node_modules/nuxt-site-config/dist/runtime/*"
+      "#unhead/composables": [
+        "../node_modules/nuxt/dist/head/runtime/composables/v3"
       ],
       "#internal/nuxt-site-config": [
-        "../node_modules/nuxt-site-config/dist/runtime/nitro/composable-barrel-deprecated"
+        "../node_modules/nuxt-site-config/dist/runtime/server/composable-barrel-deprecated"
       ],
       "#internal/nuxt-simple-robots": [
-        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables"
+        "../node_modules/@nuxtjs/robots/dist/runtime/server/composables"
       ],
       "#internal/nuxt-simple-robots/*": [
-        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
+        "../node_modules/@nuxtjs/robots/dist/runtime/server/composables/*"
       ],
       "#internal/nuxt-robots": [
-        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables"
+        "../node_modules/@nuxtjs/robots/dist/runtime/server/composables"
       ],
       "#internal/nuxt-robots/*": [
-        "../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
+        "../node_modules/@nuxtjs/robots/dist/runtime/server/composables/*"
       ],
       "#og-image/renderers/satori": [
         "../node_modules/nuxt-og-image/dist/runtime/server/og-image/satori/renderer"
@@ -195,10 +185,10 @@
         "../node_modules/nuxt-og-image/dist/runtime/server/og-image/chromium/renderer"
       ],
       "#og-image/bindings/css-inline": [
-        "./unenv/runtime/mock/empty"
+        "../node_modules/nuxt-og-image/dist/runtime/mock/empty"
       ],
       "#og-image/bindings/sharp": [
-        "./unenv/runtime/mock/empty"
+        "../node_modules/nuxt-og-image/dist/runtime/server/og-image/bindings/sharp/node"
       ],
       "#og-image/bindings/resvg": [
         "../node_modules/nuxt-og-image/dist/runtime/server/og-image/bindings/resvg/node"
@@ -250,7 +240,27 @@
   "exclude": [
     "../node_modules",
     "../node_modules/nuxt/node_modules",
-    "../node_modules/nuxt-site-config/dist/node_modules",
+    "../node_modules/@nuxt/image/node_modules",
+    "../node_modules/nuxt-swiper/node_modules",
+    "../node_modules/nuxt-easy-lightbox/node_modules",
+    "../node_modules/@nuxtjs/google-fonts/node_modules",
+    "../node_modules/nuxt-site-config/node_modules",
+    "../node_modules/@nuxtjs/robots/node_modules",
+    "../node_modules/@vee-validate/nuxt/node_modules",
+    "../node_modules/@nuxtjs/sitemap/node_modules",
+    "../node_modules/nuxt-schema-org/node_modules",
+    "../node_modules/nuxt-vitalizer/node_modules",
+    "../node_modules/@zadigetvoltaire/nuxt-gtm/node_modules",
+    "../node_modules/@dargmuesli/nuxt-cookie-control/node_modules",
+    "../node_modules/@nuxtjs/html-validator/node_modules",
+    "../node_modules/@nuxtjs/partytown/node_modules",
+    "../node_modules/@vite-pwa/nuxt/node_modules",
+    "../node_modules/nuxt-delay-hydration/node_modules",
+    "../node_modules/nuxt-og-image/node_modules",
+    "../node_modules/nuxt-mail/node_modules",
+    "../node_modules/@nuxtjs/color-mode/node_modules",
+    "../node_modules/@nuxt/devtools/node_modules",
+    "../node_modules/@nuxt/telemetry/node_modules",
     "../dist"
   ]
 }

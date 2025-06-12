@@ -1,6 +1,6 @@
 declare global {
-  const __buildAssetsURL: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/paths')['buildAssetsURL']
-  const __publicAssetsURL: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/paths')['publicAssetsURL']
+  const __buildAssetsURL: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/utils/paths')['buildAssetsURL']
+  const __publicAssetsURL: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/utils/paths')['publicAssetsURL']
   const appendCorsHeaders: typeof import('../../node_modules/h3')['appendCorsHeaders']
   const appendCorsPreflightHeaders: typeof import('../../node_modules/h3')['appendCorsPreflightHeaders']
   const appendHeader: typeof import('../../node_modules/h3')['appendHeader']
@@ -20,14 +20,14 @@ declare global {
   const createEvent: typeof import('../../node_modules/h3')['createEvent']
   const createEventStream: typeof import('../../node_modules/h3')['createEventStream']
   const createRouter: typeof import('../../node_modules/h3')['createRouter']
-  const createSitePathResolver: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/utils')['createSitePathResolver']
+  const createSitePathResolver: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/utils')['createSitePathResolver']
   const defaultContentType: typeof import('../../node_modules/h3')['defaultContentType']
-  const defineAppConfig: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/config')['defineAppConfig']
+  const defineAppConfig: typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/utils/config')['defineAppConfig']
   const defineCachedEventHandler: typeof import('../../node_modules/nitropack/dist/runtime/internal/cache')['defineCachedEventHandler']
   const defineCachedFunction: typeof import('../../node_modules/nitropack/dist/runtime/internal/cache')['defineCachedFunction']
   const defineEventHandler: typeof import('../../node_modules/h3')['defineEventHandler']
   const defineLazyEventHandler: typeof import('../../node_modules/h3')['defineLazyEventHandler']
-  const defineNitroErrorHandler: typeof import('../../node_modules/nitropack/dist/runtime/internal/error')['defineNitroErrorHandler']
+  const defineNitroErrorHandler: typeof import('../../node_modules/nitropack/dist/runtime/internal/error/utils')['defineNitroErrorHandler']
   const defineNitroPlugin: typeof import('../../node_modules/nitropack/dist/runtime/internal/plugin')['defineNitroPlugin']
   const defineNodeListener: typeof import('../../node_modules/h3')['defineNodeListener']
   const defineNodeMiddleware: typeof import('../../node_modules/h3')['defineNodeMiddleware']
@@ -50,7 +50,7 @@ declare global {
   const getHeader: typeof import('../../node_modules/h3')['getHeader']
   const getHeaders: typeof import('../../node_modules/h3')['getHeaders']
   const getMethod: typeof import('../../node_modules/h3')['getMethod']
-  const getPathRobotConfig: typeof import('../../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/getPathRobotConfig')['getPathRobotConfig']
+  const getPathRobotConfig: typeof import('../../node_modules/@nuxtjs/robots/dist/runtime/server/composables/getPathRobotConfig')['getPathRobotConfig']
   const getProxyRequestHeaders: typeof import('../../node_modules/h3')['getProxyRequestHeaders']
   const getQuery: typeof import('../../node_modules/h3')['getQuery']
   const getRequestFingerprint: typeof import('../../node_modules/h3')['getRequestFingerprint']
@@ -70,8 +70,8 @@ declare global {
   const getRouterParam: typeof import('../../node_modules/h3')['getRouterParam']
   const getRouterParams: typeof import('../../node_modules/h3')['getRouterParams']
   const getSession: typeof import('../../node_modules/h3')['getSession']
-  const getSiteIndexable: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/getSiteIndexable')['getSiteIndexable']
-  const getSiteRobotConfig: typeof import('../../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/getSiteRobotConfig')['getSiteRobotConfig']
+  const getSiteIndexable: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/getSiteIndexable')['getSiteIndexable']
+  const getSiteRobotConfig: typeof import('../../node_modules/@nuxtjs/robots/dist/runtime/server/composables/getSiteRobotConfig')['getSiteRobotConfig']
   const getValidatedQuery: typeof import('../../node_modules/h3')['getValidatedQuery']
   const getValidatedRouterParams: typeof import('../../node_modules/h3')['getValidatedRouterParams']
   const handleCacheHeaders: typeof import('../../node_modules/h3')['handleCacheHeaders']
@@ -122,18 +122,18 @@ declare global {
   const toWebRequest: typeof import('../../node_modules/h3')['toWebRequest']
   const unsealSession: typeof import('../../node_modules/h3')['unsealSession']
   const updateSession: typeof import('../../node_modules/h3')['updateSession']
-  const updateSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/updateSiteConfig')['updateSiteConfig']
+  const updateSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/updateSiteConfig')['updateSiteConfig']
   const useAppConfig: typeof import('../../node_modules/nitropack/dist/runtime/internal/config')['useAppConfig']
   const useBase: typeof import('../../node_modules/h3')['useBase']
   const useEvent: typeof import('../../node_modules/nitropack/dist/runtime/internal/context')['useEvent']
   const useNitroApp: typeof import('../../node_modules/nitropack/dist/runtime/internal/app')['useNitroApp']
-  const useNitroOrigin: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/useNitroOrigin')['useNitroOrigin']
+  const useNitroOrigin: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/useNitroOrigin')['useNitroOrigin']
   const useRuntimeConfig: typeof import('../../node_modules/nitropack/dist/runtime/internal/config')['useRuntimeConfig']
   const useSession: typeof import('../../node_modules/h3')['useSession']
-  const useSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/useSiteConfig')['useSiteConfig']
+  const useSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/useSiteConfig')['useSiteConfig']
   const useStorage: typeof import('../../node_modules/nitropack/dist/runtime/internal/storage')['useStorage']
-  const withSiteTrailingSlash: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/utils')['withSiteTrailingSlash']
-  const withSiteUrl: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/utils')['withSiteUrl']
+  const withSiteTrailingSlash: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/utils')['withSiteTrailingSlash']
+  const withSiteUrl: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/utils')['withSiteUrl']
   const writeEarlyHints: typeof import('../../node_modules/h3')['writeEarlyHints']
 }
 export { useNitroApp } from 'nitropack/runtime/internal/app';
@@ -146,16 +146,16 @@ export { defineRouteMeta } from 'nitropack/runtime/internal/meta';
 export { getRouteRules } from 'nitropack/runtime/internal/route-rules';
 export { useEvent } from 'nitropack/runtime/internal/context';
 export { defineTask, runTask } from 'nitropack/runtime/internal/task';
-export { defineNitroErrorHandler } from 'nitropack/runtime/internal/error';
+export { defineNitroErrorHandler } from 'nitropack/runtime/internal/error/utils';
 export { appendCorsHeaders, appendCorsPreflightHeaders, appendHeader, appendHeaders, appendResponseHeader, appendResponseHeaders, assertMethod, callNodeListener, clearResponseHeaders, clearSession, createApp, createAppEventHandler, createError, createEvent, createEventStream, createRouter, defaultContentType, defineEventHandler, defineLazyEventHandler, defineNodeListener, defineNodeMiddleware, defineRequestMiddleware, defineResponseMiddleware, defineWebSocket, defineWebSocketHandler, deleteCookie, dynamicEventHandler, eventHandler, fetchWithEvent, fromNodeMiddleware, fromPlainHandler, fromWebHandler, getCookie, getHeader, getHeaders, getMethod, getProxyRequestHeaders, getQuery, getRequestFingerprint, getRequestHeader, getRequestHeaders, getRequestHost, getRequestIP, getRequestPath, getRequestProtocol, getRequestURL, getRequestWebStream, getResponseHeader, getResponseHeaders, getResponseStatus, getResponseStatusText, getRouterParam, getRouterParams, getSession, getValidatedQuery, getValidatedRouterParams, handleCacheHeaders, handleCors, isCorsOriginAllowed, isError, isEvent, isEventHandler, isMethod, isPreflightRequest, isStream, isWebResponse, lazyEventHandler, parseCookies, promisifyNodeListener, proxyRequest, readBody, readFormData, readMultipartFormData, readRawBody, readValidatedBody, removeResponseHeader, sanitizeStatusCode, sanitizeStatusMessage, sealSession, send, sendError, sendIterable, sendNoContent, sendProxy, sendRedirect, sendStream, sendWebResponse, serveStatic, setCookie, setHeader, setHeaders, setResponseHeader, setResponseHeaders, setResponseStatus, splitCookiesString, toEventHandler, toNodeListener, toPlainHandler, toWebHandler, toWebRequest, unsealSession, updateSession, useBase, useSession, writeEarlyHints } from 'h3';
-export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from '../../node_modules/nuxt/dist/core/runtime/nitro/paths';
-export { defineAppConfig } from '../../node_modules/nuxt/dist/core/runtime/nitro/config';
-export { defineSitemapEventHandler } from '../../node_modules/@nuxtjs/sitemap/dist/runtime/nitro/composables/defineSitemapEventHandler';
-export { asSitemapUrl } from '../../node_modules/@nuxtjs/sitemap/dist/runtime/nitro/composables/asSitemapUrl';
-export { getSiteIndexable } from '../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/getSiteIndexable';
-export { updateSiteConfig } from '../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/updateSiteConfig';
-export { useNitroOrigin } from '../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/useNitroOrigin';
-export { useSiteConfig } from '../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/useSiteConfig';
-export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '../../node_modules/nuxt-site-config/dist/runtime/nitro/composables/utils';
-export { getPathRobotConfig } from '../../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/getPathRobotConfig';
-export { getSiteRobotConfig } from '../../node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/getSiteRobotConfig';
+export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt/dist/core/runtime/nitro/utils/paths';
+export { defineAppConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt/dist/core/runtime/nitro/utils/config';
+export { defineSitemapEventHandler } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/composables/defineSitemapEventHandler';
+export { asSitemapUrl } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/composables/asSitemapUrl';
+export { getSiteIndexable } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/getSiteIndexable';
+export { updateSiteConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/updateSiteConfig';
+export { useNitroOrigin } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/useNitroOrigin';
+export { useSiteConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/useSiteConfig';
+export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/utils';
+export { getPathRobotConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getPathRobotConfig';
+export { getSiteRobotConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getSiteRobotConfig';

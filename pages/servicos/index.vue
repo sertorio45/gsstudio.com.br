@@ -1,6 +1,6 @@
 <template>
   <!-- Hero Section -->
-  <section class="bg-dark min-vh-100 d-flex justify-content-center align-items-center pt-5" id="topo">
+  <section class="bg-black min-vh-100 d-flex justify-content-center align-items-center pt-5" id="topo">
     <div class="container d-flex ">
       <div class="row">
         <div class="col text-center text-light my-2">
@@ -146,7 +146,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCardAnimation } from '~/composables/useCardAnimation';
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Marketing, comunicação e desenvolvimento web' })
@@ -175,6 +175,7 @@ useHead ({
 
 // Chame o composable para inicializar a animação dos cartões
 useCardAnimation();
+
 </script>
 
 <style scoped>

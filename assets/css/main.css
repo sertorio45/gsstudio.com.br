@@ -655,3 +655,8 @@ em {
     background-position: 200% 0;
   }
 }
+
+
+.nuxt-loading-indicator {
+  z-index: 9999 !important;
+}
