@@ -35,6 +35,8 @@ const { data: article, pending: loading, error } = await useAsyncData<Article | 
   }
 )
 
+const title = computed(() => article.value?.title);
+
 // Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
 
@@ -42,31 +44,37 @@ const categoryTitle = computed(() => article.value?.category_title || "Sem categ
 const canonicalUrl = computed(() =>
   `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`
 );
-// const getTitle = computed(() => article.value?.title || 'Artigo');
-// const getDescription = computed(() => article.value?.description || '');
 
-useServerSeoMeta({
-  title: article.value?.title,
-  description: article.value?.description ,
-  robots: 'index, follow',
-  ogTitle: article.value?.title,
-  ogDescription: article.value?.description,
-  ogType: 'article',
-  ogUrl: canonicalUrl,
-  ogLocale: 'pt_BR',
-  ogImageAlt: article.value?.title,
-  twitterCard: 'summary',
-  twitterTitle: article.value?.title,
-  twitterDescription: article.value?.description,
-  fbAppId: '603230818880308'
-})
+// useServerSeoMeta({
+//   title: article.value?.title,
+//   description: article.value?.description ,
+//   robots: 'index, follow',
+//   ogTitle: article.value?.title,
+//   ogDescription: 'teste',
+//   ogType: 'article',
+//   ogUrl: canonicalUrl,
+//   ogLocale: 'pt_BR',
+//   ogImageAlt: article.value?.title,
+//   twitterCard: 'summary',
+//   twitterTitle: article.value?.title,
+//   twitterDescription: article.value?.description,
+//   fbAppId: '603230818880308'
+// })
 
 useHead({
   title: article.value?.title,
   meta: [
     { name: 'description', content: article.value?.description },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'og:title', content: article.value?.title },
+    { name: 'og:description', content: article.value?.description },
+    { name: 'og:url', content: canonicalUrl },
+    { name: 'og:type', content: 'article' },
+    { name: 'og:locale', content: 'pt_BR' },
   ]
 })
+
+
 
 interface SocialNetwork {
   name: string;
