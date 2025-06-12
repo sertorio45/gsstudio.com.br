@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 
 interface Article {
   id: string;
@@ -39,25 +39,42 @@ const { data: article, pending: loading, error } = await useAsyncData<Article | 
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
 
 // SEO Meta Tags - renderizadas no servidor
-const canonicalUrl = `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`;
+const canonicalUrl = computed(() =>
+  `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`
+);
 const getTitle = computed(() => article.value?.title || 'Artigo');
 const getDescription = computed(() => article.value?.description || '');
 
-useServerSeoMeta({
-  title: getTitle,
-  description: getDescription,
-  robots: 'index, follow',
-  ogTitle: getTitle,
-  ogDescription: getDescription,
-  ogType: 'article',
-  ogUrl: canonicalUrl,
-  ogLocale: 'pt_BR',
-  ogImageAlt: getTitle,
-  twitterCard: 'summary',
-  twitterTitle: getTitle,
-  twitterDescription: getDescription,
-  fbAppId: '603230818880308'
-})
+function setSeoMeta() {
+  if (!article.value) return;
+  useServerSeoMeta({
+    title: getTitle,
+    description: getDescription,
+    robots: 'index, follow',
+    ogTitle: getTitle,
+    ogDescription: getDescription,
+    ogType: 'article',
+    ogUrl: canonicalUrl,
+    ogLocale: 'pt_BR',
+    ogImageAlt: getTitle,
+    twitterCard: 'summary',
+    twitterTitle: getTitle,
+    twitterDescription: getDescription,
+    fbAppId: '603230818880308'
+  });
+}
+
+// SSR: seta meta ao carregar
+if (process.server) {
+  setSeoMeta();
+}
+
+// Client: reativa meta ao trocar de artigo dinamicamente
+if (process.client) {
+  watchEffect(() => {
+    if (article.value) setSeoMeta();
+  });
+}
 
 interface SocialNetwork {
   name: string;
@@ -66,7 +83,7 @@ interface SocialNetwork {
 }
 
 const socialNetworks = computed<SocialNetwork[]>(() => {
-  const url = canonicalUrl;
+  const url = canonicalUrl.value;
   return [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
     { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },

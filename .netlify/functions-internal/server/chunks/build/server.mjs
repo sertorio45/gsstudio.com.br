@@ -1,5 +1,5 @@
-import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, unref, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, h, defineAsyncComponent, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'vue';
-import { $ as $fetch$1, E as baseURL, c as createError$1, F as defu, G as joinURL, I as withQuery, J as parseQuery, K as getContext, L as createHooks, M as hasProtocol, N as isScriptProtocol, O as sanitizeStatusCode, w as withTrailingSlash, P as withoutTrailingSlash, Q as toRouteMatcher, R as createRouter$1, S as klona, T as parse, U as getRequestHeader, z as parseURL, V as withoutBase, W as camelCase, h as destr, X as isEqual, Y as setCookie, Z as getCookie, _ as deleteCookie, a0 as withLeadingSlash, a1 as withBase } from '../nitro/nitro.mjs';
+import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, unref, defineComponent, createVNode, Fragment, reactive, computed, nextTick, onMounted, onBeforeUnmount, Teleport, Transition, defineAsyncComponent, h, provide, shallowReactive, Suspense, resolveComponent, isVNode, withModifiers, useSSRContext, mergeProps, createApp, effectScope, getCurrentScope, withCtx, createTextVNode, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, toValue } from 'vue';
+import { $ as $fetch$1, F as baseURL, c as createError$1, G as defu, I as joinURL, J as withQuery, K as parseQuery, L as getContext, M as createHooks, N as hasProtocol, O as isScriptProtocol, P as sanitizeStatusCode, w as withTrailingSlash, Q as withoutTrailingSlash, R as toRouteMatcher, S as createRouter$1, T as klona, U as parse, V as getRequestHeader, A as parseURL, W as withoutBase, X as camelCase, j as destr, Y as isEqual, Z as setCookie, _ as getCookie, a0 as deleteCookie, a1 as withLeadingSlash, a2 as withBase } from '../nitro/nitro.mjs';
 import { getActiveHead, CapoPlugin } from 'unhead';
 import { defineHeadPlugin, composableNames, unpackMeta } from '@unhead/shared';
 import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
@@ -31,6 +31,7 @@ const appPageTransition = false;
 const appKeepalive = false;
 const nuxtLinkDefaults = { "componentName": "NuxtLink", "prefetch": true, "prefetchOn": { "visibility": true } };
 const asyncDataDefaults = { "value": null, "errorValue": null, "deep": true };
+const fetchDefaults = {};
 const appId = "nuxt-app";
 function getNuxtAppCtx(id = appId) {
   return getContext(id, {
@@ -640,12 +641,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-CqEZVRJS.mjs')
+    component: () => import('./_slug_-Cxwv2axZ.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-BzSxInqQ.mjs')
+    component: () => import('./blog-9SvrU1Qe.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -655,32 +656,32 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-B2EJw7-s.mjs')
+    component: () => import('./contato-D1WLwNvP.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Dg5jEOeN.mjs')
+    component: () => import('./index-BfW8sdvP.mjs')
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import('./politica-de-privacidade-T4BwB4w0.mjs')
+    component: () => import('./politica-de-privacidade-BkFHPRAM.mjs')
   },
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import('./criacao-de-sites-CGVsqWhw.mjs')
+    component: () => import('./criacao-de-sites-BaOIpP5w.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./index-642VYhUl.mjs')
+    component: () => import('./index-DyvYnFeg.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-BpAWYRkG.mjs')
+    component: () => import('./sobre-ChyAaNOh.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -1025,6 +1026,10 @@ function useState(...args) {
 function useRequestEvent(nuxtApp = useNuxtApp()) {
   var _a;
   return (_a = nuxtApp.ssrContext) == null ? void 0 : _a.event;
+}
+function useRequestFetch() {
+  var _a;
+  return ((_a = useRequestEvent()) == null ? void 0 : _a.$fetch) || globalThis.$fetch;
 }
 const CookieDefaults = {
   path: "/",
@@ -2285,132 +2290,8 @@ _sfc_main$3.setup = (props, ctx) => {
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-f5594720"]]);
-function defaultEstimatedProgress(duration, elapsed) {
-  const completionPercentage = elapsed / duration * 100;
-  return 2 / Math.PI * 100 * Math.atan(completionPercentage / 50);
-}
-function createLoadingIndicator(opts = {}) {
-  const { duration = 2e3, throttle = 200, hideDelay = 500, resetDelay = 400 } = opts;
-  opts.estimatedProgress || defaultEstimatedProgress;
-  const nuxtApp = useNuxtApp();
-  const progress = ref(0);
-  const isLoading = ref(false);
-  const error = ref(false);
-  const start = () => {
-    error.value = false;
-    set(0);
-  };
-  function set(at = 0) {
-    if (nuxtApp.isHydrating) {
-      return;
-    }
-    if (at >= 100) {
-      return finish();
-    }
-    progress.value = at < 0 ? 0 : at;
-    if (throttle && false) {
-      setTimeout(() => {
-        isLoading.value = true;
-      }, throttle);
-    } else {
-      isLoading.value = true;
-    }
-  }
-  function finish(opts2 = {}) {
-    progress.value = 100;
-    if (opts2.error) {
-      error.value = true;
-    }
-    if (opts2.force) {
-      progress.value = 0;
-      isLoading.value = false;
-    }
-  }
-  function clear() {
-  }
-  let _cleanup = () => {
-  };
-  return {
-    _cleanup,
-    progress: computed(() => progress.value),
-    isLoading: computed(() => isLoading.value),
-    error: computed(() => error.value),
-    start,
-    set,
-    finish,
-    clear
-  };
-}
-function useLoadingIndicator(opts = {}) {
-  const nuxtApp = useNuxtApp();
-  const indicator = nuxtApp._loadingIndicator = nuxtApp._loadingIndicator || createLoadingIndicator(opts);
-  return indicator;
-}
-const __nuxt_component_1 = defineComponent({
-  name: "NuxtLoadingIndicator",
-  props: {
-    throttle: {
-      type: Number,
-      default: 200
-    },
-    duration: {
-      type: Number,
-      default: 2e3
-    },
-    height: {
-      type: Number,
-      default: 3
-    },
-    color: {
-      type: [String, Boolean],
-      default: "repeating-linear-gradient(to right,#00dc82 0%,#34cdfe 50%,#0047e1 100%)"
-    },
-    errorColor: {
-      type: String,
-      default: "repeating-linear-gradient(to right,#f87171 0%,#ef4444 100%)"
-    },
-    estimatedProgress: {
-      type: Function,
-      required: false
-    }
-  },
-  setup(props, { slots, expose }) {
-    const { progress, isLoading, error, start, finish, clear } = useLoadingIndicator({
-      duration: props.duration,
-      throttle: props.throttle,
-      estimatedProgress: props.estimatedProgress
-    });
-    expose({
-      progress,
-      isLoading,
-      error,
-      start,
-      finish,
-      clear
-    });
-    return () => h("div", {
-      class: "nuxt-loading-indicator",
-      style: {
-        position: "fixed",
-        top: 0,
-        right: 0,
-        left: 0,
-        pointerEvents: "none",
-        width: "auto",
-        height: `${props.height}px`,
-        opacity: isLoading.value ? 1 : 0,
-        background: error.value ? props.errorColor : props.color || void 0,
-        backgroundSize: `${100 / progress.value * 100}% auto`,
-        transform: `scaleX(${progress.value}%)`,
-        transformOrigin: "left",
-        transition: "transform 0.1s, height 0.4s, opacity 0.4s",
-        zIndex: 999999
-      }
-    }, slots);
-  }
-});
 const layouts = {
-  default: defineAsyncComponent(() => import('./default-CKLp_IXd.mjs'))
+  default: defineAsyncComponent(() => import('./default-ByhXT-PC.mjs'))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2423,7 +2304,7 @@ const LayoutLoader = defineComponent({
     return () => h(layouts[props.name], props.layoutProps, context.slots);
   }
 });
-const __nuxt_component_2 = defineComponent({
+const __nuxt_component_1 = defineComponent({
   name: "NuxtLayout",
   inheritAttrs: false,
   props: {
@@ -2542,7 +2423,7 @@ const RouteProvider = defineComponent({
     };
   }
 });
-const __nuxt_component_3 = defineComponent({
+const __nuxt_component_2 = defineComponent({
   name: "NuxtPage",
   inheritAttrs: false,
   props: {
@@ -2655,12 +2536,10 @@ function hasChildrenRoutes(fork, newRoute, Component) {
 const _sfc_main$2 = {};
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
   const _component_CookieConsent = __nuxt_component_0;
-  const _component_NuxtLoadingIndicator = __nuxt_component_1;
-  const _component_NuxtLayout = __nuxt_component_2;
-  const _component_NuxtPage = __nuxt_component_3;
+  const _component_NuxtLayout = __nuxt_component_1;
+  const _component_NuxtPage = __nuxt_component_2;
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_CookieConsent, null, null, _parent));
-  _push(ssrRenderComponent(_component_NuxtLoadingIndicator, null, null, _parent));
   _push(ssrRenderComponent(_component_NuxtLayout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -2721,7 +2600,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-C5IVTjWC.mjs').then((r) => r.default || r));
+    const IslandRenderer = defineAsyncComponent(() => import('./island-renderer-CA9YmOVe.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
     nuxtApp.ssrContext.url;
@@ -2785,5 +2664,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useNuxtApp as b, createError as c, asyncDataDefaults as d, entry$1 as default, useRoute as e, useRouter as f, useRuntimeConfig as g, useServerSeoMeta as h, injectHead as i, useSeoMeta as j, useOgImageRuntimeConfig as k, createOgImageMeta as l, getOgImagePath as m, normaliseOptions as n, useRequestEvent as o, useSiteConfig as p, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRoute as b, createError as c, useRouter as d, entry$1 as default, useRuntimeConfig as e, useServerSeoMeta as f, useNuxtApp as g, asyncDataDefaults as h, injectHead as i, fetchDefaults as j, useRequestFetch as k, useSeoMeta as l, useOgImageRuntimeConfig as m, normaliseOptions as n, createOgImageMeta as o, getOgImagePath as p, useRequestEvent as q, useSiteConfig as r, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map

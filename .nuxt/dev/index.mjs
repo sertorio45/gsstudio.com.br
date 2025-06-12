@@ -368,7 +368,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T13:15:23.586Z"
+          "X-Sitemap-Prerendered": "2025-06-12T13:20:18.531Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3406,14 +3406,16 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_knOz1W = () => Promise.resolve().then(function () { return articles_get$1; });
+const _lazy_vocael = () => Promise.resolve().then(function () { return _slug__get; });
+const _lazy_B3Jbg0 = () => Promise.resolve().then(function () { return index_get$1; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_NbywPE = () => Promise.resolve().then(function () { return font$1; });
 const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_json$1; });
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
-  { route: '/api/articles', handler: _lazy_knOz1W, lazy: true, middleware: false, method: "get" },
+  { route: '/api/articles/:slug', handler: _lazy_vocael, lazy: true, middleware: false, method: "get" },
+  { route: '/api/articles', handler: _lazy_B3Jbg0, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _A26pTt, lazy: false, middleware: false, method: undefined },
@@ -7883,12 +7885,16 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
+const _slug__get = /*#__PURE__*/Object.freeze({
+  __proto__: null
+});
+
 const tenantId = process.env.SUPABASE_TENANT_ID;
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY
 );
-const articles_get = defineEventHandler(async (event) => {
+const index_get = defineEventHandler(async (event) => {
   try {
     const { data: articles, error: articlesError } = await supabase.from("articles").select("*").eq("tenant_id", process.env.SUPABASE_TENANT_ID).eq("publish_status", "published");
     if (articlesError) throw articlesError;
@@ -7929,9 +7935,9 @@ const getArticleBySlug = defineEventHandler(async (event) => {
   }
 });
 
-const articles_get$1 = /*#__PURE__*/Object.freeze({
+const index_get$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: articles_get,
+  default: index_get,
   getArticleBySlug: getArticleBySlug
 });
 

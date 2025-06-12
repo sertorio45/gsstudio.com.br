@@ -1,4 +1,4 @@
-import { j as defineEventHandler } from '../../../nitro/nitro.mjs';
+import { d as defineEventHandler } from '../../../nitro/nitro.mjs';
 import { f as fontEventHandler } from '../../../_/eventHandlers.mjs';
 import 'lru-cache';
 import 'devalue';

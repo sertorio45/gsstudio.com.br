@@ -2257,6 +2257,20 @@ function isError(input) {
 function getQuery(event) {
   return getQuery$1(event.path || "");
 }
+function getRouterParams(event, opts = {}) {
+  let params = event.context.params || {};
+  if (opts.decode) {
+    params = { ...params };
+    for (const key in params) {
+      params[key] = decode$1(params[key]);
+    }
+  }
+  return params;
+}
+function getRouterParam(event, name, opts = {}) {
+  const params = getRouterParams(event, opts);
+  return params[name];
+}
 function isMethod(event, expected, allowHead) {
   if (typeof expected === "string") {
     if (event.method === expected) {
@@ -4456,7 +4470,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "9a2f6d86-1f12-48ae-873c-36080baaf41d",
+    "buildId": "ac87a0f4-b17c-4c99-a961-30d4a6036850",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4489,7 +4503,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T03:07:49.168Z"
+          "X-Sitemap-Prerendered": "2025-06-12T13:20:16.440Z"
         },
         "swr": 600,
         "cache": {
@@ -8471,11 +8485,13 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_B3Jbg0 = () => import('../routes/api/index.get.mjs');
 const _lazy_rzruMJ = () => import('../routes/renderer.mjs');
 const _lazy_NbywPE = () => import('../routes/__og-image__/font/font.mjs');
 const _lazy_JVuIDH = () => import('../routes/__og-image__/image/image.mjs');
 
 const handlers = [
+  { route: '/api/articles', handler: _lazy_B3Jbg0, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/robots.txt', handler: _Ylj0Ft, lazy: false, middleware: false, method: undefined },
@@ -8671,5 +8687,5 @@ function getCacheHeaders(url) {
   return {};
 }
 
-export { $fetch as $, setResponseHeader as A, proxyRequest as B, sendRedirect as C, resolveContext as D, baseURL as E, defu as F, joinURL as G, H3Error as H, withQuery as I, parseQuery as J, getContext as K, createHooks as L, hasProtocol as M, isScriptProtocol as N, sanitizeStatusCode as O, withoutTrailingSlash as P, toRouteMatcher as Q, createRouter$1 as R, klona as S, parse as T, getRequestHeader as U, withoutBase as V, camelCase as W, isEqual as X, setCookie as Y, getCookie as Z, deleteCookie as _, getRouteRules as a, withLeadingSlash as a0, withBase as a1, decodeHtml as a2, logger as a3, toBase64Image as a4, createConsola as a5, htmlDecodeQuotes as a6, fontCache as a7, encodeParam as a8, encodePath as a9, handler as aa, empty$1 as ab, buildAssetsURL as b, createError$1 as c, defineRenderHandler as d, getResponseStatus as e, getResponseStatusText as f, getQuery as g, destr as h, useNitroApp as i, defineEventHandler as j, prefixStorage as k, useStorage as l, useNitroOrigin as m, emojiCache as n, useOgImageRuntimeConfig as o, publicAssetsURL as p, fetchIsland as q, readBody as r, normaliseFontInput as s, handleCacheHeaders as t, useRuntimeConfig as u, setHeaders as v, withTrailingSlash as w, setHeader as x, hash as y, parseURL as z };
+export { $fetch as $, parseURL as A, setResponseHeader as B, proxyRequest as C, sendRedirect as D, resolveContext as E, baseURL as F, defu as G, H3Error as H, joinURL as I, withQuery as J, parseQuery as K, getContext as L, createHooks as M, hasProtocol as N, isScriptProtocol as O, sanitizeStatusCode as P, withoutTrailingSlash as Q, toRouteMatcher as R, createRouter$1 as S, klona as T, parse as U, getRequestHeader as V, withoutBase as W, camelCase as X, isEqual as Y, setCookie as Z, getCookie as _, defineRenderHandler as a, deleteCookie as a0, withLeadingSlash as a1, withBase as a2, decodeHtml as a3, logger as a4, toBase64Image as a5, createConsola as a6, htmlDecodeQuotes as a7, fontCache as a8, encodeParam as a9, encodePath as aa, handler as ab, empty$1 as ac, buildAssetsURL as b, createError$1 as c, defineEventHandler as d, getQuery as e, getRouteRules as f, getRouterParam as g, getResponseStatus as h, getResponseStatusText as i, destr as j, useNitroApp as k, prefixStorage as l, useStorage as m, useNitroOrigin as n, emojiCache as o, publicAssetsURL as p, useOgImageRuntimeConfig as q, readBody as r, fetchIsland as s, normaliseFontInput as t, useRuntimeConfig as u, handleCacheHeaders as v, withTrailingSlash as w, setHeaders as x, setHeader as y, hash as z };
 //# sourceMappingURL=nitro.mjs.map
