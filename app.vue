@@ -1,6 +1,5 @@
 <template>
   <CookieConsent />
-  <NuxtLoadingIndicator />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
