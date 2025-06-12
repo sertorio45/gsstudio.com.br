@@ -6,7 +6,7 @@ export interface Article {
   id: string;
   slug: string;
   title: string;
-  description?: string;
+  meta_description?: string;
   content: string;
   category_id: string;
   category_title?: string;
