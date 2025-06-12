@@ -111,8 +111,8 @@ declare global {
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
-  const onBeforeRouteLeave: typeof import('../../node_modules/vue-router')['onBeforeRouteLeave']
-  const onBeforeRouteUpdate: typeof import('../../node_modules/vue-router')['onBeforeRouteUpdate']
+  const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave']
+  const onBeforeRouteUpdate: typeof import('vue-router')['onBeforeRouteUpdate']
   const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
   const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
   const onDeactivated: typeof import('vue')['onDeactivated']
@@ -194,7 +194,7 @@ declare global {
   const useIsSubmitting: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsSubmitting']
   const useLazyAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']
   const useLazyFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']
-  const useLink: typeof import('../../node_modules/vue-router')['useLink']
+  const useLink: typeof import('vue-router')['useLink']
   const useLoadingIndicator: typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']
   const useMail: typeof import('../../node_modules/nuxt-mail/dist/composable')['useMail']
   const useMaskablePwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']
@@ -395,8 +395,8 @@ declare module 'vue' {
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
-    readonly onBeforeRouteLeave: UnwrapRef<typeof import('../../node_modules/vue-router')['onBeforeRouteLeave']>
-    readonly onBeforeRouteUpdate: UnwrapRef<typeof import('../../node_modules/vue-router')['onBeforeRouteUpdate']>
+    readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
+    readonly onBeforeRouteUpdate: UnwrapRef<typeof import('vue-router')['onBeforeRouteUpdate']>
     readonly onBeforeUnmount: UnwrapRef<typeof import('vue')['onBeforeUnmount']>
     readonly onBeforeUpdate: UnwrapRef<typeof import('vue')['onBeforeUpdate']>
     readonly onDeactivated: UnwrapRef<typeof import('vue')['onDeactivated']>
@@ -478,7 +478,7 @@ declare module 'vue' {
     readonly useIsSubmitting: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useIsSubmitting']>
     readonly useLazyAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useLazyAsyncData']>
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
-    readonly useLink: UnwrapRef<typeof import('../../node_modules/vue-router')['useLink']>
+    readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
     readonly useMail: UnwrapRef<typeof import('../../node_modules/nuxt-mail/dist/composable')['useMail']>
     readonly useMaskablePwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']>
