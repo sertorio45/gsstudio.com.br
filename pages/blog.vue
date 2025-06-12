@@ -18,8 +18,15 @@
   <section class="my-5 py-5 justify-content-center align-content-center" id="blog">
     <div class="container my-5">
       <div class="row">
+        <!-- Erro -->
+        <div v-if="error" class="col-12 my-3">
+          <div class="alert alert-danger">
+            Erro ao carregar artigos: {{ error.message || error }}
+          </div>
+        </div>
+
         <!-- Skeleton Cards -->
-        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-else-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -37,9 +44,9 @@
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <a :href="`/${article.slug}`">
+              <NuxtLink :to="`/${article.slug}`">
                 {{ article.title }}
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -54,6 +61,19 @@
 </template>
 
 <script setup lang="ts">
+interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  description?: string;
+  content: string;
+  category_id: string;
+  category_title?: string;
+  created_at: string;
+  updated_at: string;
+  publish_status: string;
+  tenant_id: string;
+}
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.webp', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
@@ -77,9 +97,16 @@ useHead ({
       ogLocale: 'pt_BR',
     });
 
-const { data: articles, pending: loading, error } = await useFetch('/api/articles')
-
-console.log(articles.value)
+const { data: articles, pending: loading, error } = await useAsyncData<Article[]>(
+  'articles',
+  async () => {
+    return await $fetch<Article[]>('/api/articles')
+  },
+  {
+    server: true,
+    default: () => []
+  }
+)
 </script>
 
 <style>

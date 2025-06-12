@@ -345,20 +345,6 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
-      "/": {
-        "prerender": false
-      },
-      "/api/**": {
-        "cache": {
-          "maxAge": 3600
-        }
-      },
-      "/**": {
-        "ssr": true,
-        "cache": {
-          "maxAge": 600
-        }
-      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
@@ -368,7 +354,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T13:20:18.531Z"
+          "X-Sitemap-Prerendered": "2025-06-12T14:15:51.795Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3406,7 +3392,7 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_vocael = () => Promise.resolve().then(function () { return _slug__get; });
+const _lazy_vocael = () => Promise.resolve().then(function () { return _slug__get$1; });
 const _lazy_B3Jbg0 = () => Promise.resolve().then(function () { return index_get$1; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_NbywPE = () => Promise.resolve().then(function () { return font$1; });
@@ -3433,11 +3419,6 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
-  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
-  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -7857,19 +7838,6 @@ const sources$1 = [
             }
         ],
         "sourceType": "app"
-    },
-    {
-        "context": {
-            "name": "nuxt:route-rules",
-            "description": "Generated from your route rules config.",
-            "tips": [
-                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
-            ]
-        },
-        "urls": [
-            "/"
-        ],
-        "sourceType": "app"
     }
 ];
 
@@ -7885,8 +7853,34 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
-const _slug__get = /*#__PURE__*/Object.freeze({
-  __proto__: null
+const tenantId$1 = process.env.SUPABASE_TENANT_ID;
+const supabase$1 = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
+const _slug__get = defineEventHandler(async (event) => {
+  const slug = getRouterParam(event, "slug");
+  try {
+    const { data: article, error: articleError } = await supabase$1.from("articles").select("*").eq("slug", slug).eq("tenant_id", tenantId$1).single();
+    if (articleError) throw articleError;
+    if (!article) return null;
+    const { data: category, error: categoryError } = await supabase$1.from("articles_category").select("*").eq("id", article.category_id).eq("tenant_id", tenantId$1).single();
+    if (categoryError) throw categoryError;
+    return {
+      ...article,
+      category_title: category ? category.title : "Sem categoria"
+    };
+  } catch (error) {
+    throw createError({
+      statusCode: 500,
+      message: error.message || "Erro ao buscar artigo"
+    });
+  }
+});
+
+const _slug__get$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _slug__get
 });
 
 const tenantId = process.env.SUPABASE_TENANT_ID;

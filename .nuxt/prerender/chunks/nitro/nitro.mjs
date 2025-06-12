@@ -204,7 +204,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "ac87a0f4-b17c-4c99-a961-30d4a6036850",
+    "buildId": "9ff3adc4-41a2-4069-a1b8-4ad75726a393",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -237,7 +237,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T13:20:16.440Z"
+          "X-Sitemap-Prerendered": "2025-06-12T13:55:41.955Z"
         },
         "swr": 600,
         "cache": {
@@ -2331,7 +2331,22 @@ _vCktFThY2s,
 _OlUIUuj8Rd
 ];
 
-const assets = {};
+const assets = {
+  "/robots.txt": {
+    "type": "text/plain; charset=utf-8",
+    "etag": "\"46-VYEdLRzZTvtu9QoEOaXbJu7PUsc\"",
+    "mtime": "2025-06-12T13:55:51.764Z",
+    "size": 70,
+    "path": "../../.output/public/robots.txt"
+  },
+  "/__sitemap__/style.xsl": {
+    "type": "application/xml",
+    "etag": "\"174f-JbpVmz+4o/J7NgeLSOfMHycoEZw\"",
+    "mtime": "2025-06-12T13:55:51.764Z",
+    "size": 5967,
+    "path": "../../.output/public/__sitemap__/style.xsl"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));
@@ -3540,6 +3555,7 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_vocael = () => import('../routes/api/articles/_slug_.get.mjs');
 const _lazy_B3Jbg0 = () => import('../routes/api/index.get.mjs');
 const _lazy_NbywPE = () => import('../routes/__og-image__/font/font.mjs');
 const _lazy_JVuIDH = () => import('../routes/__og-image__/image/image.mjs');
@@ -3547,6 +3563,7 @@ const _lazy_rzruMJ = () => import('../_/renderer3.mjs');
 
 const handlers = [
   { route: '', handler: _sQ89mj, lazy: false, middleware: true, method: undefined },
+  { route: '/api/articles/:slug', handler: _lazy_vocael, lazy: true, middleware: false, method: "get" },
   { route: '/api/articles', handler: _lazy_B3Jbg0, lazy: true, middleware: false, method: "get" },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/robots.txt', handler: _Ylj0Ft, lazy: false, middleware: false, method: undefined },

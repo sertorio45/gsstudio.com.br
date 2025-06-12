@@ -1,26 +1,18 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const { data: articles, pending: loading, error } = await useAsyncData(
-  'articles',
-  async () => {
-    const response = await $fetch('/api/articles')
-    return response
-  },
-  {
-    server: true,
-    default: () => []
-  }
-)
-</script>
 <template>
   <section class="my-5 py-5 min-vh-100 justify-content-center align-content-center bg-light" id="blog">
     <div class="container my-5">
       <div class="row">
         <h2 class="text-center">Blog</h2>
         
+        <!-- Erro -->
+        <div v-if="error" class="col-12 my-3">
+          <div class="alert alert-danger">
+            Erro ao carregar artigos: {{ error.message || error }}
+          </div>
+        </div>
+
         <!-- Skeleton Cards -->
-        <div v-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
+        <div v-else-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
           <div class="card">
             <div class="card-body">
               <div class="mb-2">
@@ -38,9 +30,9 @@ const { data: articles, pending: loading, error } = await useAsyncData(
               <div class="mb-2">
                 <span class="article-category">{{ article.category_title }}</span>
               </div>
-              <a :href="article.slug">
+              <NuxtLink :to="`/${article.slug}`" class="article-link">
                 {{ article.title }}
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -53,10 +45,39 @@ const { data: articles, pending: loading, error } = await useAsyncData(
       
       <div class="row my-3">
         <div class="col d-flex align-content-center justify-content-center">
-          <a href="/blog" class="btn btn-primary">Ver mais artigos</a>
+          <NuxtLink to="/blog" class="btn btn-primary">Ver mais artigos</NuxtLink>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  description?: string;
+  content: string;
+  category_id: string;
+  category_title?: string;
+  created_at: string;
+  updated_at: string;
+  publish_status: string;
+  tenant_id: string;
+}
+
+const { data: articles, pending: loading, error } = await useAsyncData<Article[]>(
+  'articles',
+  async () => {
+    return await $fetch<Article[]>('/api/articles')
+  },
+  {
+    server: true,
+    default: () => []
+  }
+)
+</script>
 
