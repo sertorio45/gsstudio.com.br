@@ -367,7 +367,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T02:22:00.210Z"
+          "X-Sitemap-Prerendered": "2025-06-12T02:45:47.667Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -383,8 +383,10 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "apiBase": "https://srzohnuulwgonduoudfp.supabase.co",
-    "baseUrl": "https://gsstudio.com.br",
+    "apiBase": "/api",
+    "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
+    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyeW9obnV1bHdnb25kdXNvZHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
+    "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
@@ -487,9 +489,6 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
-  "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyem9obnV1bHdnb25kdW91ZGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
-  "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
   "sitemap": {
     "isI18nMapped": false,
     "sitemapName": "sitemap.xml",

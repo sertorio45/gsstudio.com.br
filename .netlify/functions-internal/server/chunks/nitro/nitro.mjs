@@ -4456,7 +4456,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "425b1ed6-b551-4fca-910e-383e4fc669ed",
+    "buildId": "29a7571c-bde7-4522-b5a4-eb3154ac6b51",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4489,7 +4489,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T02:17:34.119Z"
+          "X-Sitemap-Prerendered": "2025-06-12T02:34:02.926Z"
         },
         "swr": 600,
         "cache": {
@@ -8472,15 +8472,11 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_cCoyrN = () => import('../routes/api/articles/index copy.mjs');
-const _lazy_ea6NbK = () => import('../routes/api/index.mjs');
 const _lazy_rzruMJ = () => import('../routes/renderer.mjs');
 const _lazy_NbywPE = () => import('../routes/__og-image__/font/font.mjs');
 const _lazy_JVuIDH = () => import('../routes/__og-image__/image/image.mjs');
 
 const handlers = [
-  { route: '/api/articles/index copy', handler: _lazy_cCoyrN, lazy: true, middleware: false, method: undefined },
-  { route: '/api/articles', handler: _lazy_ea6NbK, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/robots.txt', handler: _Ylj0Ft, lazy: false, middleware: false, method: undefined },
@@ -8676,5 +8672,5 @@ function getCacheHeaders(url) {
   return {};
 }
 
-export { $fetch as $, setResponseHeader as A, proxyRequest as B, sendRedirect as C, resolveContext as D, baseURL as E, defu as F, joinURL as G, H3Error as H, withQuery as I, parseQuery as J, getContext as K, createHooks as L, hasProtocol as M, isScriptProtocol as N, sanitizeStatusCode as O, withoutTrailingSlash as P, toRouteMatcher as Q, createRouter$1 as R, klona as S, parse as T, getRequestHeader as U, withoutBase as V, camelCase as W, isEqual as X, setCookie as Y, getCookie as Z, deleteCookie as _, defineRenderHandler as a, withLeadingSlash as a0, withBase as a1, decodeHtml as a2, logger as a3, toBase64Image as a4, createConsola as a5, htmlDecodeQuotes as a6, fontCache as a7, encodeParam as a8, encodePath as a9, handler as aa, empty$1 as ab, buildAssetsURL as b, createError$1 as c, defineEventHandler as d, getRouteRules as e, getResponseStatus as f, getQuery as g, getResponseStatusText as h, destr as i, useNitroApp as j, prefixStorage as k, useStorage as l, useNitroOrigin as m, emojiCache as n, useOgImageRuntimeConfig as o, publicAssetsURL as p, fetchIsland as q, readBody as r, normaliseFontInput as s, handleCacheHeaders as t, useRuntimeConfig as u, setHeaders as v, withTrailingSlash as w, setHeader as x, hash as y, parseURL as z };
+export { $fetch as $, setResponseHeader as A, proxyRequest as B, sendRedirect as C, resolveContext as D, baseURL as E, defu as F, joinURL as G, H3Error as H, withQuery as I, parseQuery as J, getContext as K, createHooks as L, hasProtocol as M, isScriptProtocol as N, sanitizeStatusCode as O, withoutTrailingSlash as P, toRouteMatcher as Q, createRouter$1 as R, klona as S, parse as T, getRequestHeader as U, withoutBase as V, camelCase as W, isEqual as X, setCookie as Y, getCookie as Z, deleteCookie as _, getRouteRules as a, withLeadingSlash as a0, withBase as a1, decodeHtml as a2, logger as a3, toBase64Image as a4, createConsola as a5, htmlDecodeQuotes as a6, fontCache as a7, encodeParam as a8, encodePath as a9, handler as aa, empty$1 as ab, buildAssetsURL as b, createError$1 as c, defineRenderHandler as d, getResponseStatus as e, getResponseStatusText as f, getQuery as g, destr as h, useNitroApp as i, defineEventHandler as j, prefixStorage as k, useStorage as l, useNitroOrigin as m, emojiCache as n, useOgImageRuntimeConfig as o, publicAssetsURL as p, fetchIsland as q, readBody as r, normaliseFontInput as s, handleCacheHeaders as t, useRuntimeConfig as u, setHeaders as v, withTrailingSlash as w, setHeader as x, hash as y, parseURL as z };
 //# sourceMappingURL=nitro.mjs.map

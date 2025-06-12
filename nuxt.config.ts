@@ -1,3 +1,5 @@
+import { VitePWA } from 'vite-plugin-pwa'
+
 export default defineNuxtConfig({
   // Configuração de e-mail para envio de mensagens via SMTP
   mail: {
@@ -72,6 +74,14 @@ export default defineNuxtConfig({
     'robots:config': (config) => {
       config.sitemap = ['/sitemap.xml'];
     },
+    'build:manifest': (manifest) => {
+      const css = Object.values(manifest).find((options) => options.isEntry)?.css;
+      if (css) {
+        for (let i = css.length - 1; i >= 0; i--) {
+          if (css[i].startsWith('entry')) css.splice(i, 1);
+        }
+      }
+    },
   },
 
   app: {
@@ -135,12 +145,11 @@ export default defineNuxtConfig({
 
 
   runtimeConfig: {
-    SUPABASE_URL: process.env.SUPABASE_URL,
-    SUPABASE_KEY: process.env.SUPABASE_KEY,
-    SUPABASE_TENANT_ID: process.env.SUPABASE_TENANT_ID,
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
-      baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'https://gsstudio.com.br',
+      apiBase: '/api',
+      SUPABASE_URL: 'https://srzohnuulwgonduoudfp.supabase.co',
+      SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyeW9obnV1bHdnb25kdXNvZHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg',
+      SUPABASE_TENANT_ID: '286f2ba0-b7a0-4685-b44a-24a55f6119c8',
     }
   },
 
@@ -177,7 +186,9 @@ export default defineNuxtConfig({
     'boxicons/css/boxicons.min.css',
   ],
 
-  plugins: [],
+  plugins: [
+    '~/plugins/bootstrap.client',
+  ],
 
   pwa: {
     registerType: 'autoUpdate',

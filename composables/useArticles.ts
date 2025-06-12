@@ -32,11 +32,11 @@ export function useArticles() {
   const config = useRuntimeConfig()
   
   const supabase = createClient(
-    config.SUPABASE_URL || 'https://srzohnuulwgonduoudfp.supabase.co',
-    config.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyem9obnV1bHdnb25kdW91ZGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg'
+    config.public.SUPABASE_URL,
+    config.public.SUPABASE_KEY
   )
 
-  const TENANT_ID = config.SUPABASE_TENANT_ID || '286f2ba0-b7a0-4685-b44a-24a55f6119c8'
+  const TENANT_ID = config.public.SUPABASE_TENANT_ID
 
   async function fetchArticles(): Promise<Article[]> {
     loading.value = true
