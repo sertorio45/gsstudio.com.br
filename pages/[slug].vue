@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
+import { useHead } from '#imports'
 
 interface Article {
   id: string;
@@ -18,32 +19,39 @@ interface Article {
 const route = useRoute();
 const router = useRouter();
 
-// Busca otimizada: busca apenas o artigo específico da API
-const { data: article, pending: loading, error } = await useAsyncData<Article | null>(
-  `article-${route.params.slug}`,
-  async () => {
-    try {
-      return await $fetch<Article>(`/api/articles/${route.params.slug}`)
-    } catch (err) {
-      return null
-    }
-  },
+const { data: article, pending: loading, error } = await useFetch<Article>(
+  () => `/api/articles/${route.params.slug}`,
   {
-    watch: [() => route.params.slug],
     server: true,
+    key: `article-${route.params.slug}`,
     default: () => null
   }
 )
 
-const title = computed(() => article.value?.title);
+const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
+
+useHead({
+  title: article.value?.title || 'Artigo',
+  meta: [
+    { name: 'description', content: article.value?.description || '' },
+    { property: 'og:title', content: article.value?.title || '' },
+    { property: 'og:description', content: article.value?.description || '' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: canonicalUrl },
+    { property: 'og:locale', content: 'pt_BR' },
+    { property: 'og:image:alt', content: article.value?.title || '' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:title', content: article.value?.title || '' },
+    { name: 'twitter:description', content: article.value?.description || '' },
+    { name: 'robots', content: 'index, follow' }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl }
+  ]
+})
 
 // Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
-
-// SEO Meta Tags - renderizadas no servidor
-const canonicalUrl = computed(() =>
-  `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`
-);
 
 useSeoMeta({
   title: article.value?.title,
@@ -83,7 +91,7 @@ interface SocialNetwork {
 }
 
 const socialNetworks = computed<SocialNetwork[]>(() => {
-  const url = canonicalUrl.value;
+  const url = canonicalUrl;
   return [
     { name: "Facebook", url: `https://facebook.com/sharer/sharer.php?u=${url}`, icon: "bx bxl-facebook" },
     { name: "Twitter", url: `https://twitter.com/intent/tweet?url=${url}`, icon: "bx bxl-twitter" },
