@@ -11,7 +11,7 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
     default: () => null
   }
 )
-useServerSeoMeta({
+useSeoMeta({
     title: article.value?.title,
     description: article.value?.meta_description,
     robots: 'index, follow',
@@ -99,10 +99,10 @@ const formatDate = (date: string | null | undefined) => {
 
 </script>
 <template>
-  <!-- <Head>  
+  <Head>  
     <Title>{{ article?.title }}</Title>
     <Meta name="description" :content="article?.meta_description" />
-  </Head> -->
+  </Head>
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
