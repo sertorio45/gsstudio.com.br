@@ -651,12 +651,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-DbRKEBVX.mjs')
+    component: () => import('./_slug_-GI5W6Nut.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-FC2Xg3KV.mjs')
+    component: () => import('./blog-CeTDjFV0.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -666,32 +666,32 @@ const _routes = [
   {
     name: "contato",
     path: "/contato",
-    component: () => import('./contato-D_1bcZij.mjs')
+    component: () => import('./contato-BiPeC2QE.mjs')
   },
   {
     name: "index",
     path: "/",
-    component: () => import('./index-9aFFs86i.mjs')
+    component: () => import('./index-BMc6MH1K.mjs')
   },
   {
     name: "politica-de-privacidade",
     path: "/politica-de-privacidade",
-    component: () => import('./politica-de-privacidade-OGpw6IyM.mjs')
+    component: () => import('./politica-de-privacidade-C8-8q91n.mjs')
   },
   {
     name: "servicos-criacao-de-sites",
     path: "/servicos/criacao-de-sites",
-    component: () => import('./criacao-de-sites-CQ1vb7i5.mjs')
+    component: () => import('./criacao-de-sites-O_hdQwI9.mjs')
   },
   {
     name: "servicos",
     path: "/servicos",
-    component: () => import('./index-D5gkgpst.mjs')
+    component: () => import('./index-BTMtbkL8.mjs')
   },
   {
     name: "sobre",
     path: "/sobre",
-    component: () => import('./sobre-Qyv7c27G.mjs')
+    component: () => import('./sobre-D3BBJ9qA.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -2712,5 +2712,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRequestFetch as b, createError as c, useSeoMeta as d, entry$1 as default, useRoute as e, fetchDefaults as f, useRouter as g, useNuxtApp as h, injectHead as i, asyncDataDefaults as j, useRuntimeConfig as k, useOgImageRuntimeConfig as l, createOgImageMeta as m, normaliseOptions as n, getOgImagePath as o, useRequestEvent as p, useSiteConfig as q, separateProps as s, useHead as u };
+export { N, _export_sfc as _, __nuxt_component_0$1 as a, useRequestFetch as b, createError as c, useRoute as d, entry$1 as default, useRouter as e, fetchDefaults as f, useSeoMeta as g, useNuxtApp as h, injectHead as i, asyncDataDefaults as j, useRuntimeConfig as k, useOgImageRuntimeConfig as l, createOgImageMeta as m, normaliseOptions as n, getOgImagePath as o, useRequestEvent as p, useSiteConfig as q, separateProps as s, useHead as u };
 //# sourceMappingURL=server.mjs.map

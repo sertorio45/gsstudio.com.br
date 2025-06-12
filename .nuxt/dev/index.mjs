@@ -345,6 +345,20 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "prerender": false,
+        "ssr": true
+      },
+      "/api/**": {
+        "prerender": false,
+        "ssr": true
+      },
+      "/**": {
+        "ssr": true,
+        "cache": {
+          "maxAge": 600
+        }
+      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
@@ -354,7 +368,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T17:18:50.890Z"
+          "X-Sitemap-Prerendered": "2025-06-12T18:36:12.204Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3416,6 +3430,11 @@ const handlers = [
   { route: '/__og-image__/static/**', handler: _lazy_JVuIDH, lazy: true, middleware: false, method: undefined },
   { route: '/mail/send', handler: _VdM8EJ, lazy: false, middleware: false, method: "post" },
   { route: '/_ipx/**', handler: _ssIfWH, lazy: false, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/sitemap.xsl', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/meta/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
+  { route: '/_nuxt/builds/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -7833,6 +7852,19 @@ const sources$1 = [
             {
                 "loc": "/sobre"
             }
+        ],
+        "sourceType": "app"
+    },
+    {
+        "context": {
+            "name": "nuxt:route-rules",
+            "description": "Generated from your route rules config.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
+            ]
+        },
+        "urls": [
+            "/"
         ],
         "sourceType": "app"
     }
