@@ -11,13 +11,17 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
     default: () => null
   }
 )
-defineOgImageComponent('NuxtSeo', {
-  title: '',
-  description: article.value?.meta_description,
-  theme: '#ff0000',
-  colorMode: 'dark',
-})
+// Criando a OG Image dinâmica quando o artigo é carregado
+if (article.value) {
+  defineOgImageComponent('NuxtSeo', {
+    title: article.value.title,
+    description: article.value.meta_description,
+    theme: '#ff0000',
+    colorMode: 'dark',
+  })
+}
 
+// Meta tags para SEO e redes sociais
 useSeoMeta({
     title: article.value?.title,
     description: article.value?.meta_description,
@@ -27,10 +31,17 @@ useSeoMeta({
     ogType: 'article',
     ogUrl: canonicalUrl,
     ogLocale: 'pt_BR',
+    // OG Image gerada dinamicamente ou imagem padrão
+    ogImage: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg',
     ogImageAlt: article.value?.title,
-    twitterCard: 'summary',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    // Twitter Cards
+    twitterCard: 'summary_large_image',
     twitterTitle: article.value?.title,
     twitterDescription: article.value?.meta_description,
+    twitterImage: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg',
+    // Facebook
     fbAppId: '603230818880308'
   })
 
