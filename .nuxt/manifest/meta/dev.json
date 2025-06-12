@@ -1,1 +1,0 @@
-{"id":"dev","timestamp":1749745588679,"matcher":{"static":{"/":{"prerender":true},"/blog":{"prerender":true},"/sobre":{"prerender":true},"/contato":{"prerender":true},"/politica-de-privacidade":{"prerender":true}},"wildcard":{"/servicos":{"prerender":true},"/cases":{"prerender":true}},"dynamic":{}},"prerendered":[]}
