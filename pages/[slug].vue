@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
-import { useHead } from '#imports'
+import { useHead, useRoute, useRouter } from '#imports'
+import { useArticleSeo } from '@/composables/useArticleSeo'
 
 interface Article {
   id: string;
@@ -30,25 +31,27 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
 
 const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
 
-useHead({
-  title: article.value?.title || 'Artigo',
-  meta: [
-    { name: 'description', content: article.value?.description || '' },
-    { property: 'og:title', content: article.value?.title || '' },
-    { property: 'og:description', content: article.value?.description || '' },
-    { property: 'og:type', content: 'article' },
-    { property: 'og:url', content: canonicalUrl },
-    { property: 'og:locale', content: 'pt_BR' },
-    { property: 'og:image:alt', content: article.value?.title || '' },
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:title', content: article.value?.title || '' },
-    { name: 'twitter:description', content: article.value?.description || '' },
-    { name: 'robots', content: 'index, follow' }
-  ],
-  link: [
-    { rel: 'canonical', href: canonicalUrl }
-  ]
-})
+// useHead({
+//   title: article.value?.title || 'Artigo',
+//   meta: [
+//     { name: 'description', content: article.value?.description || '' },
+//     { property: 'og:title', content: article.value?.title || '' },
+//     { property: 'og:description', content: article.value?.description || '' },
+//     { property: 'og:type', content: 'article' },
+//     { property: 'og:url', content: canonicalUrl },
+//     { property: 'og:locale', content: 'pt_BR' },
+//     { property: 'og:image:alt', content: article.value?.title || '' },
+//     { name: 'twitter:card', content: 'summary' },
+//     { name: 'twitter:title', content: article.value?.title || '' },
+//     { name: 'twitter:description', content: article.value?.description || '' },
+//     { name: 'robots', content: 'index, follow' }
+//   ],
+//   link: [
+//     { rel: 'canonical', href: canonicalUrl }
+//   ]
+// })
+
+useArticleSeo(article.value, canonicalUrl);
 
 // Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
@@ -69,18 +72,6 @@ useSeoMeta({
   fbAppId: '603230818880308'
 })
 
-// useHead({
-//   title: article.value?.title,
-//   meta: [
-//     { name: 'description', content: article.value?.description },
-//     { name: 'robots', content: 'index, follow' },
-//     { name: 'og:title', content: article.value?.title },
-//     { name: 'og:description', content: article.value?.description },
-//     { name: 'og:url', content: canonicalUrl },
-//     { name: 'og:type', content: 'article' },
-//     { name: 'og:locale', content: 'pt_BR' },
-//   ]
-// })
 
 
 

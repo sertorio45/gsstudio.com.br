@@ -160,6 +160,7 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']
   const useApplePwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useApplePwaIcon']
   const useAppleSplashScreenPwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useAppleSplashScreenPwaIcon']
+  const useArticleSeo: typeof import('../../composables/useArticleSeo')['useArticleSeo']
   const useArticles: typeof import('../../composables/useArticles')['useArticles']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('vue')['useAttrs']
@@ -444,6 +445,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useApplePwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useApplePwaIcon']>
     readonly useAppleSplashScreenPwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useAppleSplashScreenPwaIcon']>
+    readonly useArticleSeo: UnwrapRef<typeof import('../../composables/useArticleSeo')['useArticleSeo']>
     readonly useArticles: UnwrapRef<typeof import('../../composables/useArticles')['useArticles']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
