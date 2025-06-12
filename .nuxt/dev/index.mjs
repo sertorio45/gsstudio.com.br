@@ -52,7 +52,7 @@ import { createGenerator } from 'file:///Users/giovannisertorio/Desktop/Sites/gs
 import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unocss/preset-wind3/dist/index.mjs';
 import { createUnhead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/vue/node_modules/unhead/dist/index.mjs';
 import { Resvg } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@resvg/resvg-js/index.js';
-import _satori from 'satori';
+import _satori from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/satori/dist/index.js';
 import sharp from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/sharp/lib/index.js';
 
 const serverAssets = [{"baseName":"nuxt-og-image:fonts","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/cache/nuxt-og-image/_fonts"},{"baseName":"server","dir":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/server/assets"}];
@@ -674,7 +674,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T22:18:40.751Z"
+          "X-Sitemap-Prerendered": "2025-06-12T22:28:14.227Z"
         }
       },
       "/_nuxt": {
@@ -941,9 +941,9 @@ const _inlineRuntimeConfig = {
     "strictNuxtContentPaths": "",
     "isNuxtContentDocumentDriven": false,
     "componentDirs": [
-      "OgImageTemplate",
+      "OgImage",
       "og-image",
-      "OgImage"
+      "OgImageTemplate"
     ]
   },
   "ipx": {

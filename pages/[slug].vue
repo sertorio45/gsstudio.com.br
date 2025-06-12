@@ -126,7 +126,7 @@ const formatDate = (date: string | null | undefined) => {
           </div>
         </div>
 
-        <div class="col-sm-7 col-md-12 col-lg-9">
+        <div class="col-sm-7 col-md-12 col-lg-10">
           <!-- Estados de carregamento e erro -->
           <div v-if="loading" class="loading-state">
             <div class="d-flex mb-3">
@@ -178,6 +178,8 @@ const formatDate = (date: string | null | undefined) => {
 
 
 <style scoped>
+
+
 
 .content_blog h2 {
   font-size: 20px !important;
@@ -271,37 +273,12 @@ const formatDate = (date: string | null | undefined) => {
 
 /* Breakpoints */
 
-/* Extra pequeno (até 575px) */
-@media (max-width: 575px) {
-  .publish_date {
-    font-size: 0.9rem !important;
-  }
-  .social-links {
-    display: none;
-  }
-  .social-share {
-    gap: 0.3em;
-  }
-  .back-fixed {
-    display: flex;
-    position: fixed !important;
-    z-index: 9998 !important;
-    width: 100%;
-    background-color: #fff;
-    top: 60px;
-    padding: 20px;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    right: 0;
-  }
-}
+
 
 /* Pequeno (576px - 767px) */
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .publish_date {
-    font-size: 1.1rem !important;
+    font-size: 0.8rem !important;
   }
   .social-links {
     display: none;
@@ -312,7 +289,7 @@ const formatDate = (date: string | null | undefined) => {
     z-index: 9998 !important;
     width: 100%;
     background-color: #fff;
-    top: 0;
+    top: 67px;
     left: 0;
     right: 0;
     padding: 20px;
@@ -322,101 +299,76 @@ const formatDate = (date: string | null | undefined) => {
     display: flex;
     gap: 0.3em;
   }
+  h1 {
+  font-size: 2.5rem!important;
+  }
+
 }
 
 /* Médio (768px - 1199px) */
 @media (min-width: 768px) {
   .back-fixed {
     display: flex;
-    position: fixed !important;
-    z-index: 9998 !important;
+    position: fixed ;
+    z-index: 2;
     width: 100%;
     background-color: #fff;
     padding: 20px;
     gap: 10px;
     top: 67px;
+    left: 0;
     justify-content: center;
     align-items: center;
-    }
   }
+}
 
-  
+/* Desktop (a partir de 1024px) - NOVO ESTILO */
 @media (min-width: 1024px) {
   .back-fixed {
     display: flex;
-    position: fixed !important;
-    z-index: 9998 !important;
-    width: 100%;
-    background-color: #fff;
-    padding: 20px;
-    gap: 10px;
-    top: 86px;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    }
+    justify-content: flex-start;
+    position: sticky;
+    top: 120px;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    margin-left: 0;
+    transform: none;
+    box-shadow: none;
   }
+  .social-share {
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 1.5em;
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0.5em;
+    margin-top: 0;
+    font-size: 18px;
+  }
+}
 
 /* Grande (1200px +) */
 @media (min-width: 1200px) {
   .back-fixed {
-    display: block;
-    position: fixed !important;
-    z-index: 9998 !important;
-    width: 100%;
-    background-color: transparent;
-    padding: 0;
-    top: 130px;
     left: 68px;
-  }
-
-  .news-fixed {
-    position: fixed;
-    width: 20vw;
-  }
-
-  .social-share {
-    display: flex;
-    gap: 0.3em;
-    margin-top: 0.5em;
-  }
-
-  .social-icon {
-    width: 25px;
-    height: 25px;
-    padding: 0.18em;
-    margin-top: 10px;
   }
 }
 
-/* 4k (2560px +) */
+@media (max-width: 1440px) {
+  /* .back-fixed {
+    left: 24px;
+  } */
+}
+
 @media (min-width: 1920px) {
   .back-fixed {
-    display: block;
-    position: fixed !important;
-    z-index: 9998 !important;
-    width: 100%;
-    background-color: transparent;
-    padding: 0;
-    top: 130px;
-    left: 250px;
-  }
-
-  .news-fixed {
-    position: fixed;
-    width: 20vw;
-  }
-
-  .social-share {
-    display: flex;
-    gap: 0.3em;
-    margin-top: 0.5em;
-  }
-
-  .social-icon {
-    width: 25px;
-    height: 25px;
-    padding: 0.18em;
-    margin-top: 10px;
+    left: 24px;
   }
 }
 </style>
