@@ -47,7 +47,7 @@ const getDescription = computed(() => article.value?.description || '');
 
 function setSeoMeta() {
   if (!article.value) return;
-  useServerSeoMeta({
+  useSeoMeta({
     title: getTitle,
     description: getDescription,
     robots: 'index, follow',
