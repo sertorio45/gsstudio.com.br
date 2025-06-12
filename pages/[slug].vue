@@ -139,6 +139,9 @@ const formatDate = (date: string | null | undefined) => {
 
 </script>
 <template>
+  <Head>  
+    <Title>{{ article?.title }}</Title>
+  </Head>
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
