@@ -1,4 +1,4 @@
-import { useServerSeoMeta } from 'nuxt/app'
+
 
 interface Article {
   id: string;
@@ -16,7 +16,7 @@ interface Article {
 
 export function useArticleSeo(article: Article | null, canonicalUrl: string) {
   if (!article) return;
-  useServerSeoMeta({
+  useSeoMeta({
     title: article.title,
     description: article.meta_description,
     robots: 'index, follow',
