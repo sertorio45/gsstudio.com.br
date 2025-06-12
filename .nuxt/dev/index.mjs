@@ -13,7 +13,6 @@ import presetWind from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_di
 import { consola, createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
-import { createClient } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@supabase/supabase-js/dist/main/index.js';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, parse, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/devalue/index.js';
 import destr from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/destr/dist/index.mjs';
@@ -368,7 +367,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T02:13:25.371Z"
+          "X-Sitemap-Prerendered": "2025-06-12T02:22:00.210Z"
         }
       },
       "/_nuxt/builds/meta/**": {
@@ -3407,16 +3406,12 @@ const _ssIfWH = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_cCoyrN = () => Promise.resolve().then(function () { return index_copy$1; });
-const _lazy_ea6NbK = () => Promise.resolve().then(function () { return index$1; });
 const _lazy_rzruMJ = () => Promise.resolve().then(function () { return renderer$1; });
 const _lazy_NbywPE = () => Promise.resolve().then(function () { return font$1; });
 const _lazy_o2E1lw = () => Promise.resolve().then(function () { return debug_json$1; });
 const _lazy_JVuIDH = () => Promise.resolve().then(function () { return image$1; });
 
 const handlers = [
-  { route: '/api/articles/index copy', handler: _lazy_cCoyrN, lazy: true, middleware: false, method: undefined },
-  { route: '/api/articles', handler: _lazy_ea6NbK, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_rzruMJ, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _q1s6iD, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _A26pTt, lazy: false, middleware: false, method: undefined },
@@ -7884,64 +7879,6 @@ const sources = {};
 const childSources = /*#__PURE__*/Object.freeze({
   __proto__: null,
   sources: sources
-});
-
-const index_copy = defineEventHandler(async (event) => {
-  const config = useRuntimeConfig(event);
-  const apiBase = config.public.apiBase;
-  const tenantId = config.SUPABASE_TENANT_ID;
-  const apiSecret = config.SUPABASE_KEY;
-  if (!apiBase || !tenantId || !apiSecret) {
-    throw createError({
-      statusCode: 500,
-      message: "Vari\xE1veis de ambiente n\xE3o definidas corretamente."
-    });
-  }
-  try {
-    const articlesRes = await fetch(`${apiBase}/rest/v1/articles?tenant_id=eq.${tenantId}&publish_status=eq.published`, {
-      headers: {
-        "apikey": String(apiSecret),
-        "Content-Type": "application/json"
-      }
-    });
-    if (!articlesRes.ok) {
-      const text = await articlesRes.text();
-      console.error("Erro ao buscar artigos:", text);
-      throw createError({
-        statusCode: articlesRes.status,
-        message: `Erro ao buscar artigos: ${text}`
-      });
-    }
-    const articles = await articlesRes.json();
-    return { success: true, data: articles };
-  } catch (error) {
-    console.error("Erro no endpoint /api/articles:", error);
-    throw createError({
-      statusCode: error.statusCode || 500,
-      message: error.message || "Erro desconhecido ao buscar artigos"
-    });
-  }
-});
-
-const index_copy$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: index_copy
-});
-
-const index = defineEventHandler(async (event) => {
-  const supabaseUrl = "https://srzohnuulwgonduoudfp.supabase.co";
-  const supabaseKey = process.env.SUPABASE_KEY;
-  if (!supabaseKey) {
-    throw new Error("SUPABASE_KEY n\xE3o definida nas vari\xE1veis de ambiente");
-  }
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  let { data: articles, error } = await supabase.from("articles").select("*");
-  return articles;
-});
-
-const index$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: index
 });
 
 const Vue3 = version[0] === "3";

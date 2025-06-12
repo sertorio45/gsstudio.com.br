@@ -34,6 +34,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used.js")> &
   InjectionType<typeof import("../../node_modules/nuxt-mail/dist/plugin-nuxt3.js")> &
+  InjectionType<typeof import("../../plugins/bootstrap.client")> &
   InjectionType<typeof import("../../plugins/imask")> &
   InjectionType<typeof import("../../plugins/pinia.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js")>
