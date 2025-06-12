@@ -121,13 +121,6 @@ const formatDate = (date: string | null | undefined) => {
   }
 };
 
-// Middleware para verificar se o artigo existe (renderizado no servidor)
-if (process.server && !article.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Artigo não encontrado'
-  })
-}
 </script>
 <template>
   <Head>
@@ -185,13 +178,6 @@ if (process.server && !article.value) {
             <div v-html="article.content" class="my-4"></div>
           </div>
 
-          <div v-else class="not-found-state">
-            <div class="alert alert-warning">
-              <h4>Artigo não encontrado</h4>
-              <p>O artigo que você está procurando não existe ou foi removido.</p>
-              <button @click="goBack" class="btn btn-primary">Voltar</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
