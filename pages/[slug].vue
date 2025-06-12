@@ -11,29 +11,24 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
     default: () => null
   }
 )
-useSeoMeta({
-    title: article.value?.title,
-    description: article.value?.meta_description,
-    robots: 'index, follow',
-    ogTitle: article.value?.title,
-    ogDescription: article.value?.meta_description,
-    ogType: 'article',
-    ogUrl: canonicalUrl,
-    ogLocale: 'pt_BR',
-    ogImageAlt: article.value?.title,
-    twitterCard: 'summary',
-    twitterTitle: article.value?.title,
-    twitterDescription: article.value?.meta_description,
-    fbAppId: '603230818880308'
-  })
+// useSeoMeta({
+//     title: article.value?.title,
+//     description: article.value?.meta_description,
+//     robots: 'index, follow',
+//     ogTitle: article.value?.title,
+//     ogDescription: article.value?.meta_description,
+//     ogType: 'article',
+//     ogUrl: canonicalUrl,
+//     ogLocale: 'pt_BR',
+//     ogImageAlt: article.value?.title,
+//     twitterCard: 'summary',
+//     twitterTitle: article.value?.title,
+//     twitterDescription: article.value?.meta_description,
+//     fbAppId: '603230818880308'
+//   })
 
 // Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
-
-
-
-
-
 
 interface SocialNetwork {
   name: string;
@@ -101,7 +96,13 @@ const formatDate = (date: string | null | undefined) => {
 <template>
   <Head>  
     <Title>{{ article?.title }}</Title>
-    <Meta name="description" :content="article?.meta_description" />
+    <Meta name="description">{{ article?.meta_description }}</Meta>
+    <Meta name="robots" content="index, follow" />
+    <Meta name="og:title" :content="article?.title" />
+    <Meta name="og:description" :content="article?.meta_description" />
+    <Meta name="og:type" content="article" />
+    <Meta name="og:url" :content="canonicalUrl" />
+    <Meta name="og:image:alt" :content="article?.title" />
   </Head>
   <section class="my-5" id="article-detail">
     <div class="container my-5">
