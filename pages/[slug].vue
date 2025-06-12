@@ -45,34 +45,34 @@ const canonicalUrl = computed(() =>
   `${useRuntimeConfig().public.baseUrl || 'https://gsstudio.com.br'}${route.fullPath}`
 );
 
-// useServerSeoMeta({
-//   title: article.value?.title,
-//   description: article.value?.description ,
-//   robots: 'index, follow',
-//   ogTitle: article.value?.title,
-//   ogDescription: 'teste',
-//   ogType: 'article',
-//   ogUrl: canonicalUrl,
-//   ogLocale: 'pt_BR',
-//   ogImageAlt: article.value?.title,
-//   twitterCard: 'summary',
-//   twitterTitle: article.value?.title,
-//   twitterDescription: article.value?.description,
-//   fbAppId: '603230818880308'
-// })
-
-useHead({
+useSeoMeta({
   title: article.value?.title,
-  meta: [
-    { name: 'description', content: article.value?.description },
-    { name: 'robots', content: 'index, follow' },
-    { name: 'og:title', content: article.value?.title },
-    { name: 'og:description', content: article.value?.description },
-    { name: 'og:url', content: canonicalUrl },
-    { name: 'og:type', content: 'article' },
-    { name: 'og:locale', content: 'pt_BR' },
-  ]
+  description: article.value?.description ,
+  robots: 'index, follow',
+  ogTitle: article.value?.title,
+  ogDescription: 'teste',
+  ogType: 'article',
+  ogUrl: canonicalUrl,
+  ogLocale: 'pt_BR',
+  ogImageAlt: article.value?.title,
+  twitterCard: 'summary',
+  twitterTitle: article.value?.title,
+  twitterDescription: article.value?.description,
+  fbAppId: '603230818880308'
 })
+
+// useHead({
+//   title: article.value?.title,
+//   meta: [
+//     { name: 'description', content: article.value?.description },
+//     { name: 'robots', content: 'index, follow' },
+//     { name: 'og:title', content: article.value?.title },
+//     { name: 'og:description', content: article.value?.description },
+//     { name: 'og:url', content: canonicalUrl },
+//     { name: 'og:type', content: 'article' },
+//     { name: 'og:locale', content: 'pt_BR' },
+//   ]
+// })
 
 
 
