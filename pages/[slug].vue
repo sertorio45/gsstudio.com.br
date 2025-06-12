@@ -6,7 +6,7 @@ import { useArticleSeo } from '@/composables/useArticleSeo'
 
 const route = useRoute();
 const router = useRouter();
-
+const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
 const { data: article, pending: loading, error } = await useFetch<Article>(
   () => `/api/articles/${route.params.slug}`,
   {
@@ -16,15 +16,9 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
   }
 )
 
-useHead({
-  title: article.value?.title,
-  meta: [
-    { name: 'description', content: article.value?.meta_description },
-    { property: 'og:title', content: article.value?.title },
-  ]
-})
+useArticleSeo(article.value, canonicalUrl);
 
-const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
+
 
 
 

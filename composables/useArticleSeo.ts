@@ -4,7 +4,7 @@ interface Article {
   id: string;
   slug: string;
   title: string;
-  description?: string;
+  meta_description?: string;
   content: string;
   category_id: string;
   category_title?: string;
@@ -18,17 +18,17 @@ export function useArticleSeo(article: Article | null, canonicalUrl: string) {
   if (!article) return;
   useServerSeoMeta({
     title: article.title,
-    description: article.description,
+    description: article.meta_description,
     robots: 'index, follow',
     ogTitle: article.title,
-    ogDescription: article.description,
+    ogDescription: article.meta_description,
     ogType: 'article',
     ogUrl: canonicalUrl,
     ogLocale: 'pt_BR',
     ogImageAlt: article.title,
     twitterCard: 'summary',
     twitterTitle: article.title,
-    twitterDescription: article.description,
+    twitterDescription: article.meta_description,
     fbAppId: '603230818880308'
   })
 } 
