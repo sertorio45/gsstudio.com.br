@@ -16,13 +16,13 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
   }
 )
 
-// useHead({
-//   title: article.value?.title,
-//   meta: [
-//     { name: 'description', content: article.value?.meta_description },
-//     { property: 'og:title', content: article.value?.title },
-//   ]
-// })
+useHead({
+  title: article.value?.title,
+  meta: [
+    { name: 'description', content: article.value?.meta_description },
+    { property: 'og:title', content: article.value?.title },
+  ]
+})
 
 const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
 
@@ -100,10 +100,10 @@ const formatDate = (date: string | null | undefined) => {
 
 </script>
 <template>
-  <Head>  
+  <!-- <Head>  
     <Title>{{ article?.title }}</Title>
     <Meta name="description" :content="article?.meta_description" />
-  </Head>
+  </Head> -->
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
