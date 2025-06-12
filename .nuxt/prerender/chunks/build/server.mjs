@@ -654,12 +654,12 @@ const _routes = [
   {
     name: "slug",
     path: "/:slug()",
-    component: () => import('./_slug_-AaHyF-2v.mjs')
+    component: () => import('./_slug_-CqEZVRJS.mjs')
   },
   {
     name: "blog",
     path: "/blog",
-    component: () => import('./blog-DOIRhTwd.mjs')
+    component: () => import('./blog-BzSxInqQ.mjs')
   },
   {
     name: "cases-mdmoveis",
@@ -674,7 +674,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-Ce9AjabY.mjs')
+    component: () => import('./index-Dg5jEOeN.mjs')
   },
   {
     name: "politica-de-privacidade",

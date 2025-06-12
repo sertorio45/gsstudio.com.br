@@ -4456,7 +4456,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "29a7571c-bde7-4522-b5a4-eb3154ac6b51",
+    "buildId": "9a2f6d86-1f12-48ae-873c-36080baaf41d",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4489,7 +4489,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-12T02:34:02.926Z"
+          "X-Sitemap-Prerendered": "2025-06-12T03:07:49.168Z"
         },
         "swr": 600,
         "cache": {
@@ -4520,8 +4520,10 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "apiBase": "https://srzohnuulwgonduoudfp.supabase.co",
-    "baseUrl": "https://gsstudio.com.br",
+    "apiBase": "/api",
+    "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
+    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyeW9obnV1bHdnb25kdXNvZHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
+    "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
     "gtm": {
       "devtools": true,
       "id": "GTM-N3X2JT4",
@@ -4605,9 +4607,6 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
-  "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyem9obnV1bHdnb25kdW91ZGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
-  "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
   "sitemap": {
     "isI18nMapped": false,
     "sitemapName": "sitemap.xml",
@@ -5401,7 +5400,7 @@ async function dispose(driver) {
 const _assets = {
   ["nuxt-og-image:fonts:Unbounded-400.ttf.base64"]: {
     import: () => import('../raw/Unbounded-400.ttf.mjs').then(r => r.default || r),
-    meta: {"type":"text/plain; charset=utf-8","etag":"\"70be8-mi9uHPl5g2xmdttz4SrrNCAAtt4\"","mtime":"2025-06-12T00:53:39.972Z"}
+    meta: {"type":"text/plain; charset=utf-8","etag":"\"70be8-mi9uHPl5g2xmdttz4SrrNCAAtt4\"","mtime":"2025-06-12T03:06:55.138Z"}
   }
 };
 
