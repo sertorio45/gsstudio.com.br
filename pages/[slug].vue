@@ -61,6 +61,13 @@ useServerSeoMeta({
   fbAppId: '603230818880308'
 })
 
+useHead({
+  title: article.value?.title,
+  meta: [
+    { name: 'description', content: article.value?.description },
+  ]
+})
+
 interface SocialNetwork {
   name: string;
   url: string;
@@ -125,11 +132,6 @@ const formatDate = (date: string | null | undefined) => {
 
 </script>
 <template>
-  <Head>
-    <Title>
-      {{ article?.title || 'Artigo' }}
-    </Title>
-  </Head>
   <section class="my-5" id="article-detail">
     <div class="container my-5">
       <div class="row">
