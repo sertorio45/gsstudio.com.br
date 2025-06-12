@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue'
-
-import { useArticleSeo } from '@/composables/useArticleSeo'
-
 
 const route = useRoute();
 const router = useRouter();
@@ -15,12 +11,21 @@ const { data: article, pending: loading, error } = await useFetch<Article>(
     default: () => null
   }
 )
-
-useArticleSeo(article.value, canonicalUrl);
-
-
-
-
+useServerSeoMeta({
+    title: article.value?.title,
+    description: article.value?.meta_description,
+    robots: 'index, follow',
+    ogTitle: article.value?.title,
+    ogDescription: article.value?.meta_description,
+    ogType: 'article',
+    ogUrl: canonicalUrl,
+    ogLocale: 'pt_BR',
+    ogImageAlt: article.value?.title,
+    twitterCard: 'summary',
+    twitterTitle: article.value?.title,
+    twitterDescription: article.value?.meta_description,
+    fbAppId: '603230818880308'
+  })
 
 // Computed para categoria
 const categoryTitle = computed(() => article.value?.category_title || "Sem categoria");
