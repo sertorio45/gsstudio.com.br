@@ -1,6 +1,6 @@
 <template>
   <!-- Topo da página -->
-  <section class="py-5 bg-black d-flex mt-5 text-light">
+  <section class="py-5 bg-black d-flex text-light">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">
@@ -34,7 +34,7 @@
           focadas em criar conexões impactantes com seus consumidores.
         </p>
         <!-- Botão que aparece apenas em tablets e telas maiores -->
-        <a href="#marcos" class="btn btn-primary d-none d-md-inline-flex">Continue...</a>
+        <a href="#marcos" class="btn btn-white d-none d-md-inline-flex">Continue...</a>
       </div>
     </div>
   </div>

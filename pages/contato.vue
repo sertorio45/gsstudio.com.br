@@ -31,7 +31,7 @@ useCardAnimation();
 
 <template>
   <!-- Fale conosco -->
-  <section class="py-5 bg-black d-flex my-5" id="topo">
+  <section class="py-5 bg-black d-flex" id="topo">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">

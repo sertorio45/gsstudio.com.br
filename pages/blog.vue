@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5 d-flex my-5 bg-black" id="topo">
+  <section class="py-5 d-flex bg-black" id="topo">
     <div class="container d-flex justify-content-center align-items-center my-5 py-5">
       <div class="row">
         <div class="col text-center text-light my-2">

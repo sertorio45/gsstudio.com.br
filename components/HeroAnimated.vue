@@ -102,33 +102,33 @@ onBeforeUnmount(() => {
 }
 
 .hero-animated-phrase {
-  font-size: 7rem!important;
+  font-size: 7rem;
   font-weight: 600;
 }
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
   .hero-title {
     font-size: 2rem!important;
   }
   .hero-animated-phrase {
-    font-size: 10vw!important;
+    font-size: calc(100vw / 10)!important;
   }
 }
 @media (max-width: 767.98px) {
   .hero-title {
-    font-size: 1.5rem!important;
+    font-size: 1.7rem;
   }
   .hero-animated-phrase {
-    font-size: 2vw!important;
+    font-size: 3vw;
   }
 }
 @media (max-width: 991.98px) {
   .hero-animated-phrase {
-    font-size:11vw!important;
+    font-size:11vw;
   }
 }
 @media (max-width: 1199.98px) {
   .hero-animated-phrase {
-    font-size:8vw!important;
+    font-size:8vw;
   }
 }
 
