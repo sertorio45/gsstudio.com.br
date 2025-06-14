@@ -158,8 +158,8 @@ onUnmounted(() => {
   width: 700px; /* Largura automática para desktop */
   max-width: 95%; /* Evita que seja muito largo em telas grandes */
   padding: 0.75rem 1.5rem; /* py-3 pl-6 pr-6 */
-  background-color: rgba(255, 255, 255, 0.513); /* Fundo branco translúcido para desktop e mobile */
-  backdrop-filter: blur(8px); /* Efeito de desfoque */
+  background-color: rgba(255, 255, 255, 0.7); /* Fundo branco translúcido para desktop e mobile */
+  backdrop-filter: blur(10px); /* Efeito de desfoque */
   border: 1px solid rgba(255, 255, 255, 0.1); /* Borda branca sutil */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra mais visível */
   border-radius: 9999px; /* Totalmente arredondado para desktop (rounded-pill) */
@@ -167,6 +167,7 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
+  border-color: #fff;
 }
 
 /* Ajustes para o cabeçalho no mobile */
@@ -215,13 +216,11 @@ onUnmounted(() => {
   font-size: 0.9rem !important;
   padding: 0.2rem 0.3rem !important;
   transition: color 0.3s ease !important;
-  transform: scale(1);
 }
 
 .nav-link:hover {
   color: var(--color-primary) !important;
   transition: color 0.3s ease !important;
-  transform: scale(1.1);
 }
 
 .navbar-toggler {

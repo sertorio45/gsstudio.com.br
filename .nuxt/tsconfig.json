@@ -152,7 +152,10 @@
         "../node_modules/nuxt-og-image/dist/runtime/shared"
       ],
       "#mail": [
-        "file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/.nuxt/nuxt-mail"
+        "./nuxt-mail"
+      ],
+      "#mail/*": [
+        "./nuxt-mail/*"
       ],
       "#color-mode-options": [
         "./color-mode-options.mjs"
@@ -167,7 +170,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev"
+        "./manifest/meta/323d0b6b-f163-49a2-bcf5-fbabbf7d836a"
       ],
       "#components": [
         "./components"
