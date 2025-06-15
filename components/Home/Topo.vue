@@ -25,7 +25,7 @@
 
 <style>
 .background-topo {
-  background: url('/img/fundohero.svg') center center no-repeat fixed;
+  background: url('/img/background-degrade-new.svg') center center no-repeat fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -183,6 +183,7 @@ useCardAnimation();
   background-image: url('/img/fundo-header-default.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 #topo h1 {

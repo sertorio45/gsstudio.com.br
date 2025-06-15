@@ -1,6 +1,6 @@
 <template>
   <!-- HERO -->
-  <section id="hero" class="min-vh-100 d-flex justify-content-center align-items-center background-topo py-5">
+  <section id="hero" class="d-flex justify-content-center align-items-center py-5 background-topo">
     <div class="container">
       <div class="row">
         <div class="col text-center text-dark my-2">
@@ -23,7 +23,7 @@
   </section>
 
   <!-- FEATURES -->
-  <section id="features" class="container-fluid bg-dark py-5">
+  <section id="features" class="container-fluid bg-black py-5">
     <div class="container py-5 my-5">
       <h2 class="text-center mb-4 fw-bold mb-5 text-light">O que entregamos</h2>
     <div class="row justify-content-center align-items-center g-4 my-3">
@@ -42,59 +42,9 @@
     </div>
   </div>
   </section>
-
-  <!-- TECH -->
-  <section id="tech" class="container py-5 my-5">
-    <h2 class="text-center mb-4 fw-bold mb-5">Tecnologias Utilizadas</h2>
-    <div class="row justify-content-center align-items-center g-4 my-3">
-      <div 
-        class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex" 
-        v-for="(tech, i) in techs" 
-        :key="tech.name"
-      >
-        <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4" style="min-height: 50vh; justify-content: top;">
-          <i :class="'bx ' + tech.icon" style="font-size:3rem; color:var(--bs-light); background-color: var(--bs-dark); border-radius: 50%; padding: 20px; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); margin: 10px;" aria-hidden="true"></i>
-          <div class="fw-semibold mt-2">{{ tech.name }}</div>
-          <div class="small text-muted">{{ tech.desc }}</div>
-        </div>
-      </div>
-      <!-- Se o número de cards for ímpar, adiciona um card neutro para manter o layout -->
-      <div v-if="techs.length % 2 !== 0" class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
-        <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4 bg-light border-0" style="opacity:0.5; min-height: 160px;">
-          <i class="bx bx-dots-horizontal-rounded" style="font-size:2.5rem; color:#ced4da;" aria-hidden="true"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FERRAMENTAS DE LOJAS E PERFORMANCE -->
-  <section id="ferramentas" class="container-fluid py-5 my-5 bg-dark">
-    <div class="container py-5">
-      <h2 class="text-center mb-4 fw-bold text-light mb-5">Integramos o seu site com as melhores ferramentas</h2>
-      <p class="text-center text-light mb-5">Usamos plataformas robustas para lojas virtuais e sites voltados para performance em marketing e vendas.</p>
-      <div class="row justify-content-center align-items-center g-4 mt-3">
-        <div 
-          class="col-12 col-sm-6 col-md-4 col-lg-4 d-flex" 
-          v-for="tool in tools" 
-          :key="tool.name"
-        >
-          <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4 bg-light" style="min-height: 11vh;">
-            <div class="fw-semibold mt-2">{{ tool.name }}</div>
-            <div class="small text-muted">{{ tool.desc }}</div>
-          </div>
-        </div>
-        <!-- Se o número de cards for ímpar, adiciona um card neutro para manter o layout -->
-        <div v-if="tools.length % 2 !== 0" class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
-          <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4 bg-light border-0" style="opacity:0.5; min-height: 160px;">
-            <i class="bx bx-dots-horizontal-rounded" style="font-size:2.5rem; color:#ced4da;" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process" class="container-fluid py-5 my-5">
+  
+    <!-- PROCESS -->
+    <section id="process" class="container-fluid py-5 my-5">
     <div class="container py-5 my-5">
       <h2 class="text-center mb-4 fw-bold mb-5 text-black">Nossa Metodologia</h2>
       <div class="timeline-horizontal d-none d-md-flex flex-row justify-content-between align-items-center position-relative" style="gap: 0;">
@@ -130,12 +80,12 @@
               <i :class="'bx ' + step.icon" style="font-size:1.5rem; color:#fff;" aria-hidden="true"></i>
             </div>
             <!-- Linha vertical entre os ícones, exceto o último -->
-            <div v-if="i < process.length - 1" class="timeline-mobile-connector" style="width: 3px; height: 60px; background: linear-gradient(to bottom, #fff, #000, #fff); margin: 0 auto; z-index: 1;"></div>
+            <div v-if="i < process.length - 1" class="timeline-mobile-connector" style="width: 3px; height: 45px; background: linear-gradient(to bottom, #fff, #000, #fff); margin: 0 auto; z-index: 1;"></div>
           </template>
         </div>
         <div class="timeline-mobile-texts d-flex flex-column justify-content-between flex-grow-1">
           <template v-for="(step, i) in process" :key="'text-' + step.title">
-            <div class="mb-4">
+            <div class="my-2">
               <h5 class="fw-semibold text-black mb-1">{{ step.title }}</h5>
               <div class="small text-black">{{ step.desc }}</div>
             </div>
@@ -145,8 +95,37 @@
     </div>
   </section>
 
+  <!-- TECH -->
+  <section id="tech" class="py-5 background-topo">
+    <div class="container py-5">
+    <h2 class="text-center my-4 fw-bold">Tecnologias Utilizadas</h2>
+    <div class="row justify-content-center align-items-center g-4 my-3">
+      <div 
+        class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex" 
+        v-for="(tech, i) in techs" 
+        :key="tech.name"
+      >
+        <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4" style="min-height: 50vh; justify-content: top;">
+          <i :class="'bx ' + tech.icon" style="font-size:3rem; color:var(--bs-light); background-color: var(--bs-dark); border-radius: 50%; padding: 20px; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); margin: 10px;" aria-hidden="true"></i>
+          <div class="fw-semibold mt-2">{{ tech.name }}</div>
+          <div class="small text-muted">{{ tech.desc }}</div>
+        </div>
+      </div>
+      <!-- Se o número de cards for ímpar, adiciona um card neutro para manter o layout -->
+      <div v-if="techs.length % 2 !== 0" class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+        <div class="gscard gscard-border w-100 text-center d-flex flex-column align-items-center justify-content-center py-4 bg-light border-0" style="opacity:0.5; min-height: 130px;">
+          <i class="bx bx-dots-horizontal-rounded" style="font-size:2.5rem; color:#ced4da;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+
   <!-- TIMELINE -->
-  <section id="timeline" class="container-fluid py-5 my-5 bg-black">
+  <section id="timeline" class="container-fluid py-5 justify-items-center bg-black">
     <div class="container py-5">
       <h2 class="text-center mb-4 fw-bold text-light mb-5">Cronograma de Entrega</h2>
       <div class="table-responsive">
@@ -174,7 +153,7 @@
   <!-- DIFFERENTIALS -->
   <section id="differentials" class="container py-5">
     <h2 class="text-center my-5 fw-bold">Nossos Diferenciais</h2>
-    <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+    <div class="row row-cols-2 row-cols-md-3  g-3 justify-content-center">
       <div 
         class="col d-flex" 
         v-for="(diff, i) in differentials" 
@@ -308,29 +287,7 @@ const tools = [
 </script>
 
 <style scoped>
-/* section {
-  scroll-margin-top: 80px;
-}
 
-#process {
-  background: #f8f9fa;
-}
-#process .card {
-  transition: box-shadow 0.2s, transform 0.2s;
-  border-radius: 1.25rem;
-  border: none;
-}
-#process .card:hover {
-  box-shadow: 0 8px 32px rgba(13,110,253,0.10);
-  transform: translateY(-6px) scale(1.03);
-}
-#process .bx {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-#process .rounded-circle {
-  border: 2px solid #0d6efd;
-} */
 
 .background-topo {
   background: url('/img/fundoherotec.svg') center center no-repeat fixed;
@@ -339,9 +296,15 @@ const tools = [
   background-repeat: no-repeat;
 }
 
+#tech {
+  height: 100vh;
+  min-height: 100%;
+  align-content: center;
+}
 #hero {
   height: 100vh;
   min-height: 100%;
+  align-content: center;
 }
 
 .timeline-horizontal {
@@ -442,7 +405,7 @@ const tools = [
 
 @media (max-width: 1440px) {
   #hero {
-    margin-top: 80px!important;
+
     height: 100vh;
     min-height: 100%;
 }
@@ -450,7 +413,7 @@ const tools = [
 
 @media (max-width: 1199.98px) {
   #hero {
-    margin-top: 60px!important;
+
     height: 100vh;
     min-height: 100%;
 }
@@ -462,7 +425,6 @@ const tools = [
 
 @media (max-width: 767.98px) {
   #hero {
-    margin-top: 110px!important;
     height: 100vh;
     min-height: 100%;
 }
@@ -479,10 +441,13 @@ const tools = [
     font-size: 0.85rem!important;
   }
   #hero {
-    margin-top: 50px!important;
-    height: 100vh;
+    height: auto !important;
+    padding-top: 120px!important;
     min-height: 100%;
 }
+  #tech{
+    height: auto !important;
+  }
 }
 
 </style>

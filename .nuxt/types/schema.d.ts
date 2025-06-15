@@ -445,30 +445,6 @@ declare module 'nuxt/schema' {
       },
    },
 
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: {
-         type: string,
-
-         name: string,
-
-         url: string,
-
-         description: string,
-
-         sameAs: Array<string>,
-      },
-
-      version: string,
-   },
-
    "nuxt-site-config": {
       stack: Array<{
 
@@ -547,6 +523,8 @@ declare module 'nuxt/schema' {
       strictNuxtContentPaths: any,
 
       isNuxtContentDocumentDriven: boolean,
+
+      componentDirs: Array<string>,
    },
   }
   interface PublicRuntimeConfig {
@@ -557,6 +535,30 @@ declare module 'nuxt/schema' {
    SUPABASE_KEY: string,
 
    SUPABASE_TENANT_ID: string,
+
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: {
+         type: string,
+
+         name: string,
+
+         url: string,
+
+         description: string,
+
+         sameAs: Array<string>,
+      },
+
+      version: string,
+   },
 
    gtm: {
       devtools: boolean,
@@ -650,7 +652,7 @@ declare module 'nuxt/schema' {
 
          sameSite: string,
 
-         secure: boolean,
+         secure: any,
       },
 
       isAcceptNecessaryButtonEnabled: boolean,

@@ -15,7 +15,7 @@
   --color-tags: #eedeff;
   --branco: #fff;
   --bs-color-primary: #1e00ff !important;
-  --bs-primary: var(--color-primary) !important;
+  --bs-primary: #FF3366!important;
   --bs-secondary: var(--color-secondary) !important; 
 
   --bs-dark-rgb: rgba(55, 55, 55, 0);
@@ -253,6 +253,7 @@ img {
   animation: moveGradient 5s linear infinite;
 }
 
+
 @keyframes moveGradient {
   0% {
     background-position: 0% 50%;
@@ -273,7 +274,10 @@ img {
   filter: blur(20px);
   transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
   z-index: 2;
+  filter: blur(8);
+  background-color: #fff;
 }
+
 
 .gscard.animate {
   opacity: 1;
