@@ -674,7 +674,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-14T21:36:58.642Z"
+          "X-Sitemap-Prerendered": "2025-06-17T22:12:39.340Z"
         }
       },
       "/_nuxt": {
@@ -941,9 +941,9 @@ const _inlineRuntimeConfig = {
     "strictNuxtContentPaths": "",
     "isNuxtContentDocumentDriven": false,
     "componentDirs": [
-      "OgImageTemplate",
+      "OgImage",
       "og-image",
-      "OgImage"
+      "OgImageTemplate"
     ]
   },
   "ipx": {
@@ -2359,7 +2359,7 @@ const logger$1 = createConsola({
   }
 });
 
-const componentNames = [{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"Zod0cUTD6ABZCmSKLcC6zCkAn9Ij5Y3u-4iPmGToUu0","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"1xIAlCklhR0fwhW97C0hfpS-dnWj6Yw2YSNWuXGJd-s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"h7d7dBXp0E4ewuwzKER-clRfflgKCIZYR5OwmJkiU6E","pascalName":"UnJs","kebabName":"un-js","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"},{"hash":"n1Dw25lza1wfE7vWsH66No8KrxE2YAsG8NiPb-FSyDU","pascalName":"OgImage","kebabName":"og-image","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImage.js","category":"app"},{"hash":"D9FaYUWqPNE3eiuw56d2BNHg975tQAhZI2MMV601ihs","pascalName":"OgImageScreenshot","kebabName":"og-image-screenshot","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImageScreenshot.js","category":"app"}];
+const componentNames = [{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"Zod0cUTD6ABZCmSKLcC6zCkAn9Ij5Y3u-4iPmGToUu0","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"1xIAlCklhR0fwhW97C0hfpS-dnWj6Yw2YSNWuXGJd-s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"h7d7dBXp0E4ewuwzKER-clRfflgKCIZYR5OwmJkiU6E","pascalName":"UnJs","kebabName":"un-js","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"}];
 
 function normaliseOptions(_options) {
   const options = { ..._options };
@@ -8791,6 +8791,9 @@ const sources$1 = [
             },
             {
                 "loc": "/servicos/criacao-de-sites"
+            },
+            {
+                "loc": "/servicos/criacao-de-marca-branding-identidade-visual-corporativa"
             }
         ],
         "sourceType": "app"

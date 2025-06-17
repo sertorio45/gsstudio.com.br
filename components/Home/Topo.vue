@@ -57,7 +57,7 @@
     font-size: 0.6rem!important;
   }
   .background-topo {
-  background: url('/img/fundohero.svg') center center no-repeat fixed;
+  background: url('/img/background-degrade-new.svg') center center no-repeat fixed;
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;

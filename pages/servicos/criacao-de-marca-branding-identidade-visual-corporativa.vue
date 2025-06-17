@@ -36,7 +36,7 @@
         </div>
         <div class="col-6">
           <div class="col-12 col-lg-12 my-2">
-              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 card-hover-effect gscard gscard-border">
+              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 gscard gscard-border">
                 <i class="bx bx-check-circle  me-4" style="font-size: 2.2rem;" aria-hidden="true"></i>
                 <div>
                   <h3 class="fw-bold h5 text-dark mb-1">Fortalece sua Presença no Mercado</h3>
@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-12 my-2">
-              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 card-hover-effect gscard gscard-border">
+              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 gscard gscard-border">
                 <i class="bx bx-check-circle  me-4" style="font-size: 2.2rem;" aria-hidden="true"></i>
                 <div>
                   <h3 class="fw-bold h5 text-dark mb-1">Conquista a Confiança dos Clientes</h3>
@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-12 my-2">
-              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 card-hover-effect gscard gscard-border">
+              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 gscard gscard-border">
                 <i class="bx bx-check-circle  me-4" style="font-size: 2.2rem;" aria-hidden="true"></i>
                 <div>
                   <h3 class="fw-bold h5 text-dark mb-1">Gera Valor Percebido e Diferenciação</h3>
@@ -63,7 +63,7 @@
               </div>
             </div>
             <div class="col-12 col-lg-12 my-2">
-              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 card-hover-effect gscard gscard-border">
+              <div class="d-flex align-items-center p-4 border rounded-3 shadow-sm h-100 gscard gscard-border">
                 <i class="bx bx-check-circle  me-4" style="font-size: 2.2rem;" aria-hidden="true"></i>
                 <div>
                   <h3 class="fw-bold h5 text-dark mb-1">Aumenta a Fidelização e o Engajamento</h3>
@@ -124,15 +124,14 @@
   </section>
 
   <!-- NOSSA METODOLOGIA -->
-  <section id="process" class="container-fluid py-5 my-5 bg-white">
-    <div class="container py-5 my-5">
-      <h2 class="text-center mb-4 fw-bold mb-5 text-black">Como fazemos</h2>
-      <p class="lead text-center mb-5 text-muted">Acreditamos em um processo transparente e colaborativo, desenhado para transformar sua visão em uma marca de impacto.</p>
+  <section id="process" class="py-5 bg-white">
+    <div class="container py-5">
+      <h2 class="text-center fw-bold text-black">Como fazemos</h2>
       <div class="timeline-horizontal d-none d-md-flex flex-row justify-content-between align-items-center position-relative" style="gap: 0;">
         <template v-for="(step, i) in process" :key="step.title">
           <div v-if="i < process.length - 1" class="timeline-connector d-none d-md-block position-absolute" :style="{
             left: `calc(${(i + 0.5) / process.length * 100}% - 1px)`,
-            top: '20%',
+            top: '12%',
             width: `calc(100% / ${process.length})`,
             height: '2px',
             background: 'linear-gradient(to right, #fff, #000, #fff)',
@@ -178,7 +177,7 @@
 
 
   <!-- FAQ -->
-  <section id="faq" class="bg-black text-white py-5 my-5">
+  <section id="faq" class="bg-black text-white py-5">
     <div class="container py-5">
       <h2 class="text-center mb-5 fw-bold text-light">Perguntas Frequentes Sobre Branding e Criação de Marca</h2>
     <div class="accordion" id="faqAccordion">
@@ -261,14 +260,6 @@ const faqs = [
   background-size: cover;
 }
 
-.card-hover-effect {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.card-hover-effect:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
 
 #hero {
   height: 100vh;
@@ -294,6 +285,7 @@ const faqs = [
   min-width: 120px;
   max-width: 200px;
   position: relative;
+  height: 250px;
 }
 @media (max-width: 991px) {
   .timeline-horizontal {
