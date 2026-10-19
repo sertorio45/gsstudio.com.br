@@ -227,6 +227,7 @@
     "../node_modules/nuxt-og-image/runtime/server",
     "../node_modules/nuxt-mail/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",
+    "../../../../../giovanniser/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./module/nuxt-site-config.d.ts",
@@ -259,6 +260,7 @@
     "../node_modules/nuxt-og-image/node_modules",
     "../node_modules/nuxt-mail/node_modules",
     "../node_modules/@nuxtjs/color-mode/node_modules",
+    "../node_modules/@vueuse/motion/node_modules",
     "../node_modules/@nuxt/devtools/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../dist"

@@ -42,6 +42,7 @@ declare global {
   const deleteCookie: typeof import('../../node_modules/h3')['deleteCookie']
   const dynamicEventHandler: typeof import('../../node_modules/h3')['dynamicEventHandler']
   const eventHandler: typeof import('../../node_modules/h3')['eventHandler']
+  const fetchPublications: typeof import('../../server/utils/blimber')['fetchPublications']
   const fetchWithEvent: typeof import('../../node_modules/h3')['fetchWithEvent']
   const fromNodeMiddleware: typeof import('../../node_modules/h3')['fromNodeMiddleware']
   const fromPlainHandler: typeof import('../../node_modules/h3')['fromPlainHandler']
@@ -85,9 +86,11 @@ declare global {
   const isStream: typeof import('../../node_modules/h3')['isStream']
   const isWebResponse: typeof import('../../node_modules/h3')['isWebResponse']
   const lazyEventHandler: typeof import('../../node_modules/h3')['lazyEventHandler']
+  const mapPublicationToArticle: typeof import('../../server/utils/blimber')['mapPublicationToArticle']
   const nitroPlugin: typeof import('../../node_modules/nitropack/dist/runtime/internal/plugin')['nitroPlugin']
   const parseCookies: typeof import('../../node_modules/h3')['parseCookies']
   const promisifyNodeListener: typeof import('../../node_modules/h3')['promisifyNodeListener']
+  const protectApiRoute: typeof import('../../server/utils/protectApi')['protectApiRoute']
   const proxyRequest: typeof import('../../node_modules/h3')['proxyRequest']
   const readBody: typeof import('../../node_modules/h3')['readBody']
   const readFormData: typeof import('../../node_modules/h3')['readFormData']
@@ -95,6 +98,7 @@ declare global {
   const readRawBody: typeof import('../../node_modules/h3')['readRawBody']
   const readValidatedBody: typeof import('../../node_modules/h3')['readValidatedBody']
   const removeResponseHeader: typeof import('../../node_modules/h3')['removeResponseHeader']
+  const resolvePublicationBySlug: typeof import('../../server/utils/blimber')['resolvePublicationBySlug']
   const runTask: typeof import('../../node_modules/nitropack/dist/runtime/internal/task')['runTask']
   const sanitizeStatusCode: typeof import('../../node_modules/h3')['sanitizeStatusCode']
   const sanitizeStatusMessage: typeof import('../../node_modules/h3')['sanitizeStatusMessage']
@@ -136,6 +140,12 @@ declare global {
   const withSiteUrl: typeof import('../../node_modules/nuxt-site-config/dist/runtime/server/composables/utils')['withSiteUrl']
   const writeEarlyHints: typeof import('../../node_modules/h3')['writeEarlyHints']
 }
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { BlimberPublicationListItem, BlimberPublicationDetail, ArticleDto } from '../../server/utils/blimber'
+  import('../../server/utils/blimber')
+}
 export { useNitroApp } from 'nitropack/runtime/internal/app';
 export { useRuntimeConfig, useAppConfig } from 'nitropack/runtime/internal/config';
 export { defineNitroPlugin, nitroPlugin } from 'nitropack/runtime/internal/plugin';
@@ -159,3 +169,5 @@ export { useSiteConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_di
 export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-site-config/dist/runtime/server/composables/utils';
 export { getPathRobotConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getPathRobotConfig';
 export { getSiteRobotConfig } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@nuxtjs/robots/dist/runtime/server/composables/getSiteRobotConfig';
+export { mapPublicationToArticle, fetchPublications, resolvePublicationBySlug } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/server/utils/blimber';
+export { protectApiRoute } from '/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/server/utils/protectApi';

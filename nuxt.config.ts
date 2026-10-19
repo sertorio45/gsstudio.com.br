@@ -126,6 +126,7 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'nuxt-mail',
     '@nuxtjs/color-mode',
+    '@vueuse/motion/nuxt',
   ],
 
   gtm: {
@@ -144,12 +145,15 @@ export default defineNuxtConfig({
 
 
   runtimeConfig: {
+    // Privado (apenas server) — sobrescrever via NUXT_* no .env
+    apiSecret: '',
+    apiAllowedHosts:
+      'gsstudio.com.br,www.gsstudio.com.br,localhost,127.0.0.1',
+    blimberCmsBaseUrl: 'https://app.blimber.com.br/api/public/cms/v1',
+    blimberSiteKey: 'gsstudio',
     public: {
-      apiBase: '/api',
-      SUPABASE_URL: 'https://srzohnuulwgonduoudfp.supabase.co',
-      SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyeW9obnV1bHdnb25kdXNvZHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg',
-      SUPABASE_TENANT_ID: '286f2ba0-b7a0-4685-b44a-24a55f6119c8',
-    }
+      siteUrl: 'https://gsstudio.com.br',
+    },
   },
 
   googleFonts: {

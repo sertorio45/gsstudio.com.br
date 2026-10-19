@@ -28,6 +28,7 @@
     "@vee-validate/nuxt": "^4.13.2",
     "@vite-pwa/nuxt": "0.10.6",
     "@vueuse/head": "^2.0.0",
+    "@vueuse/motion": "^3.0.3",
     "aws-sdk": "^2.1661.0",
     "axios": "^1.7.2",
     "bootstrap": "5.3.3",

@@ -133,6 +133,8 @@ declare global {
   const provide: typeof import('vue')['provide']
   const proxyRefs: typeof import('vue')['proxyRefs']
   const reactive: typeof import('vue')['reactive']
+  const reactiveStyle: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['reactiveStyle']
+  const reactiveTransform: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['reactiveTransform']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const refreshCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['refreshCookie']
@@ -169,6 +171,8 @@ declare global {
   const useCookieControl: typeof import('../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables')['useCookieControl']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useElementStyle: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useElementStyle']
+  const useElementTransform: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useElementTransform']
   const useError: typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']
   const useFaviconPwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useFaviconPwaIcon']
   const useFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']
@@ -201,11 +205,19 @@ declare global {
   const useMail: typeof import('../../node_modules/nuxt-mail/dist/composable')['useMail']
   const useMaskablePwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']
   const useModel: typeof import('vue')['useModel']
+  const useMotion: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotion']
+  const useMotionControls: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionControls']
+  const useMotionProperties: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionProperties']
+  const useMotionTransitions: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionTransitions']
+  const useMotionVariants: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionVariants']
+  const useMotions: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotions']
   const useNitroOrigin: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin')['useNitroOrigin']
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
   const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
+  const useProtectedApiHeaders: typeof import('../../composables/useProtectedApi')['useProtectedApiHeaders']
+  const useReducedMotion: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useReducedMotion']
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']
   const useRequestFetch: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']
   const useRequestHeader: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']
@@ -254,6 +266,7 @@ declare global {
   const useShadowRoot: typeof import('vue')['useShadowRoot']
   const useSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig')['useSiteConfig']
   const useSlots: typeof import('vue')['useSlots']
+  const useSpring: typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useSpring']
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useSubmitCount: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitCount']
   const useSubmitForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']
@@ -422,6 +435,8 @@ declare module 'vue' {
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
+    readonly reactiveStyle: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['reactiveStyle']>
+    readonly reactiveTransform: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['reactiveTransform']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly refreshCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['refreshCookie']>
@@ -458,6 +473,8 @@ declare module 'vue' {
     readonly useCookieControl: UnwrapRef<typeof import('../../node_modules/@dargmuesli/nuxt-cookie-control/dist/runtime/composables')['useCookieControl']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useElementStyle: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useElementStyle']>
+    readonly useElementTransform: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useElementTransform']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFaviconPwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useFaviconPwaIcon']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
@@ -490,11 +507,19 @@ declare module 'vue' {
     readonly useMail: UnwrapRef<typeof import('../../node_modules/nuxt-mail/dist/composable')['useMail']>
     readonly useMaskablePwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
+    readonly useMotion: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotion']>
+    readonly useMotionControls: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionControls']>
+    readonly useMotionProperties: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionProperties']>
+    readonly useMotionTransitions: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionTransitions']>
+    readonly useMotionVariants: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotionVariants']>
+    readonly useMotions: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useMotions']>
     readonly useNitroOrigin: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin')['useNitroOrigin']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
+    readonly useProtectedApiHeaders: UnwrapRef<typeof import('../../composables/useProtectedApi')['useProtectedApiHeaders']>
+    readonly useReducedMotion: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useReducedMotion']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']>
     readonly useRequestHeader: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestHeader']>
@@ -543,6 +568,7 @@ declare module 'vue' {
     readonly useShadowRoot: UnwrapRef<typeof import('vue')['useShadowRoot']>
     readonly useSiteConfig: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig')['useSiteConfig']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly useSpring: UnwrapRef<typeof import('../../node_modules/@vueuse/motion/dist/nuxt/runtime/composables/index')['useSpring']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useSubmitCount: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitCount']>
     readonly useSubmitForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']>

@@ -3,11 +3,13 @@
 const route = useRoute();
 const router = useRouter();
 const canonicalUrl = `https://gsstudio.com.br${route.fullPath}`
+const apiHeaders = useProtectedApiHeaders()
 const { data: article, pending: loading, error } = await useFetch<Article>(
   () => `/api/articles/${route.params.slug}`,
   {
     server: true,
     key: `article-${route.params.slug}`,
+    headers: apiHeaders,
     default: () => null
   }
 )
@@ -127,14 +129,26 @@ const formatDate = (date: string | null | undefined) => {
         </div>
 
         <div class="col-sm-7 col-md-12 col-lg-10">
-          <!-- Estados de carregamento e erro -->
-          <div v-if="loading" class="loading-state">
-            <div class="d-flex mb-3">
-              <div class="skeleton skeleton-category me-2"></div>
-              <div class="skeleton skeleton-date"></div>
+          <!-- Skeleton Bootstrap -->
+          <div v-if="loading" class="loading-state" aria-hidden="true">
+            <div class="d-flex gap-2 mb-3 placeholder-glow">
+              <span class="placeholder col-2"></span>
+              <span class="placeholder col-3"></span>
             </div>
-            <div class="skeleton skeleton-title mb-3"></div>
-            <div class="skeleton skeleton-content mb-3"></div>
+            <h1 class="placeholder-glow mb-4">
+              <span class="placeholder col-10 d-block mb-2"></span>
+              <span class="placeholder col-8 d-block"></span>
+            </h1>
+            <div class="placeholder-glow">
+              <span class="placeholder col-12 d-block mb-2"></span>
+              <span class="placeholder col-12 d-block mb-2"></span>
+              <span class="placeholder col-11 d-block mb-2"></span>
+              <span class="placeholder col-12 d-block mb-2"></span>
+              <span class="placeholder col-9 d-block mb-2"></span>
+              <span class="placeholder col-12 d-block mb-2"></span>
+              <span class="placeholder col-10 d-block mb-2"></span>
+              <span class="placeholder col-8 d-block"></span>
+            </div>
           </div>
 
           <div v-else-if="error" class="error-state">
@@ -193,62 +207,6 @@ const formatDate = (date: string | null | undefined) => {
   border: 1px solid var(--bs-primary);
   background: transparent;
   color: var(--bs-primary);
-}
-
-/* Skeleton Loading */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.skeleton {
-  background: linear-gradient(to right, #e0e0e0 0%, #f8f8f8 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
-  border-radius: 4px;
-  margin: 10px 0;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-img {
-  width: 100%;
-  height: 400px;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-title {
-  height: 30px;
-  width: 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-category {
-  height: 20px;
-  width: 30%;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-date {
-  height: 20px;
-  width: 20%;
-  animation: shimmer 1.5s infinite;
-}
-
-.skeleton-content {
-  height: 100px;
-  width: 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-/* Blur Effect */
-.blur-effect {
-  transition: filter 0.5s ease;
-}
-.blurred {
-  filter: blur(20px);
 }
 
 /* Social Icons */

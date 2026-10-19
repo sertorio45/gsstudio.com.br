@@ -5,6 +5,8 @@ import CarouselParceiros from '~/components/CarouselParceiros.vue';
 import Portifolio from '~/components/Portifolio.vue';
 import Blog from '~/components/Blog.vue';
 import { onMounted } from 'vue';
+import { useMotion } from '@vueuse/motion'
+useMotion()
 
 defineOgImage({ url: 'https://gsstudio.com.br/img/thumb_gsstudio.jpg', width: 1200, height: 600, alt: 'GS STUDIO - Markteting, comunicação e desenvolvimento web' })
 
@@ -132,7 +134,7 @@ onMounted(() => {
 <section class="d-flex align-items-center bg-light py-5" id="sobre">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-12 col-lg-6">
+      <div class="col-12 col-md-12 col-lg-6" v-motion="{ initial: { opacity: 0, y: 150 }, enter: { opacity: 1, y: 0, transition: { delay: 0.9 } }, visible:{ opacity: 1, y:0, transition: { delay: 0.6 } } }">
         <h2>Somos especialistas</h2>
         <p class="my-3">
           A GS Studio é uma agência que combina marketing, design e tecnologia para criar soluções criativas que impulsionam o sucesso de negócios. 
@@ -147,19 +149,40 @@ onMounted(() => {
       <div class="col-12 col-md-12 col-lg-6 text-center d-flex align-items-sm-center justify-content-sm-end py-lg-0 py-md-5">
         <div class="row w-100">
           <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
-            <div class="gscard gscard-border w-100">
+            <div 
+              class="gscard gscard-border w-100"
+              v-motion
+              :initial="{ opacity: 0, scale: 0.8, y: 50 }"
+              :enter="{ opacity: 1, scale: 1, y: 0 }"
+              :leave="{ opacity: 0, scale: 0.8, y: 50 }"
+              :transition="{ duration: 600, delay: 0 }"
+            >
               <NuxtImg src="icons/icon-design.svg" class="p-2 my-1" alt="GS STUDIO - Design para marketing e comunicação" />
               <h3>Design</h3>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-md-4 d-flex mb-3 mb-md-0">
-            <div class="gscard gscard-border w-100">
+            <div 
+              class="gscard gscard-border w-100"
+              v-motion
+              :initial="{ opacity: 0, scale: 0.8, y: 50 }"
+              :enter="{ opacity: 1, scale: 1, y: 0 }"
+              :leave="{ opacity: 0, scale: 0.8, y: 50 }"
+              :transition="{ duration: 600, delay: 200 }"
+            >
               <NuxtImg src="icons/icon-marketing.svg" class="p-2 my-1" alt="GS STUDIO - Marketing e comunicação digital" />
               <h3>Marketing</h3>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-md-4 d-flex">
-            <div class="gscard gscard-border w-100">
+            <div 
+              class="gscard gscard-border w-100"
+              v-motion
+              :initial="{ opacity: 0, scale: 0.8, y: 50 }"
+              :enter="{ opacity: 1, scale: 1, y: 0 }"
+              :leave="{ opacity: 0, scale: 0.8, y: 50 }"
+              :transition="{ duration: 600, delay: 400 }"
+            >
               <NuxtImg src="/icons/icon-tecnologia.svg" class="p-2 my-1" alt="GS STUDIO - Tecnologia para sites e comunicação" />
               <h3>Tecnologia</h3>
             </div>
@@ -167,7 +190,8 @@ onMounted(() => {
           <div class="mt-5"> 
             <NuxtLink to="/sobre" class="btn btn-primary d-md-none">
               Conheça mais sobre nós
-            </NuxtLink></div>
+            </NuxtLink>
+          </div>
         </div>
         
       </div>

@@ -5,14 +5,12 @@ import { resolve as resolve$1, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@vue/shared/dist/shared.cjs.js';
-import defu, { defuFn, defu as defu$1, createDefu } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/defu/dist/defu.mjs';
 import { html as html$1 } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/satori-html/dist/index.js';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, hasProtocol, withHttps, withoutTrailingSlash, joinRelativeURL, withoutProtocol, withLeadingSlash, withBase, withoutLeadingSlash, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/ufo/dist/index.mjs';
 import sizeOf from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/image-size/dist/index.mjs';
 import consola, { consola as consola$1, createConsola } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/consola/dist/index.mjs';
 import { Launcher } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/chrome-launcher/dist/index.js';
 import playwrightCore from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/playwright-core/index.mjs';
-import { createClient } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@supabase/supabase-js/dist/main/index.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, parse, uneval } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/devalue/index.js';
 import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/@unhead/vue/node_modules/unhead/dist/server.mjs';
@@ -595,6 +593,68 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
+function isPlainObject(value) {
+  if (value === null || typeof value !== "object") {
+    return false;
+  }
+  const prototype = Object.getPrototypeOf(value);
+  if (prototype !== null && prototype !== Object.prototype && Object.getPrototypeOf(prototype) !== null) {
+    return false;
+  }
+  if (Symbol.iterator in value) {
+    return false;
+  }
+  if (Symbol.toStringTag in value) {
+    return Object.prototype.toString.call(value) === "[object Module]";
+  }
+  return true;
+}
+
+function _defu(baseObject, defaults, namespace = ".", merger) {
+  if (!isPlainObject(defaults)) {
+    return _defu(baseObject, {}, namespace, merger);
+  }
+  const object = Object.assign({}, defaults);
+  for (const key in baseObject) {
+    if (key === "__proto__" || key === "constructor") {
+      continue;
+    }
+    const value = baseObject[key];
+    if (value === null || value === void 0) {
+      continue;
+    }
+    if (merger && merger(object, key, value, namespace)) {
+      continue;
+    }
+    if (Array.isArray(value) && Array.isArray(object[key])) {
+      object[key] = [...value, ...object[key]];
+    } else if (isPlainObject(value) && isPlainObject(object[key])) {
+      object[key] = _defu(
+        value,
+        object[key],
+        (namespace ? `${namespace}.` : "") + key.toString(),
+        merger
+      );
+    } else {
+      object[key] = value;
+    }
+  }
+  return object;
+}
+function createDefu(merger) {
+  return (...arguments_) => (
+    // eslint-disable-next-line unicorn/no-array-reduce
+    arguments_.reduce((p, c) => _defu(p, c, "", merger), {})
+  );
+}
+const defu = createDefu();
+const defuFn = createDefu((object, key, currentValue) => {
+  if (object[key] !== void 0 && typeof currentValue === "function") {
+    object[key] = currentValue(object[key]);
+    return true;
+  }
+});
+
 const inlineAppConfig = {
   "nuxt": {}
 };
@@ -674,7 +734,7 @@ const _inlineRuntimeConfig = {
         "headers": {
           "Content-Type": "text/xml; charset=UTF-8",
           "Cache-Control": "public, max-age=600, must-revalidate",
-          "X-Sitemap-Prerendered": "2025-06-17T22:12:39.340Z"
+          "X-Sitemap-Prerendered": "2026-10-19T20:53:14.527Z"
         }
       },
       "/_nuxt": {
@@ -702,10 +762,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "apiBase": "/api",
-    "SUPABASE_URL": "https://srzohnuulwgonduoudfp.supabase.co",
-    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNyeW9obnV1bHdnb25kdXNvZHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3OTM1NDgsImV4cCI6MjA2MzM2OTU0OH0.Swg2RXgjK_0jlsdVIZextQdufDkfRkaCI5YQH2bA-kg",
-    "SUPABASE_TENANT_ID": "286f2ba0-b7a0-4685-b44a-24a55f6119c8",
+    "siteUrl": "https://gsstudio.com.br",
     "nuxt-schema-org": {
       "reactive": true,
       "minify": false,
@@ -733,6 +790,7 @@ const _inlineRuntimeConfig = {
       "enabled": true,
       "debug": true
     },
+    "motion": {},
     "cookieControl": {
       "_isPrerendered": false,
       "barPosition": "bottom-full",
@@ -809,6 +867,10 @@ const _inlineRuntimeConfig = {
       }
     }
   },
+  "apiSecret": "",
+  "apiAllowedHosts": "gsstudio.com.br,www.gsstudio.com.br,localhost,127.0.0.1",
+  "blimberCmsBaseUrl": "https://app.blimber.com.br/api/public/cms/v1",
+  "blimberSiteKey": "gsstudio",
   "sitemap": {
     "isI18nMapped": false,
     "sitemapName": "sitemap.xml",
@@ -1509,7 +1571,7 @@ function useSiteConfig(e, _options) {
     logger$3.warn("Site config has not been initialized yet. If you're trying to access site config in a server middleware then this not yet supported. See https://github.com/harlan-zw/nuxt-seo/issues/397");
   }
   e.context.siteConfig = e.context.siteConfig || createSiteConfigStack();
-  const options = defu$1(_options, useRuntimeConfig(e)["nuxt-site-config"], { debug: false });
+  const options = defu(_options, useRuntimeConfig(e)["nuxt-site-config"], { debug: false });
   return e.context.siteConfig.get(options);
 }
 
@@ -1935,11 +1997,6 @@ function generateRobotsTxt({ groups, sitemaps }) {
     lines.push(`Sitemap: ${sitemap}`);
   return lines.join("\n");
 }
-createDefu((obj, key, value) => {
-  if (Array.isArray(obj[key]) && Array.isArray(value))
-    obj[key] = Array.from(/* @__PURE__ */ new Set([...obj[key], ...value]));
-  return obj[key];
-});
 function normaliseRobotsRouteRule(config) {
   let allow;
   if (typeof config.robots === "boolean")
@@ -1974,7 +2031,7 @@ function createNitroRouteRuleMatcher$2(e) {
     })
   );
   return (path) => {
-    return defu$1({}, ..._routeRulesMatcher.matchAll(
+    return defu({}, ..._routeRulesMatcher.matchAll(
       // radix3 does not support trailing slashes
       withoutBase(withoutTrailingSlash(withoutQuery$2(path)), app.baseURL)
     ).reverse());
@@ -2103,6 +2160,128 @@ function getPathRobotConfig(e, options) {
     indexable: true,
     rule: robotsEnabledValue
   };
+}
+
+function getBlimberConfig() {
+  const config = useRuntimeConfig();
+  const baseUrl = String(config.blimberCmsBaseUrl || "").replace(/\/$/, "");
+  const siteKey = String(config.blimberSiteKey || "");
+  if (!baseUrl || !siteKey) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Configura\xE7\xE3o do CMS Blimber ausente"
+    });
+  }
+  return { baseUrl, siteKey };
+}
+function siteBase(config) {
+  return `${config.baseUrl}/sites/${config.siteKey}`;
+}
+function mapPublicationToArticle(publication, options = {}) {
+  var _a, _b, _c;
+  const { content } = publication;
+  const body = options.includeBody && "body" in content && typeof content.body === "string" ? content.body : "";
+  return {
+    id: publication.id,
+    slug: content.slug,
+    title: content.title,
+    content: body || content.excerpt || "",
+    meta_description: ((_a = content.seo) == null ? void 0 : _a.description) || content.excerpt || content.title,
+    category_id: ((_b = content.termIds) == null ? void 0 : _b[0]) || "",
+    category_title: "Artigo",
+    created_at: publication.publishedAt,
+    updated_at: publication.publishedAt,
+    publish_status: "published",
+    tenant_id: "gsstudio",
+    path: publication.path,
+    excerpt: content.excerpt || "",
+    cover: (_c = content.cover) != null ? _c : null
+  };
+}
+async function fetchPublications() {
+  const config = getBlimberConfig();
+  const items = [];
+  let cursor = null;
+  do {
+    const query = cursor ? `?cursor=${encodeURIComponent(cursor)}` : "";
+    const response = await $fetch(`${siteBase(config)}/publications${query}`);
+    items.push(...response.data || []);
+    cursor = response.nextCursor;
+  } while (cursor);
+  return items.filter((item) => item.publicationType === "article");
+}
+async function resolvePublicationBySlug(slug) {
+  var _a;
+  const config = getBlimberConfig();
+  const path = `/artigos/${slug}`;
+  try {
+    const response = await $fetch(
+      `${siteBase(config)}/resolve`,
+      { query: { path } }
+    );
+    if (!(response == null ? void 0 : response.data) || response.data.publicationType !== "article") {
+      return null;
+    }
+    return response.data;
+  } catch (error) {
+    if ((error == null ? void 0 : error.statusCode) === 404 || ((_a = error == null ? void 0 : error.response) == null ? void 0 : _a.status) === 404) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+const DEFAULT_ALLOWED_HOSTS = [
+  "gsstudio.com.br",
+  "www.gsstudio.com.br",
+  "localhost",
+  "127.0.0.1"
+];
+function parseAllowedHosts(value) {
+  if (Array.isArray(value)) {
+    return value.map(String).filter(Boolean);
+  }
+  if (typeof value === "string" && value.trim()) {
+    return value.split(",").map((host) => host.trim()).filter(Boolean);
+  }
+  return DEFAULT_ALLOWED_HOSTS;
+}
+function hostnameFromUrl(value) {
+  if (!value) return null;
+  try {
+    return new URL(value).hostname;
+  } catch {
+    return null;
+  }
+}
+function protectApiRoute(event) {
+  const config = useRuntimeConfig(event);
+  const allowedHosts = parseAllowedHosts(config.apiAllowedHosts);
+  const apiSecret = String(config.apiSecret || "");
+  const requestSecret = getRequestHeader(event, "x-api-secret");
+  if (apiSecret && requestSecret) {
+    if (requestSecret !== apiSecret) {
+      throw createError({
+        statusCode: 401,
+        statusMessage: "N\xE3o autorizado"
+      });
+    }
+    return;
+  }
+  const originHost = hostnameFromUrl(getRequestHeader(event, "origin"));
+  const refererHost = hostnameFromUrl(getRequestHeader(event, "referer"));
+  if (!originHost && !refererHost) {
+    {
+      return;
+    }
+  }
+  const sourceHost = originHost || refererHost;
+  if (!sourceHost || !allowedHosts.includes(sourceHost)) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: "Origem n\xE3o autorizada"
+    });
+  }
 }
 
 const script$1 = "function eventListeners(){const c=new AbortController;const p=new Promise(resolve=>{const hydrateOnEvents=\"mousemove,scroll,keydown,click,touchstart,wheel\".split(\",\");function handler(e){hydrateOnEvents.forEach(e=>w.removeEventListener(e,handler));requestAnimationFrame(()=>resolve(e))}hydrateOnEvents.forEach(e=>{w.addEventListener(e,handler,{capture:true,once:true,passive:true,signal:c.signal})})});return{c:()=>c.abort(),p:p}}function idleListener(){let id;const p=new Promise(resolve=>{const isMobile=w.innerWidth<640;const timeout=isMobile?Number.parseInt(\"5000\"):Number.parseInt(\"4000\");const timeoutDelay=()=>setTimeout(()=>requestAnimationFrame(()=>resolve(\"timeout\")),timeout);id=w.requestIdleCallback(timeoutDelay,{timeout:Number.parseInt(\"7000\")})});return{c:()=>window.cancelIdleCallback(id),p:p}}const triggers=[idleListener(),eventListeners()];const hydrationPromise=Promise.race(triggers.map(t=>t.p)).finally(()=>{triggers.forEach(t=>t.c())});";
@@ -2252,7 +2431,7 @@ function filterIsOgImageOption(key) {
 }
 function separateProps(options, ignoreKeys = []) {
   options = options || {};
-  const _props = defu$1(options.props, Object.fromEntries(
+  const _props = defu(options.props, Object.fromEntries(
     Object.entries({ ...options }).filter(([k]) => !filterIsOgImageOption(k) && !ignoreKeys.includes(k))
   ));
   const props = {};
@@ -2346,7 +2525,7 @@ function createNitroRouteRuleMatcher$1() {
     })
   );
   return (path) => {
-    return defu$1({}, ..._routeRulesMatcher.matchAll(
+    return defu({}, ..._routeRulesMatcher.matchAll(
       // radix3 does not support trailing slashes
       withoutBase(withoutTrailingSlash(withoutQuery$1(path)), app.baseURL)
     ).reverse());
@@ -2359,7 +2538,7 @@ const logger$1 = createConsola({
   }
 });
 
-const componentNames = [{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"Zod0cUTD6ABZCmSKLcC6zCkAn9Ij5Y3u-4iPmGToUu0","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"1xIAlCklhR0fwhW97C0hfpS-dnWj6Yw2YSNWuXGJd-s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"h7d7dBXp0E4ewuwzKER-clRfflgKCIZYR5OwmJkiU6E","pascalName":"UnJs","kebabName":"un-js","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"}];
+const componentNames = [{"hash":"SOHaoKfoo4fUkREsCFGw8ewxkl4-XkkHkug2VwYRtFM","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/BrandedLogo.vue","category":"community"},{"hash":"tFoYPh0fXaZR3uXybAqFEOGnQuQsvz-E-Yq-CtrFlIY","pascalName":"Frame","kebabName":"frame","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Frame.vue","category":"community"},{"hash":"NPQTTXYQ8toXx5OaJ1VlRUUcxy1SNOxg-FoM7C08ZPM","pascalName":"Nuxt","kebabName":"nuxt","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Nuxt.vue","category":"community"},{"hash":"Zod0cUTD6ABZCmSKLcC6zCkAn9Ij5Y3u-4iPmGToUu0","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/NuxtSeo.vue","category":"community"},{"hash":"8CNn4yU043gQFqO-sZNDPz9GKED-h7ahXJ-61c9ThHM","pascalName":"Pergel","kebabName":"pergel","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Pergel.vue","category":"community"},{"hash":"1xIAlCklhR0fwhW97C0hfpS-dnWj6Yw2YSNWuXGJd-s","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/SimpleBlog.vue","category":"community"},{"hash":"h7d7dBXp0E4ewuwzKER-clRfflgKCIZYR5OwmJkiU6E","pascalName":"UnJs","kebabName":"un-js","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/UnJs.vue","category":"community"},{"hash":"hq07GBU-Yd16ICfETt8SfSxfaYj3qBmDAiQkTcv89nw","pascalName":"Wave","kebabName":"wave","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/Wave.vue","category":"community"},{"hash":"zSwOodBXcjwS1qvFqGBJqitTEEnrvVfwQYkTeIxNpws","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/Templates/Community/WithEmoji.vue","category":"community"},{"hash":"n1Dw25lza1wfE7vWsH66No8KrxE2YAsG8NiPb-FSyDU","pascalName":"OgImage","kebabName":"og-image","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImage.js","category":"app"},{"hash":"D9FaYUWqPNE3eiuw56d2BNHg975tQAhZI2MMV601ihs","pascalName":"OgImageScreenshot","kebabName":"og-image-screenshot","path":"/Users/giovannisertorio/Desktop/Sites/gsstudio_digital/node_modules/nuxt-og-image/dist/runtime/app/components/OgImage/OgImageScreenshot.js","category":"app"}];
 
 function normaliseOptions(_options) {
   const options = { ..._options };
@@ -2469,7 +2648,7 @@ async function resolveContext(e) {
     });
   }
   const ogImageRouteRules = separateProps(routeRules.ogImage);
-  options = defu$1(queryParams, options, ogImageRouteRules, runtimeConfig.defaults);
+  options = defu(queryParams, options, ogImageRouteRules, runtimeConfig.defaults);
   if (!options) {
     return createError({
       statusCode: 404,
@@ -3032,7 +3211,7 @@ async function fetchDataSource(input, event) {
       ...options,
       responseType: "json",
       signal: timeoutController.signal,
-      headers: defu$1(options?.headers, {
+      headers: defu(options?.headers, {
         Accept: "application/json"
       }, event ? { Host: getRequestHost(event, { xForwardedHost: true }) } : {}),
       // @ts-expect-error untyped
@@ -3397,7 +3576,7 @@ function createNitroRouteRuleMatcher() {
   return (pathOrUrl) => {
     const path = pathOrUrl[0] === "/" ? pathOrUrl : parseURL(pathOrUrl, app.baseURL).pathname;
     const pathWithoutQuery = withoutQuery(path);
-    return defu$1({}, ..._routeRulesMatcher.matchAll(
+    return defu({}, ..._routeRulesMatcher.matchAll(
       // radix3 does not support trailing slashes
       withoutBase(pathWithoutQuery === "/" ? pathWithoutQuery : withoutTrailingSlash(pathWithoutQuery), app.baseURL)
     ).reverse());
@@ -3450,7 +3629,7 @@ function preNormalizeEntry(_e, resolvers) {
   return e;
 }
 function normaliseEntry(_e, defaults, resolvers) {
-  const e = defu$1(_e, defaults);
+  const e = defu(_e, defaults);
   if (e.lastmod) {
     const date = normaliseDate(e.lastmod);
     if (date)
@@ -3855,7 +4034,7 @@ async function createSitemap(event, definition, runtimeConfig) {
       const match = splitForLocales(path, autoI18n.locales.map((l) => l.code));
       const pathWithoutPrefix = match[1];
       if (pathWithoutPrefix && pathWithoutPrefix !== path)
-        routeRules = defu$1(routeRules, routeRuleMatcher(pathWithoutPrefix));
+        routeRules = defu(routeRules, routeRuleMatcher(pathWithoutPrefix));
     }
     if (routeRules.sitemap === false)
       return false;
@@ -3865,7 +4044,7 @@ async function createSitemap(event, definition, runtimeConfig) {
     const hasRobotsDisabled = Object.entries(routeRules.headers || {}).some(([name, value]) => name.toLowerCase() === "x-robots-tag" && value.toLowerCase().includes("noindex"));
     if (routeRules.redirect || hasRobotsDisabled)
       return false;
-    return routeRules.sitemap ? defu$1(u, routeRules.sitemap) : u;
+    return routeRules.sitemap ? defu(u, routeRules.sitemap) : u;
   }).filter(Boolean);
   const resolvedCtx = {
     urls: sitemapUrls,
@@ -3898,7 +4077,7 @@ const _tRKOIB = defineEventHandler(async (e) => {
 
 function useSchemaOrgConfig(e) {
   const runtimeConfig = useRuntimeConfig(e);
-  return defu$1(runtimeConfig["nuxt-schema-org"], {
+  return defu(runtimeConfig["nuxt-schema-org"], {
     scriptAttributes: {}
   });
 }
@@ -8591,7 +8770,7 @@ async function createSvg(event) {
     resolveFonts(event)
   ]);
   await event._nitro.hooks.callHook("nuxt-og-image:satori:vnodes", vnodes, event);
-  const satoriOptions = defu$1(options.satori, _satoriOptions, {
+  const satoriOptions = defu(options.satori, _satoriOptions, {
     fonts,
     tailwindConfig: { theme },
     embedFont: true,
@@ -8606,7 +8785,7 @@ async function createPng(event) {
   const { resvgOptions } = useOgImageRuntimeConfig();
   const svg = await createSvg(event);
   const Resvg = await useResvg();
-  const resvg = new Resvg(svg, defu$1(
+  const resvg = new Resvg(svg, defu(
     event.options.resvg,
     resvgOptions
   ));
@@ -8634,7 +8813,7 @@ async function createJpeg(event) {
     console.error("Sharp dependency is not accessible. Please check you have it installed and are using a compatible runtime. Falling back to png.");
     return createPng(event);
   }
-  const options = defu$1(event.options.sharp, sharpOptions);
+  const options = defu(event.options.sharp, sharpOptions);
   return sharp(svgBuffer, options).jpeg(options).toBuffer();
 }
 const SatoriRenderer = {
@@ -8839,27 +9018,29 @@ const styles$1 = /*#__PURE__*/Object.freeze({
   default: styles
 });
 
-const tenantId$1 = process.env.SUPABASE_TENANT_ID;
-const supabase$1 = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
 const _slug__get = defineEventHandler(async (event) => {
+  protectApiRoute(event);
   const slug = getRouterParam(event, "slug");
+  if (!slug) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Slug obrigat\xF3rio"
+    });
+  }
   try {
-    const { data: article, error: articleError } = await supabase$1.from("articles").select("*").eq("slug", slug).eq("tenant_id", tenantId$1).single();
-    if (articleError) throw articleError;
-    if (!article) return null;
-    const { data: category, error: categoryError } = await supabase$1.from("articles_category").select("*").eq("id", article.category_id).eq("tenant_id", tenantId$1).single();
-    if (categoryError) throw categoryError;
-    return {
-      ...article,
-      category_title: category ? category.title : "Sem categoria"
-    };
+    const publication = await resolvePublicationBySlug(slug);
+    if (!publication) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: "Artigo n\xE3o encontrado"
+      });
+    }
+    return mapPublicationToArticle(publication, { includeBody: true });
   } catch (error) {
+    if (error == null ? void 0 : error.statusCode) throw error;
     throw createError({
       statusCode: 500,
-      message: error.message || "Erro ao buscar artigo"
+      statusMessage: (error == null ? void 0 : error.message) || "Erro ao buscar artigo"
     });
   }
 });
@@ -8869,56 +9050,25 @@ const _slug__get$1 = /*#__PURE__*/Object.freeze({
   default: _slug__get
 });
 
-const tenantId = process.env.SUPABASE_TENANT_ID;
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
 const index_get = defineEventHandler(async (event) => {
+  protectApiRoute(event);
   try {
-    const { data: articles, error: articlesError } = await supabase.from("articles").select("*").eq("tenant_id", process.env.SUPABASE_TENANT_ID).eq("publish_status", "published");
-    if (articlesError) throw articlesError;
-    const { data: categories, error: categoriesError } = await supabase.from("articles_category").select("*").eq("tenant_id", process.env.SUPABASE_TENANT_ID);
-    if (categoriesError) throw categoriesError;
-    const articlesWithCategories = articles.map((article) => {
-      const category = categories.find((cat) => cat.id === article.category_id);
-      return {
-        ...article,
-        category_title: category ? category.title : "Sem categoria"
-      };
-    });
-    return articlesWithCategories;
+    const publications = await fetchPublications();
+    return publications.map(
+      (publication) => mapPublicationToArticle(publication, { includeBody: false })
+    );
   } catch (error) {
+    if (error == null ? void 0 : error.statusCode) throw error;
     throw createError({
       statusCode: 500,
-      message: error.message || "Erro ao buscar artigos"
-    });
-  }
-});
-const getArticleBySlug = defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, "slug");
-  try {
-    const { data: article, error: articleError } = await supabase.from("articles").select("*").eq("slug", slug).eq("tenant_id", tenantId).single();
-    if (articleError) throw articleError;
-    if (!article) return null;
-    const { data: category, error: categoryError } = await supabase.from("articles_category").select("*").eq("id", article.category_id).eq("tenant_id", tenantId).single();
-    if (categoryError) throw categoryError;
-    return {
-      ...article,
-      category_title: category ? category.title : "Sem categoria"
-    };
-  } catch (error) {
-    throw createError({
-      statusCode: 500,
-      message: error.message || "Erro ao buscar artigo"
+      statusMessage: (error == null ? void 0 : error.message) || "Erro ao buscar artigos"
     });
   }
 });
 
 const index_get$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_get,
-  getArticleBySlug: getArticleBySlug
+  default: index_get
 });
 
 function renderPayloadResponse(ssrContext) {

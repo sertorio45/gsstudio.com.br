@@ -25,16 +25,14 @@
           </div>
         </div>
 
-        <!-- Skeleton Cards -->
-        <div v-else-if="loading" class="col-md-3 my-5" v-for="n in 4" :key="n">
-          <div class="card">
-            <div class="card-body">
-              <div class="mb-2">
-                <div class="skeleton skeleton-category"></div>
-              </div>
-              <div class="skeleton skeleton-title"></div>
-            </div>
-          </div>
+        <!-- Skeleton Bootstrap -->
+        <div
+          v-else-if="loading"
+          class="col-sm-6 col-md-3 my-2"
+          v-for="n in 4"
+          :key="`skeleton-${n}`"
+        >
+          <ArticleCardSkeleton />
         </div>
 
         <!-- Lista de Artigos -->
@@ -98,10 +96,14 @@ useHead ({
       ogLocale: 'pt_BR',
     });
 
+const apiHeaders = useProtectedApiHeaders()
+
 const { data: articles, pending: loading, error } = await useAsyncData<Article[]>(
   'articles',
   async () => {
-    return await $fetch<Article[]>('/api/articles')
+    return await $fetch<Article[]>('/api/articles', {
+      headers: apiHeaders,
+    })
   },
   {
     server: true,

@@ -37,18 +37,23 @@ declare module '@nuxt/schema' {
 }
 
 interface Article {
-  id: number;
+  id: string;
   created_at: string;
-  update_at: string;
+  updated_at?: string;
+  update_at?: string;
   title: string;
   content: string;
   meta_description: string;
   tenant_id: string;
-  author_id: string | null;
+  author_id?: string | null;
   slug: string;
-  thumb_url: string;
+  thumb_url?: string;
   publish_status: string;
-  category_id: number;
+  category_id: string | number;
+  category_title?: string;
+  excerpt?: string;
+  path?: string;
+  cover?: unknown;
 }
 
 interface SocialNetwork {

@@ -13,6 +13,7 @@ type HydrationStrategies = {
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
       'App': typeof import("../components/App.vue")['default']
+    'ArticleCardSkeleton': typeof import("../components/ArticleCardSkeleton.vue")['default']
     'Blog': typeof import("../components/Blog.vue")['default']
     'ButtonPrimary': typeof import("../components/Button/Primary.vue")['default']
     'ButtonRainbow': typeof import("../components/Button/Rainbow.vue")['default']
@@ -82,6 +83,8 @@ interface _GlobalComponents {
     'PwaTransparentImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']
     'HydrationStatus': typeof import("../node_modules/nuxt-delay-hydration/dist/runtime/components/HydrationStatus.vue")['default']
     'ColorScheme': typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']
+    'Motion': typeof import("@vueuse/motion")['MotionComponent']
+    'MotionGroup': typeof import("@vueuse/motion")['MotionGroupComponent']
     'NuxtPage': typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']
     'NoScript': typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']
     'Link': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -95,6 +98,7 @@ interface _GlobalComponents {
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyApp': LazyComponent<typeof import("../components/App.vue")['default']>
+    'LazyArticleCardSkeleton': LazyComponent<typeof import("../components/ArticleCardSkeleton.vue")['default']>
     'LazyBlog': LazyComponent<typeof import("../components/Blog.vue")['default']>
     'LazyButtonPrimary': LazyComponent<typeof import("../components/Button/Primary.vue")['default']>
     'LazyButtonRainbow': LazyComponent<typeof import("../components/Button/Rainbow.vue")['default']>
@@ -164,6 +168,8 @@ interface _GlobalComponents {
     'LazyPwaTransparentImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']>
     'LazyHydrationStatus': LazyComponent<typeof import("../node_modules/nuxt-delay-hydration/dist/runtime/components/HydrationStatus.vue")['default']>
     'LazyColorScheme': LazyComponent<typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']>
+    'LazyMotion': LazyComponent<typeof import("@vueuse/motion")['MotionComponent']>
+    'LazyMotionGroup': LazyComponent<typeof import("@vueuse/motion")['MotionGroupComponent']>
     'LazyNuxtPage': LazyComponent<typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']>
     'LazyNoScript': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
     'LazyLink': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']>
@@ -183,6 +189,7 @@ declare module 'vue' {
 }
 
 export const App: typeof import("../components/App.vue")['default']
+export const ArticleCardSkeleton: typeof import("../components/ArticleCardSkeleton.vue")['default']
 export const Blog: typeof import("../components/Blog.vue")['default']
 export const ButtonPrimary: typeof import("../components/Button/Primary.vue")['default']
 export const ButtonRainbow: typeof import("../components/Button/Rainbow.vue")['default']
@@ -252,6 +259,8 @@ export const PwaMaskableImage: typeof import("../node_modules/@vite-pwa/nuxt/dis
 export const PwaTransparentImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']
 export const HydrationStatus: typeof import("../node_modules/nuxt-delay-hydration/dist/runtime/components/HydrationStatus.vue")['default']
 export const ColorScheme: typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']
+export const Motion: typeof import("@vueuse/motion")['MotionComponent']
+export const MotionGroup: typeof import("@vueuse/motion")['MotionGroupComponent']
 export const NuxtPage: typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']
 export const NoScript: typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']
 export const Link: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -265,6 +274,7 @@ export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyApp: LazyComponent<typeof import("../components/App.vue")['default']>
+export const LazyArticleCardSkeleton: LazyComponent<typeof import("../components/ArticleCardSkeleton.vue")['default']>
 export const LazyBlog: LazyComponent<typeof import("../components/Blog.vue")['default']>
 export const LazyButtonPrimary: LazyComponent<typeof import("../components/Button/Primary.vue")['default']>
 export const LazyButtonRainbow: LazyComponent<typeof import("../components/Button/Rainbow.vue")['default']>
@@ -334,6 +344,8 @@ export const LazyPwaMaskableImage: LazyComponent<typeof import("../node_modules/
 export const LazyPwaTransparentImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']>
 export const LazyHydrationStatus: LazyComponent<typeof import("../node_modules/nuxt-delay-hydration/dist/runtime/components/HydrationStatus.vue")['default']>
 export const LazyColorScheme: LazyComponent<typeof import("../node_modules/@nuxtjs/color-mode/dist/runtime/component.vue3.vue")['default']>
+export const LazyMotion: LazyComponent<typeof import("@vueuse/motion")['MotionComponent']>
+export const LazyMotionGroup: LazyComponent<typeof import("@vueuse/motion")['MotionGroupComponent']>
 export const LazyNuxtPage: LazyComponent<typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']>
 export const LazyNoScript: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
 export const LazyLink: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']>
